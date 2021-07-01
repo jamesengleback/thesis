@@ -1,42 +1,111 @@
-# results and discussion
+# Results and Discussion
+-  [`enz/evo`](#Enzevo)
+	-  [Enz Benchmark](#Enzbench)
+	-  [Evolutionary Experiment Results](#Evo)
+	-  [Mutant Design](#Mutantdesign)
+	-  [Mutant Testing](#Mutanttesting)
+	-  [Design Approach Accuracy And Limitations](#accuracylimitations)
+	-  [Design Approach Future Work and Improvements](#enzfuture)
+-  [`screen/rio`](#rio)
+	-  [Echo Experiment Design With `echo`](#echo)
+	-  [Screening Results - Data Description](#screeningdata)
+	-  [Screening Results - Data Processing With `plates`](#screeningdataprocessing)
+	-  [Screening Results - Clean Dataset](#cleandata)
+	-  [Data Mining](#datamining)
+	-  [Model Design](#model)
+	-  [Pretraining](#pretraining)
+	-  [Training on Screening Data](#training)
+	-  [Accuracy and Limitations](#modeleval)
+	-  [Sequence Design](#modelseqdesign)
+	-  [Mutant Testing](#riomutants)
+	-  [Design Approach Accuracy and Limitations](#riotechniqueeval)
+	-  [Future Work/Improvements](#riofuture)
 
+
+<a name="enzevo"></a>
 
 ##  `enz/evo`   
 
-###  enz benchmark   
+<a name="enzbench"></a>
 
-###  evolutionary experiment results  
+###  Enz Benchmark   
 
-###  mutant design  
+<a name="evo"></a>
 
-###  mutant testing  
+###  Evolutionary Experiment Results  
 
-###  design approach accuracy and limitations  
+<a name="mutantdesign"></a>
 
-###  design approach future work and improvements  
+###  Mutant Design  
+
+<a name="mutanttesting"></a>
+
+###  Mutant Testing  
+
+<a name="accuracylimitations"></a>
+
+###  Design Approach Accuracy and Limitations  
+
+<a name="enzfuture"></a>
+
+###  Design Approach Future Work and Improvements  
+
+<a name="rio"></a>
 
 ##  `screen/rio`  
 
-###  screening results - data description  
+<a name="echo"></a>
 
-###  screening results - data processing with `plates`  
+## Echo Experiment Design with `echo`
 
-###  screening results - clean dataset  
+<a name="screeningdata"></a>
 
-###  data mining  
+###  Screening Results - Data Description  
 
-###  model design and pretraining  
+<a name="screeningdataprocessing"></a>
 
-###  training on screening data  
+###  Screening Results - Data Processing with `plates`  
 
-###  accuracy and limitations  
+<a name="cleandata"></a>
 
-###  sequence design  
+###  Screening Results - Clean Dataset  
 
-###  mutant testing  
+<a name="datamining"></a>
 
-###  design approach accuracy and limitations
+###  Data Mining  
 
-###  future work/improvements
+<a name="model"></a>
+
+###  Model Design 
+
+<a name="pretraining"></a>
+
+### Pretraining  
+
+<a name="training"></a>
+
+###  Training On Screening Data  
+
+<a name="modeleval"></a>
+
+###  Accuracy And Limitations  
+
+<a name="modelseqdesign"></a>
+
+###  Sequence Design  
+
+<a name="riomutants"></a>
+
+###  Mutant Testing  
+
+<a name="riotechniqueeval"></a>
+
+###  Design Approach Accuracy and Limitations
+
+<a name="riofuture"></a>
+
+###  Future Work/Improvements
+
+<a name="enzevo"></a>
 
 
