@@ -14,3 +14,4 @@ initial write up in markdown before writing `tex`.
 2. [**methods**](methods)
 3. [**results and discussion**](results)
 4. [**conclusion**](conclusion)
+5. [**References**](references)

@@ -1,7 +1,7 @@
 # thesis
 documents, data and packages related to my thesis
 
-## thesis
+## write-up
 writing
 
 ## evo
