@@ -1,34 +1,34 @@
-# methods
+# Methods
 
-## contents
+## Contents
 
-## design requirements
-	- [enz/evo](#3enzevo)
+- [Design Requirements](#designrequirements)
+	- [enz/evo](#enzevo)
 	- [screening/rio](#screeningrio)
-	- [mutant validation](#validationreq)
-- [`enz` design and implementation](#3enz)
-- [evo experimental design and data](#evo)
-- [screen](#screen)
-	- [assay (development?)](#assaydev)
-	- [screening set selection](#screendesign)
-	- [compounds](#cpdselection)
-	- [protein](#proteinselection)
-	- [screening operation](#screeningoperation)
-	- [`echo` design and `plate` analysis](#echoplates)
+	- [Mutant Validation](#validationreq)
+- [`enz` Design and Implementation](#3enz)
+- [evo Experimental Design and Data](#evo)
+- [Screen](#screen)
+	- [Assay (development?)](#assaydev)
+	- [Screening Set Selection](#screendesign)
+	- [Compounds](#cpdselection)
+	- [Protein](#proteinselection)
+	- [Screening Operation](#screeningoperation)
+	- [`echo` Design and `plate` Analysis](#echoplates)
 - [rio](#rio)
-	- [design and pre-training](#designpretraining)
-	- [screening data training](#training)
-	- [mutant predictions](#mutantpredictions)
-- [protein expression and purification](#expresspurify)
-- [validation](#validation)
-- [lcms screen](#lcms)
-- [kinetics](#kinetics)
+	- [Design and Pre-Training](#designpretraining)
+	- [Screening Data Training](#training)
+	- [Mutant Predictions](#mutantpredictions)
+- [Protein Expression and Purification](#expresspurify)
+- [Validation](#validation)
+- [LCMS Screen](#lcms)
+- [Kinetics](#kinetics)
 
 
 
 <a name="designrequirements"></a>
 
-## design requirements
+## Design Requirements
 
 <a name="enzevo"></a>
 
@@ -40,43 +40,43 @@
 
 <a name="validationreq"></a>
 
-### mutant validation  
+### Mutant Validation  
 
 <a name="enz"></a>
 
-## `enz` design and implementation  
+## `enz` Design and Implementation  
 
 <a name="evo"></a>
 
-### evo experimental design and data  
+### evo Experimental Design and Data  
 
 <a name="screen"></a>
 
-## screen
+## Screen
 
 <a name="assaydev"></a>
 
-### assay (development?)   
+### Assay (development?)   
 
 <a name="screendesign"></a>
 
-### screening set selection
+### Screening Set Selection
 
 <a name="cpdselection"></a>
 
-#### compounds
+#### Compounds
 
 <a name="proteinselection"></a>
 
-#### protein
+#### Protein
 
 <a name="screeningoperation"></a>
 
-### screening operation
+### Screening Operation
 
 <a name="echoplates"></a>
 
-### `echo` design and `plate` analysis   
+### `echo` Design and `plate` Analysis   
 
 <a name="rio"></a>
 
@@ -84,29 +84,29 @@
 
 <a name="designpretraining"></a>
 
-### design and pre-training  
+### Design and Pre-Training  
 
 <a name="training"></a>
 
-### screening data training   
+### Screening Data Training   
 
 <a name="mutantpredictions"></a>
 
-### mutant predictions        
+### Mutant Predictions        
 
 <a name="expresspurify"></a>
 
-## protein expression and purification  
+## Protein Expression and Purification  
 
 <a name="validation"></a>
 
-## validation 
+## Validation 
 
 <a name="lcms"></a>
 
-### lcms screen  
+### LCMS Screen  
 
 <a name="kinetics"></a>
 
-### kinetics  
+### Kinetics  
 
