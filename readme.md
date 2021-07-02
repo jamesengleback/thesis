@@ -3,7 +3,7 @@ documents, data and packages related to my thesis
 
 - [**write-up**](write-up): writing
 - [**evo**](evo): structure-based design for bm3
-- [**screen**](screen): screening data and analysis
+- [**screening-fist**](https://github.com/jamesengleback/screening-fist): screening data and analysis
 - [**rio**](rio): model of sequence:activity
 - [**validation**](validation): testing mutants for predicted activity
 
