@@ -1,0 +1,15 @@
+site_name: James' Thesis
+theme:
+  name: gitbook
+nav:
+  - index.md
+  - Introductrion:
+    - 'aims.md'
+    - 'deep-learning.md'
+    - 'enzyme-engineering.md'
+    - 'herbicide-resistance.md'
+    - 'hts.md'
+  - Methods:
+    - 'methods.md'
+  - Results:
+    - 'results.md'
