@@ -17,13 +17,13 @@ documents, data and packages related to my thesis:
 
 -------------------------
 
-It's a bit of lab work and a bit of computer work. Who knows, it might even work.
+It's a bit of lab work and a bit of computer work. ]
 
 -------------------------
 
 ## repo
 
-- [**write-up**](write-up): writing
+- [**write-up**](write-up/markdown/docs/docs): writing
 - [**evo**](evo): structure-based design for bm3
 - [**screening-fist**](https://github.com/jamesengleback/screening-fist): screening data and analysis
 - [**rio**](rio): model of sequence:activity
