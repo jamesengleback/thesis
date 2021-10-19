@@ -17,10 +17,10 @@ documents, data and packages related to my thesis:
 
 -------------------------
 
-It's a bit of lab work and a bit of computer work. ]
+It's a bit of lab work and a bit of computer work. 
 
 -------------------------
-
+[`write-up/markdown/docs/docs`](write-up/markdown/docs/docs)
 ## repo
 
 - [**write-up**](write-up/markdown/docs/docs): writing
