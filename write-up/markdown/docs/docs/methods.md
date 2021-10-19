@@ -39,7 +39,7 @@
 To facilitate virtual directed evolution, the python package `enz` was developed to provide a simple and reliable interface to protein structure prediction methods provided by `pyrosetta` and ligand docking methods provided by `vina` (supported by `openbabel`).
 
 `[description by example]`
-```python3
+```python
 import enz
 
 p = enz.Protein('4KEY.pdb', 

@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<title>Methods - James' Thesis</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<meta name="generator" content="mkdocs-1.2.3, mkdocs-gitbook-1.0.7">
+
+<link rel="shortcut icon" href="../images/favicon.ico" type="image/x-icon">
+<meta name="HandheldFriendly" content="true"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta rel="next" href="" />
+<link href="../css/style.min.css" rel="stylesheet"> 
+</head>
+
+<body>
+<div class="book">
+<div class="book-summary">
+
+<nav role="navigation">
+<ul class="summary">
+<li>
+<a href=".." target="_blank" class="custom-link">James' Thesis</a>
+</li>
+<li class="divider"></li>
+<li class="chapter" data-path="">
+<a href="..">Index</a>
+<li class="header">Introductrion</li>
+
+<li>
+<a href="../overview/" class="">Overview</a>
+</li>
+
+<li>
+<a href="../aims/" class="">Project Aims</a>
+</li>
+
+<li>
+<a href="../herbicide-resistance/" class="">Herbicide Resistance Engineering</a>
+</li>
+
+<li>
+<a href="../enzyme-engineering/" class="">Enzyme Engineering</a>
+</li>
+
+<li>
+<a href="../p450s/" class="">P450s</a>
+</li>
+
+<li>
+<a href="../protein-structure-pred/" class="">Protein Structure Prediction</a>
+</li>
+
+<li>
+<a href="../docking/" class="">Lignand Docking</a>
+</li>
+
+<li>
+<a href="../deep-learning/" class="">Artificial Intelligence</a>
+</li>
+
+<li>
+<a href="../hts/" class="">High Throughput Screening</a>
+</li>
+
+<li>
+<a href="../rio-outline/" class="">Rio Outline</a>
+</li>
+
+<li>
+<a href="../evo-outline/" class="">Evo Outline</a>
+</li>
+
+<li class="header">Methods</li>
+
+<li>
+<a href="./" class="active">Methods</a>
+</li>
+
+<li>
+<a href="../enz/" class="">enz</a>
+</li>
+
+<li>
+<a href="../evo/" class="">Virtual Directed Evolution</a>
+</li>
+
+<li>
+<a href="../screening-fist/" class="">Screening</a>
+</li>
+
+<li class="header">Results</li>
+
+<li>
+<a href="../results-evo/" class="">Results and Discussion</a>
+</li>
+
+<li>
+<a href="../results-rio/" class="">Results Rio</a>
+</li>
+
+<li class="divider"></li>
+
+
+
+<li><a href="http://www.mkdocs.org">
+Published with MkDocs
+</a></li>
+
+<li><a href="https://github.com/GitbookIO/theme-default">
+Theme by GitBook
+</a></li>
+</ul>
+
+</nav>
+
+</div> <!-- end of book-summary -->
+
+<div class="book-body">
+<div class="body-inner">
+<div class="book-header" role="navigation">
+
+<!-- Title -->
+<h1>
+<i class="fa fa-circle-o-notch fa-spin"></i>
+<a href="." ></a>
+</h1>
+
+</div> <!-- end of book-header -->
+
+<div class="page-wrapper" tabindex="-1" role="main">
+<div class="page-inner">
+
+<section class="normal markdown-section">
+
+
+
+<h1 id="methods">Methods</h1>
+<h2 id="contents">Contents</h2>
+<ul>
+<li><a href="#designrequirements">Design Requirements</a><ul>
+<li><a href="#enzevo">enz/evo</a></li>
+<li><a href="#screeningrio">screening/rio</a></li>
+<li><a href="#validationreq">Mutant Validation</a></li>
+</ul>
+</li>
+<li><a href="#3enz"><code>enz</code> Design and Implementation</a></li>
+<li><a href="#evo">evo Experimental Design and Data</a></li>
+<li><a href="#screen">Screen</a><ul>
+<li><a href="#assaydev">Assay (development?)</a></li>
+<li><a href="#screendesign">Screening Set Selection</a></li>
+<li><a href="#cpdselection">Compounds</a></li>
+<li><a href="#proteinselection">Protein</a></li>
+<li><a href="#screeningoperation">Screening Operation</a></li>
+<li><a href="#echoplates"><code>echo</code> Design and <code>plate</code> Analysis</a></li>
+</ul>
+</li>
+<li><a href="#rio">rio</a><ul>
+<li><a href="#designpretraining">Design and Pre-Training</a></li>
+<li><a href="#training">Screening Data Training</a></li>
+<li><a href="#mutantpredictions">Mutant Predictions</a></li>
+</ul>
+</li>
+<li><a href="#expresspurify">Protein Expression and Purification</a></li>
+<li><a href="#validation">Validation</a></li>
+<li><a href="#lcms">LCMS Screen</a></li>
+<li><a href="#kinetics">Kinetics</a></li>
+</ul>
+<p><a name="designrequirements"></a></p>
+<h2 id="design-requirements">Design Requirements</h2>
+<p><a name="enzevo"></a></p>
+<h3 id="enzevo">enz/evo</h3>
+<h4 id="enz"><code>enz</code></h4>
+<p>To facilitate virtual directed evolution, the python package <code>enz</code> was developed to provide a simple and reliable interface to protein structure prediction methods provided by <code>pyrosetta</code> and ligand docking methods provided by <code>vina</code> (supported by <code>openbabel</code>).</p>
+<p><code>[description by example]</code></p>
+<pre><code class="language-python">import enz
+
+p = enz.Protein('4KEY.pdb', 
+        seq=None,
+        chain=None,
+        keep=['HEM'])
+</code></pre>
+<p>The <code>enz.Protein</code> object initialized from a protein structure <code>.pdb</code> file cleans the structure of all but <code>chain</code> which if not specified, defaults to the first chain in the structure file. 
+Hetero atom objects such as cofactors can be retained by supplying the <code>keep</code> argument with a list of residue names as they appear in the input file. 
+If a sequence, <code>seq</code> is specified, then it (<code>self.seq</code>) will be aligned to the structure and differences will be resolved on <code>.refold()</code>; mutations specified in <code>.mutate(&lt;pos&gt;, &lt;aa&gt;)</code> will now refer to this sequence.</p>
+<pre><code class="language-python3">p.df
+...
+</code></pre>
+<p>The <code>enz.Protein.df</code> attribute returns a <code>pandas.DataFrame</code> object containing coordinates and properties of atoms in the retained structure.</p>
+<pre><code class="language-python3">p.mutate(87, 'A')
+p.mutate(330, 'A')
+p.refold()
+</code></pre>
+<p><code>enz.mutate(&lt;pos&gt;:int, &lt;aa&gt;:str)</code> mutates the amino acid at <code>&lt;pos&gt;</code> in <code>self.seq</code> to <code>&lt;aa&gt;</code>. 
+The structure is updated on <code>.refold(radius=5)</code> to replace side chains in the structure to match <code>self.seq</code> and repack within 5A of each mutation site by sampling conformations from the Dunbrack library <code>[ref]</code>, using <code>pyrosetta.toolbox.mutate</code>.
+The predicted structure is cached and can be saved with <code>.save('...')</code>. </p>
+<pre><code class="language-python3">docking_results = p.dock('CCCCCCCCCCCC=O', 
+             target_site=[49, 51, 82, 87, 330, 183, 181],
+             exhaustiveness=16)
+</code></pre>
+<p>Ligands can be docked from a smiles string input and a list of residues to include in the bouding box for <code>vina</code>. Conversion of smiles string to <code>.pdbqt</code> is handled by <code>obabel</code> internally and cached in <code>/tmp</code>. <code>vina</code> is called as a subprocess to dock the protein and ligand, and poses are returned as <code>enz.Mol</code> objects, the parent class of <code>enz.Protein</code> and contain a <code>.df</code> attribute for locating atoms. The <code>enz.Vina.Results</code> object returned by <code>p.dock(...</code> contains the poses of docked ligands and a <code>pandas.DataFrame</code> containing the predicted binding affinities of each in kcal/mol - as generated by <code>vina</code>.</p>
+<p>For the purpose of enzyme design, scores for an <code>enz.Protein</code>&lsquo;s performance can be defined using a combination of the predicted binding affinities for each ligands and their geometry relative to the receptor protein using the atomic coordinates in the <code>.df</code> attribute of both.</p>
+<p><a name="screeningrio"></a></p>
+<h3 id="screeningrio">screening/rio</h3>
+<p><a name="validationreq"></a></p>
+<h3 id="mutant-validation">Mutant Validation</h3>
+<p><a name="enz"></a></p>
+<h2 id="enz-design-and-implementation"><code>enz</code> Design and Implementation</h2>
+<p><a name="evo"></a></p>
+<h3 id="evo-experimental-design-and-data">evo Experimental Design and Data</h3>
+<p><a name="screen"></a></p>
+<h2 id="screen">Screen</h2>
+<p><a name="assaydev"></a></p>
+<h3 id="assay-development">Assay (development?)</h3>
+<p>P450 ligand binding assays were in 384 well format (clear bottom). 
+Compounds and DMSO were dispensed using a Labcyte Echo 550 with 0 - 500 mM of test compound in DMSO to a total volume of 1.5 ul (5% of total assay volume). 
+Custom echo picklists were generated using <code>echo</code> - a python package designed for this work to enable flexible assay picklist design. 
+30 ul of purified protein at 5-10uM in buffer A (100 mM KPi ph 7, &gt;20C) was added to test wells and blank wells. 
+Plates were centrifuged at low rpm to remove bubbles and absorbance for each well as measured with a BMG FluoStar plate reader.
+Data was processed using <code>plates</code>, a python package developed for this work to automate screening data analysis.</p>
+<p><a name="screendesign"></a></p>
+<h3 id="screening-set-selection">Screening Set Selection</h3>
+<p><a name="cpdselection"></a></p>
+<h4 id="compounds">Compounds</h4>
+<p>Screening compounds were from a library of 980(?) FDA approved compounds (SelleckChem, ID0000). </p>
+<blockquote>
+<p>should i talk about the method i developed to get libraries from molport?</p>
+</blockquote>
+<p><a name="proteinselection"></a></p>
+<h4 id="protein">Protein</h4>
+<p>The initial selection of BM3 mutants for screening was (WT, DM).</p>
+<p>Recombinant DNA was prepared from parent pET14a(?):AmpR::T7::6His:BM3WT-HEME::T7TERM: by site directed mutagenesis using both NEB Q5 and Agilent QuikChange kits and primers designed using <code>mxn</code>, a python package developed for this work.
+Purified plasmid DNA recovered from surviving colonies using a QIAGen miniprep(?) kit and the CDS sequenced using Eurofins TubeSeq service with T7f&amp;T7r primers.
+Protein was expressed in NEB BL21(DE3) <em>E. coli</em> cells in Formedium auto-induction TB media (ID000) in 500 ml shake flasks at 37C for 4 hours and 25C for 48 hours. Cells were harvested by centrifugation in (Beckman JLA6500?) at 4000 RPM for 10 minutes and stored at -20C.</p>
+<h5 id="protein-purification">Protein Purification</h5>
+<p>Buffers:</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Contents</th>
+<th>pH</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>lysis buffer</td>
+<td>100 mM KPi, 250 mM NaCl, 10 mM imidazole, X lysozyme, X DNase, X proteinase inhibitor</td>
+<td>8</td>
+</tr>
+<tr>
+<td>purification buffer a</td>
+<td>100 mM KPi, 250 mM NaCl, 10 mM imidazole</td>
+<td>8</td>
+</tr>
+<tr>
+<td>purification buffer b</td>
+<td>100 mM KPi, 250 mM NaCl, 100 mM imidazole</td>
+<td>8</td>
+</tr>
+<tr>
+<td>purification buffer c</td>
+<td>100 mM KPi, 250 mM NaCl, 500 mM imidazole</td>
+<td>8</td>
+</tr>
+<tr>
+<td>assay buffer a</td>
+<td>100 mM KPi</td>
+<td>7</td>
+</tr>
+</tbody>
+</table>
+<p>Protein was purified by:</p>
+<ol>
+<li>Thaw cells in lysis buffer at 4C with stirring</li>
+<li>Lyse cells with sonicator (Bandelin Sonoprobe Plus) at 40% amplitude, X hz - on ice</li>
+<li>Centrifuge lysate at 20000 rpm Beckman JA25.50(?), retain supernatant</li>
+<li>Add Ammonium Sulphate to 30% saturation (X g/ml), stir for 3 hours at 4C</li>
+<li>Centrifuge supernatant at 20000 rpm Beckman JA25.50(?), retain new supernatant</li>
+<li>Mix with Ni-NTA purification beads (equilibrated with purification buffer a) at 4C on rollers for &gt;30 minutes</li>
+<li>Load beads onto column, rinse thoroughly with purification buffer a (~20 column volumes?)</li>
+<li>Elute target protein with &lt; 5 colum volumes of purification buffer b, wash beads with purification buffer c.</li>
+<li>Exchange Elutate buffer to assay buffer a with dialysis (12 h, v:v ratio, n buckets), SDS page etc</li>
+<li>Concentrate purified protein with a 20 KDa MWCO centrifuge column (VivaSpin ID000) to around 200uM. </li>
+<li>Flash freeze protein in liquid nitrogen and store at -80C.</li>
+</ol>
+<p><a name="screeningoperation"></a></p>
+<h3 id="screening-operation">Screening Operation</h3>
+<p>Compounds were dispensed into assay plates up to 1 day before measurement using picklists generated using <code>echo</code> and a Labcyte Echo 550.
+Purified protein to be screened was thawed and its UV-Vis spectra was inspected for evidence of a mixed spin state - indicating that a ligand is already bound in the active site. 
+In that case, mixed spin protein was loaded onto a Lipidex 1000 column for 3 h at 4C and eluted into fresh 100 mM KPi and measured for mixed spin again before proceeding.
+Protein was dilted to 5-10 uM in assay buffer and kept above 20C to avoid DMSO ice formation when added to the test plates.
+Diluted protein was added to test wells using (Starlab?) multichannel electric pipette. </p>
+<blockquote>
+<p>repeating assay stuff</p>
+</blockquote>
+<p><a name="echoplates"></a></p>
+<h3 id="echo-design-and-plate-analysis"><code>echo</code> Design and <code>plate</code> Analysis</h3>
+<p>To facilitate design and analysis of screening experiments, the python packages <code>echo</code> and <code>plates</code> were developed. The design requrements for both were to provide a flexible interface to screening experiment design and analysis.</p>
+<blockquote>
+<p>todo</p>
+</blockquote>
+<p><a name="rio"></a></p>
+<h2 id="rio">rio</h2>
+<p><a name="designpretraining"></a></p>
+<h3 id="design-and-pre-training">Design and Pre-Training</h3>
+<p><a name="training"></a></p>
+<h3 id="screening-data-training">Screening Data Training</h3>
+<p><a name="mutantpredictions"></a></p>
+<h3 id="mutant-predictions">Mutant Predictions</h3>
+<p><a name="expresspurify"></a></p>
+<h2 id="protein-expression-and-purification">Protein Expression and Purification</h2>
+<p><a name="validation"></a></p>
+<h2 id="validation">Validation</h2>
+<p><a name="lcms"></a></p>
+<h3 id="lcms-screen">LCMS Screen</h3>
+<p><a name="kinetics"></a></p>
+<h3 id="kinetics">Kinetics</h3>
+
+
+</section>
+
+</div> <!-- end of page-inner -->
+</div> <!-- end of page-wrapper -->
+
+</div> <!-- end of body-inner -->
+
+</div> <!-- end of book-body -->
+<script src="../js/main.js"></script>
+<script src="../javascripts/mathjax.js"></script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script src="../js/gitbook.min.js"></script>
+<script src="../js/theme.min.js"></script>
+</body>
+</html>

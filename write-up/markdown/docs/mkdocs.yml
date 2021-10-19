@@ -4,12 +4,40 @@ theme:
 nav:
   - index.md
   - Introductrion:
+    - 'overview.md'
     - 'aims.md'
-    - 'deep-learning.md'
-    - 'enzyme-engineering.md'
     - 'herbicide-resistance.md'
+    - 'enzyme-engineering.md'
+    - 'p450s.md'
+    - 'protein-structure-pred.md'
+    - 'docking.md'
+    - 'deep-learning.md'
     - 'hts.md'
+    - 'rio-outline.md'
+    - 'evo-outline.md'
   - Methods:
     - 'methods.md'
+    - 'enz.md'
+    - 'evo.md'
+    - 'screening-fist.md'
   - Results:
-    - 'results.md'
+    - 'results-evo.md'
+    - 'results-rio.md'
+
+
+extra_javascript:
+  - javascripts/mathjax.js
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+
+markdown_extensions:
+  - mdx_math
+  - footnotes
+  - pymdownx.arithmatex:
+      generic: true
+  - smarty
+
+plugins:
+  - bibtex:
+      bib_file: "refs.bib"
+      cite_style: "pandoc"

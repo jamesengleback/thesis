@@ -1,0 +1,12 @@
+I have added my comments to this.
+
+James, it would be good if you could share with us your BM3 screening data up to know or the one you plan to get with the existing drug library.
+
+Under NO circumstances (!) try to order a large multi 1000 pound herbicide library until we have had a detailed discussion of the existing quality of this screen/data, and we have either agreed to this or decided on an alternative route.
+
+Furthermore, more detail is needed on your lab work, exactly how are you going to make mutants (and have you done so succesfully before?) and from what template, in what chassis (ie full lenght/domain only etc) and purified how/at what scale?
+
+This seems to me an underestimated part of your planning, and will also cost both time and money.
+
+best,
+David

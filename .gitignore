@@ -1,11 +1,14 @@
- evo/*
- screen/*
- rio/*
- validation/*
- packages /*
- enz/*
- plates/*
- echo/*
- mxn/*
- cpds/*
- ga/*
+evo/*
+screening-fist/*
+rio/*
+validation/*
+packages /*
+enz/*
+plates/*
+echo/*
+mxn/*
+cpds/*
+ga/*
+uv/*
+kx/*
+
