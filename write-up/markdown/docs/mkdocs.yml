@@ -1,9 +1,12 @@
 site_name: James' Thesis
 theme:
   name: gitbook
+  logo: pix/selfprotrait.svg
+  favicon: pix/selfprotrait.svg
 nav:
   - index.md
   - Introductrion:
+    - 'contributing.md'
     - 'overview.md'
     - 'aims.md'
     - 'herbicide-resistance.md'
@@ -16,10 +19,10 @@ nav:
     - 'rio-outline.md'
     - 'evo-outline.md'
   - Methods:
-    - 'methods.md'
+    - 'methods-general.md'
+    - 'methods-rio.md'
+    - 'methods-evo.md'
     - 'enz.md'
-    - 'evo.md'
-    - 'screening-fist.md'
   - Results:
     - 'results-evo.md'
     - 'results-rio.md'
@@ -41,3 +44,4 @@ plugins:
   - bibtex:
       bib_file: "refs.bib"
       cite_style: "pandoc"
+      bib_command: \bib
