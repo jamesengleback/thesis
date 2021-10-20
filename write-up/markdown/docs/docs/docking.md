@@ -1,1 +1,1 @@
-# Lignand Docking
+# Ligand Docking
