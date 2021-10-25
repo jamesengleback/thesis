@@ -6,10 +6,14 @@
 - **Universal Models**
 - **Rectifiers**
 - **Gradient Descent**
+- **Backpropagation**
 - **Loss **
 - **Perceptrons**
 - **Deep Neural Networks**
 - **Transformers & Protein Sequence Learning**
+- **Representation Learning**
+- **Graph Neural Networks and Chemical Learning**
+- **Recommender Systems**
 - **Active/Adaptive Learning & Optimal Experiment Dsign**
 - **Current State of the Art**
 
@@ -22,8 +26,11 @@
 ## Deep Neural Networks
 ## Rectifiers
 ## Gradient Descent
+## Backpropagation
 ## Loss 
 ## Transformers & Protein Sequence Learning
+## Graph Neural Networks and Chemical Learning
+## Recommender Systems
 ## Active/Adaptive Learning & Optimal Experiment Dsign
 ## Current State of the Art
 

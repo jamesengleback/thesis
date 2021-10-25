@@ -6,7 +6,7 @@
 - **Timeline of Technology Maturation**
 - **Physics-based Methods**
 - **Neural Methods**
-- **State of Play and Outlook**
+- **State of the Art and Outlook**
 
 ---------
 
@@ -14,7 +14,7 @@
 ## Timeline of Technology Maturation
 ## Physics-based Methods
 ## Neural Methods
-## State of Play and Outlook
+## State of the Art and Outlook
 
 [@rosettadock]
 

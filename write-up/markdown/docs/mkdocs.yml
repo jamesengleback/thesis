@@ -1,7 +1,15 @@
 site_name: James' Thesis
 site_favicon: pix/selfportrait.svg
 theme:
-  name: gitbook
+  name: material
+  font: 
+    text: Noto Sans
+    code: Noto Sans Mono
+  palette:
+    primary: teal
+    accent: amber
+  favicon: pix/selfprotrait.svg
+  logo : pix/selfprotrait.svg
 nav:
   - index.md
   - 'contributing.md'
@@ -50,6 +58,10 @@ markdown_extensions:
   - pymdownx.arithmatex:
       generic: true
   - smarty
+  - pymdownx.highlight
+  - pymdownx.inlinehilite
+  - pymdownx.superfences
+  - pymdownx.snippets
 
 plugins:
   - bibtex:
