@@ -1,4 +1,4 @@
-# Overview
+# Overview of Engineering Task
 
 ## Contents
 
@@ -11,7 +11,9 @@ Their widespread adoption would also enable development of badly needed new herb
 Herbicide resistance can be engineered by augmentation of the metabolic pathways affected by the herbicide (metabolic bypassing) or by inserting herbicide detoxification machinery.
 The latter can require enzyme engineering, which is the focus of this project.
 
-The goal of this project is to develop enzymes to initiate detoxification of the herbicide mesotrione, which belongs to an important class of herbicides that inhibit 4-HPPD.
+The goal of this project is to develop enzymes to initiate detoxification of the herbicide [mesotrione](https://pubchem.ncbi.nlm.nih.gov/compound/Mesotrione), which belongs to an important class of herbicides that inhibit 4-HPPD.
+
+
 To do this, two enzyme engineering techniques are developed and deployed. 
 
 One technique relies on virtual directed evolution - using automated cycles of protein structure-prediction, molecular docking and mutation by a genetic algorithm. 
@@ -22,6 +24,9 @@ The other technique relies on a machine learning model that maps protein sequenc
 The model in combination with a sequence optimization algorithm can generate candidates for lab testing.
 The model, trained on in-house P450-ligand screening data can also plan subsequent rounds of screening based on its uncertainty and the expected information gain of a particular experiment.
 
+|||
+||| 
+|![](pix/share/mesotrione.png) |Mesotrione, the detoxification target for this work, is a 4-HPPD inhibitor representative of the triketone class of HPPD inhibitor.|
 
 
 ## Problem Context
@@ -37,7 +42,7 @@ Pilot studies indicate that neither the wild-type or the promiscuous A82F/F87V m
 
 ## Resources Available
 Candidate solutions were devised within the constraints of the resources available.
-The resources included a that necesseray to perform a high throughput screen of P450 ligand binding and the compute necesseray to build a large neural model of sequence-substrate specificty, and to run rounds of virtual directed evolution.
+The resources included that necesseray to perform a high throughput screen of P450 ligand binding and the compute necesseray to build a large neural model of sequence-substrate specificty, and to run rounds of virtual directed evolution.
 
 ### Screening Equipment
 Screening equipment available included:

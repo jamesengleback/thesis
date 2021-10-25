@@ -1,4 +1,6 @@
-# Results and Discussion
+# Results 
+
+## Contents
 -  [`enz/evo`](#Enzevo)
 	-  [Enz Benchmark](#Enzbench)
 	-  [Evolutionary Experiment Results](#Evo)
@@ -21,7 +23,7 @@
 	-  [Design Approach Accuracy and Limitations](#riotechniqueeval)
 	-  [Future Work/Improvements](#riofuture)
 
-
+-------------
 <a name="enzevo"></a>
 
 ##  `enz/evo`   

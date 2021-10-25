@@ -1,10 +1,40 @@
 # Enzyme Engineering
 
 ## Contents
-- [](#)
+- **Overview**
+- **Value of Engineered Enzymes**
+	- **Chemical Industry**
+	- **Pharmaceutical Industry**
+	- **Agrochemical Industry**
+- **Challenges**
+	- **Expensive iterations**
+	- **Problem Space Size**
+	- **Assay End Points**
+- **Enzyme Engineering Techniques**
+	- **Directed Evolution**
+	- **Computer Aided Design**
+		- **Simulation-Based**
+			- **[Structure Prediction](protein-structure-mred.md)**
+			- **[Docking](docking.md)**
+			- **[Molecular Dynamics](molecular-dynamics.md)**
+			- **Sequence Search Algorithms**
+				- Genetic Algorithms 
+				- Bayesian Optimization
+				- Reinforcement Learning
+- **Machine Learning**
+	- **Sequence-Function Mapping**
+		- **Use case:** Fox et al.
+	- **Pre-Trained Unsupervised Models**
+		- **`esm` - facebook's transformers trained on uniprot** [@rives2021biological]
+		- **Use case** - Biswas et al. [@biswas2021low]
+
+----------
 
 ## Overview
-### Requirement for Engineered Enzymes
+### Value of Engineered Enzymes
+- **Chemical Industry**
+- **Pharmaceutical Industry**
+- **Agrochemical Industry**
 ### Challenges
 - **Expensive iterations**
 - **Problem Space Size**
@@ -14,13 +44,9 @@
 ### Computer Aided Design
 - De novo & template-based [][]
 #### Simulation-Based
-##### Structure Prediction
-- **Side chain repacking** - Dunbrack et al.
-- **Rosetta** - Baker at al.
-- **AlphaFold** - Jumper at al.
-##### Docking
-- Trott et al.
-##### Molecular Dynamics
+##### [Structure Prediction](protein-structure-mred.md)
+##### [Docking](docking.md)
+##### [Molecular Dynamics](molecular-dynamics.md)
 ##### Sequence Search Algorithms
 - Genetic Algorithms 
 - Bayesian Optimization
@@ -33,7 +59,6 @@
 - **Use case** - Biswas et al. [^biswas]
 
 
-[^biswas]: biswas
 
 
-
+\bib
