@@ -28,19 +28,13 @@
 </li>
 <li class="divider"></li>
 <li class="chapter" data-path="">
-<a href="..">Index</a>
-<li class="header">Introductrion</li>
+<a href="..">Overveiw & Index</a>
+<li class="chapter" data-path="contributing/">
+<a href="../contributing/">Contributing</a>
+<li class="header">Overlap</li>
 
 <li>
-<a href="../contributing/" class="">Contributing</a>
-</li>
-
-<li>
-<a href="../overview/" class="">Overview</a>
-</li>
-
-<li>
-<a href="../aims/" class="">Project Aims</a>
+<a href="../overview/" class="">Overview of Engineering Task</a>
 </li>
 
 <li>
@@ -52,7 +46,29 @@
 </li>
 
 <li>
+<a href="../mesotrione/" class="">Mesotrione</a>
+</li>
+
+<li>
 <a href="../p450s/" class="">P450s</a>
+</li>
+
+<li>
+<a href="../bm3/" class="">BM3</a>
+</li>
+
+<li>
+<a href="../aims/" class="">Aims</a>
+</li>
+
+<li>
+<a href="../methods-general/" class="">General Methods</a>
+</li>
+
+<li class="header">Paper 1</li>
+
+<li>
+<a href="../intro-evo/" class="">Introduction</a>
 </li>
 
 <li>
@@ -60,11 +76,37 @@
 </li>
 
 <li>
-<a href="../docking/" class="">Lignand Docking</a>
+<a href="../docking/" class="">Docking</a>
 </li>
 
 <li>
-<a href="../deep-learning/" class="">Artificial Intelligence</a>
+<a href="../molecular-dynamics/" class="">Molecular Dynamics</a>
+</li>
+
+<li>
+<a href="../evo-outline/" class="">Outline</a>
+</li>
+
+<li>
+<a href="../methods-evo/" class="">Methods</a>
+</li>
+
+<li>
+<a href="../results-evo/" class="">Results</a>
+</li>
+
+<li>
+<a href="../discussion-evo/" class="">Discussion</a>
+</li>
+
+<li class="header">Paper 2</li>
+
+<li>
+<a href="../intro-rio/" class="">Introduction</a>
+</li>
+
+<li>
+<a href="../deep-learning/" class="">Deep Learning</a>
 </li>
 
 <li>
@@ -72,39 +114,47 @@
 </li>
 
 <li>
-<a href="../rio-outline/" class="">Rio Outline</a>
+<a href="../rio-outline/" class="">Outline</a>
 </li>
 
 <li>
-<a href="../evo-outline/" class="">Evo Outline</a>
-</li>
-
-<li class="header">Methods</li>
-
-<li>
-<a href="../methods-general/" class="">General Methods</a>
+<a href="../methods-rio/" class="">Methods</a>
 </li>
 
 <li>
-<a href="../methods-rio/" class="">Rio Methods</a>
+<a href="../results-rio/" class="">Results</a>
 </li>
 
 <li>
-<a href="../methods-evo/" class="">Evo Methods</a>
+<a href="../discussion-rio/" class="">Discussion</a>
 </li>
+
+<li class="header">Appendix</li>
 
 <li>
 <a href="../enz/" class="">enz</a>
 </li>
 
-<li class="header">Results</li>
-
 <li>
-<a href="../results-evo/" class="">Results and Discussion</a>
+<a href="../mxn/" class="">mxn</a>
 </li>
 
 <li>
-<a href="../results-rio/" class="">Results Rio</a>
+<a href="../cpd/" class="">cpd</a>
+</li>
+
+<li>
+<a href="../echo/" class="">echo</a>
+</li>
+
+<li>
+<a href="../plates/" class="">plates</a>
+</li>
+
+<li class="header">References</li>
+
+<li>
+<a href="../references/" class="">References</a>
 </li>
 
 <li class="divider"></li>
@@ -146,10 +196,59 @@ Theme by GitBook
 <h1 id="enzyme-engineering">Enzyme Engineering</h1>
 <h2 id="contents">Contents</h2>
 <ul>
-<li><a href="#"></a></li>
+<li><strong>Overview</strong></li>
+<li><strong>Value of Engineered Enzymes</strong><ul>
+<li><strong>Chemical Industry</strong></li>
+<li><strong>Pharmaceutical Industry</strong></li>
+<li><strong>Agrochemical Industry</strong></li>
 </ul>
+</li>
+<li><strong>Challenges</strong><ul>
+<li><strong>Expensive iterations</strong></li>
+<li><strong>Problem Space Size</strong></li>
+<li><strong>Assay End Points</strong></li>
+</ul>
+</li>
+<li><strong>Enzyme Engineering Techniques</strong><ul>
+<li><strong>Directed Evolution</strong></li>
+<li><strong>Computer Aided Design</strong><ul>
+<li><strong>Simulation-Based</strong><ul>
+<li><strong><a href="protein-structure-mred.md">Structure Prediction</a></strong></li>
+<li><strong><a href="../docking/">Docking</a></strong></li>
+<li><strong><a href="../molecular-dynamics/">Molecular Dynamics</a></strong></li>
+<li><strong>Sequence Search Algorithms</strong><ul>
+<li>Genetic Algorithms </li>
+<li>Bayesian Optimization</li>
+<li>Reinforcement Learning</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>Machine Learning</strong><ul>
+<li><strong>Sequence-Function Mapping</strong><ul>
+<li><strong>Use case:</strong> Fox et al.</li>
+</ul>
+</li>
+<li><strong>Pre-Trained Unsupervised Models</strong><ul>
+<li><strong><code>esm</code> - facebook&rsquo;s transformers trained on uniprot</strong> <sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup></li>
+<li><strong>Use case</strong> - Biswas et al. <sup id="fnref:2"><a class="footnote-ref" href="#fn:2">2</a></sup></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr />
 <h2 id="overview">Overview</h2>
-<h3 id="requirement-for-engineered-enzymes">Requirement for Engineered Enzymes</h3>
+<h3 id="value-of-engineered-enzymes">Value of Engineered Enzymes</h3>
+<ul>
+<li><strong>Chemical Industry</strong></li>
+<li><strong>Pharmaceutical Industry</strong></li>
+<li><strong>Agrochemical Industry</strong></li>
+</ul>
 <h3 id="challenges">Challenges</h3>
 <ul>
 <li><strong>Expensive iterations</strong></li>
@@ -163,17 +262,9 @@ Theme by GitBook
 <li>De novo &amp; template-based [][]</li>
 </ul>
 <h4 id="simulation-based">Simulation-Based</h4>
-<h5 id="structure-prediction">Structure Prediction</h5>
-<ul>
-<li><strong>Side chain repacking</strong> - Dunbrack et al.</li>
-<li><strong>Rosetta</strong> - Baker at al.</li>
-<li><strong>AlphaFold</strong> - Jumper at al.</li>
-</ul>
-<h5 id="docking">Docking</h5>
-<ul>
-<li>Trott et al.</li>
-</ul>
-<h5 id="molecular-dynamics">Molecular Dynamics</h5>
+<h5 id="structure-prediction"><a href="protein-structure-mred.md">Structure Prediction</a></h5>
+<h5 id="docking"><a href="../docking/">Docking</a></h5>
+<h5 id="molecular-dynamics"><a href="../molecular-dynamics/">Molecular Dynamics</a></h5>
 <h5 id="sequence-search-algorithms">Sequence Search Algorithms</h5>
 <ul>
 <li>Genetic Algorithms </li>
@@ -188,13 +279,16 @@ Theme by GitBook
 <h5 id="pre-trained-unsupervised-models">Pre-Trained Unsupervised Models</h5>
 <ul>
 <li><strong><code>esm</code> - facebook&rsquo;s transformers trained on uniprot</strong> - ESM Rives et al.</li>
-<li><strong>Use case</strong> - Biswas et al. <sup id="fnref:biswas"><a class="footnote-ref" href="#fn:biswas">1</a></sup></li>
+<li><strong>Use case</strong> - Biswas et al. [^biswas]</li>
 </ul>
 <div class="footnote">
 <hr />
 <ol>
-<li id="fn:biswas">
-<p>biswas&#160;<a class="footnote-backref" href="#fnref:biswas" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+<li id="fn:1">
+<p>Alexander Rives, Joshua Meier, Tom Sercu, Siddharth Goyal, Zeming Lin, Jason Liu, Demi Guo, Myle Ott, C Lawrence Zitnick, Jerry Ma, and others. Biological structure and function emerge from scaling unsupervised learning to 250 million protein sequences. <em>Proceedings of the National Academy of Sciences</em>, 2021.&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+<li id="fn:2">
+<p>Surojit Biswas, Grigory Khimulya, Ethan C Alley, Kevin M Esvelt, and George M Church. Low-n protein engineering with data-efficient deep learning. <em>Nature Methods</em>, 18<span class="arithmatex">\(4\)</span>:389–396, 2021.&#160;<a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 2 in the text">&#8617;</a></p>
 </li>
 </ol>
 </div>
@@ -209,7 +303,6 @@ Theme by GitBook
 
 </div> <!-- end of book-body -->
 <script src="../js/main.js"></script>
-<script src="../javascripts/mathjax.js"></script>
 <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
 <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 <script src="../js/gitbook.min.js"></script>

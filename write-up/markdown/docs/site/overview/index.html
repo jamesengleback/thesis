@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-<title>Overview - James' Thesis</title>
+<title>Overview of Engineering Task - James' Thesis</title>
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
 <meta name="generator" content="mkdocs-1.2.3, mkdocs-gitbook-1.0.7">
@@ -28,19 +28,13 @@
 </li>
 <li class="divider"></li>
 <li class="chapter" data-path="">
-<a href="..">Index</a>
-<li class="header">Introductrion</li>
+<a href="..">Overveiw & Index</a>
+<li class="chapter" data-path="contributing/">
+<a href="../contributing/">Contributing</a>
+<li class="header">Overlap</li>
 
 <li>
-<a href="../contributing/" class="">Contributing</a>
-</li>
-
-<li>
-<a href="./" class="active">Overview</a>
-</li>
-
-<li>
-<a href="../aims/" class="">Project Aims</a>
+<a href="./" class="active">Overview of Engineering Task</a>
 </li>
 
 <li>
@@ -52,7 +46,29 @@
 </li>
 
 <li>
+<a href="../mesotrione/" class="">Mesotrione</a>
+</li>
+
+<li>
 <a href="../p450s/" class="">P450s</a>
+</li>
+
+<li>
+<a href="../bm3/" class="">BM3</a>
+</li>
+
+<li>
+<a href="../aims/" class="">Aims</a>
+</li>
+
+<li>
+<a href="../methods-general/" class="">General Methods</a>
+</li>
+
+<li class="header">Paper 1</li>
+
+<li>
+<a href="../intro-evo/" class="">Introduction</a>
 </li>
 
 <li>
@@ -60,11 +76,37 @@
 </li>
 
 <li>
-<a href="../docking/" class="">Lignand Docking</a>
+<a href="../docking/" class="">Docking</a>
 </li>
 
 <li>
-<a href="../deep-learning/" class="">Artificial Intelligence</a>
+<a href="../molecular-dynamics/" class="">Molecular Dynamics</a>
+</li>
+
+<li>
+<a href="../evo-outline/" class="">Outline</a>
+</li>
+
+<li>
+<a href="../methods-evo/" class="">Methods</a>
+</li>
+
+<li>
+<a href="../results-evo/" class="">Results</a>
+</li>
+
+<li>
+<a href="../discussion-evo/" class="">Discussion</a>
+</li>
+
+<li class="header">Paper 2</li>
+
+<li>
+<a href="../intro-rio/" class="">Introduction</a>
+</li>
+
+<li>
+<a href="../deep-learning/" class="">Deep Learning</a>
 </li>
 
 <li>
@@ -72,39 +114,47 @@
 </li>
 
 <li>
-<a href="../rio-outline/" class="">Rio Outline</a>
+<a href="../rio-outline/" class="">Outline</a>
 </li>
 
 <li>
-<a href="../evo-outline/" class="">Evo Outline</a>
-</li>
-
-<li class="header">Methods</li>
-
-<li>
-<a href="../methods-general/" class="">General Methods</a>
+<a href="../methods-rio/" class="">Methods</a>
 </li>
 
 <li>
-<a href="../methods-rio/" class="">Rio Methods</a>
+<a href="../results-rio/" class="">Results</a>
 </li>
 
 <li>
-<a href="../methods-evo/" class="">Evo Methods</a>
+<a href="../discussion-rio/" class="">Discussion</a>
 </li>
+
+<li class="header">Appendix</li>
 
 <li>
 <a href="../enz/" class="">enz</a>
 </li>
 
-<li class="header">Results</li>
-
 <li>
-<a href="../results-evo/" class="">Results and Discussion</a>
+<a href="../mxn/" class="">mxn</a>
 </li>
 
 <li>
-<a href="../results-rio/" class="">Results Rio</a>
+<a href="../cpd/" class="">cpd</a>
+</li>
+
+<li>
+<a href="../echo/" class="">echo</a>
+</li>
+
+<li>
+<a href="../plates/" class="">plates</a>
+</li>
+
+<li class="header">References</li>
+
+<li>
+<a href="../references/" class="">References</a>
 </li>
 
 <li class="divider"></li>
@@ -143,7 +193,7 @@ Theme by GitBook
 
 
 
-<h1 id="overview">Overview</h1>
+<h1 id="overview-of-engineering-task">Overview of Engineering Task</h1>
 <h2 id="contents">Contents</h2>
 <h2 id="abstract">Abstract</h2>
 <p>Global agriculture relies heavily on herbicides use to minimize yeild loss due to weeds, which can be significant. 
@@ -152,14 +202,28 @@ Engineered herbicide resistant crops are an effective solution to this problem s
 Their widespread adoption would also enable development of badly needed new herbicide chemistries.</p>
 <p>Herbicide resistance can be engineered by augmentation of the metabolic pathways affected by the herbicide (metabolic bypassing) or by inserting herbicide detoxification machinery.
 The latter can require enzyme engineering, which is the focus of this project.</p>
-<p>The goal of this project is to develop enzymes to initiate detoxification of the herbicide mesotrione, which belongs to an important class of herbicides that inhibit 4-HPPD.
-To do this, two enzyme engineering techniques are developed and deployed. </p>
+<p>The goal of this project is to develop enzymes to initiate detoxification of the herbicide <a href="https://pubchem.ncbi.nlm.nih.gov/compound/Mesotrione">mesotrione</a>, which belongs to an important class of herbicides that inhibit 4-HPPD.</p>
+<p>To do this, two enzyme engineering techniques are developed and deployed. </p>
 <p>One technique relies on virtual directed evolution - using automated cycles of protein structure-prediction, molecular docking and mutation by a genetic algorithm. 
 Thousands of mutants are screened virtually and several candidates are generated for lab testing.
 Lab tests on the candidates show : &hellip;</p>
 <p>The other technique relies on a machine learning model that maps protein sequence to substrate specificty, which can evaluate a large number of sequences quickly.
 The model in combination with a sequence optimization algorithm can generate candidates for lab testing.
 The model, trained on in-house P450-ligand screening data can also plan subsequent rounds of screening based on its uncertainty and the expected information gain of a particular experiment.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img alt="" src="../pix/share/mesotrione.png" /></td>
+<td>Mesotrione, the detoxification target for this work, is a 4-HPPD inhibitor representative of the triketone class of HPPD inhibitor.</td>
+</tr>
+</tbody>
+</table>
 <h2 id="problem-context">Problem Context</h2>
 <p>Herbice detoxification in plants is typically initiated by a ring carbon hydroxylation by a cytochrome P450 before conjugation with glutathione by a glutathione S-transferase (GST) and sequestration into a vacuole by an <a href="really?">ABC transporter</a>.
 GSTs can be promiscuous so it may be sufficient to introduce an engineered cytochrome P450 capable of mesotrione ring hydroxylation to render a crop herbicide tolerant.
@@ -170,7 +234,7 @@ This, combined with its ease of expression, broad engineered substrate scope and
 <p>Pilot studies indicate that neither the wild-type or the promiscuous A82F/F87V mutant have binding activity towards mesotrione.</p>
 <h2 id="resources-available">Resources Available</h2>
 <p>Candidate solutions were devised within the constraints of the resources available.
-The resources included a that necesseray to perform a high throughput screen of P450 ligand binding and the compute necesseray to build a large neural model of sequence-substrate specificty, and to run rounds of virtual directed evolution.</p>
+The resources included that necesseray to perform a high throughput screen of P450 ligand binding and the compute necesseray to build a large neural model of sequence-substrate specificty, and to run rounds of virtual directed evolution.</p>
 <h3 id="screening-equipment">Screening Equipment</h3>
 <p>Screening equipment available included:</p>
 <ul>
@@ -200,7 +264,6 @@ This approach is asigned the moniker <code>rio</code>.</p>
 
 </div> <!-- end of book-body -->
 <script src="../js/main.js"></script>
-<script src="../javascripts/mathjax.js"></script>
 <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
 <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 <script src="../js/gitbook.min.js"></script>
