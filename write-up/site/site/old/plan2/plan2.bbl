@@ -1,0 +1,133 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.1 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{nty/global//global/global}
+    \entry{rosettadock}{article}{}
+      \name{author}{9}{}{%
+        {{hash=2ef348f60fe370565297b816365eec81}{%
+           family={Combs},
+           familyi={C\bibinitperiod},
+           given={Steven\bibnamedelima A},
+           giveni={S\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+        {{hash=e0f25769ca1b9644d354a6121ffc3e42}{%
+           family={DeLuca},
+           familyi={D\bibinitperiod},
+           given={Samuel\bibnamedelima L},
+           giveni={S\bibinitperiod\bibinitdelim L\bibinitperiod}}}%
+        {{hash=d6f99d41ad9eb97148a92ca444c2192c}{%
+           family={DeLuca},
+           familyi={D\bibinitperiod},
+           given={Stephanie\bibnamedelima H},
+           giveni={S\bibinitperiod\bibinitdelim H\bibinitperiod}}}%
+        {{hash=3a90597095abec55d6ef79bb876a5a90}{%
+           family={Lemmon},
+           familyi={L\bibinitperiod},
+           given={Gordon\bibnamedelima H},
+           giveni={G\bibinitperiod\bibinitdelim H\bibinitperiod}}}%
+        {{hash=fa8aeca0db36dc5e357fc10754405893}{%
+           family={Nannemann},
+           familyi={N\bibinitperiod},
+           given={David\bibnamedelima P},
+           giveni={D\bibinitperiod\bibinitdelim P\bibinitperiod}}}%
+        {{hash=b371306baf17bbb9898e3cc972ff6949}{%
+           family={Nguyen},
+           familyi={N\bibinitperiod},
+           given={Elizabeth\bibnamedelima D},
+           giveni={E\bibinitperiod\bibinitdelim D\bibinitperiod}}}%
+        {{hash=1ab785d8dd0cb6ae72e34cb22f64d04b}{%
+           family={Willis},
+           familyi={W\bibinitperiod},
+           given={Jordan\bibnamedelima R},
+           giveni={J\bibinitperiod\bibinitdelim R\bibinitperiod}}}%
+        {{hash=7c3a58c688baffcafa69ff2f35ba9bc2}{%
+           family={Sheehan},
+           familyi={S\bibinitperiod},
+           given={Jonathan\bibnamedelima H},
+           giveni={J\bibinitperiod\bibinitdelim H\bibinitperiod}}}%
+        {{hash=26b1ee76f095f43650e27a349d54e2dc}{%
+           family={Meiler},
+           familyi={M\bibinitperiod},
+           given={Jens},
+           giveni={J\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Nature Publishing Group}%
+      }
+      \strng{namehash}{cadafe09b01a273ec01d5219b49c043a}
+      \strng{fullhash}{6f9cf6bd9f9c43a7577b137e3f61668b}
+      \strng{bibnamehash}{cadafe09b01a273ec01d5219b49c043a}
+      \strng{authorbibnamehash}{cadafe09b01a273ec01d5219b49c043a}
+      \strng{authornamehash}{cadafe09b01a273ec01d5219b49c043a}
+      \strng{authorfullhash}{6f9cf6bd9f9c43a7577b137e3f61668b}
+      \field{sortinit}{C}
+      \field{sortinithash}{4c244ceae61406cdc0cc2ce1cb1ff703}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Nature protocols}
+      \field{number}{7}
+      \field{title}{Small-molecule ligand docking into comparative models with Rosetta}
+      \field{volume}{8}
+      \field{year}{2013}
+      \field{pages}{1277\bibrangedash 1298}
+      \range{pages}{22}
+    \endentry
+    \entry{wong}{article}{}
+      \name{author}{3}{}{%
+        {{hash=a85a185f7add67aae75b8a8e4c333db2}{%
+           family={Whitehouse},
+           familyi={W\bibinitperiod},
+           given={Christopher\bibnamedelima JC},
+           giveni={C\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+        {{hash=329195edd26a1b394c9eb8c308065c3e}{%
+           family={Bell},
+           familyi={B\bibinitperiod},
+           given={Stephen\bibnamedelima G},
+           giveni={S\bibinitperiod\bibinitdelim G\bibinitperiod}}}%
+        {{hash=0163cdf09404097395bbf68f2207060d}{%
+           family={Wong},
+           familyi={W\bibinitperiod},
+           given={Luet-Lok},
+           giveni={L\bibinithyphendelim L\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Royal Society of Chemistry}%
+      }
+      \strng{namehash}{af4f8cb03996b730ba1435a5c6c949b1}
+      \strng{fullhash}{af4f8cb03996b730ba1435a5c6c949b1}
+      \strng{bibnamehash}{af4f8cb03996b730ba1435a5c6c949b1}
+      \strng{authorbibnamehash}{af4f8cb03996b730ba1435a5c6c949b1}
+      \strng{authornamehash}{af4f8cb03996b730ba1435a5c6c949b1}
+      \strng{authorfullhash}{af4f8cb03996b730ba1435a5c6c949b1}
+      \field{sortinit}{W}
+      \field{sortinithash}{1af34bd8c148ffb32de1494636b49713}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Chemical Society Reviews}
+      \field{number}{3}
+      \field{title}{P450 BM3 (CYP102A1): connecting the dots}
+      \field{volume}{41}
+      \field{year}{2012}
+      \field{pages}{1218\bibrangedash 1260}
+      \range{pages}{43}
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+
