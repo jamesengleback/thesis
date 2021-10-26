@@ -1,0 +1,19 @@
+digraph rioG{
+	node[shape="record" fontname="Noto Sans"]
+	mxn[label="PCR|{15 mutants from literature|Expected yeild: 8|heme domain|weeks}"]
+	exp[label="Express|{3 L batches|8 24 hour shaker slots}"]
+	cpd[label="Slot cpd program|{Order 96 compounds from MolPort|Lead time: 1 month}"]
+	screen[label="Screen|bacthes of 3?"]
+	pretrain[label="Pre-Train"]
+	train[label="Train"]
+	evo[label="Generate new mutants"]
+	mxn2[label="Design and order new batch of primers"]
+	pcr[label="PCR"]
+	exp2[label="Express"]
+	pur[label="Purify"]
+	test[label="test"]
+
+	mxn -> exp -> screen
+	cpd -> screen -> train
+	pretrain -> train -> evo -> mxn2 -> pcr -> exp2 -> pur -> test
+	}

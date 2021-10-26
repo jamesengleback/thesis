@@ -1,0 +1,628 @@
+This is XeTeX, Version 3.14159265-2.6-0.999992 (TeX Live 2020/Arch Linux) (preloaded format=xelatex 2021.2.20)  27 FEB 2021 09:17
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**plan2.tex
+(./plan2.tex
+LaTeX2e <2020-10-01> patch level 2
+L3 programming layer <2020-12-03> xparse <2020-03-03>
+(/usr/share/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2020/04/10 v1.4m Standard LaTeX document class
+(/usr/share/texmf-dist/tex/latex/base/size10.clo
+File: size10.clo 2020/04/10 v1.4m Standard LaTeX file (size option)
+)
+\c@part=\count173
+\c@section=\count174
+\c@subsection=\count175
+\c@subsubsection=\count176
+\c@paragraph=\count177
+\c@subparagraph=\count178
+\c@figure=\count179
+\c@table=\count180
+\abovecaptionskip=\skip47
+\belowcaptionskip=\skip48
+\bibindent=\dimen138
+)
+(/usr/share/texmf-dist/tex/latex/fontspec/fontspec.sty
+(/usr/share/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
+(/usr/share/texmf-dist/tex/latex/l3kernel/expl3.sty
+Package: expl3 2020-12-03 L3 programming layer (loader) 
+
+(/usr/share/texmf-dist/tex/latex/l3backend/l3backend-xetex.def
+File: l3backend-xetex.def 2020-09-24 L3 backend support: XeTeX
+\g__graphics_track_int=\count181
+\l__pdf_internal_box=\box47
+\g__pdf_backend_object_int=\count182
+\g__pdf_backend_annotation_int=\count183
+))
+Package: xparse 2020-10-27 L3 Experimental document command parser
+
+(/usr/share/texmf-dist/tex/latex/l3packages/xparse/xparse-generic.tex))
+Package: fontspec 2020/02/21 v2.7i Font selection for XeLaTeX and LuaLaTeX
+
+(/usr/share/texmf-dist/tex/latex/fontspec/fontspec-xetex.sty
+Package: fontspec-xetex 2020/02/21 v2.7i Font selection for XeLaTeX and LuaLaTe
+X
+\l__fontspec_script_int=\count184
+\l__fontspec_language_int=\count185
+\l__fontspec_strnum_int=\count186
+\l__fontspec_tmp_int=\count187
+\l__fontspec_tmpa_int=\count188
+\l__fontspec_tmpb_int=\count189
+\l__fontspec_tmpc_int=\count190
+\l__fontspec_em_int=\count191
+\l__fontspec_emdef_int=\count192
+\l__fontspec_strong_int=\count193
+\l__fontspec_strongdef_int=\count194
+\l__fontspec_tmpa_dim=\dimen139
+\l__fontspec_tmpb_dim=\dimen140
+\l__fontspec_tmpc_dim=\dimen141
+
+(/usr/share/texmf-dist/tex/latex/base/fontenc.sty
+Package: fontenc 2020/08/10 v2.0s Standard LaTeX package
+)
+(/usr/share/texmf-dist/tex/latex/fontspec/fontspec.cfg)))
+(/usr/share/texmf-dist/tex/latex/parskip/parskip.sty
+Package: parskip 2020-06-15 v2.0f non-zero parskip adjustments
+
+(/usr/share/texmf-dist/tex/latex/kvoptions/kvoptions.sty
+Package: kvoptions 2020-10-07 v3.14 Key value format for package options (HO)
+
+(/usr/share/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
+\KV@toks@=\toks15
+)
+(/usr/share/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty
+Package: ltxcmds 2020-05-10 v1.25 LaTeX kernel commands for general use (HO)
+)
+(/usr/share/texmf-dist/tex/generic/kvsetkeys/kvsetkeys.sty
+Package: kvsetkeys 2019/12/15 v1.18 Key value parser (HO)
+))
+(/usr/share/texmf-dist/tex/latex/etoolbox/etoolbox.sty
+Package: etoolbox 2020/10/05 v2.5k e-TeX tools for LaTeX (JAW)
+\etb@tempcnta=\count195
+))
+(/usr/share/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 2020/09/09 v1.2b Enhanced LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2020/08/30 v1.4c Standard LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texmf-dist/tex/latex/graphics/trig.sty
+Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
+)
+(/usr/share/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: xetex.def on input line 105.
+
+(/usr/share/texmf-dist/tex/latex/graphics-def/xetex.def
+File: xetex.def 2020/08/26 v5.0i Graphics/color driver for xetex
+))
+\Gin@req@height=\dimen142
+\Gin@req@width=\dimen143
+)
+(/usr/share/texmf-dist/tex/latex/biblatex/biblatex.sty
+Package: biblatex 2020/08/23 v3.15a programmable bibliographies (PK/MW)
+
+(/usr/share/texmf-dist/tex/generic/pdftexcmds/pdftexcmds.sty
+Package: pdftexcmds 2020-06-27 v0.33 Utility functions of pdfTeX for LuaTeX (HO
+)
+
+(/usr/share/texmf-dist/tex/generic/infwarerr/infwarerr.sty
+Package: infwarerr 2019/12/03 v1.5 Providing info/warning/error messages (HO)
+)
+(/usr/share/texmf-dist/tex/generic/iftex/iftex.sty
+Package: iftex 2020/03/06 v1.0d TeX engine tests
+)
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode not found.
+)
+(/usr/share/texmf-dist/tex/latex/logreq/logreq.sty
+Package: logreq 2010/08/04 v1.0 xml request logger
+\lrq@indent=\count196
+
+(/usr/share/texmf-dist/tex/latex/logreq/logreq.def
+File: logreq.def 2010/08/04 v1.0 logreq spec v1.0
+))
+(/usr/share/texmf-dist/tex/latex/base/ifthen.sty
+Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
+)
+(/usr/share/texmf-dist/tex/latex/url/url.sty
+\Urlmuskip=\muskip16
+Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
+)
+\c@tabx@nest=\count197
+\c@listtotal=\count198
+\c@listcount=\count199
+\c@liststart=\count266
+\c@liststop=\count267
+\c@citecount=\count268
+\c@citetotal=\count269
+\c@multicitecount=\count270
+\c@multicitetotal=\count271
+\c@instcount=\count272
+\c@maxnames=\count273
+\c@minnames=\count274
+\c@maxitems=\count275
+\c@minitems=\count276
+\c@citecounter=\count277
+\c@maxcitecounter=\count278
+\c@savedcitecounter=\count279
+\c@uniquelist=\count280
+\c@uniquename=\count281
+\c@refsection=\count282
+\c@refsegment=\count283
+\c@maxextratitle=\count284
+\c@maxextratitleyear=\count285
+\c@maxextraname=\count286
+\c@maxextradate=\count287
+\c@maxextraalpha=\count288
+\c@abbrvpenalty=\count289
+\c@highnamepenalty=\count290
+\c@lownamepenalty=\count291
+\c@maxparens=\count292
+\c@parenlevel=\count293
+\blx@tempcnta=\count294
+\blx@tempcntb=\count295
+\blx@tempcntc=\count296
+\blx@maxsection=\count297
+\blx@maxsegment@0=\count298
+\blx@notetype=\count299
+\blx@parenlevel@text=\count300
+\blx@parenlevel@foot=\count301
+\blx@sectionciteorder@0=\count302
+\blx@entrysetcounter=\count303
+\blx@biblioinstance=\count304
+\labelnumberwidth=\skip49
+\labelalphawidth=\skip50
+\biblabelsep=\skip51
+\bibitemsep=\skip52
+\bibnamesep=\skip53
+\bibinitsep=\skip54
+\bibparsep=\skip55
+\bibhang=\skip56
+\blx@bcfin=\read2
+\blx@bcfout=\write3
+\blx@langwohyphens=\language86
+\c@mincomprange=\count305
+\c@maxcomprange=\count306
+\c@mincompwidth=\count307
+Package biblatex Info: Trying to load biblatex default data model...
+Package biblatex Info: ... file 'blx-dm.def' found.
+
+(/usr/share/texmf-dist/tex/latex/biblatex/blx-dm.def
+File: blx-dm.def 2020/08/23 v3.15a biblatex localization (PK/MW)
+)
+Package biblatex Info: Trying to load biblatex citestyle data model...
+Package biblatex Info: ... file 'numeric.dbx' not found.
+Package biblatex Info: Trying to load biblatex custom data model...
+Package biblatex Info: ... file 'biblatex-dm.cfg' not found.
+\c@afterword=\count308
+\c@savedafterword=\count309
+\c@annotator=\count310
+\c@savedannotator=\count311
+\c@author=\count312
+\c@savedauthor=\count313
+\c@bookauthor=\count314
+\c@savedbookauthor=\count315
+\c@commentator=\count316
+\c@savedcommentator=\count317
+\c@editor=\count318
+\c@savededitor=\count319
+\c@editora=\count320
+\c@savededitora=\count321
+\c@editorb=\count322
+\c@savededitorb=\count323
+\c@editorc=\count324
+\c@savededitorc=\count325
+\c@foreword=\count326
+\c@savedforeword=\count327
+\c@holder=\count328
+\c@savedholder=\count329
+\c@introduction=\count330
+\c@savedintroduction=\count331
+\c@namea=\count332
+\c@savednamea=\count333
+\c@nameb=\count334
+\c@savednameb=\count335
+\c@namec=\count336
+\c@savednamec=\count337
+\c@translator=\count338
+\c@savedtranslator=\count339
+\c@shortauthor=\count340
+\c@savedshortauthor=\count341
+\c@shorteditor=\count342
+\c@savedshorteditor=\count343
+\c@labelname=\count344
+\c@savedlabelname=\count345
+\c@institution=\count346
+\c@savedinstitution=\count347
+\c@lista=\count348
+\c@savedlista=\count349
+\c@listb=\count350
+\c@savedlistb=\count351
+\c@listc=\count352
+\c@savedlistc=\count353
+\c@listd=\count354
+\c@savedlistd=\count355
+\c@liste=\count356
+\c@savedliste=\count357
+\c@listf=\count358
+\c@savedlistf=\count359
+\c@location=\count360
+\c@savedlocation=\count361
+\c@organization=\count362
+\c@savedorganization=\count363
+\c@origlocation=\count364
+\c@savedoriglocation=\count365
+\c@origpublisher=\count366
+\c@savedorigpublisher=\count367
+\c@publisher=\count368
+\c@savedpublisher=\count369
+\c@language=\count370
+\c@savedlanguage=\count371
+\c@origlanguage=\count372
+\c@savedoriglanguage=\count373
+\c@pageref=\count374
+\c@savedpageref=\count375
+\shorthandwidth=\skip57
+\shortjournalwidth=\skip58
+\shortserieswidth=\skip59
+\shorttitlewidth=\skip60
+\shortauthorwidth=\skip61
+\shorteditorwidth=\skip62
+\locallabelnumberwidth=\skip63
+\locallabelalphawidth=\skip64
+\localshorthandwidth=\skip65
+\localshortjournalwidth=\skip66
+\localshortserieswidth=\skip67
+\localshorttitlewidth=\skip68
+\localshortauthorwidth=\skip69
+\localshorteditorwidth=\skip70
+Package biblatex Info: Trying to load enhanced support for Unicode engines...
+Package biblatex Info: ... file 'blx-unicode.def' found.
+
+(/usr/share/texmf-dist/tex/latex/biblatex/blx-unicode.def)
+Package biblatex Info: Trying to load compatibility code...
+Package biblatex Info: ... file 'blx-compat.def' found.
+
+(/usr/share/texmf-dist/tex/latex/biblatex/blx-compat.def
+File: blx-compat.def 2020/08/23 v3.15a biblatex compatibility (PK/MW)
+)
+Package biblatex Info: expl3
+(biblatex)             2020-12-03 L3 programming layer (loader) 
+(biblatex)             is new enough (at least 2020/04/06),
+(biblatex)             setting 'casechanger=expl3'.
+Package biblatex Info: Trying to load expl3 case changing code...
+Package biblatex Info: ... file 'blx-case-expl3.def' found.
+
+(/usr/share/texmf-dist/tex/latex/biblatex/blx-case-expl3.def
+File: blx-case-expl3 2020/08/23 v3.15a expl3 case changing code for biblatex
+)
+Package biblatex Info: Trying to load generic definitions...
+Package biblatex Info: ... file 'biblatex.def' found.
+
+(/usr/share/texmf-dist/tex/latex/biblatex/biblatex.def
+File: biblatex.def 2020/08/23 v3.15a biblatex compatibility (PK/MW)
+\c@textcitecount=\count376
+\c@textcitetotal=\count377
+\c@textcitemaxnames=\count378
+\c@biburlbigbreakpenalty=\count379
+\c@biburlbreakpenalty=\count380
+\c@biburlnumpenalty=\count381
+\c@biburlucpenalty=\count382
+\c@biburllcpenalty=\count383
+\biburlbigskip=\muskip17
+\biburlnumskip=\muskip18
+\biburlucskip=\muskip19
+\biburllcskip=\muskip20
+\c@smartand=\count384
+)
+Package biblatex Info: Trying to load bibliography style 'numeric'...
+Package biblatex Info: ... file 'numeric.bbx' found.
+
+(/usr/share/texmf-dist/tex/latex/biblatex/bbx/numeric.bbx
+File: numeric.bbx 2020/08/23 v3.15a biblatex bibliography style (PK/MW)
+Package biblatex Info: Trying to load bibliography style 'standard'...
+Package biblatex Info: ... file 'standard.bbx' found.
+
+(/usr/share/texmf-dist/tex/latex/biblatex/bbx/standard.bbx
+File: standard.bbx 2020/08/23 v3.15a biblatex bibliography style (PK/MW)
+\c@bbx:relatedcount=\count385
+\c@bbx:relatedtotal=\count386
+))
+Package biblatex Info: Trying to load citation style 'numeric'...
+Package biblatex Info: ... file 'numeric.cbx' found.
+
+(/usr/share/texmf-dist/tex/latex/biblatex/cbx/numeric.cbx
+File: numeric.cbx 2020/08/23 v3.15a biblatex citation style (PK/MW)
+Package biblatex Info: Redefining '\cite'.
+Package biblatex Info: Redefining '\parencite'.
+Package biblatex Info: Redefining '\footcite'.
+Package biblatex Info: Redefining '\footcitetext'.
+Package biblatex Info: Redefining '\smartcite'.
+Package biblatex Info: Redefining '\supercite'.
+Package biblatex Info: Redefining '\textcite'.
+Package biblatex Info: Redefining '\textcites'.
+Package biblatex Info: Redefining '\cites'.
+Package biblatex Info: Redefining '\parencites'.
+Package biblatex Info: Redefining '\smartcites'.
+)
+Package biblatex Info: Trying to load configuration file...
+Package biblatex Info: ... file 'biblatex.cfg' found.
+
+(/usr/share/texmf-dist/tex/latex/biblatex/biblatex.cfg
+File: biblatex.cfg 
+))
+
+Package fontspec Info: Font family 'NotoSans(0)' created for font 'Noto Sans'
+(fontspec)             with options [Ligatures=TeX].
+(fontspec)              
+(fontspec)              This font family consists of the following NFSS
+(fontspec)             series/shapes:
+(fontspec)              
+(fontspec)             - 'normal' (m/n) with NFSS spec.: <->"Noto
+(fontspec)             Sans/OT:script=latn;language=dflt;mapping=tex-text;"
+(fontspec)             - 'small caps'  (m/sc) with NFSS spec.: <->"Noto
+(fontspec)             Sans/OT:script=latn;language=dflt;+smcp;mapping=tex-text
+;"
+(fontspec)             - 'bold' (b/n) with NFSS spec.: <->"Noto
+(fontspec)             Sans/B/OT:script=latn;language=dflt;mapping=tex-text;"
+(fontspec)             - 'bold small caps'  (b/sc) with NFSS spec.: <->"Noto
+(fontspec)             Sans/B/OT:script=latn;language=dflt;+smcp;mapping=tex-te
+xt;"
+(fontspec)             - 'italic' (m/it) with NFSS spec.: <->"Noto
+(fontspec)             Sans/I/OT:script=latn;language=dflt;mapping=tex-text;"
+(fontspec)             - 'italic small caps'  (m/scit) with NFSS spec.:
+(fontspec)             <->"Noto
+(fontspec)             Sans/I/OT:script=latn;language=dflt;+smcp;mapping=tex-te
+xt;"
+(fontspec)             - 'bold italic' (b/it) with NFSS spec.: <->"Noto
+(fontspec)             Sans/BI/OT:script=latn;language=dflt;mapping=tex-text;"
+(fontspec)             - 'bold italic small caps'  (b/scit) with NFSS spec.:
+(fontspec)             <->"Noto
+(fontspec)             Sans/BI/OT:script=latn;language=dflt;+smcp;mapping=tex-t
+ext;"
+
+\@quotelevel=\count387
+\@quotereset=\count388
+ (./plan2.aux)
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 10.
+LaTeX Font Info:    Trying to load font information for TS1+cmr on input line 1
+0.
+
+(/usr/share/texmf-dist/tex/latex/base/ts1cmr.fd
+File: ts1cmr.fd 2019/12/16 v2.5j Standard LaTeX font definitions
+)
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+
+Package fontspec Info: Adjusting the maths setup (use [no-math] to avoid
+(fontspec)             this).
+
+\symlegacymaths=\mathgroup4
+LaTeX Font Info:    Overwriting symbol font `legacymaths' in version `bold'
+(Font)                  OT1/cmr/m/n --> OT1/cmr/bx/n on input line 10.
+LaTeX Font Info:    Redeclaring math accent \acute on input line 10.
+LaTeX Font Info:    Redeclaring math accent \grave on input line 10.
+LaTeX Font Info:    Redeclaring math accent \ddot on input line 10.
+LaTeX Font Info:    Redeclaring math accent \tilde on input line 10.
+LaTeX Font Info:    Redeclaring math accent \bar on input line 10.
+LaTeX Font Info:    Redeclaring math accent \breve on input line 10.
+LaTeX Font Info:    Redeclaring math accent \check on input line 10.
+LaTeX Font Info:    Redeclaring math accent \hat on input line 10.
+LaTeX Font Info:    Redeclaring math accent \dot on input line 10.
+LaTeX Font Info:    Redeclaring math accent \mathring on input line 10.
+LaTeX Font Info:    Redeclaring math symbol \colon on input line 10.
+LaTeX Font Info:    Redeclaring math symbol \Gamma on input line 10.
+LaTeX Font Info:    Redeclaring math symbol \Delta on input line 10.
+LaTeX Font Info:    Redeclaring math symbol \Theta on input line 10.
+LaTeX Font Info:    Redeclaring math symbol \Lambda on input line 10.
+LaTeX Font Info:    Redeclaring math symbol \Xi on input line 10.
+LaTeX Font Info:    Redeclaring math symbol \Pi on input line 10.
+LaTeX Font Info:    Redeclaring math symbol \Sigma on input line 10.
+LaTeX Font Info:    Redeclaring math symbol \Upsilon on input line 10.
+LaTeX Font Info:    Redeclaring math symbol \Phi on input line 10.
+LaTeX Font Info:    Redeclaring math symbol \Psi on input line 10.
+LaTeX Font Info:    Redeclaring math symbol \Omega on input line 10.
+LaTeX Font Info:    Redeclaring math symbol \mathdollar on input line 10.
+LaTeX Font Info:    Redeclaring symbol font `operators' on input line 10.
+LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
+(Font)              `operators' in the math version `normal' on input line 10.
+LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
+(Font)                  OT1/cmr/m/n --> TU/NotoSans(0)/m/n on input line 10.
+LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
+(Font)              `operators' in the math version `bold' on input line 10.
+LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
+(Font)                  OT1/cmr/bx/n --> TU/NotoSans(0)/m/n on input line 10.
+LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
+(Font)                  TU/NotoSans(0)/m/n --> TU/NotoSans(0)/m/n on input line
+ 10.
+LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
+(Font)                  OT1/cmr/m/it --> TU/NotoSans(0)/m/it on input line 10.
+LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
+(Font)                  OT1/cmr/bx/n --> TU/NotoSans(0)/b/n on input line 10.
+LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
+(Font)                  OT1/cmss/m/n --> TU/lmss/m/n on input line 10.
+LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
+(Font)                  OT1/cmtt/m/n --> TU/lmtt/m/n on input line 10.
+LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
+(Font)                  TU/NotoSans(0)/m/n --> TU/NotoSans(0)/b/n on input line
+ 10.
+LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
+(Font)                  OT1/cmr/bx/it --> TU/NotoSans(0)/b/it on input line 10.
+
+LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
+(Font)                  OT1/cmss/bx/n --> TU/lmss/b/n on input line 10.
+LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
+(Font)                  OT1/cmtt/m/n --> TU/lmtt/b/n on input line 10.
+Package biblatex Info: Trying to load language 'english'...
+Package biblatex Info: ... file 'english.lbx' found.
+
+(/usr/share/texmf-dist/tex/latex/biblatex/lbx/english.lbx
+File: english.lbx 2020/08/23 v3.15a biblatex localization (PK/MW)
+)
+Package biblatex Info: XeTeX detected.
+(biblatex)             Assuming input encoding 'utf8'.
+Package biblatex Info: Automatic encoding selection.
+(biblatex)             Assuming data encoding 'utf8'.
+Package biblatex Info: Trying to load bibliographic data...
+Package biblatex Info: ... file 'plan2.bbl' found.
+ (./plan2.bbl)
+Package biblatex Info: Reference section=0 on input line 10.
+Package biblatex Info: Reference segment=0 on input line 10.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <12> on input line 13.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <8> on input line 13.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 13.
+
+(./plan2.toc
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line 5.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 5.
+ [1
+
+])
+\tf@toc=\write4
+ [2]
+Overfull \hbox (10.34337pt too wide) in paragraph at lines 29--30
+[]\TU/NotoSans(0)/m/n/10 One approach uses a combination of classical structure
+ prediction and molec-
+ []
+
+
+Overfull \hbox (3.61003pt too wide) in paragraph at lines 37--38
+\TU/NotoSans(0)/m/n/10 This aproach uses classical protein structure prediction
+ methods and molec-
+ []
+
+[3] [4]
+Overfull \hbox (8.03009pt too wide) in paragraph at lines 79--80
+[]\TU/NotoSans(0)/m/n/10 3-5 days of work are required to attempt to implement 
+the proposed changes
+ []
+
+[5] [6]
+File: Trimethoprim.png Graphic file (type bmp)
+<Trimethoprim.png>
+ [7]
+File: echo-report.png Graphic file (type bmp)
+<echo-report.png>
+ [8] [9] [10]
+Overfull \hbox (5.29837pt too wide) in paragraph at lines 194--195
+\TU/NotoSans(0)/m/n/10 A screening set was selected from the in-house FDA libra
+ry using the method
+ []
+
+
+Overfull \hbox (15.10005pt too wide) in paragraph at lines 196--197
+[]\TU/NotoSans(0)/m/n/10 Compounds were located in cold storage based on the ma
+nufacturer-specified
+ []
+
+[11]
+File: nookatone.png Graphic file (type bmp)
+<nookatone.png>
+File: limonene.png Graphic file (type bmp)
+<limonene.png>
+File: alkyl-benzene.png Graphic file (type bmp)
+<alkyl-benzene.png>
+File: 7ethxycoumarin.png Graphic file (type bmp)
+<7ethxycoumarin.png>
+
+Underfull \hbox (badness 10000) in paragraph at lines 228--228
+[]\TU/NotoSans(0)/m/n/10 Indole, Lo-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 228--228
+\TU/NotoSans(0)/m/n/10 vastatinn,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 228--228
+\TU/NotoSans(0)/m/n/10 beta-ionine,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 228--228
+\TU/NotoSans(0)/m/n/10 organophos-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 228--228
+\TU/NotoSans(0)/m/n/10 phates, polyaro-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 228--228
+\TU/NotoSans(0)/m/n/10 matic hydrocar-
+ []
+
+File: indole.png Graphic file (type bmp)
+<indole.png>
+[12] [13]
+Overfull \hbox (0.27339pt too wide) in paragraph at lines 237--238
+\TU/NotoSans(0)/m/n/10 The proposed model is combines two deep learning archite
+ctures that have
+ []
+
+File: rio.png Graphic file (type bmp)
+<rio.png>
+
+Underfull \hbox (badness 10000) in paragraph at lines 246--247
+
+ []
+
+
+Overfull \hbox (21.0034pt too wide) in paragraph at lines 259--260
+\TU/NotoSans(0)/m/n/10 In generative-adversarial training loops, the model comp
+etes with a generative-
+ []
+
+[14] [15]
+Overfull \hbox (0.36673pt too wide) in paragraph at lines 274--275
+[]\TU/NotoSans(0)/m/n/10 Pre-training and re-training will be attempted by the 
+second week of March.
+ []
+
+
+Overfull \hbox (7.4834pt too wide) in paragraph at lines 282--283
+\TU/NotoSans(0)/m/n/10 ter these mutants are screened, then the project will tr
+ansition into a mutant-
+ []
+
+[16] [17] [18] [19] [20] [21] [22] (./plan2.aux)
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+Package logreq Info: Writing requests to 'plan2.run.xml'.
+ ) 
+Here is how much of TeX's memory you used:
+ 10928 strings out of 477299
+ 247442 string characters out of 5838338
+ 1017187 words of memory out of 5000000
+ 30453 multiletter control sequences out of 15000+600000
+ 406390 words of font info for 64 fonts, out of 8000000 for 9000
+ 1348 hyphenation exceptions out of 8191
+ 78i,9n,86p,888b,4761s stack positions out of 5000i,500n,10000p,200000b,80000s
+
+Output written on plan2.pdf (22 pages).

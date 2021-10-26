@@ -1,0 +1,9 @@
+\begin{thebibliography}{1}
+
+\bibitem{MONN:m}
+Shuya Li, Fangping Wan, Hantao Shu, Tao Jiang, Dan Zhao, and Jianyang Zeng.
+\newblock Monn: A multi-objective neural network for predicting
+  compound-protein interactions and affinities.
+\newblock {\em Cell Systems}, 10:308--322.e11, 04 2020.
+
+\end{thebibliography}

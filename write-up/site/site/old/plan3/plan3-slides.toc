@@ -1,0 +1,5 @@
+\beamer@sectionintoc {1}{Dependency Graphs}{3}{0}{1}
+\beamer@sectionintoc {2}{Schedule}{4}{0}{2}
+\beamer@sectionintoc {3}{DNA Work}{6}{0}{3}
+\beamer@sectionintoc {4}{Plate Assay}{8}{0}{4}
+\beamer@sectionintoc {5}{Compounds}{11}{0}{5}
