@@ -1,0 +1,122 @@
+
+digraph gannt{
+	node[shape=box fontname = "Noto Sans"]
+	graph[dpi=100]
+	size="10,30"
+	ranksep=1.1
+
+	subgraph cluster_{graph [rank = same]
+		label = feb
+		fontname = "Noto Sans"
+
+		"pilot screen" [shape = record
+			label = "pilot screen | {fda compounds | 5 mutants |8 concs  compound | 24 compounds  plate |  20 mins  plate | 1 week}"]
+		"enz evolution run" [shape = record
+			label = "enz evolution | {genetic algorithm - ready | heuristic - c2-heme distance / affinty | generate new mutants}"]
+		"final changes to enz" [shape = record
+			label = "final changes to enz | {loop remodelling | flexible docking | validate with bm3 pdb}"]
+		pretrain [shape = record
+			label = "pretrain | {generative adversarial training | interpret by generated samples}"]
+		train1 [shape = record
+			label = "train | {validate | eval performance | is a 1 conc data adequate?}"]
+		"proof of concept" [shape = record
+			label = "proof of concept | {show it works on domain data | show caveats | design first screen}"]
+		"order library" [shape = record
+			label = "order library | {adjust size to budget | expected no. mutants | coshh | lead time | tender exemption}"]
+	"syngenta report" [shape = record
+		label = "syngenta report | { work done | work to do | planned papers | propose placement}"]
+		writing1 [shape = record
+			label = "writing | {expand papers | lit reveiw}"]
+		designmutants1 [shape = record
+			label = "design mutants | {max information gain| min mutations}"]
+		
+
+			"pilot screen" -> train1 -> "proof of concept" -> "order library"
+			"proof of concept" -> designmutants1
+			"proof of concept" -> "syngenta report"
+			pretrain -> train1
+			"final changes to enz" -> "enz evolution run" 
+		}
+
+	subgraph cluster_march{graph [rank = same]
+		label = march 
+		fontname = "Noto Sans"
+		writing2[shape = record
+			label = "writing | {expand papers | lit reveiw}"]
+
+		makeenz1 [shape = record
+			label = "enz mutants | {batch size 8 | low n-mutations wrt stocks | prep dna}"]
+		makerio1 [shape = record
+			label = "make rio mutants |{ batch size X | dna  1 week per mutation | up to 4 weeks | autoclave down}"]
+		"syngenta virtual placement" [shape = record
+			label = "syngenta placement |{ virtual | enz with mark | rio with kostas | tobacco spray test}  "]
+		}
+
+		"order library" -> screen1
+		designmutants1 -> makerio1
+		"syngenta report" -> "syngenta virtual placement"
+		"enz evolution run" -> "syngenta report"
+
+	subgraph cluster_april{graph [rank = same]
+		label = april
+		fontname = "Noto Sans"
+		makeenz2 [shape = record
+			label = "enz mutants | {express as many as possible | purifications}"]
+		writing3[shape = record
+			label = "writing | {expand papers | lit reveiw}"]
+		makerio2 [shape = record
+			label = "make rio mutants |{ express - X per week | purify X per week} "]
+
+		}
+
+
+	subgraph cluster_may{graph [rank = same]
+		label = may
+		fontname = "Noto Sans"
+		screen1 [shape = record
+			label = "screen | {X variants | 1 week}"]
+		writing4 [shape = record
+			label = "writing | {expand papers | lit reveiw}"]
+		makeenz3 [shape = record
+			label = "enz mutants | {titrations | kinetics | lcms}"]
+		train2 [shape = record
+			label = "train | {evaluate | design new mutants | desing new library |lib lead time 2 weeks}"]
+		}
+
+
+	subgraph cluster_june{graph [rank = same]
+		label = june
+		fontname = "Noto Sans"
+		makerio3 [shape = record
+			label = "make rio mutants | df"]
+		screen2 [shape = record
+			label = "screen | {new compound library | generate best mutants}"]
+		makerio4 [shape = record
+			label = "rio mutants |{ batch size 3 | dna  1 week per mutation} "]
+		}
+
+		makeenz2 -> makeenz3 -> screen1
+		train2 -> makerio3 -> screen2
+		"enz evolution run" -> makeenz1 -> makeenz2
+		makerio2 -> screen1 -> train2
+		makerio1 -> makerio2
+
+	subgraph cluster_july{graph [rank = same]
+		label = july
+		}
+
+
+	subgraph cluster_august{graph [rank = same]
+		label = august
+		}
+
+	subgraph cluster_september{graph [rank = same]
+		label = september
+		}
+
+
+	subgraph cluster_enz{
+		label=enz
+		}
+
+	}

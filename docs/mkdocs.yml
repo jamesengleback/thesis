@@ -1,0 +1,89 @@
+site_name: James' Thesis
+site_favicon: pix/selfportrait.svg
+theme:
+  name: material
+  font: 
+    text: Noto Sans
+    code: Noto Sans Mono
+  palette:
+    primary: teal
+    accent: amber
+  favicon: pix/selfprotrait.svg
+  logo : pix/selfprotrait.svg
+repo_url: https://github.com/jamesengleback/thesis
+
+nav:
+  - index.md
+  - Contributing: 'contributing.md'
+  - Overlap:
+    - 'overview.md'
+    - 'herbicide-resistance.md'
+    - 'enzyme-engineering.md'
+    - 'mesotrione.md'
+    - 'p450s.md'
+    - 'bm3.md'
+    - 'aims.md'
+    - 'methods-general.md'
+  - Paper 1:
+    - 'intro-evo.md'
+    - 'protein-structure-pred.md'
+    - 'docking.md'
+    - 'molecular-dynamics.md'
+    - 'evo-outline.md'
+    - 'methods-evo.md'
+    - 'results-evo.md'
+    - 'discussion-evo.md'
+  - Paper 2:
+    - 'intro-rio.md'
+    - 'deep-learning.md'
+    - 'hts.md'
+    - 'rio-outline.md'
+    - 'methods-rio.md'
+    - 'results-rio.md'
+    - 'discussion-rio.md'
+  - Appendix:
+    - 'enz.md'
+    - 'mxn.md'
+    - 'cpd.md'
+    - 'echo.md'
+    - 'plates.md'
+  - References:
+    - 'references.md'
+
+
+markdown_extensions:
+  - mdx_math
+  - footnotes
+  - attr_list
+  - md_in_html
+  - toc
+  - smarty
+  - admonition
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.highlight
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+  - pymdownx.details
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_div_format
+
+extra_css:
+  - https://unpkg.com/mermaid@7.1.2/dist/mermaid.css
+extra_javascript:
+  - https://unpkg.com/mermaid@7.1.2/dist/mermaid.min.js
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+
+
+plugins:
+  - bibtex:
+      bib_file: "refs.bib"
+      cite_style: "pandoc"
+      bib_command: \bib

@@ -1,0 +1,15 @@
+[0] Config.pm:312> INFO - This is Biber 2.15
+[0] Config.pm:315> INFO - Logfile is 'plan2.blg'
+[75] biber:330> INFO - === Thu Feb 25, 2021, 15:51:23
+[89] Biber.pm:415> INFO - Reading 'plan2.bcf'
+[154] Biber.pm:952> INFO - Found 2 citekeys in bib section 0
+[167] Biber.pm:4334> INFO - Processing section 0
+[177] Biber.pm:4523> INFO - Looking for bibtex format file 'plan2.bib' for section 0
+[178] bibtex.pm:1682> INFO - LaTeX decoding ...
+[182] bibtex.pm:1494> INFO - Found BibTeX data source 'plan2.bib'
+[235] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[235] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[235] Biber.pm:4162> INFO - Sorting list 'nty/global//global/global' of type 'entry' with template 'nty' and locale 'en-US'
+[235] Biber.pm:4168> INFO - No sort tailoring available for locale 'en-US'
+[238] bbl.pm:651> INFO - Writing 'plan2.bbl' with encoding 'UTF-8'
+[240] bbl.pm:754> INFO - Output to plan2.bbl
