@@ -14,7 +14,7 @@
 	- **Directed Evolution**
 	- **Computer Aided Design**
 		- **Simulation-Based**
-			- **[Structure Prediction](protein-structure-mred.md)**
+			- **[Structure Prediction](protein-structure-pred.md)**
 			- **[Docking](docking.md)**
 			- **[Molecular Dynamics](molecular-dynamics.md)**
 			- **Sequence Search Algorithms**
@@ -44,7 +44,7 @@
 ### Computer Aided Design
 - De novo & template-based [][]
 #### Simulation-Based
-##### [Structure Prediction](protein-structure-mred.md)
+##### [Structure Prediction](protein-structure-pred.md)
 ##### [Docking](docking.md)
 ##### [Molecular Dynamics](molecular-dynamics.md)
 ##### Sequence Search Algorithms

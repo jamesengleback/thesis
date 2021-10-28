@@ -19,7 +19,7 @@ The appendix details the software developed for this work.
 
 - **Motivation** The end goal for both projects is to re-engineer the Cytochrome P450 BM3 to bind to and turnover the herbicide mesotrione. The background information for the engineering context is in 
 	- [**Herbicide-Resistance**](herbicide-resistance.md) - background on herbicide resistant crops, their value in food supply chains and approaches to their engineering
-	- [**Enzyme Engineering**](intro-enzyme-engineering.md) -  background on approaches to enzyme engineering, including directed evolution, *in-silico* design and machine learning-guided design.
+	- [**Enzyme Engineering**](enzyme-engineering.md) -  background on approaches to enzyme engineering, including directed evolution, *in-silico* design and machine learning-guided design.
 	- [**Cytochrome P450s**](p450s.md) - background on the class of enzyme being re-engineered here. Overveiws evolutionary history and phylogenetics, biological function, structure, biochemical mechanism of action, experimental techniques and applications in biotech.
 	- [**BM3**](bm3.md) - background on phylogenetics, mechanism of action, structure, heterologous expression, engineering case studies.
 	- [**General Methods**](methods-general.md) - mutageneis, expression and purification

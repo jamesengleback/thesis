@@ -40,6 +40,7 @@ nav:
     - 'results-rio.md'
     - 'discussion-rio.md'
   - Appendix:
+    - 'plate-assay-development.md'
     - 'enz.md'
     - 'mxn.md'
     - 'cpd.md'
@@ -62,6 +63,12 @@ markdown_extensions:
   - pymdownx.inlinehilite
   - pymdownx.superfences
   - pymdownx.snippets
+  - pymdownx.mark
+  - pymdownx.critic
+  - pymdownx.caret
+  - pymdownx.keys
+  - pymdownx.tilde
+
 
 plugins:
   - bibtex:
