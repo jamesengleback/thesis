@@ -1,0 +1,1225 @@
+Available online at www.sciencedirect.com
+
+ScienceDirect
+
+Protein sequence design with deep generative models
+Zachary Wu1,a, Kadina E. Johnston2, Frances H. Arnold1,2 and
+Kevin K. Yang3
+
+Abstract
+Protein engineering seeks to identify protein sequences with
+optimized properties. When guided by machine learning, pro-
+tein sequence generation methods can draw on prior knowl-
+edge and experimental efforts to improve this process. In this
+review, we highlight recent applications of machine learning to
+generate protein sequences, focusing on the emerging field of
+deep generative methods.
+
+Addresses
+1 Division of Chemistry and Chemical Engineering, California Institute
+of Technology, 1200 E California Blvd, Pasadena, 91125, CA, USA
+2 Division of Biology and Biological Engineering, California Institute of
+Technology, 1200 E California Blvd, Pasadena, 91125, CA, USA
+3 Microsoft Research New England, 1 Memorial Drive, Cambridge,
+02142, MA, USA
+
+Corresponding author: Yang, Kevin K (yang.kevin@microsoft.com)
+a Present address: Google Deepmind, 6 Pancras Square, London
+N1C, UK.
+
+Current Opinion in Chemical Biology 2021, 65:18 –27
+
+Edited by Conor Coley and Xiao Wang
+
+This review comes from a themed issue on Machine Learning in
+Chemical Biology
+
+For a complete overview see the Issue and the Editorial
+
+https://doi.org/10.1016/j.cbpa.2021.04.004
+
+1367-5931/© 2021 The Authors. Published by Elsevier Ltd. This is an
+open access article under the CC BY-NC-ND license (http://creativeco
+mmons.org/licenses/by-nc-nd/4.0/).
+
+Keywords
+Deep learning, Generative models, Protein engineering.
+
+Introduction
+Proteins are the workhorse molecules of natural life, and
+they are quickly being adapted for human-designed
+purposes. These macromolecules are encoded as linear
+chains of amino acids, which then fold into dynamic
+three-dimensional structures that accomplish a stag-
+gering variety of functions. To improve proteins for
+human purposes, protein engineers have developed a
+variety of experimental and computational methods for
+designing sequences that fold to desired structures or
+perform desired functions [1e4]. A developing para-
+digm, machine learningeguided protein engineering,
+
+promises to leverage the information obtained from wet
+lab experiments using data-driven models to more efﬁ-
+ciently ﬁnd desirable proteins [5e7].
+
+Much of the early work has focused on incorporating
+discriminative models trained on measured sequencee
+ﬁtness pairs to guide protein engineering [5]. However,
+methods that can take advantage of unlabeled protein se-
+quences are improving the protein engineering paradigm.
+These methods rely on the metagenomic sequencing and
+subsequent deposition in databases such as UniProt [8],
+and continued development of these databases is essential
+for furthering our understanding of biology.
+
+In addition, although studies incorporating knowledge of
+protein structure are becoming increasingly powerful [9e
+13], they are beyond the scope of this review, and we focus
+on deep generative models of protein sequence. For
+further detail on protein structure design, we encourage
+readers to consult the review by Huang and Ovchinnikov
+in this issue of Current Opinion in Chemical Biology.
+
+In discriminative modeling, the goal is to learn a map-
+ping from inputs to labels by training on known pairs. In
+generative modeling, the goal is to learn the underlying
+data distribution, and a deep generative model is simply
+a generative model parameterized as a deep neural
+network. Generative models of proteins perform one or
+more of three fundamental tasks:
+
+1. Representation learning: Generative models can learn
+
+meaningful representations of protein sequences.
+
+2. Generation: Generative models can learn to sample
+protein sequences that have not been observed
+before.
+
+3. Likelihood learning: Generative models can learn to
+assign higher probability to protein sequences that
+satisfy desired criteria.
+
+learned protein sequence representations
+
+In this review, we discuss three applications of deep
+generative models
+in protein engineering roughly
+corresponding to the aforementioned tasks: (1) the use
+of
+and
+pretrained models
+in downstream discriminative
+learning tasks, an important improvement to an estab-
+lished framework for protein engineering; (2) protein
+sequence generation using generative models; and (3)
+
+Current Opinion in Chemical Biology 2021, 65:18–27
+
+www.sciencedirect.com
+
+Protein sequence design with DGMs Wu et al.
+
+19
+
+optimization by tuning generative models so that higher
+probability is assigned to sequences with some desirable
+property. Where possible, these methods are introduced
+with case studies that have validated generated se-
+quences in vitro. Figure 1 summarizes these three ap-
+plications of generative models. In addition, we provide
+an overview of common deep generative models for
+protein sequences, variational autoencoders (VAEs),
+generative adversarial networks (GANs), and autore-
+gressive models, in Appendix A for further background.
+
+Fine-tuning on downstream tasks
+An established framework for applying machine learning to
+guide protein engineering is through the training and
+application of discriminative regression models for speciﬁc
+tasks, which has been reviewed in the studies by Yang et al
+[5] and Mazurenko et al [6]. Early examples of this
+approach were developed by Fox et al [14] and Liao et al
+[15] in learning the relationship between enzyme
+sequence and cyanation or hydrolysis activity, respectively.
+In brief, in this approach, sequence-function experimental
+
+Figure 1
+
+During unsupervised training (a), a generative decoder learns to generate proteins similar to those in the unsupervised training set from embedding
+vectors produced by the encoder. The embeddings can then be used as inputs to a predictor for downstream modeling tasks such as activity or stability, or
+the encoder can be fine-tuned with the predictor (b). The decoder can be used to generate new functional sequences (c), or the entire generative model
+can be tuned to generate functional sequences optimized for a desired property (D).
+
+www.sciencedirect.com
+
+Current Opinion in Chemical Biology 2021, 65:18–27
+
+20 Machine Learning in Chemical Biology
+
+data are used to train regression models. These models are
+then used as estimates for the true experimental value and
+can be used to search through and identify beneﬁcial se-
+quences in silico.
+
+Learned representations have the potential to be more
+informative than one-hot encodings of sequence or amino
+acid physicochemical properties. They encode discrete
+protein sequences in a continuous and compressed latent
+space, wherein further optimization can be performed.
+Ideally, these representations capture contextual informa-
+tion [16] that simpliﬁes downstream modeling. Notably,
+these representations do not always outperform simpler
+representations if training with a large fraction of the total
+[17].
+
+For example, in BioSeqVAE [18], the latent representa-
+tion was learned from 200,000 sequences between 100
+and 1000 amino acids in length obtained from Swiss-Prot
+[8]. The authors demonstrate that a simple random
+forest classiﬁer from scikit-learn [19] can be used to learn
+the relationship between roughly 60,000 sequences
+(represented by the outputs of the VAE encoder) and
+their protein localization and enzyme classiﬁcation (by
+Enzyme Commission number) in a downstream ﬁne-
+tuning task. By optimizing in latent space for either
+property through the downstream models and decoding
+this latent representation to a protein sequence, the
+authors generate examples that have either one or both
+desired properties. Although the authors did not validate
+the generated proteins in vitro,
+they did observe
+sequence homology between their designed sequences
+and natural sequences with the desired properties.
+
+While the previous study used the output from a
+pretrained network as a ﬁxed representation, another
+approach is to ﬁne-tune the generative network for the
+new task. Autoregressive models are trained to predict the
+next token in a sequence from the previous tokens
+(Appendix A). When pretrained on large databases of
+protein sequences, they have stronger performance than
+other architectures on a variety of downstream discrimi-
+native tasks, such as predicting protein function classiﬁ-
+cation, contacts, and secondary structures [20e22,11].
+There are few examples of experimental validation in this
+space owing to the cost and time of wet lab experiments
+needed to physically verify computational predictions.
+However, Biswas et al [23] demonstrated that a double
+ﬁne-tuning scheme results in discriminative models that
+can ﬁnd improved sequences after training on very few
+measured sequences. First, they train an autoregressive
+model on sequences in UniRef50 [24]. They then ﬁne-
+tune the autoregressive model on evolutionarily related
+sequences. Finally, they use the activations from the
+penultimate layer to represent each position of an input
+protein sequence in a simple downstream model (in a
+
+second round of ﬁne-tuning), showing promising results
+on two tasks:
+improving the ﬂuorescence activity of
+Aequorea victoria green ﬂuorescent protein and optimizing
+TEM-1 b-lactamase. After training on just 24 randomly
+selected sequences, this approach consistently out-
+performs one-hot encodings with 5e10 times the hit rate
+(deﬁned as the fraction of proposed sequences with ac-
+tivity greater than the wild type). The authors show that
+the pretrained- representation separates functional and
+nonfunctional sequences, allowing the ﬁnal discriminator
+to focus on distinguishing the best sequences from
+mediocre but functional ones. Biasing the initial input set
+for functional variants further optimizes evolution [25].
+
+Protein sequence generation
+In addition to improving function predictions in down-
+stream modeling, generative models can also be used to
+generate new functional protein sequences. Here, we
+describe recent
+sequences
+generated using VAEs, GANs, and autoregressive models.
+
+successful examples of
+
+Hawkins-Hooker et al [26] generate functional lucifer-
+ases from two VAE architectures: (1) by computing the
+multiple sequence alignment (MSA) ﬁrst and then
+training a VAE (MSA VAE) on the aligned sequences
+and (2) by introducing an autoregressive component to
+the decoder to learn the unaligned sequences (AR VAE).
+Motivated by a similar model used for text generation
+[27], the decoder of the AR VAE contains an upsampling
+component, which converts the compressed represen-
+tation to the length of the output sequence, and an
+autoregressive component. Both models were trained
+with roughly 70,000 luciferase sequences (w360 resi-
+dues) and were quite successful: 21 of 23 and 18 of 24
+variants generated with the MSA VAE and AR VAE,
+respectively, showed measurable activity.
+
+The authors of ProteinGAN successfully trained a GAN to
+generate functional malate dehydrogenases [28]. In one of
+the ﬁrst published validations of GAN-generated se-
+quences, after training with nearly 17,000 unique se-
+quences (average length: 319), 13 of 60 sequences
+generated by ProteinGAN display near-wild-type-level
+activity, including a variant with 106 mutations from the
+closest known sequence. Interestingly, although the posi-
+tional entropy of the ﬁnal set of sequences closely matched
+that of the initial input, the generated sequences expand
+into new structural domains as classiﬁed by CATH [29],
+suggesting structural diversity in the generated results.
+
+Shin et al [30] applied autoregressive models to generate
+single-domain antibodies (nanobodies). As the nanobody’s
+complementarity-determining region is difﬁcult to align
+owing to its high variation, an autoregressive strategy is
+particularly advantageous because it does not require
+sequence alignments. With 100,000s of
+antibody
+
+Current Opinion in Chemical Biology 2021, 65:18–27
+
+www.sciencedirect.com
+
+sequences, the authors trained a residual dilated convo-
+lutional network over 250,000 updates. While other
+(recurrent) architectures were tested to capture longer
+range information, exploding gradients were encountered,
+as is common in these architectures. After training, the
+authors generated more than 37 million new sequences by
+sampling amino acids at each new position in the
+sequence. Further clustering, diversity selection, and
+removal of motifs that may make expression more chal-
+lenging (such as glycosylation sites and sulfur residues)
+enabled researchers to winnow this number below
+200,000, for which experimental results are pending.
+
+Wu et al. applied the Transformer encoder-decoder
+model [31] to generate signal peptides for industrial
+enzymes [32]. Signal peptides are short (15e30 amino
+acid) sequences prepended to target protein sequences
+that signal the transport of the target sequence. After
+training with 25,000 pairs of target and signal peptide
+sequences, signal peptide sequences were generated
+and tested in vitro, with roughly half of the generated
+sequences resulting in secreted and functional enzymes
+after expression with Bacillus subtilis.
+
+Although this work sufﬁces as early experimentally veriﬁed
+examples, there are many improvements that can be made,
+such as introducing information on which to condition
+generation. Sequences are typically designed for a speciﬁc
+task, and task-speciﬁc information can be incorporated in
+the training process [33]. For example, a VAE decoder can
+be conditioned on the identity of the metal cofactors
+bound [34]. After training on 145,000 enzyme examples in
+MetalPDB [35], the authors ﬁnd a higher fraction of
+desired metal-binding sites observed in generated se-
+quences. In addition, 11% of 1000 sequences generated for
+recreating a removed copper-binding site identiﬁed the
+correct binding amino acid triad. The authors also applied
+this approach to design speciﬁc protein folds, validating
+their results with Rosetta and molecular dynamics simu-
+lations. In ProGen, Madani et al [36] condition an autor-
+egressive sequence model on protein metadata, such as a
+protein’s functional and/or organismal annotation. While
+this work does not have functional experimental validation,
+after training on 280 million sequences and their annota-
+tions from various databases, the authors show that
+computed energies from Rosetta [37] of the generated
+sequences are similar to those of natural sequences.
+
+Optimization with generative models
+Although much of the existing work is designed to
+generate ‘valid’ sequences, eventually, the protein en-
+gineer expects ‘improved’ sequences. An emerging
+approach to this optimization problem is to optimize
+with generative models [38e40]. Instead of generating
+viable examples,
+this framework trains models to
+generate optimized sequences by placing higher prob-
+ability on improved sequences (Figure 1d).
+
+Protein sequence design with DGMs Wu et al.
+
+21
+
+One approach to optimization is to bias the data fed to a
+GAN. Amimeur et al trained Wasserstein GANs [41] on
+400,000 heavy- or light-chain sequences from human
+antibodies to generate regions of 148 amino acids of the
+respective chain [40]. After initial training, by biasing
+further input data on desired properties (length, size of a
+negatively charged region, isoelectronic point, and esti-
+mated immunogenicity), the estimated properties of the
+generated examples shift in the desired direction. While
+it is not known what fraction of the 100,000 generated
+constructs is functional from the experimental validation,
+extensive biophysical characterization of two of the suc-
+cessful designs show promising signs of retaining the
+designed properties in vitro. An alternative study devel-
+oping a Feedback GAN (FBGAN) framework extends
+this by iteratively generating sequences from a GAN,
+scoring them with an oracle, and replacing the lowest
+scoring members of the training set with the highest
+scoring generated sequences [42].
+
+Fortunately, this optimization can be enforced algorith-
+mically. The Design by Adaptive Sampling algorithm [43]
+improves the iterative retraining scheme by using a
+probabilistic oracle and weighting generated sequences by
+the probability that they are above the Qth percentile of
+scores from the previous iteration. This allows the opti-
+mization to become adaptively more stringent and gua-
+rantees convergence under some conditions. The authors
+validate this approach on synthetic ground truth data by
+training models (of a different type) on real biological data.
+They then show that generated sequences outperform
+traditional evolutionary methods (and the previously
+mentioned FBGAN) when restricted to a budget of 10,000
+sequences. The current iteration of this work, Condi-
+tioning by Adaptive Sampling, improves this approach by
+avoiding regions too far from the training set for the oracle
+[38], while other approaches focus on the oracle as design
+moves between regions of sequence space [44] or
+emphasize sequence diversity in generations [45].
+
+Another approach [39] for model-based optimization has
+roots in reinforcement learning (RL) [46]. The RL
+framework is typically applied when a decision maker is
+asked to choose an action that is available, given the
+current state. From this action, the state changes
+through the transition function with some reward. When
+a given state and action are independent of all previous
+states and actions (the Markov property), the system
+can be modeled with Markov decision processes. This
+requirement is satisﬁed by interpreting the protein
+sequence generation as a process wherein the sequence
+is generated from left to right. At each time step, we
+begin with the sequence as generated to that point (the
+current state), then select the next amino acid (the
+action), and add that amino acid to the sequence (the
+transition function). The reward remains 0 until gen-
+eration is complete, and the ﬁnal reward is the ﬁtness
+measurement for the generated sequence. The action
+
+www.sciencedirect.com
+
+Current Opinion in Chemical Biology 2021, 65:18–27
+
+22 Machine Learning in Chemical Biology
+
+(picking the next amino acid) is decided by a policy
+network, which is trained to output a probability over all
+available actions based on the sequence thus far and the
+expected future reward. Notably, the transition function
+is simple (adding an amino acid).
+
+The major challenge under the RL framework is then
+determining the expected reward. To tackle this issue,
+Angermueller and coauthors use a panel of machine
+learning models, each learning a surrogate ﬁtness function
+
+bf j based on available data from each round of experimen-
+
+tation [39]. The subset of models from this panel that pass
+some threshold accuracy (as empirically evaluated by cross-
+validation) is selected for use in estimating the reward, and
+the policy network is then updated based on the estimated
+reward. Thus, this algorithm enables using a panel of
+models to potentially capture various aspects of the ﬁtness
+landscape, but only uses the models that have sufﬁcient
+accuracy to update the policy network. The authors also
+incorporate a diversity metric by including a term in the
+expected reward for a sequence that counts the number of
+similar
+sequences previously explored. The authors
+applied this framework to various biologically motivated
+synthetic datasets, including an antimicrobial peptide (8e
+75 amino acids) dataset as simulated with random forests.
+With eight rounds testing up to 250 sequences each, the
+authors obtained higher ﬁtness values compared to other
+methods, including Conditioning by Adaptive Sampling
+and FBGAN. However, the authors also show that the
+proposed sequence diversity quickly drops, and only the
+diversity term added to the expected reward prevents it
+from converging to zero.
+
+learning have been driven by data collection as well. For
+example, a large contribution to the current boom in
+deep learning can be traced back to ImageNet, a data-
+base of well-annotated images used for classiﬁcation
+tasks [48]. For proteins, a well-organized biannual
+competition for protein structure prediction known as
+CASP (Critical Assessment of protein Structure Pre-
+diction) [49] enabled machine learning to push the ﬁeld
+of structure prediction forward [50]. A large database of
+protein sequences also exists [8] with reference clusters
+provided [51,24] that can be linked to Gene Ontology
+annotations [52]. However, these sequences are rarely
+coupled to ‘ﬁtness’ measurements, and if so, they are
+collected under diverse experimental conditions. While
+databases such as ProtaBank [53] promise to organize
+data collected along with their experimental conditions,
+protein sequence design for diverse functions has yet to
+experience its ImageNet moment.
+
+and methods
+
+scanning [54]
+
+Fortunately, a wide variety of tools are being developed
+for collecting large amounts of data, including deep
+mutational
+involving
+continuous evolution [55e57]. These techniques
+contain their own nuances and data artifacts that must
+be considered [58], and unifying across studies must be
+done carefully
+[59]. Although these techniques
+currently apply to a subset of desired protein properties
+that are robustly measured, such as survival, ﬂuores-
+cence, and binding afﬁnity, we must continue to develop
+experimental techniques if we hope to model and un-
+derstand more complex traits such as enzymatic activity.
+
+Although signiﬁcant work has been invested in opti-
+mizing protein sequences with generative models, this
+direction is still in its infancy, and it is not clear which
+approach or framework has general advantages, partic-
+ularly as many of these approaches have roots in
+nonbiological ﬁelds. In future, balancing increased
+sequence diversity against staying within each model’s
+trusted regions of sequence space [38,45] or other
+desired protein properties will be necessary to broaden
+our understanding of protein sequence space.
+
+Conclusions and future directions
+Machine learning has shown preliminary success in
+protein engineering, enabling researchers to access
+optimized sequences with unprecedented efﬁciency.
+These approaches allow protein engineers to efﬁciently
+sample sequence space without being limited to na-
+ture’s repertoire of mutations. As we continue to explore
+sequence space, expanding from the sequences that
+nature has kindly prepared, there is hope that we will
+ﬁnd diverse solutions for myriad problems [47].
+
+Many of the examples presented required testing many
+protein variants, and many of the advances in machine
+
+In the meantime, machine learning has enabled us to
+generate useful protein sequences on a variety of scales.
+In low- to medium-throughput settings, protein engi-
+neering guided by discriminative models enables efﬁ-
+cient identiﬁcation of improved sequences through the
+learned surrogate ﬁtness function. In settings with
+larger amounts of data, deep generative models have
+various strengths and weaknesses that may be leveraged
+depending on design and experimental constraints. By
+integrating machine learning with rounds of experi-
+mentation, data-driven protein engineering promises to
+maximize the efforts from expensive laboratory work,
+enabling protein engineers to quickly design useful
+sequences.
+
+Declaration of competing interest
+The authors declare that they have no known competing
+ﬁnancial interests or personal relationships that could have
+appeared to inﬂuence the work reported in this paper.
+
+Acknowledgements
+The authors wish to thank members Lucas Schaus and Sabine Brinkmann-
+Chen for feedback on early drafts. This work is supported by the Camille
+and Henry Dreyfus Foundation (ML-20-194) and the NSF Division of
+Chemical, Bioengineering, Environmental,
+and Transport Systems
+(1937902).
+
+Current Opinion in Chemical Biology 2021, 65:18–27
+
+www.sciencedirect.com
+
+A Appendix. Deep Generative Models of
+Protein Sequence
+Here, we describe three popular generative models,
+variational autoencoders, generative adversarial net-
+works, and autoregressive models, and provide examples
+of their applications to protein sequences. These
+models are summarized in Figure A.1.
+
+A.1. Variational Autoencoders
+To provide an intuitive introduction to Variational
+Autoencoders, we ﬁrst
+introduce the concept of
+autoencoders [60e62], which are comprised of an
+encoder and a decoder. The encoder, q(zjx), maps each
+input xi into a latent representation zi. This latent rep-
+resentation is comparatively low dimension to the initial
+encoding, creating an information bottleneck that forces
+the autoencoder to learn a useful representation. The
+
+decoder, p(xjz), reconstructs each input xi from its latent
+representation zi. During training, the goal of the model
+is to maximize the probability of the data p(x), which
+can be determined by marginalizing over z:
+
+Z
+
+pðxÞ ¼
+
+pðxjzÞpðzÞdz
+
+(A.1)
+
+p(z) is the prior over z, which is usually taken to be
+normal(0, 1). Direct evaluation of the integral in Equation
+A.1 is intractable and is instead bounded using variational
+inference. It can be shown that a lower bound of p(x) can be
+written as the following [60]:
+
+log pðxÞ  E½log pðxjzÞ   DKL½qðzjxÞkpðzÞ
+
+(A.2)
+
+where DKL is the Kullback-Leibler divergence, which can
+be interpreted as a regularization term that measures the
+amount of lost information when using q to represent p, and
+the ﬁrst expectation E term represents reconstruction ac-
+curacy. VAEs are trained to maximize this lower bound on
+log p(x), thus learning to place high probability on the
+training examples. The encoder representation can be used
+for downstream prediction tasks, and the decoder can be
+used to generate new examples, which will be non-linear
+interpolations of the training examples. Intuitively, the
+prior over z enables smooth interpolation between points in
+the latent representation, enforcing structure in an other-
+wise arbitrary representation.
+
+A.2. Generative Adversarial Networks
+Generative Adversarial Networks (GANs) are comprised
+of a generator network G that maps from random noise
+to examples in the data space and an adversarial
+discriminator D that learns to discriminate between
+generated and real examples [63]. As the generator
+learns to generate examples that are increasingly similar
+to real examples, the discriminator must also learn to
+distinguish between them. This equilibrium can be
+written as a minimax game between the Generator G
+and Discriminator D, where the loss function is:
+
+Protein sequence design with DGMs Wu et al.
+
+23
+
+LðD; GÞ ¼ ExwprealðxÞ½log DðxÞ
+
+min
+
+max
+
+G
+
+D
+
+þ EzwpðzÞ½logð1   DðGðzÞÞÞ
+
+(A.3)
+
+where the discriminator is trained to maximize the proba-
+bility D(x) when x comes from a distribution of real data,
+and minimize the probability that the data point is real
+(D(G(z))) when the data is generated (G(z)). GANS do not
+perform representation learning or density estimation, but
+on image data they usually generate more realistic exam-
+ples than VAEs [64,65]. However, the Nash equilibrium
+between the generator and discriminator networks can be
+notoriously difﬁcult to obtain in practice [66,67].
+
+A.3. Autoregressive models
+An emerging class of models from language processing
+has developed from self-supervised learning of se-
+quences. After masking portions of sequences, deep
+neural networks are tasked with generating the masked
+portions correctly, as conditioned on the unmasked re-
+gions. In the autoregressive setting, models are tasked
+with generating subsequent tokens based on previously
+generated tokens. The probability of a sequence can then
+be factorized as a product of conditional distributions:
+
+YN
+
+i ¼ 1
+
+pðxÞ ¼
+
+pðxijx1; .; xi 1Þ
+
+(A.4)
+
+Alternately, the masked language model paradigm takes
+examples where some sequence elements have been
+replaced by a special mask token and learns to reconstruct
+the original sequence by predicting the identity of the
+masked tokens conditioned on the rest of the sequence:
+
+pðxÞ ¼
+
+a
+
+ 
+
+
+
+xjsi
+
+p
+i2masked
+
+xi
+
+(A.5)
+
+Autoregressive models learn by maximizing the proba-
+bility of the training sequences. They can be used to
+generate new sequences, and depending on the archi-
+tecture, they can usually provide a learned contextual
+representation for every position in a sequence. While
+masked language models are not strictly autoregressive,
+they often use the same model architectures as autore-
+gressive generative models, and so we include them here.
+
+The main challenge is in capturing long-range de-
+pendencies. Three popular
+architectures, dilated
+convolution networks,
+recurrent neural networks
+(RNNs), and Transformer-based models, take different
+approaches. Dilated convolution networks include con-
+volutions with deﬁned gaps in the ﬁlters in order to
+capture information across larger distances [68,69].
+RNNs
+information
+
+to capture positional
+
+attempt
+
+www.sciencedirect.com
+
+Current Opinion in Chemical Biology 2021, 65:18–27
+
+24 Machine Learning in Chemical Biology
+
+Figure A.1
+
+(a) Variational Autoencoders (VAEs) are tasked with encoding sequences in a structured latent space. Samples from this latent space may then be decoded to
+functional protein sequences. (b) Generative Adversarial Networks (GANs) have two networks locked in a Nash equilibrium: the generative network generates
+synthetic data that look real, while the discriminative network discerns between real and synthetic data. (c) Autoregressive models predict the next amino acid in a
+protein given the amino-acid sequence up to that point.
+
+Current Opinion in Chemical Biology 2021, 65:18–27
+
+www.sciencedirect.com
+
+for
+
+to account
+
+directly in the model state [70,71], and an added
+memory layer is introduced in Long Short-Term Memory
+(LSTM) networks
+long-range in-
+teractions [72e74]. Finally, Transformer networks are
+based on the attention mechanism, which computes a
+soft probability contribution over all positions in the
+sequence [75,76]. They were also developed for lan-
+guage modeling to capture all possible pairwise in-
+teractions [31,77e79]. Notably, Transformer networks
+are also used for autoencoding pretraining, where tokens
+throughout the sequence (regardless of order) are
+masked and reconstructed [77].
+
+References
+Papers of particular interest, published within the period of review,
+have been highlighted as:
+
+* of special interest
+* * of outstanding interest
+
+1. Romero PA, Arnold FH: Exploring protein fitness landscapes
+by directed evolution. Nat Rev Mol Cell Biol 2009, 10:866 –876,
+https://doi.org/10.1038/nrm2805.
+
+2.
+
+Arnold FH: Directed evolution: bringing new chemistry to life.
+Angew Chem Int Ed 2018, 57:4143 –4148, https://doi.org/
+10.1002/anie.201708408.
+
+3. Huang P-S, Boyken SE, Baker D: The coming of age of de novo
+
+protein design. Nature 2016, 537:320 –327, https://doi.org/
+10.1038/nature1994.
+
+4. Garcia-Borrás M, Houk KN, Jiménez-Osés G: Computational
+
+design of protein function. Comput Tools CHem Biol 2017, 3:
+87, https://doi.org/10.1039/9781788010139-00087.
+
+5.
+
+Yang KK, Wu Z, Arnold FH: Machine-learning-guided directed
+evolution for protein engineering. Nat Methods 2019, 16:
+687 –694, https://doi.org/10.1038/s41592-019-0496-6.
+
+6. Mazurenko S, Prokop Z, Damborsky J: Machine learning in
+
+enzyme engineering. ACS Catal 2020, 10:1210 –1223, https://
+doi.org/10.1021/acscatal.9b04321.
+
+7.
+
+Volk MJ, Lourentzou I, Mishra S, Vo LT, Zhai C, Zhao H: Bio-
+systems design by machine learning. ACS Synth Biol 2020, 9:
+1514 –1533, https://doi.org/10.1021/acssynbio.0c00129.
+
+8. Consortium Uniprot, Uniprot: The universal protein knowl-
+
+edgebase in 2021. Nucleic Acids Res 2021, 49:D480 –D489.
+
+9.
+
+Ingraham J, Garg V, Barzilay R, Jaakkola T: Generative models
+for graph-based protein design. In Advances in neural infor-
+mation processing systems; 2019:15794 –15805.
+
+10. Sabban S, Markovsky M: Ramanet: computational de novo
+helical protein backbone design using a long short-term
+memory generative adversarial neural network.
+F1000Research 2020, 9, https://doi.org/10.12688/
+f1000research.22907.1.
+
+11. T. Bepler, B. Berger, Learning protein sequence embeddings
+
+using information from structure.
+
+12. Anand N, Eguchi RR, Derry A, Altman RB, Huang P: Protein
+
+sequence design with a learned potential. bioRxiv 2020,
+https://doi.org/10.1101/2020.01.06.895466.
+
+13
+*
+
+. Hie B, Bryson BD, Berger B: Leveraging uncertainty in ma-
+
+chine learning accelerates biological discovery and design.
+Cell Sys 2020, 11:461 –477, https://doi.org/10.1016/
+j.cels.2020.09.007.
+
+This paper is a clear demonstration of the efficacy of learned embeddings
+for both proteins and small molecules, and additionally shows how
+modeled uncertainty enables the identification of improved sequences.
+
+14. Fox RJ, Davis SC, Mundorff EC, Newman LM, Gavrilovic V,
+
+Ma SK, Chung LM, Ching C, Tam S, Muley S, Grate J, Gruber J,
+Whitman JC, Sheldon RA, Huisman GW: Improving catalytic
+
+Protein sequence design with DGMs Wu et al.
+
+25
+
+function by ProSAR-driven enzyme evolution. Nat Biotechnol
+2007, 25:338 –344, https://doi.org/10.1038/nbt1286.
+
+15. Liao J, Warmuth MK, Govindarajan S, Ness JE, Wang RP,
+
+Gustafsson C, Minshull J: Engineering proteinase K using
+machine learning and synthetic genes. BMC Biotechnol 2007,
+7, https://doi.org/10.1186/1472-6750-7-16.
+
+16. Xu Y, Verma D, Sheridan RP, Liaw A, Ma J, Marshall N,
+
+McIntosh J, Sherer EC, Svetnik V, Johnston J: A deep dive into
+machine learning models for protein engineering. J Chem Inf
+Model 2020, 60:2773 –2790, https://doi.org/10.1021/
+acs.jcim.0c00073.
+
+17. Shanehsazzadeh A, Belanger D, Dohan D: Is transfer learning
+necessary for protein landscape prediction? arXivarXiv 2020.
+https://arxiv.org/abs/2011.03443; 2020.
+
+18. Costello Z, Garcia Martin H: How to hallucinate functional pro-
+
+teins. arXivarXiv 2019. https://arxiv.org/abs/1903.00458; 2019.
+
+19. Pedregosa F, Varoquaux G, Gramfort A, Michel V, Thirion B,
+
+Grisel O, Blondel M, Prettenhofer P, Weiss R, Dubourg V, et al.:
+Scikit-learn: machine learning in python. J Mach Learn Res
+2011, 12:2825 –2830.
+
+20. Alley EC, Khimulya G, Biswas S, AlQuraishi M, Church GM:
+Unified rational protein engineering with sequence-based
+deep representation learning. Nat Methods 2019, 16:
+1315 –1322.
+
+21
+*
+
+. Rives A, Goyal S, Meier J, Guo D, Ott M, Zitnick CL, Ma J,
+Fergus R: Biological structure and function emerge from
+scaling unsupervised learning to 250 million protein se-
+quences. bioRxiv 2021, 118(15), e2016239118, https://doi.org/
+10.1101/622803.
+
+An early example of modern protein language modeling, which applied
+the BERT training objective to protein sequences.
+
+22. Rao R, Bhattacharya N, Thomas N, Duan Y, Chen P, Canny J,
+Abbeel P, Song Y: Evaluating protein transfer learning with
+tape. In Advances in Neural information processing systems;
+2019:9686–9698.
+
+23
+* *
+
+. Biswas S, Khimulya G, Alley EC, Esvelt KM, Church GM: Low-n
+protein engineering with data-efficient deep learning. bioRxiv
+2021, https://doi.org/10.1101/2020.01.23.917682.
+
+An excellent example leveraging learned embeddings for protein en-
+gineering, enabling improved variants to be identified after training on
+as little as 24 variants.
+
+24. Suzek BE, Wang Y, Huang H, McGarvey PB, Wu CH,
+
+Consortium U: Uniref clusters: a comprehensive and scalable
+alternative for improving sequence similarity searches. Bio-
+informatics 2015, 31:926 –932, https://doi.org/10.1093/bioinfor-
+matics/btu739.
+
+25. Wittmann BJ, Yue Y, Arnold FH: Machine learning-assisted
+
+directed evolution navigates a combinatorial epistatic fitness
+landscape with minimal screening burden. bioRxiv 2020,
+https://doi.org/10.1101/2020.12.04.408955.
+
+26. Hawkins-Hooker A, Depardieu F, Baur S, Couairon G, Chen A,
+Bikard D: Generating functional protein variants with varia-
+tional autoencoders. PLoS Comput Biol 2021, 17, e1008736.
+
+27. Semeniuta S, Severyn A, Barth E: A hybrid convolutional
+
+variational autoencoder for text generation. arXivarXiv 2017.
+https://arxiv.org/abs/1702.02390; 2017.
+
+28. Repecka D, Jauniskis V, Karpus L, Rembeza E, Rokaitis I,
+
+Zrimec J, Poviloniene S, Laurynenas A, Viknander S, Abuajwa W,
+et al.: Expanding functional protein sequence spaces using
+generative adversarial networks. Nature Machine Intell 2021:
+1–10.
+
+29. Sillitoe I, Dawson N, Lewis TE, Das S, Lees JG, Ashford P,
+Tolulope A, Scholes HM, Senatorov I, Bujan A, et al.: Cath:
+expanding the horizons of structure-based functional anno-
+tations for genome sequences. Nucleic Acids Res 2019, 47:
+D280 –D284, https://doi.org/10.1093/nar/gky1097.
+
+30. Shin J-E, Riesselman AJ, Kollasch AW, McMahon C, Simon E,
+
+Sander C, Manglik A, Kruse AC, Marks DS: Protein design
+and variant prediction using autoregressive generative
+models. Nat Commun 2021, https://doi.org/10.1038/s41467-
+021-22732-w.
+
+www.sciencedirect.com
+
+Current Opinion in Chemical Biology 2021, 65:18–27
+
+26 Machine Learning in Chemical Biology
+
+31. Vaswani A, Shazeer N, Parmar N, Uszkoreit J, Jones L,
+
+Gomez AN, Kaiser Ł, Polosukhin I: Attention is all you need. In
+Advances in Neural information processing systems; 2017:
+5998–6008.
+
+32. Wu Z, Yang KK, Liszka MJ, Lee A, Batzilla A, Wernick D,
+
+Weiner DP, Arnold FH: Signal peptides generated by attention-
+based neural networks. ACS Synth Biol 2020, 9:2154–2161,
+https://doi.org/10.1021/acssynbio.0c00219.
+
+33. Sohn K, Lee H, Yan X: Learning structured output represen-
+tation using deep conditional generative models. In Advances
+in Neural information processing systems; 2015:3483 –3491.
+
+34. Greener JG, Moffat L, Jones DT: Design of metalloproteins and
+novel protein folds using variational autoencoders. Sci Rep
+2018, 8:1 –12, https://doi.org/10.1038/s41598-018-34533-1.
+
+35. Andreini C, Cavallaro G, Lorenzini S, Rosato A: Metalpdb: a
+
+database of metal sites in biological macromolecular struc-
+tures. Nucleic Acids Res 2012, 41:D312 –D319, https://doi.org/
+10.1093/nar/gkx989.
+
+36
+*
+
+. Madani A, McCann B, Naik N, Keskar NS, Anand N, Eguchi RR,
+Huang P-S, Socher R: Progen: language modeling for protein
+generation. arXiv 2020, https://doi.org/10.1101/
+2020.03.07.982272.
+
+This paper also uses modern language modeling methods to learn
+protein information, including metadata such as protein function and
+organism.
+
+37. Alford RF, Leaver-Fay A, Jeliazkov JR, O’Meara MJ, DiMaio FP,
+
+Park H, Shapovalov MV, Renfrew PD, Mulligan VK, Kappel K,
+et al.: The rosetta all-atom energy function for macromolec-
+ular modeling and design. J Chem Theor Comput 2017, 13:
+3031–3048, https://doi.org/10.1021/acs.jctc.7b00125.
+
+38
+* *
+
+. Brookes D, Park H, Listgarten J: Conditioning by adaptive
+sampling for robust design. In International conference on
+machine learning; 2019:773–782.
+
+This work develops an algorithm for identifying optimized protein se-
+quences using a probabilistic oracle that accounts for the oracle’s bias.
+
+39
+* *
+
+. Angermueller C, Dohan D, Belanger D, Deshpande R, Murphy K,
+Colwell L: Model-based reinforcement learning for biological
+sequence design. In International conference on learning rep-
+resentations; 2019.
+
+This work begins a series of publications in optimizing sequences with
+a framework inspired by Reinforcement Learning.
+
+40. Amimeur T, Shaver JM, Ketchem RR, Taylor JA, Clark RH,
+
+Smith J, Van Citters D, Siska CC, Smidt P, Sprague M, et al.:
+Designing feature-controlled humanoid antibody discovery
+libraries using generative adversarial networks. bioRxiv 2020,
+https://doi.org/10.1101/2020.04.12.024844.
+
+41. Arjovsky M, Chintala S, Bottou L: Wasserstein gan. arXivarXiv
+
+2017. https://arxiv.org/abs/1701.07875; 2017.
+
+42. Gupta A, Zou J: Feedback gan for dna optimizes protein
+functions. Nature Machine Intell 2019, 1:105 –111, https://
+doi.org/10.1038/s42256-019-0017-4.
+
+43. Brookes DH, Listgarten J: Design by adaptive sampling. arXi-
+
+varXiv 2018. https://arxiv.org/abs/1810.03714; 2018.
+
+44. Fannjiang C, Listgarten J: Autofocused oracles for model-
+
+based design. arXivarXiv 2020. https://arxiv.org/abs/2006.
+08052; 2020.
+
+45
+* *
+
+. Linder J, Bogard N, Rosenberg AB, Seelig G: A generative
+
+neural network for maximizing fitness and diversity of syn-
+thetic dna and protein sequences. Cell Sys 2020, 11:49 –62.
+
+This work develops another approach to generating optimized se-
+quences, with an additional capability of generating diversified
+sequences.
+
+46. Sutton RS, Barto AG: Reinforcement learning: an introduction.
+
+MIT press; 2018.
+
+47. Nobeli I, Favia AD, Thornton JM: Protein promiscuity and its
+
+implications for biotechnology. Nat Biotechnol 2009, 27:
+157 –167, https://doi.org/10.1038/nbt1519.
+
+48. Deng J, Dong W, Socher R, Li L-J, Li K, Fei-Fei L: Imagenet: a
+large-scale hierarchical image database. In Proceedings of the
+IEEE conference on computer vision and pattern recognition.
+
+Ieee; 2009:248 –255, https://doi.org/10.1109/
+CVPR.2009.5206848.
+
+49. Moult J, Pedersen JT, Judson R, Fidelis K: A large-scale
+
+experiment to assess protein structure prediction methods.
+Prot Struct Func Bioinform 1995, 23:2–4, https://doi.org/10.1002/
+prot.340230303.
+
+50. Senior AW, Evans R, Jumper J, Kirkpatrick J, Sifre L, Green T,
+Qin C, Zídek A, Nelson AW, Bridgland A, et al.: Improved protein
+structure prediction using potentials from deep learning.
+Nature 2020:1–5, https://doi.org/10.1038/s41586-019-1923-7.
+
+51. Suzek BE, Huang H, McGarvey P, Mazumder R, Wu CH: Uniref:
+
+comprehensive and non-redundant uniprot reference clus-
+ters. Bioinformatics 2007, 23:1282 –1288, https://doi.org/10.1093/
+bioinformatics/btm098.
+
+52. Gene Ontology Consortium: The gene ontology resource:
+
+enriching a gold mine. Nucleic Acids Res 2021, 49:D325 –D334.
+
+53. Wang CY, Chang PM, Ary ML, Allen BD, Chica RA, Mayo SL,
+Olafson BD: Protabank: a repository for protein design and
+engineering data. Protein Sci 2018, 27:1113 –1124, https://
+doi.org/10.1002/pro.3406.
+
+54. Fowler DM, Fields S: Deep mutational scanning: a new style of
+
+protein science. Nat Methods 2014, 11:801, https://doi.org/
+10.1038/nmeth.3027.
+
+55. Esvelt KM, Carlson JC, Liu DR: A system for the continuous
+
+directed evolution of biomolecules. Nature 2011, 472:
+499 –503, https://doi.org/10.1038/nature09929.
+
+56. Morrison MS, Podracky CJ, Liu DR: The developing toolkit of
+
+continuous directed evolution. Nat Chem Biol 2020, 16:
+610 –619, https://doi.org/10.1038/s41589-020-0532-y.
+
+57. Zhong Z, Wong BG, Ravikumar A, Arzumanyan GA, Khalil AS,
+Liu CC: Automated continuous evolution of proteins in vivo.
+ACS Synth Biol 2020, https://doi.org/10.1021/acssynbio.0c00135.
+
+58. Eid F-E, Elmarakeby HA, Chan YA, Fornelos N, ElHefnawi M,
+
+Van Allen EM, Heath LS, Lage K: Systematic auditing is
+essential to debiasing machine learning in biology. Commun
+Biol 2021, 4:1–9.
+
+59. Dunham A, Beltrao P: Exploring amino acid functions in a
+
+deep mutational landscape. bioRxiv 2020, https://doi.org/
+10.1101/2020.05.26.116756.
+
+60. Kingma DP, Welling M: Auto-encoding variational bayes.
+
+arXivarXiv 2013. https://arxiv.org/abs/1312.6114; 2013.
+
+61. Rezende DJ, Mohamed S, Wierstra D: Stochastic back-
+
+propagation and approximate inference in deep generative
+models. arXivarXiv 2014. https://arxiv.org/abs/1401.4082; 2014.
+
+62. Doersch C: Tutorial on variational autoencoders. arXivarXiv
+
+2016. https://arxiv.org/abs/1606.05908; 2016.
+
+63. Goodfellow I, Pouget-Abadie J, Mirza M, Xu B, Warde-Farley D,
+
+Ozair S, Courville A, Bengio Y: Generative adversarial networks.
+arXiv 2014:2672–2680. https://arxiv.org/abs/1406.2661; 2014.
+
+64. Theis L, Oord Av d, Bethge M: A note on the evaluation of
+
+generative models. arXivarXiv 2015. https://arxiv.org/abs/1511.
+01844; 2015.
+
+65. Dumoulin V, Belghazi I, Poole B, Mastropietro O, Lamb A,
+
+Arjovsky M, Courville A: Adversarially learned inference. arXi-
+varXiv 2016. https://arxiv.org/abs/1606.00704; 2016.
+
+66. Salimans T, Goodfellow I, Zaremba W, Cheung V, Radford A,
+
+Chen X: Improved techniques for training gans. In Advances in
+Neural information processing systems; 2016:2234 –2242.
+
+67. Mescheder L, Geiger A, Nowozin S: Which training methods for
+gans do actually converge? arXivarXiv 2018. https://arxiv.org/
+abs/1801.04406; 2018.
+
+68. Yu F, Koltun V: Multi-scale context aggregation by dilated con-
+volutions. arXivarXiv 2015. https://arxiv.org/abs/1511.07122; 2015.
+
+69. Oord Av d, Dieleman S, Zen H, Simonyan K, Vinyals O, Graves A,
+Kalchbrenner N, Senior A, Kavukcuoglu K: Wavenet: a genera-
+tive model for raw audio. arXivarXiv 2016. https://arxiv.org/abs/
+1609.03499; 2016.
+
+Current Opinion in Chemical Biology 2021, 65:18–27
+
+www.sciencedirect.com
+
+Protein sequence design with DGMs Wu et al.
+
+27
+
+70. Mikolov T, Karafiát M, Burget L, Cernocký J, Khudanpur S:
+
+Recurrent neural network based language model. In Eleventh
+annual conference of the international speech communication
+association; 2010.
+
+71. Kalchbrenner N, Blunsom P: Recurrent continuous translation
+
+models. In Proceedings of the 2013 conference on empirical
+methods in Natural language processing; 2013:1700–1709.
+
+72. Hochreiter S, Schmidhuber J: Long short-term memory. Neural
+
+Comput 1997, 9:1735 –1780, https://doi.org/10.1162/
+neco.1997.9.8.1735.
+
+73. Sutskever I, Vinyals O, Le QV: Sequence to sequence learning
+
+with neural networks. In Advances in Neural information
+processing systems; 2014:3104–3112.
+
+74. Cho K, Van Merri€enboer B, Gulcehre C, Bahdanau D, Bougares F,
+Schwenk H, Bengio Y: Learning phrase representations using
+rnn encoder-decoder for statistical machine translation. arXi-
+varXiv 2014. https://arxiv.org/abs/1406.1078; 2014.
+
+75. Bahdanau D, Cho K, Bengio Y: Neural machine translation by
+jointly learning to align and translate. arXivarXiv 2014. https://
+arxiv.org/abs/1409.0473; 2014.
+
+76. Luong M-T, Pham H, Manning CD: Effective approaches to
+
+attention-based neural machine translation. arXivarXiv 2015.
+https://arxiv.org/abs/1508.04025; 2015.
+
+77. Devlin J, Chang M-W, Lee K, Toutanova K: Bert: pre-training of
+deep bidirectional transformers for language understanding.
+arXivarXiv 2018. https://arxiv.org/abs/1810.04805; 2018.
+
+78. Radford A, Wu J, Child R, Luan D, Amodei D, Sutskever I: Lan-
+guage models are unsupervised multitask learners. OpenAI
+Blog 2019, 1:9.
+
+79. Wolf T, Debut L, Sanh V, Chaumond J, Delangue C, Moi A,
+
+Cistac P, Rault T, Louf R, Funtowicz M, et al.: Huggingface’s
+transformers: State-of-the-art natural language processing.
+arXivarXiv 2019. https://arxiv.org/abs/1910.03771; 2019.
+
+www.sciencedirect.com
+
+Current Opinion in Chemical Biology 2021, 65:18–27
+
+

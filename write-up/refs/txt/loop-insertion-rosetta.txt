@@ -1,0 +1,1146 @@
+pubs.acs.org/biochemistry
+
+Article
+
+Rosetta-Enabled Structural Prediction of Permissive Loop Insertion
+Sites in Proteins
+Joseph G. Plaks, Jeﬀ A. Brewer, Nicole K. Jacobsen, Michael McKenna, Joshua R. Uzarski,
+Timothy J. Lawton, Shaun F. Filocamo, and Joel L. Kaar*
+
+Cite This: Biochemistry 2020, 59, 3993−4002
+
+Read Online
+
+ACCESS
+
+Metrics & More
+
+Article Recommendations
+
+*sı Supporting Information
+
+ABSTRACT: While loop motifs frequently play a major role in
+protein function, our understanding of how to rationally engineer
+proteins with novel loop domains remains limited. In the absence of
+rational approaches,
+loop domains often
+the incorporation of
+destabilizes proteins,
+thereby requiring massive screening and
+selection to identify sites that can accommodate loop insertion. We
+developed a computational strategy for rapidly scanning the entire
+structure of a scaﬀold protein to determine the impact of
+loop
+insertion at all possible amino acid positions. This approach is based
+on the Rosetta kinematic loop modeling protocol and was
+demonstrated by identifying sites in lipase that were permissive to
+insertion of the LAP peptide. Interestingly, the identiﬁcation of permissive sites was dependent on the contribution of the residues in
+the near-loop environment on the Rosetta score and did not correlate with conventional structural features (e.g., B-factors). As
+evidence of this, several insertion sites (e.g., following residues 17, 47−49, and 108), which were predicted and conﬁrmed to be
+permissive, interrupted helices, while others (e.g., following residues 43, 67, 116, 119, and 121), which are situated in loop regions,
+were nonpermissive. This approach was further shown to be predictive for β-glucosidase and human phosphatase and tensin
+homologue (PTEN), and to facilitate the engineering of insertion sites through in silico mutagenesis. By enabling the design of loop-
+containing protein libraries with high probabilities of soluble expression, this approach has broad implications in many areas of
+protein engineering, including antibody design, improving enzyme activity, and protein modiﬁcation.
+
+L oop regions within proteins often contribute substantially
+
+to function and thus are critical structural features. For
+example, such regions frequently determine the binding
+speciﬁcity of antibodies,1 modulate substrate recognition in
+enzymatic catalysis,2,3 and serve as recognition sequences for
+post-translational modiﬁcations.4 As such, altering or introduc-
+ing peptide loops within a protein may generate novel
+function.5,6 Indeed,
+loop alterations have been observed in
+enzyme evolution as a route by which enzymes within the same
+family diversify.7 In protein engineering, the insertion of novel
+loops within diverse protein targets has resulted in chimeric
+molecules with multiple functions.8 This has been exempliﬁed
+via the introduction of antibody-like loops into non-
+immunoglobulin proteins to impart binding activity.9,10 Addi-
+tionally, the insertion of peptides as recognition motifs for
+enzymatic ligation reactions has also been widely reported to
+facilitate chemical modiﬁcation.11
+
+Despite the potential to introduce novel function through
+peptide loop insertions, preventing the disruption of protein
+structure and/or function remains a major challenge.12−14 In the
+identiﬁcation of insertion sites, regions with high B-factors and
+small amounts of secondary structure may be targeted for
+modiﬁcation. However, these characteristics do not guarantee
+loop accommodation. Moreover, highly ﬂexible regions that are
+
+natively found in proteins, including the N- and C-termini, may
+be critical for function and thus cannot be readily mutated. As
+such, a more systematic approach to identifying and designing
+loop insertion sites would represent a signiﬁcant advancement
+over conventional approaches.
+
+As a potential computational platform for predicting sites that
+accommodate loop insertion, the Rosetta protein modeling
+framework has intriguing potential.15−18 The Rosetta frame-
+work, which has widespread utility for structure prediction and
+protein design, has previously been used to create novel protein
+chimeras.15,19−23 Additionally, Rosetta contains a loop modeling
+feature (i.e., the kinematic loop modeling protocol) that can
+incorporate short strands of amino acids within an existing
+structure.24,25 This feature has been shown to be of considerable
+utility for predicting the structure of unresolved regions in
+crystal structures as well as in the context of homology modeling.
+
+Received:
+June 25, 2020
+Revised:
+September 12, 2020
+Published: September 24, 2020
+
+© 2020 American Chemical Society
+
+3993
+
+https://dx.doi.org/10.1021/acs.biochem.0c00533
+Biochemistry 2020, 59, 3993−4002
+
+Downloaded via UNIV OF MANCHESTER on August 10, 2021 at 11:50:55 (UTC).See https://pubs.acs.org/sharingguidelines for options on how to legitimately share published articles.Biochemistry
+
+pubs.acs.org/biochemistry
+
+Article
+
+Despite these uses, the utility of the loop modeling protocol for
+identifying sites that are permissive for loop insertion remains an
+unexplored area.
+
+The goal of this work was to develop and understand a
+computational approach to identifying permissive sites in
+protein scaﬀolds for loop insertion using the Rosetta loop
+modeling feature. Speciﬁcally, we investigated the extent to
+which this feature could be repurposed to accurately predict the
+impact of loop insertion as a function of site on protein stability.
+To investigate the repurposing of this feature, lipase A (lipA)
+from Bacillus subtilis was used as a model protein scaﬀold.
+Moreover, a 13-amino acid loop sequence, otherwise known as
+the LAP sequence, which is a target recognition motif for the
+enzyme lipoic acid ligase (LplA), was used as the model loop
+sequence.26,27 The LAP sequence is of particular interest for
+loop insertion given its utility for site-speciﬁc labeling and/or
+modiﬁcation through post-translational modiﬁcation by LplA as
+we and others have shown previously.28−30
+
+Using a modiﬁed version of the Rosetta kinematic loop
+modeling protocol, the LAP sequence was modeled at every
+possible amino acid position in lipA. The predictive capability of
+this Rosetta-based approach was validated by comparing Rosetta
+scores with soluble expression of LAP-containing lipA
+constructs. The extent to which this approach is general was
+also investigated using β-glucosidase (Trichoderma reesei) and
+human phosphatase and tensin homologue (PTEN).. To
+understand this approach, the contribution of each component
+of the Rosetta scoring function to the total score associated with
+the insertion of LAP into lipA was analyzed. Finally, this
+approach was used to engineer the residues surrounding a
+desired insertion site and to predict how changes in these
+residues impacted LAP accommodation. Our results ultimately
+demonstrate the potential of this approach as a rapid and
+computationally inexpensive method for scanning the impact of
+loop insertion at every position in a protein scaﬀold as well as
+engineering loop insertion sites in protein scaﬀolds to impart
+speciﬁc functions.
+
+■ MATERIALS AND EXPERIMENTAL DETAILS
+
+Materials. All primers and gBlock gene fragments were
+purchased from IDT (San Jose, CA). All reagents, including
+InVision His-tag IN-gel stain and restriction enzymes, were
+obtained from Thermo Fisher Scientiﬁc (Waltham, MA) unless
+otherwise stated. Bis-acrylamide, Precision Plus Protein Dual
+Color Standards (gel ladders), and all gel casting and running
+materials were purchased from Bio-Rad.
+
+Rosetta Modeling. Loop models were generated by calling
+the loopmodel executable and by specifying threaded-PDB ﬁles
+and loop ﬁles as inputs. Threaded-PDBs were generated by
+downloading structure ﬁles from the Protein Data Bank (PDB)
+(entries 1ISP for lipA, 3AHY for β-glucosidase, and 1D5R for
+PTEN), isolating chain A from each of these ﬁles with the
+clean_PDB Python script within the Rosetta package, and
+threading a modiﬁed primary sequence containing the LAP
+sequence onto the target protein structure with the
+thread_PDB_from_alignment Python script. Alignment ﬁles
+required for the thread_PDB_from_alignment script were
+generated through the command line using Clustal W version
+2.1 source code downloaded from clustal.org.31 Loop ﬁles
+speciﬁed the residue directly preceding the LAP sequence as the
+loop start residue and the residue directly following the LAP
+sequence as the loop end residue.
+
+Large populations of full-atom models were produced on the
+Janus supercomputer by generating 21 models on 12 nodes and
+performing this task a total of 12 times. Structural scans of
+proteins using centroid modeling were performed by calling the
+loopmodel executable for a set of input ﬁles speciﬁc to each
+unique insertion site in an iterative manner. Ten models were
+generated at each sterically accessible site. Accessible insertion
+sites were deﬁned as those for which a single model could be
+generated within a total of 150 build attempts. Point mutations
+were modeled by threading an altered protein sequence
+containing the point mutation onto the structure of the target
+protein with the thread_PDB_from_alignment Python script
+and performing centroid modeling on the LAP sequence as
+described above.
+
+Unique scores for each LAP insertion site were obtained by
+averaging total scores from 10 centroid models. Scores for
+isolated loops were calculated from the 10 output PDB ﬁles
+generated during the structural scan of lipA, which contained the
+LAP sequence in various conformations. All lipA residues were
+removed from these ﬁles, and scores were recalculated by calling
+the loopmodel executable with a loop ﬁle that speciﬁed two
+adjacent residues as the loop start and loop end residues.
+Changes in individual residue scores upon insertion of LAP were
+calculated by extracting residue scores from output PDBs,
+subtracting wild-type residue scores from model residue scores,
+and averaging the diﬀerence across the 10 LAP-containing
+models produced. Wild-type residue scores were calculated in a
+manner similar to that for scores for isolated loops. Speciﬁcally,
+the loopmodel executable was run with two adjacent residues
+speciﬁed as the loop start and loop end residues in the loop ﬁle.
+Delta scores for point mutations were calculated by subtracting
+the average score for 10 models of the mutated LAP-lipA
+construct by the background score of the mutated protein
+scaﬀold without the LAP sequence. Background scores were
+generated by threading the modiﬁed primary sequence
+containing the point mutation onto the target protein scaﬀold
+and by running the loopmodel executable with a loop ﬁle
+specifying two adjacent residues as the loop start and loop end
+residues. Insertion site B-factors were calculated by averaging
+the α-carbon B-factors of the two residues on either side of the
+inserted LAP sequence. Details of
+the Rosetta protocols,
+including scripts, used for structural scans are provided in the
+Supporting Methods.
+
+Cloning and Mutagenesis of LAP-Containing Con-
+structs. LipA constructs were expressed from a pET21B+
+plasmid that contained the lipA gene that had been ampliﬁed by
+polymerase chain reaction from B. subtilis and cloned between
+NdeI and SacI restriction sites (previously described).32 Excess
+base pairs between the end of lipA and the start of the intrinsic
+C-terminal polyhistidine tag (his-tag) coding sequence of the
+plasmid were deleted via site-directed mutagenesis, resulting in
+expression with a his-tag directly fused to each construct C-
+terminus with no linker sequencer between them. β-Glucosidase
+constructs were similarly expressed from a pET21B+ plasmid
+with the β-glucosidase gene cloned between NdeI and XhoI
+restriction sites. The β-glucosidase gene from T. reesei (NCBI
+reference sequence XP_006963436.1) was synthesized by IDT
+as a gBlock gene fragment that was codon optimized for
+Escherichia coli expression. Translation resulted in a C-terminal
+his-tag attached to the enzyme via a two-residue linker, which
+corresponded to additional base pairs associated with the XhoI
+restriction site. The PTEN gene (GenBank entry U92436.1)
+
+3994
+
+https://dx.doi.org/10.1021/acs.biochem.0c00533
+Biochemistry 2020, 59, 3993−4002
+
+Biochemistry
+
+pubs.acs.org/biochemistry
+
+Article
+
+was also synthesized by IDT as a gBlock gene fragment and
+cloned into the pET28A plasmid as described previously.33
+LAP−protein constructs were produced either via site-
+directed mutagenesis using large insertion primers to add the
+LAP sequence (as described previously)30 or by ordering a
+complete IDT gBlock gene fragment that contained the LAP
+sequence in the desired location while otherwise maintaining the
+exact DNA sequence as the construct used as a wild-type
+reference. LAP-containing gBlock fragments were then cloned
+into the appropriate plasmid as described above. The same DNA
+sequence, GGC TTC GAG ATC GAC AAG GTG TGG TAC
+GAC CTG GAC GCC, was used to encode the LAP sequence in
+all circumstances. Point mutations in LAP−lipA constructs were
+made using QuikChange Lightning mutagenesis kits. Upon
+sequencing, all plasmids were transformed in BL21 (DE3) E. coli
+cells for expression.
+Expression of LAP−Protein Libraries. Test expressions
+for all protein libraries were performed in a 96-well plate format
+with 2 mL capacity wells. Brieﬂy, glycerol stock plates were used
+to seed overnight culture plates using a multichannel pipet with
+sterile pipet tips. Each well in the overnight culture plate was
+ﬁlled with 1.8 mL of LB-amp (or LB-kan for pET28A-PTEN
+plasmids) before inoculation. Culture plates were grown
+overnight at 37 °C while being shaken at 200 rpm. The
+following day, fresh plates containing 1.8 mL of LB-antibiotic
+per well were inoculated with 30 μL of an overnight culture.
+Cultures were grown until an optical density (OD600) of 0.6 was
+reached. Culture plates were cooled to the appropriate
+expression temperature (37 °C for lipA constructs, 25 °C for
+β-glucosidase constructs, and 13, 25, or 37 °C for PTEN
+constructs), which was followed by the addition of 30 μL of an
+LB/antibiotic/IPTG (isopropyl β-D-1-thiogalactopyranoside)
+solution to each well, resulting in a ﬁnal IPTG concentration of 1
+mM. Plates were incubated at the appropriate temperature
+overnight (16 h) at 200 rpm. Cells were then pelleted by
+centrifugation at 1100g for 20 min. The LB supernatant was
+decanted, and cell pellets were resuspended and lysed via
+incubation in 150 μL of BugBuster Master Mix (MilliporeSigma,
+Burlington, MA) supplemented with a protease inhibitor for 20
+min. Following lysis, samples from two identical pellets were
+pooled and 50 μL was transferred to a microfuge tube containing
+30 μL of 4× sodium dodecyl sulfate (SDS) loading buﬀer and 40
+μL of his-tagged green ﬂuorescent protein (GFP), which was
+included as an internal standard (prepared as previously
+described).30 SDS solutions were incubated at 95 °C and
+saved as total protein samples. Pooled lysates were then cleared
+via centrifugation at 13000g for 5 min. The supernatant was
+transferred into new tubes containing 4× SDS loading dye and
+GFP and treated as described above to produce soluble
+expression samples. The protein concentration in the insoluble
+fraction was measured by resolubilizing the pellet containing the
+cell debris in 200 μL of 10% SDS. Resolubilized material was
+then transferred into new tubes containing 4× SDS loading dye
+and treated as described above to produce insoluble samples. All
+samples were prepared and analyzed in triplicate.
+
+Densitometry Measurements of Protein Expression.
+Protein constructs were initially separated on 12% acrylamide
+sodium dodecyl sulfate−polyacrylamide gel electrophoresis
+(SDS−PAGE) gels at 150 V for 55 min. After running, gels
+were ﬁxed in a 10% acetic acid/50% ethanol solution for 1 h.
+Fixed gels were rinsed with water for 20 min and incubated in
+InVision stain, which binds to his-tagged proteins, containing 30
+mM imidazole overnight at room temperature while being
+
+gently shaken. The following day, the InVision stain was
+removed and gels were destained in 20 mM sodium phosphate
+buﬀer (pH 7.8) over the course of 24 h while exchanging the
+buﬀer at least three times. Destained gels were imaged on a GE
+Typhoon FLA 9500 laser scanner with an excitation wavelength
+of 532 nm. The intensities of the bands for the constructs in each
+lane were analyzed via densitometry using ImageJ.34 An internal
+GFP standard of known concentration was used to normalize
+the amount of soluble protein for each construct. Expression
+values for point mutants of the site 43 LAP−lipA construct as
+well as for PTEN constructs were generated in terms of total
+protein (fraction soluble) by normalizing soluble protein
+measurements with total protein measurements.
+Characterization of LAP-Containing lipA 41, 47, and
+52 Constructs. LAP−lipA constructs with LAP sequences at
+sites 41, 47, and 52 were expressed in 2 L cultures of LB-Amp
+overnight at 13 °C after induction with 1 mM IPTG. After
+sonication, the cell lysate was cleared via centrifugation and
+vacuum ﬁltration with a 0.2 μm cutoﬀ ﬁlter, and protein was
+puriﬁed on a Ni-NTA column. Puriﬁed protein was dialyzed
+overnight into 20 mM sodium phosphate buﬀer (pH 7.0), ﬂash-
+frozen in liquid nitrogen, and stored at −80 °C. The speciﬁc
+activity was assayed in 20 mM sodium phosphate buﬀer (pH
+7.0) using 4-nitrophenyl butyrate (MilliporeSigma) as a
+substrate at a ﬁnal concentration of 3 mM. Activity was
+measured by quantifying the absorption of 4-nitrophenolate at
+412 nm as a function of time. For speciﬁc activity measurements,
+the protein concentration was determined via absorbance at 280
+nm using the theoretical extinction coeﬃcient, which was
+calculated from protein primary sequences with ProtParam.35
+Additionally, circular dichroism (CD) spectra were recorded
+using a 1 mm cuvette at room temperature with an Applied
+Photophysics Chirascan Plus CD Spectrometer with an average
+of at least ﬁve scans per construct. The composition of α-helices,
+β-sheets, and random coils was calculated from circular
+dichroism spectra using the http://perry.freeshell.org/
+raussens.html web server.36
+■ RESULTS
+
+Basis for the Rosetta Modeling Approach. As a ﬁrst step
+in demonstrating the use of the Rosetta loop modeling feature
+for predicting permissive sites for loop insertion, the LAP motif
+was modeled in various sites in lipA. The kinematic loop
+modeling protocol consists of an initial centroid (i.e., coarse-
+grained) stage, which is followed by a full-atom modeling (i.e.,
+reﬁnement) stage.37 Rather than explicitly modeling the impact
+of a LAP insertion on the structure of lipA, we explored a new
+approach whereby the Rosetta score from the centroid stage
+would be used to infer the impact of the LAP insertion without
+modeling it directly. This approach would eliminate the full-
+atom stage and thus reduce the computational time required to
+model the LAP sequence at diverse sites within the structure of a
+target protein. By purposely ignoring the structure of the loop,
+this approach is agonistic to the loop itself and may, in principle,
+be used to model the impact of loops that are natively structured
+(such as those that are critical to function in enzymes and
+antibodies) as well as unstructured on the stability of the protein
+scaﬀold. To highlight the decrease in computational time
+aﬀorded by eliminating the full-atom stage, we generated 3000
+full-atom models of the LAP sequence inserted between residues
+13 and 14 of lipA and compared the results to a native loop in
+lipA (residues 7−19) that we remodeled. Even upon generation
+of 3000 full-atom models, the LAP sequence failed to converge
+
+3995
+
+https://dx.doi.org/10.1021/acs.biochem.0c00533
+Biochemistry 2020, 59, 3993−4002
+
+Biochemistry
+
+pubs.acs.org/biochemistry
+
+Article
+
+Figure 1. Overview of the Rosetta loop modeling approach. (a) Schematic of the process for scoring every possible insertion site within a protein
+scaﬀold. (b) Distribution of Rosetta energy scores for all possible LAP insertion sites in lipA. Bars are colored according to score from yellow, which
+represents sites with more negative energy scores, to dark purple, which represents sites with less negative energy scores. A representative 95%
+conﬁdence interval (CI) for 10 models produced at a single LAP insertion site is shown in the top left corner. The large distribution of scores for all
+insertion sites relative to this representative CI indicates that scores can be used to reproducibly diﬀerentiate between diﬀerent insertion sites within a
+single structure. (c) Projection of Rosetta energy scores on the structure of lipA. Residues are colored using the same coloring scheme as in panel b.
+Sites that are colored gray correspond to those for which Rosetta energy scores could not be determined.
+
+on a single conformational state as generally occurs when
+generating thousands of models of a structured loop (Figure S1),
+suggesting that the number of full-atom models required for
+convergence would be much larger. As such, convergence of the
+LAP sequence becomes intractable computationally if the goal is
+to scan a large number of potential insertion sites as was the case
+here. Additionally, while it would be computationally expensive
+to reach convergence for all of the loops in lipA, some loops may
+have more than one local free energy minimum, as observed with
+the native (i.e., control) loop, which in turn would further
+complicate the characterization of loop insertion sites with full-
+atom modeling.
+
+Having eliminated the full-atom modeling stage, we explored
+the potential to further decrease the computational time by
+characterizing loop insertion sites with average Rosetta scores
+obtained from a small number of models. To do so, we
+compared average Rosetta scores from 10 centroid models to
+those obtained from 2500 centroid models for LAP insertions at
+sites 13, 53, and 108 (note that the site number refers to the
+residue at which the LAP sequence is inserted immediately after;
+e.g., site 13 refers to the insertion of the LAP sequence between
+residues 13 and 14). These sites were chosen given that they
+represented sites with a low, medium, and high average Rosetta
+score from the initial 10 centroid models. As shown in Table S1,
+the average Rosetta scores from samples of 2500 centroid
+models for all three sites were within 95% conﬁdence intervals
+calculated from only 10 centroid models. As such, this supports
+the use of the mean of only 10 models for the characterization of
+individual
+insertion sites. Given this, hereafter, all scores
+represent the mean calculated from 10 centroid models and
+are in terms of Rosetta energy units (REU).
+
+Upon omission of the full-atom stage of the loop modeling
+protocol and generation of only 10 models per loop insertion
+site, it was feasible to rapidly scan all possible insertion sites in a
+protein scaﬀold without a computing cluster or supercomputer.
+
+The feasibility of this was demonstrated by modeling the LAP
+sequence in every position in lipA as illustrated schematically in
+Figure 1a. Initially, input sequence ﬁles for all 178 possible
+insertion sites were created using the sequence associated with
+the crystal structure of lipA in the PDB (entry 1ISP). After the
+sequence ﬁles had been created, 10 centroid models were
+generated for each site, yielding an average Rosetta energy score
+and 95% conﬁdence interval. Notably, although modeling was
+performed at all 178 sites, scores were obtained only for sites on
+the surface of
+lipA where there was suﬃcient space to
+accommodate the LAP sequence (i.e., without sterically clashing
+with neighboring residues). In total, we obtained successful
+models for 86 unique insertion sites, which had a broad
+distribution of scores (Figure 1b). Given the range of this
+distribution relative to typical 95% conﬁdence intervals obtained
+for individual insertion sites, the predicted scores suggested that
+the extent to which sites were permissive varied signiﬁcantly and
+that this variation could be reproducibly captured by our
+modeling approach. Interestingly, mapping scores for each site
+onto the structure of lipA revealed that many sites that were
+predicted to be permissive to LAP insertion were unintuitive
+(Figure 1c). For example, several sites that were predicted to be
+permissive (i.e., had large negative scores) were located in
+regions with helical secondary structure. Moreover, many sites
+that were predicted to be nonpermissive (i.e., had small negative
+scores) were in regions with irregular secondary structure that
+would seemingly be permissive.
+
+Validation of Model Predictions for LAP Insertion
+Sites. To validate the modeling approach, the Rosetta score for
+35 LAP-containing lipA constructs was compared to the amount
+of soluble protein expressed for each construct in E. coli. We
+hypothesized that soluble expression (Figure 2a) would
+correlate with Rosetta score because constructs with small
+negative scores would presumably be unstable and thus
+aggregation-prone, whereas constructs with large negative
+
+3996
+
+https://dx.doi.org/10.1021/acs.biochem.0c00533
+Biochemistry 2020, 59, 3993−4002
+
+Biochemistry
+
+pubs.acs.org/biochemistry
+
+Article
+
+Figure 2. Analysis and validation of Rosetta energy scores from a structural scan of lipA. (a) In-gel SDS−PAGE ﬂuorescent image of the soluble
+fraction of each LAP-containing lipA construct. (b) Correlation of the level of relative soluble expression with [D]50 from guanidinium chloride
+denaturation (left), fraction random coil (middle), and speciﬁc activity (right) of three LAP−lipA constructs with LAP insertions at sites 41, 47, and
+52. Relative soluble expression refers to the ratio of the soluble expression of each LAP-containing lipA construct to that of wild-type lipA. [D]50 and the
+fraction random coil were quantiﬁed via circular dichroism. (c) Correlation of the soluble expression of LAP-containing lipA constructs and Rosetta
+energy scores. (d) Analysis of the soluble expression of LAP-containing lipA constructs as a function of the B-factor insertion site. (e) Soluble
+expression and Rosetta energy scores ordered by insertion site within the primary sequence of lipA. (f) Location of LAP insertion sites (shown as
+spheres) in speciﬁc regions of lipA. The color of the spheres, which is indicative of score, is consistent with the color for each site in panels c and e.
+
+scores would presumably be stable and thus soluble when
+expressed. Indeed, constructs that were poorly expressed in the
+soluble fraction were observed in the insoluble fraction (Figure
+S2), suggesting that stability, rather than translational eﬃciency,
+strongly contributed to the apparent extent of soluble
+expression. Additionally, such a dependence of soluble
+expression on stability was shown for three puriﬁed LAP-
+containing lipA constructs (with LAP insertions at sites 41, 47,
+and 52), which had varying levels of soluble expression (Figure
+2b, left panel, and Figure S3a). As further evidence of this
+dependence, soluble expression was also found to correlate with
+the retention of secondary structure and speciﬁc activity for
+these constructs (Figure 2b, middle and right panels, and Figure
+S3b).
+
+Remarkably, upon comparison of soluble expression for all 35
+constructs to Rosetta scores, a strong correlation was observed
+(Figure 2c). Speciﬁcally, seven of the nine lowest-scoring
+constructs from the library were found to express in the soluble
+fraction. Moreover, of these seven, the level of soluble expression
+for ﬁve of them exceeded 50% of the expression of wild-type lipA
+(i.e., the level of soluble expression relative to wild-type lipA was
+>0.5). Conversely, of the constructs with the 26 highest scores,
+
+only six of them expressed in the soluble fraction at an
+appreciable level, and the levels of soluble expression for these
+constructs tended to be quite low with none exceeding 50% of
+wild-type expression levels. While the extent to which a site was
+permissive could not be inferred from the absolute Rosetta
+score, these data indicate that this approach was useful for
+identifying sites that were likely to be more permissive than
+others. Interestingly, Rosetta scores were found to be more
+predictive of LAP accommodation than local B-factors, which
+did not appear to correlate with soluble expression (Figure 2d).
+Rather, of the sites tested, accommodation of the LAP sequence
+tended to correlate with lower B-factors. Speciﬁcally, 92% of
+constructs with measurable soluble expression were found
+within the lower 69th percentile of B-factor measurements for all
+constructs that were characterized. This observation was
+particularly interesting given it has previously been shown that
+single-point mutations are generally less destabilizing in regions
+with larger relative B-factors.38
+
+Upon analysis of the Rosetta score and soluble expression as a
+function of residue number (Figure 2e), the ability of Rosetta to
+capture diﬀerences between neighboring sites became further
+apparent. This was particularly apparent in comparing the
+
+3997
+
+https://dx.doi.org/10.1021/acs.biochem.0c00533
+Biochemistry 2020, 59, 3993−4002
+
+Biochemistry
+
+pubs.acs.org/biochemistry
+
+Article
+
+Figure 3. Analysis and validation of Rosetta energy scores from a structural scan of β-glucosidase. (a) Projection of Rosetta energy scores on the
+structure of β-glucosidase using the same color scheme as in previous ﬁgures. (b) Soluble expression vs Rosetta energy score for select LAP-containing
+β-glucosidase constructs. (c) Soluble expression vs LAP insertion site B-factor. (d) Soluble protein expression and Rosetta energy scores for each LAP-
+containing β-glucosidase construct ordered by insertion site in the primary sequence of β-glucosidase. (e) Location of LAP insertion sites (shown as
+spheres) in speciﬁc regions of β-glucosidase, which are colored according to their scores.
+
+Rosetta scores for lipA constructs containing LAP insertions at
+sites 41 and 43. Despite being nearly adjacent and within the
+same loop (Figure 2f), these sites had very diﬀerent Rosetta
+scores, which was consistent with the large diﬀerence in soluble
+expression. Notably, through this approach, we identiﬁed several
+sites in addition to site 43, including 67, 116, 119, and 121, that
+were in loop regions and nonpermissive. Given that loop regions
+are generally presumed to be permissive to mutation, this
+highlights the diﬃculty in predicting sites that can accommodate
+loop insertions as well as the need for approaches such as that
+demonstrated here. As further evidence of this need, several sites
+that interrupted helices, including 17, 47−49, and 108, were
+both predicted and conﬁrmed to be permissive. Such sites were
+similarly unintuitive on the basis of secondary structure given
+that sites within ordered regions are generally presumed to be
+nonpermissive to mutation. Interestingly, although several false
+positives (i.e., sites with large negative scores but low levels of
+soluble expression) were observed, virtually all of the false
+positives were localized to the C-terminal end of the protein (i.e.,
+residues 133−167). A possible explanation for this is that the
+insertion of the LAP sequence in this region interferes with an
+
+aspect of nascent lipA folding in a way that is not captured by this
+modeling approach.39
+
+To also show that this approach could be extended to other
+proteins, we scanned the structure of β-glucosidase for
+permissive LAP insertion sites using our computational
+approach (Figure 3a). As with lipA, a correlation between
+soluble expression and Rosetta energy score was observed,
+whereby, in general, constructs with lower scores were more
+likely to yield soluble protein (Figure 3b). Additionally, like for
+lipA, the correlation between soluble expression and Rosetta
+energy score was more apparent than that between soluble
+expression and the B-factor (Figure 3c). In the case of the B-
+factor, it is interesting that the constructs that expressed to an
+appreciable level have intermediate B-factors and, moreover, are
+clustered within a very narrow range of B-factors. This may be
+explained by the observation that the sites that were permissive
+to LAP insertion were located on the same face of the enzyme
+where the ﬂexibility in the backbone is similar. It is also
+noteworthy that most of the constructs tested did not yield any
+soluble protein, suggesting β-glucosidase has a low tolerance to
+the insertion of LAP overall. Nevertheless, as for lipA, the
+
+3998
+
+https://dx.doi.org/10.1021/acs.biochem.0c00533
+Biochemistry 2020, 59, 3993−4002
+
+Biochemistry
+
+pubs.acs.org/biochemistry
+
+Article
+
+Figure 4. Impact of the local residue environment in lipA on LAP accommodation. (a) Correlation between the sum of the env and pair terms with
+total scores for all LAP-containing lipA constructs expressed (left) as well as for LAP sequence in the absence of lipA (right). (b) Overlay of three
+individual models of the LAP sequence (blue) inserted at site 43 in lipA showing notable residues (D43, K44, and T47) in the near-loop environment.
+(c) Rosetta energy scores for residues in the near-loop environment (gray) as well as in the LAP sequence (blue). (d−f) Impact of in silico mutagenesis
+of K44, D43, and T47 on the Rosetta energy scores for the lipA construct with the LAP sequence inserted at site 43 (left). Also shown is the correlation
+between the Rosetta energy score and soluble expression for select mutants (right). Rosetta scores for expressed mutants are colored gray in the left
+panel.
+
+Rosetta energy scores were especially predictive locally within
+particular regions of the protein (Figure 3d). Furthermore, site
+175 in β-glucosidase, which interrupted a helix, was both
+predicted and found to be permissive in β-glucosidase,
+reinforcing the notion that Rosetta scores can predict permissive
+sites that are unintuitive based on secondary structure.
+
+Structural Determinants of LAP Accommodation. In
+light of some of the predictions being unintuitive, it is interesting
+to consider what features of these sites were captured in the
+modeling approach that otherwise would be missed. This
+question was addressed by deconvoluting the individual
+components of Rosetta’s centroid energy function and
+examining the impact of each component on the overall score
+(Figure S4 and Table S2). Strikingly, analysis of the contribution
+of each component of the scoring function revealed that
+diﬀerences in total scores for the LAP-containing lipA constructs
+could be recapitulated by the summation of only two terms, env
+and pair (Figure 4a, left panel). The env and pair terms reﬂect
+the hydrophobic and electrostatic environments for each
+residue, respectively, and,
+the
+environment for a given residue. In the case of LAP insertion,
+the presence of the loop may alter the environment for residues
+around the insertion site (i.e., in the near-loop environment),
+which locally destabilize the protein scaﬀold.
+
+the favorability of
+
+in turn,
+
+The dominance of the env and pair terms indicates that
+diﬀerences in total scores observed between insertion sites
+resulted from diﬀerent residue environments that were created
+
+upon loop insertion. To illustrate the role of the env and pair
+terms in capturing diﬀerences in the residue environment
+proximal to the insertion site, the LAP sequence was rescored in
+the absence of the enzyme scaﬀold. In this case, the LAP
+sequence was removed from the enzyme scaﬀold at select sites
+and the score of the loop was determined in isolation. As
+expected, when scored in isolation, the summation of the env
+and pair terms no longer correlated with the total score from the
+Rosetta centroid modeling approach (Figure 4a, right panel). In
+broader terms, our results from this analysis underscore the
+importance of residue environment over more conventional
+structural features, including secondary structure, Ramachan-
+dran constraints, B-factor, and residue and/or atom packing.
+Although these factors were clearly less important than the
+residue environment for modeling LAP insertion sites, such
+factors may play a more signiﬁcant role in identifying permissive
+sites for loops that have more deﬁned secondary structure. It is
+also plausible that some loops may form noncovalent
+interactions (i.e., H-bonds or salt bridges) with residues
+proximal to the insertion site that stabilize the loop and/or
+protein scaﬀold. In these cases, other approaches, including full-
+atom modeling, may be critical for predicting the extent to which
+a site is permissive.
+
+Given the importance of residues in the near-loop environ-
+ment for determining accommodation, we hypothesized that
+this understanding could be used to rationally engineer sites that
+were nominally nonpermissive to be amenable to LAP insertion.
+
+3999
+
+https://dx.doi.org/10.1021/acs.biochem.0c00533
+Biochemistry 2020, 59, 3993−4002
+
+Biochemistry
+
+pubs.acs.org/biochemistry
+
+Article
+
+Speciﬁcally, this may be achieved by mutating residues around
+the insertion site that are destabilized by the LAP sequence, and
+eﬀectively replacing these residues with a diﬀerent residue on
+which the insertion of the LAP sequence has less of a detrimental
+impact. To test this hypothesis, we examined the impact of LAP
+insertion at site 43 in lipA on the REU for residues adjacent (i.e.,
+within approximately 8−10 Å) to the loop (Figure 4b). On the
+basis of analysis of the change in Rosetta score (i.e., ΔScore) for
+each residue upon LAP insertion (compared to that in the
+absence of the LAP sequence), K44, D43, and T47 were
+destabilized the most of the residues near the insertion site that
+were solvent-exposed (Figure 4c). Through in silico saturation
+mutagenesis, we subsequently investigated the residue prefer-
+ence at each of these sites by calculating ΔScore for all plausible
+amino acid substitutions excluding proline (Figure 4d−f, left
+panel). Interestingly, diﬀerent chemical preferences were
+predicted at diﬀerent residue positions, with hydrophobic
+residues being preferred at sites 44 and 47, and polar residues
+being preferred at site 43. Experimental characterization of select
+mutants from each site showed a strong correlation between
+soluble protein expression and ΔScore. Signiﬁcantly, Rosetta
+scores correctly predicted both increases and decreases in the
+extent to which the sites were permissive to LAP insertion.
+Taken together, these data illustrate that, using our modeling
+approach, loop insertion sites may be “re-designed” to both
+modulate and improve loop accommodation.
+
+Characterization of LAP Insertion Sites in PTEN for
+Intracellular Labeling. An intriguing application of
+this
+approach is the ﬂuorescent labeling of proteins intracellularly
+(e.g., for monitoring protein traﬃcking) that cannot be labeled
+at their termini. In such cases, our approach to identifying
+nonterminal sites that are permissive to the LAP sequence may
+be used to introduce the loop motif, which can subsequently be
+labeled with a ﬂuorescent tag through the activity of LplA. An
+example of such a case in which it is of considerable interest to
+monitor protein traﬃcking involves the tumor suppressor
+protein, PTEN. Notably, the localization of PTEN is believed
+to involve an N-terminal membrane binding domain as well as a
+C-terminal PDZ binding domain, which interacts with a
+membrane-associated protein complex.40 Given the physio-
+logical importance of the N- and C-terminal domains of PTEN,
+the labeling of these domains may disrupt traﬃcking of PTEN,
+thereby resulting in the accumulation of PTEN in non-native
+cellular locations. As a proof of concept for this application, we
+used our approach to identify potential labeling sites within
+PTEN (Figure S5a). Notably, when we expressed LAP-
+containing PTEN constructs that were predicted to be stable
+in E. coli, we found that almost all of them expressed at >50% of
+wild-type PTEN levels at 37 °C, and all expressed at >50% of
+wild-type levels at lower induction temperatures (Figure S5b).
+■ DISCUSSION
+
+The ability to correctly identify permissive loop insertion sites
+within the structure of a protein scaﬀold has the potential to
+accelerate the design and application of chimeric molecules with
+unique and useful properties. Toward this end, we have adapted
+the kinematic loop modeling application within the Rosetta
+framework to rapidly identify permissive loop insertion sites in
+proteins. Our approach, which ranks each site by taking the
+average of a small sample of centroid models, uses Rosetta scores
+to infer the impact of loop insertions on protein stability without
+explicitly modeling the structure of the scaﬀold. As a result,
+scanning a protein scaﬀold using this approach is computation-
+
+ally inexpensive and thus readily feasible without
+computing resources.
+
+large
+
+With our approach, permissive insertion sites were identiﬁed
+in lipA and β-glucosidase that were highly unintuitive based on
+secondary structure and local B-factor measurements. The
+ability to identify these sites a priori was derived from the large
+contribution that residues in the near-loop environment made
+within the centroid energy function and highlights the
+underappreciated role that local residues play in determining
+the permissiveness of a loop insertion site. The importance of
+these residues was conﬁrmed by mutagenesis (in silico and
+experimental), which also demonstrated the utility of our
+approach for redesigning insertion sites to improve loop
+accommodation. Additionally,
+that near-loop
+residues have on predictions from our approach explains why
+correlations were stronger when considered locally within
+certain regions.
+
+the impact
+
+The success of our approach in comparison to other widely
+used metrics for predicting mutational plasticity, such as B-
+factor, is particularly striking. While it is generally intuitive to
+identify sites that can accommodate single-residue insertions,
+deletions, and mutations based on backbone B-factors, this is not
+the case with larger loop insertions as our ﬁndings show.
+Speciﬁcally, whereas single-residue insertions, deletions, and
+mutations are generally accommodated at highly ﬂexible sites
+with high B-factors, our results indicate that the extent to which a
+site accommodates the insertion of a large loop in fact does not
+correlate strongly with the B-factor. It is possible that this
+diﬀerence in the predictive capability of B-factors reﬂects a
+regime change that occurs as loop insertions become larger.
+While single-residue insertions are generally accommodated and
+are less deleterious to protein stability at ﬂexible sites, in our
+work, we ﬁnd that large loops are rarely accommodated, and
+accommodation depends less on site ﬂexibility and more on the
+residue compatibility in the near-loop environment. One
+possible explanation for this is the fact that small amounts of
+ﬂexibility as inferred from B-factors are suﬃcient to counteract
+small structural perturbations associated with single-residue
+changes, but that compatibility of the greater residue environ-
+ment is more important when larger changes such as loop
+insertions are made.
+
+Although regions with high B-factors are intuitive targets for
+protein engineering given trends observed with mutational
+plasticity, any attempt to use B-factors to predict engineerable
+sites in proteins is complicated by the potential impact that
+crystal contacts, structural resolution, and reﬁnement may have
+on B-factor values.41 Our results with B-factor trends, therefore,
+do not rule out the possibility that other aspects of structural
+intuition may be used in conjunction with our Rosetta approach
+to further streamline the identiﬁcation of permissive LAP
+insertion sites. For example, although numerous instances of
+LAP accommodation within α-helices were observed, which are
+themselves unintuitive, these sites tended to reside near helix
+termini (within one or two turns of the helix). We did not ﬁnd
+the accommodation of sites deep within α-helices in any of the
+proteins that we studied. Likewise, we did not identify any stable
+LAP insertion sites that interrupted β-strands. These observa-
+tions are consistent with structural intuition, and it is possible
+that they may be useful in making educated decisions that
+streamline our approach. In particular, one might imagine
+feeding input structures through an initial algorithm that quickly
+removed insertion sites from consideration whenever those sites
+occurred within α-helices at positions that are far from the helix
+
+4000
+
+https://dx.doi.org/10.1021/acs.biochem.0c00533
+Biochemistry 2020, 59, 3993−4002
+
+Biochemistry
+
+pubs.acs.org/biochemistry
+
+Article
+
+termini, within β-strands, or buried deeply in the interior of the
+protein. Such a ﬁltering step based on intuition and supported by
+observations in this work would further decrease the computa-
+tional
+time associated with identifying accommodation of
+insertion sites without sacriﬁcing much in the way of
+overlooking accommodating sites.
+
+As shown with lipA, β-glucosidase, and PTEN, our approach
+serves as a general, simple, and rapid platform for identifying and
+rationally redesigning loop insertion sites in target scaﬀolds.
+This approach is particularly useful for guiding the design of
+loop-containing protein libraries with high probabilities of
+soluble expression in the context of engineering protein
+function. The rational design of such libraries,
+for which
+methods are currently lacking, will ultimately have broad
+implications in many areas of protein engineering, including
+antibody design,
+improving enzyme activity, and protein
+modiﬁcation.
+
+■ ASSOCIATED CONTENT
+*sı Supporting Information
+The Supporting Information is available free of charge at
+https://pubs.acs.org/doi/10.1021/acs.biochem.0c00533.
+
+Detailed description of Rosetta protocols,
+full-atom
+modeling of LAP sequence, SDS−PAGE gel of the
+insoluble fraction of LAP−lipA constructs, CD analysis of
+LAP−lipA constructs with and without chemical
+denaturation, correlation of total Rosetta centroid energy
+score with individual terms in energy function, Rosetta
+prediction and characterization of LAP−PTEN con-
+structs, statistical analysis of the diﬀerence in the Rosetta
+centroid energy score for 2500 and 10 models, and
+statistical analysis of the correlation between the Rosetta
+centroid energy score and terms in energy function
+(PDF)
+
+Accession Codes
+Lipoic acid ligase (LplA), UniProtKB P32099; B. subtilis lipase A
+(lipA), UniProtKB P37957; T. reesei β-glucosidase, UniProtKB
+A0A090ASX1; human phosphatase and tensin homologue
+(PTEN), UniProtKB P60484.
+
+■ AUTHOR INFORMATION
+Joel L. Kaar − Department of Chemical and Biological
+
+Corresponding Author
+
+Engineering, University of Colorado, Boulder, Boulder, Colorado
+80309, United States;
+orcid.org/0000-0002-0794-3955;
+Phone: (303) 492-6031; Email: joel.kaar@colorado.edu;
+Fax: (303) 492-4341
+
+Authors
+
+Joseph G. Plaks − Department of Chemical and Biological
+
+Engineering, University of Colorado, Boulder, Boulder, Colorado
+80309, United States
+
+Jeﬀ A. Brewer − Department of Chemical and Biological
+
+Engineering, University of Colorado, Boulder, Boulder, Colorado
+80309, United States
+Nicole K. Jacobsen − Department of Chemical and Biological
+Engineering, University of Colorado, Boulder, Boulder, Colorado
+80309, United States
+
+Michael McKenna − Department of Chemical and Biological
+
+Engineering, University of Colorado, Boulder, Boulder, Colorado
+80309, United States
+
+Joshua R. Uzarski − U.S. Army Combat Capabilities
+
+Development Command Soldier Center, Natick, Massachusetts
+01760, United States;
+
+orcid.org/0000-0002-5971-1670
+
+Timothy J. Lawton − U.S. Army Combat Capabilities
+
+Development Command Soldier Center, Natick, Massachusetts
+01760, United States
+
+Shaun F. Filocamo − U.S. Army Combat Capabilities
+
+Development Command Soldier Center, Natick, Massachusetts
+01760, United States
+
+Complete contact information is available at:
+https://pubs.acs.org/10.1021/acs.biochem.0c00533
+
+Funding
+Funding for this work was provided by the U.S. Army Combat
+Capabilities Development Command (CCDC) Soldier Center
+and the U.S. Army Research Oﬃce through Grant W911NF-15-
+1-0141.
+Notes
+The authors declare no competing ﬁnancial interest.
+
+■ ACKNOWLEDGMENTS
+
+This work utilized the Janus supercomputer, which is supported
+by the National Science Foundation (Grant CNS-0821794), the
+University of Colorado, Boulder, the University of Colorado,
+Denver, and the National Center for Atmospheric Research.
+The authors kindly thank Deanne Sammond for advice,
+encouragement, and helpful discussion.
+
+■ REFERENCES
+
+(1) Rini, J. M., Schulze-Gahmen, U., and Wilson, I. A. (1992)
+Structural evidence for induced fit as a mechanism for antibody-antigen
+recognition. Science 255, 959−965.
+(2) Ramasubbu, N., Ragunath, C., and Mishra, P. J. (2003) Probing
+the Role of a Mobile Loop in Substrate Binding and Enzyme Activity of
+Human Salivary Amylase. J. Mol. Biol. 325, 1061−1076.
+(3) Saraste, M., Sibbald, P. R., and Wittinghofer, A. (1990) The P-loop
+ a common motif in ATP- and GTP-binding proteins. Trends
+Biochem. Sci. 15, 430−434.
+(4) Adams, J. A. (2003) Activation Loop Phosphorylation and
+Catalysis in Protein Kinases: Is There Functional Evidence for the
+Autoinhibitor Model? Biochemistry 42, 601−607.
+(5) Boersma, Y. L., Pijning, T., Bosma, M. S., van der Sloot, A. M.,
+Godinho, L. F., Dröge, M. J., Winter, R. T., van Pouderoyen, G.,
+Dijkstra, B. W., and Quax, W. J. (2008) Loop Grafting of Bacillus
+subtilis Lipase A: Inversion of Enantioselectivity. Chem. Biol. 15, 782−
+789.
+(6) Liu, X., Taylor, R. D., Griffin, L., Coker, S.-F., Adams, R., Ceska, T.,
+Shi, J., Lawson, A. D. G., and Baker, T. (2017) Computational design of
+an epitope-specific Keap1 binding antibody using hotspot residues
+grafting and CDR loop swapping. Sci. Rep. 7, 41306.
+(7) Tawfik, D. S. (2006) Loop Grafting and the Origins of Enzyme
+Species. Science 311, 475−476.
+(8) Park, H.-S., Nam, S.-H., Lee, J. K., Yoon, C. N., Mannervik, B.,
+Benkovic, S. J., and Kim, H.-S. (2006) Design and Evolution of New
+Catalytic Activity with an Existing Protein Scaffold. Science 311, 535−
+538.
+(9) Binz, H. K., Amstutz, P., and Pluckthun, A. (2005) Engineering
+novel binding proteins from nonimmunoglobulin domains. Nat.
+Biotechnol. 23, 1257−1268.
+(10) Kiss, C., Fisher, H., Pesavento, E., Dai, M., Valero, R., Ovecka, M.,
+Nolan, R., Phipps, M. L., Velappan, N., Chasteen, L., Martinez, J. S.,
+Waldo, G. S., Pavlik, P., and Bradbury, A. R. M. (2006) Antibody
+binding loop insertions as diversity elements. Nucleic Acids Res. 34,
+e132.
+
+4001
+
+https://dx.doi.org/10.1021/acs.biochem.0c00533
+Biochemistry 2020, 59, 3993−4002
+
+Biochemistry
+
+pubs.acs.org/biochemistry
+
+Article
+
+(11) Plaks, J. G., and Kaar, J. L. (2019) in Lipoic Acid Ligase-Promoted
+Bioorthogonal Protein Modiﬁcation and Immobilization BT - Enzyme-
+Mediated Ligation Methods (Nuijens, T., and Schmidt, M., Eds.) pp
+279−297, Springer New York, New York.
+(12) Batori, V., Koide, A., and Koide, S. (2002) Exploring the potential
+of the monobody scaffold: effects of loop elongation on the stability of a
+fibronectin type III domain. Protein Eng., Des. Sel. 15, 1015−1020.
+(13) Nagi, A. D., and Regan, L. (1997) An inverse correlation between
+loop length and stability in a four-helix-bundle protein. Folding Des. 2,
+67−75.
+(14) Wang, L., Rivera, E. V., Benavides-Garcia, M. G., and Nall, B. T.
+(2005) Loop Entropy and Cytochrome c Stability. J. Mol. Biol. 353,
+719−729.
+(15) Azoitei, M. L., Correia, B. E., Ban, Y.-E. A., Carrico, C.,
+Kalyuzhniy, O., Chen, L., Schroeter, A., Huang, P.-S., McLellan, J. S.,
+Kwong, P. D., Baker, D., Strong, R. K., and Schief, W. R. (2011)
+Computation-Guided Backbone Grafting of a Discontinuous Motif
+onto a Protein Scaffold. Science 334, 373−376.
+(16) Weitzner, B. D., Jeliazkov, J. R., Lyskov, S., Marze, N., Kuroda, D.,
+Frick, R., Adolf-Bryfogle, J., Biswas, N., Dunbrack, R. L., and Gray, J. J.
+(2017) Modeling and docking of antibody structures with Rosetta. Nat.
+Protoc. 12, 401−416.
+(17) Weitzner, B. D., Kuroda, D., Marze, N., Xu, J., and Gray, J. J.
+(2014) Blind prediction performance of RosettaAntibody 3.0: Grafting,
+relaxation, kinematic loop modeling, and full CDR optimization.
+Proteins: Struct., Funct., Genet. 82, 1611−1623.
+(18) Azoitei, M. L., Ban, Y.-E. A., Julien, J.-P., Bryson, S., Schroeter, A.,
+Kalyuzhniy, O., Porter, J. R., Adachi, Y., Baker, D., Pai, E. F., and Schief,
+W. R. (2012) Computational Design of High-Affinity Epitope Scaffolds
+by Backbone Grafting of a Linear Epitope. J. Mol. Biol. 415, 175−192.
+(19) Siegel, J. B., Zanghellini, A., Lovick, H. M., Kiss, G., Lambert, A.
+R., St. Clair, J. L., Gallaher, J. L., Hilvert, D., Gelb, M. H., Stoddard, B. L.,
+Houk, K. N., Michael, F. E., and Baker, D. (2010) Computational
+Design of an Enzyme Catalyst for a Stereoselective Bimolecular Diels-
+Alder Reaction. Science 329, 309−313.
+(20) Röthlisberger, D., Khersonsky, O., Wollacott, A. M., Jiang, L.,
+DeChancie, J., Betker, J., Gallaher, J. L., Althoff, E. A., Zanghellini, A.,
+Dym, O., Albeck, S., Houk, K. N., Tawfik, D. S., and Baker, D. (2008)
+Kemp elimination catalysts by computational enzyme design. Nature
+453, 190−195.
+(21) Bhardwaj, G., Mulligan, V. K., Bahl, C. D., Gilmore, J. M., Harvey,
+P. J., Cheneval, O., Buchko, G. W., Pulavarti, S. V. S. R. K., Kaas, Q.,
+Eletsky, A., Huang, P.-S., Johnsen, W. A., Greisen, P. J., Rocklin, G. J.,
+Song, Y., Linsky, T. W., Watkins, A., Rettie, S. A., Xu, X., Carter, L. P.,
+Bonneau, R., Olson, J. M., Coutsias, E., Correnti, C. E., Szyperski, T.,
+Craik, D. J., and Baker, D. (2016) Accurate de novo design of
+hyperstable constrained peptides. Nature 538, 329−335.
+(22) Chevalier, A., Silva, D.-A., Rocklin, G. J., Hicks, D. R., Vergara, R.,
+Murapa, P., Bernard, S. M., Zhang, L., Lam, K.-H., Yao, G., Bahl, C. D.,
+Miyashita, S.-I., Goreshnik, I., Fuller, J. T., Koday, M. T., Jenkins, C. M.,
+Colvin, T., Carter, L., Bohn, A., Bryan, C. M., Fernández-Velasco, D. A.,
+Stewart, L., Dong, M., Huang, X., Jin, R., Wilson, I. A., Fuller, D. H., and
+Baker, D. (2017) Massively parallel de novo protein design for targeted
+therapeutics. Nature 550, 74−79.
+(23) King, N. P., Bale, J. B., Sheffler, W., McNamara, D. E., Gonen, S.,
+Gonen, T., Yeates, T. O., and Baker, D. (2014) Accurate design of co-
+assembling multi-component protein nanomaterials. Nature 510, 103−
+108.
+(24) Combs, S. A., DeLuca, S. L., DeLuca, S. H., Lemmon, G. H.,
+Nannemann, D. P., Nguyen, E. D., Willis, J. R., Sheehan, J. H., and
+Meiler, J. (2013) Small-molecule ligand docking into comparative
+models with Rosetta. Nat. Protoc. 8, 1277−1298.
+(25) Mandell, D. J., Coutsias, E. A., and Kortemme, T. (2009) Sub-
+angstrom accuracy in protein loop reconstruction by robotics-inspired
+conformational sampling. Nat. Methods 6, 551−552.
+(26) Puthenveetil, S., Liu, D. S., White, K. A., Thompson, S., and Ting,
+A. Y. (2009) Yeast display evolution of a kinetically efficient 13-amino
+acid substrate for lipoic acid ligase. J. Am. Chem. Soc. 131, 16430−
+16438.
+
+(27) Liu, D. S., Nivon, L. G., Richter, F., Goldman, P. J., Deerinck, T.
+J., Yao, J. Z., Richardson, D., Phipps, W. S., Ye, A. Z., Ellisman, M. H.,
+Drennan, C. L., Baker, D., and Ting, A. Y. (2014) Computational design
+of a red fluorophore ligase for site-specific protein labeling in living cells.
+Proc. Natl. Acad. Sci. U. S. A. 111, E4551−E4559.
+(28) Uttamapinant, C., Sanchez, M. I, Liu, D. S, Yao, J. Z, White, K. A,
+Grecian, S., Clark, S., Gee, K. R, and Ting, A. Y (2013) Site-specific
+protein labeling using PRIME and chelation-assisted click chemistry.
+Nat. Protoc. 8, 1620−1634.
+(29) Yao, J. Z., Uttamapinant, C., Poloukhtine, A., Baskin, J. M.,
+Codelli, J. A., Sletten, E. M., Bertozzi, C. R., Popik, V. V., and Ting, A. Y.
+(2012) Fluorophore targeting to cellular proteins via enzyme-mediated
+azide ligation and strain-promoted cycloaddition. J. Am. Chem. Soc. 134,
+3720−3728.
+(30) Plaks, J. G., Falatach, R., Kastantin, M., Berberich, J. A., and Kaar,
+J. L. (2015) Multisite clickable modification of proteins using lipoic acid
+ligase. Bioconjugate Chem. 26, 1104−1112.
+(31) Larkin, M. A., Blackshields, G., Brown, N. P., Chenna, R.,
+McGettigan, P. A., McWilliam, H., Valentin, F., Wallace, I. M., Wilm, A.,
+Lopez, R., Thompson, J. D., Gibson, T. J., and Higgins, D. G. (2007)
+Clustal W and Clustal X version 2.0. Bioinformatics 23, 2947−2948.
+(32) Nordwald, E. M., Plaks, J. G., Snell, J. R., Sousa, M. C., and Kaar, J.
+L. (2015) Crystallographic Investigation of Imidazolium Ionic Liquid
+Effects on Enzyme Structure. ChemBioChem 16, 2456−2459.
+(33) Das, S., Dixon, J. E., and Cho, W. (2003) Membrane-binding and
+activation mechanism of PTEN. Proc. Natl. Acad. Sci. U. S. A. 100,
+7491−7496.
+(34) Schneider, C. A., Rasband, W. S., and Eliceiri, K. W. (2012) NIH
+Image to ImageJ: 25 years of image analysis. Nat. Methods 9, 671−675.
+(35) Wilkins, M. R., Gasteiger, E., Bairoch, A., Sanchez, J. C., Williams,
+K. L., Appel, R. D., and Hochstrasser, D. F. (1998) Protein
+identification and analysis tools in the ExPASy server. Methods Mol.
+Biol. 112, 531−552.
+(36) Raussens, V., Ruysschaert, J.-M., and Goormaghtigh, E. (2003)
+Protein concentration is not an absolute prerequisite for the
+determination of secondary structure from circular dichroism spectra:
+a new scaling method. Anal. Biochem. 319, 114−121.
+(37) Stein, A., and Kortemme, T. (2013) Improvements to robotics-
+inspired conformational sampling in rosetta. PLoS One 8, e63090.
+(38) Vetter, I. R., Baase, W. A., Heinz, D. W., Xiong, J. P., Snow, S., and
+Matthews, B. W. (1996) Protein structural plasticity exemplified by
+insertion and deletion mutants in T4 lysozyme. Protein Sci. 5, 2399−
+2415.
+(39) Gonzalez, C. E., Roberts, P., and Ostermeier, M. (2019) Fitness
+Effects of Single Amino Acid Insertions and Deletions in TEM-1 β-
+Lactamase. J. Mol. Biol. 431, 2320−2330.
+(40) Song, M. S., Salmena, L., and Pandolfi, P. P. (2012) The
+functions and regulation of the PTEN tumour suppressor. Nat. Rev.
+Mol. Cell Biol. 13, 283−296.
+(41) Sun, Z., Liu, Q., Qu, G., Feng, Y., and Reetz, M. T. (2019) Utility
+of B-Factors in Protein Science: Interpreting Rigidity, Flexibility, and
+Internal Motion and Engineering Thermostability. Chem. Rev. 119,
+1626−1665.
+
+4002
+
+https://dx.doi.org/10.1021/acs.biochem.0c00533
+Biochemistry 2020, 59, 3993−4002
+
+

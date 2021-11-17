@@ -1,5 +1,4 @@
 site_name: James' Thesis
-site_favicon: pix/selfportrait.svg
 theme:
   name: material
   font: 
@@ -16,6 +15,7 @@ edit_uri: edit/master/write-up/docs/
 
 nav:
   - index.md
+  - 'todo.md'
   - Contributing: 'contributing.md'
   - Overlap:
     - 'overview.md'
@@ -44,6 +44,7 @@ nav:
     - 'results-rio.md'
     - 'discussion-rio.md'
   - Appendix:
+    - 'plate-assay-development.md'
     - 'enz.md'
     - 'mxn.md'
     - 'cpd.md'
@@ -61,6 +62,7 @@ markdown_extensions:
   - toc
   - smarty
   - admonition
+  - def_list
   - pymdownx.arithmatex:
       generic: true
   - pymdownx.highlight
@@ -75,6 +77,8 @@ markdown_extensions:
         - name: mermaid
           class: mermaid
           format: !!python/name:pymdownx.superfences.fence_div_format
+  - pymdownx.tasklist:
+      custom_checkbox: true
 
 extra_css:
   - https://unpkg.com/mermaid@7.1.2/dist/mermaid.css

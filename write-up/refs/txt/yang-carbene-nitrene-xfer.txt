@@ -1,0 +1,2151 @@
+This is an open access article published under an ACS AuthorChoice License, which permits
+copying and redistribution of the article or any adaptations for non-commercial purposes.
+
+pubs.acs.org/accounts
+
+Article
+
+Navigating the Unnatural Reaction Space: Directed Evolution of
+Heme Proteins for Selective Carbene and Nitrene Transfer
+Yang Yang and Frances H. Arnold*
+
+Cite This: Acc. Chem. Res. 2021, 54, 1209−1225
+
+Read Online
+
+ACCESS
+
+Metrics & More
+
+Article Recommendations
+
+CONSPECTUS: Despite the astonishing diversity of naturally occurring biocatalytic
+processes, enzymes do not catalyze many of the transformations favored by synthetic
+chemists. Either nature does not care about the speciﬁc products, or if she does, she has
+adopted a diﬀerent synthetic strategy. In many cases, the appropriate reagents used by
+synthetic chemists are not readily accessible to biological systems. Here, we discuss our
+eﬀorts to expand the catalytic repertoire of enzymes to encompass powerful reactions
+previously known only in small-molecule catalysis: formation and transfer of reactive
+carbene and nitrene intermediates leading to a broad range of products,
+including
+products with bonds not known in biology. In light of the structural similarity of iron
+carbene (FeC(R1)(R2)) and iron nitrene (FeNR) to the iron oxo (FeO)
+intermediate involved in cytochrome P450-catalyzed oxidation, we have used synthetic
+carbene and nitrene precursors that biological systems have not encountered and
+repurposed P450s to catalyze reactions that are not known in the natural world. The
+resulting protein catalysts are fully genetically encoded and function in intact microbial cells or cell-free lysates, where their
+performance can be improved and optimized by directed evolution. By leveraging the catalytic promiscuity of P450 enzymes, we
+evolved a range of carbene and nitrene transferases exhibiting excellent activity toward these new-to-nature reactions. Since our
+initial report in 2012, a number of other heme proteins including myoglobins, protoglobins, and cytochromes c have also been found
+and engineered to promote unnatural carbene and nitrene transfer. Due to the altered active-site environments, these heme proteins
+often displayed complementary activities and selectivities to P450s.
+Using wild-type and engineered heme proteins, we and others have described a range of selective carbene transfer reactions,
+including cyclopropanation, cyclopropenation, Si−H insertion, B−H insertion, and C−H insertion. Similarly, a variety of asymmetric
+nitrene transfer processes including aziridination, sulﬁde imidation, C−H amidation, and, most recently, C−H amination have been
+demonstrated. The scopes of these biocatalytic carbene and nitrene transfer reactions are often complementary to the state-of-the-art
+processes based on small-molecule transition-metal catalysts, making engineered biocatalysts a valuable addition to the synthetic
+chemist’s toolbox. Moreover, enabled by the exquisite regio- and stereocontrol imposed by the enzyme catalyst, this biocatalytic
+platform provides an exciting opportunity to address challenging problems in modern synthetic chemistry and selective catalysis,
+including ones that have eluded synthetic chemists for decades.
+
+■ KEY REFERENCES
+
+• Coelho, P. S.; Brustad, E. M.; Kannan, A.; Arnold, F. H.
+Oleﬁn Cyclopropanation via Carbene Transfer Catalyzed
+by Engineered Cytochrome P450 Enzymes. Science 2013,
+339, 307. This is the ﬁrst demonstration that heme
+proteins can be repurposed to catalyze carbene transfer
+reactions that are now known in the biological world.1
+
+• Kan, S. B. J.; Lewis, R. D.; Chen, K.; Arnold, F. H.
+Directed Evolution of Cytochrome c for Carbon−Silicon
+Bond Formation: Bringing Silicon to Life. Science 2016,
+354, 1048. Enzymatic formation of new-to-nature
+carbon−silicon bonds was accomplished by repurposing
+a thermostable cytochrome c for Si−H insertion.2
+
+• Zhang, R. K.; Chen, K.; Huang, X.; Wohlschlager, L.;
+Renata, H.; Arnold, F. H. Enzymatic Assembly of
+
+Carbon−Carbon Bonds via Iron-Catalyzed sp3 C−H
+Functionalization. Nature 2019, 565, 67. Engineered
+P450s allowed for the asymmetric, intermolecular C−H
+insertion reactions.3
+
+• Jia, Z.-J.; Gao, S.; Arnold, F. H. Enzymatic Primary
+Amination of Benzylic and Allylic C(sp3)−H Bonds. J.
+Am. Chem. Soc. 2020, 142, 10279. Evolved P411 enzymes
+facilitated the asymmetric benzylic and allylic C−H
+
+Received: September 17, 2020
+Published: January 25, 2021
+
+© 2021 American Chemical Society
+
+1209
+
+https://dx.doi.org/10.1021/acs.accounts.0c00591
+Acc. Chem. Res. 2021, 54, 1209−1225
+
+Downloaded via 151.237.238.125 on August 9, 2021 at 09:23:44 (UTC).See https://pubs.acs.org/sharingguidelines for options on how to legitimately share published articles.Accounts of Chemical Research
+
+pubs.acs.org/accounts
+
+Article
+
+amination to furnish enantioenriched unprotected
+primary amines.4
+■ INTRODUCTION
+Nature’s malleable protein catalysts, enzymes, are capable of
+facilitating highly demanding transformations with exquisite
+control.5−7 A signiﬁcant fraction of enzymes assemble and
+exploit metal ions for catalysis. These metalloenzymes catalyze
+some of the most challenging biological reactions, including
+photosynthesis,8 nitrogen ﬁxation,9 methane oxidation10 and
+methylmalonyl-CoA isomerization,11 with unique reactivity not
+observed in small-molecule organometallic complexes or
+enzymes based on purely organic cofactors.
+
+Our laboratory has been fascinated by enzymes of the iron-
+containing cytochromes P450 (CYPs) family for decades. P450s
+constitute a subset of hemoproteins using the heme prosthetic
+group for their native functions.12,13 Found in all kingdoms of
+life, P450s catalyze extraordinary oxygenation reactions under
+exceptionally mild conditions.14−16 In these P450-catalyzed
+oxidation reactions, a Fe(IV)O porphyrin radical cation
+species (compound I) is the key oxidizing intermediate for
+oxene transfer reactions.17 Nature has tamed this intermediate
+and diversiﬁed its reactivity for a vast array of oxidative
+transformations.
+
+Using P450BM3 from Bacillus megaterium (CYP102A1),18 a
+self-suﬃcient P450 naturally fused to its diﬂavin redox partner,
+our group19−23 and others12,18,24,25 have engineered highly
+active P450 variants for the oxidation of simple alkanes and
+other organic substrates (Scheme 1). Starting a decade ago, our
+
+Scheme 1. Native and Engineered Activity: P450BM3-
+Catalyzed C−H Hydroxylation
+
+the structural similarity between these synthetic Fe carbenes and
+Fe nitrenes and the native Fe oxene (compound I), we thought
+we should be able to generate Fe carbene and nitrene
+intermediates in P450s by exploiting synthetic precursors not
+present in nature (Scheme 2). Furthermore, we posited that the
+
+Scheme 2. Structural Similarity of Fe Oxene, Carbene, and
+Nitrene
+
+selective transfer of these reactive species to organic substrates
+within the enzyme active site would lead to a similarly broad
+spectrum of synthetically useful transformations.
+
+In 2012 and 2013, we described repurposing P450s for new-
+to-nature carbene and nitrene transfer reactions.1,37 Since then, a
+plethora of biocatalytic stereoselective C−C, C−N, C−Si, and
+C−B bond forming processes, including ones that are diﬃcult or
+impossible to achieve with current small-molecule catalysts,
+have been developed by us and by other research groups who
+have joined this exciting journey of discovery. In this Account,
+we survey the evolution of heme proteins for non-natural
+carbene and nitrene transfer reactions in our lab. We also present
+the conceptual advances and strategies that were pivotal to this
+development.
+
+■ NON-NATURAL BIOCATALYTIC CARBENE
+
+TRANSFER: INITIAL DISCOVERY
+
+group became interested in expanding the already immense
+catalytic repertoire of P450s to encompass reactions not known
+in the biological world. Inspiration came from two sources: (1)
+Evolution does itnew activities arose during P450 evolution,
+and there was no reason to think that further innovation was not
+possible using evolutionary engineering methods. (2) Creative
+chemists had already shown that the heme cofactor and various
+derivatives can catalyze reactions not known in nature.26−29 We
+reasoned that some of these should be available to the heme
+cofactor embedded in a protein, and that directed evolution
+could be used to draw out these latent functions.
+Of special interest to us were the myriad carbene30−33 and
+nitrene34−36 transfer reactions that synthetic chemists had
+developed. Metal porphyrin complexes,26,27 including Fe
+porphyrins, are privileged catalysts for such transformations.
+As the vital intermediates in these metalloporphyrin-catalyzed
+processes, metal carbenes and nitrenes supported by the
+porphyrin ligand have been extensively investigated. In light of
+
+At the outset of our eﬀorts to create new-to-nature enzymes,
+designing an enzyme to catalyze a new reaction, especially one
+that is unknown in biochemistry, was widely regarded as a
+formidable challenge. After all, building a new active site requires
+placement of multiple functional groups in a binding pocket that
+can orient substrate(s) and stabilize one or more transition
+states, depending on the reaction. Designing enzymes de novo
+was (and still is) notoriously diﬃcult, and it was not clear how a
+conservative process of directed evolution, one mutation at a
+time, could create catalytic novelty.
+
+However, evolution has done it countless times. Less
+appreciated perhaps by the admirers of enzymes’ speciﬁcity
+and selectivity is the fact that many enzymes are also catalytically
+“promiscuous”:38−40 they are capable of catalyzing, at some
+level, chemical reactions unrelated to their biological functions.
+In the history of evolution, this promiscuity has played a central
+role in the emergence of new biological functions.41 In recent
+years,
+the signiﬁcance of catalytic promiscuity has been
+increasingly recognized, and the structural, mechanistic, and
+evolutionary implications of catalytic promiscuity are being
+
+1210
+
+https://dx.doi.org/10.1021/acs.accounts.0c00591
+Acc. Chem. Res. 2021, 54, 1209−1225
+
+Accounts of Chemical Research
+
+pubs.acs.org/accounts
+
+Article
+
+elucidated.42,43 Inspired by nature’s strategy, we sought to
+harness promiscuity to discover new enzyme chemistries,
+especially ones that are synthetically useful and challenging to
+achieve with small-molecule catalysts. In this context, the
+demonstrable promiscuity of P450s originating from their
+structural ﬂexibility44 makes them excellent candidates for
+discovery of new-to-nature activities.
+
+For our initial study, we focused on enantioselective
+cyclopropanation of alkenes. An enantioenriched, polysubsti-
+tuted cyclopropane is a common structural element in a variety
+of medicinal agents. More importantly, Woo previously showed
+that Fe porphyrin complexes could catalyze such trans-
+formations in a racemic fashion.45 We discovered that various
+including myoglobin and cytochrome c,
+heme proteins,
+exhibited the desired activity, but a large in-house collection of
+P450BM3 variants accumulated during our research on P450
+oxygenation proved instrumental to showing that selectivity and
+activity were readily tunable by protein engineering. Upon
+evaluating a panel of P450BM3 variants, we found that several
+displayed dramatically enhanced cyclopropanation activity
+relative to hemin in water, as well as promising enantioselectivity
+and complementary diastereoselectivity (Scheme 3).1 Speciﬁ-
+
+Scheme 3. P450-Catalyzed Diastereo- and Enantioselective
+Cyclopropanation of Styrenes (2012)a
+
+aTTN = total turnover number. Conditions: 30 mM styrene, 10 mM
+EDA, 0.2 mol % catalyst, and 10 mM Na2S2O4.
+
+cally, P450BM3 with a single T268A mutation exhibited
+excellent trans selectivity for the cyclopropanation of styrene.
+In contrast, variant P450BM3-CIS (9-10A-TS F87 V T268A)46
+showed promising cis selectivity, which is rarely observed in
+small-molecule-catalyzed cyclopropanation processes. It also
+represented a departure from the innate diastereoselectivity of
+Fe porphyrin-catalyzed cyclopropanation,47 highlighting the
+role of the protein secondary coordination sphere in controlling
+the reaction selectivity.
+
+Mutation T268A was found to be generally activating for
+cyclopropanation in a series of P450BM3 variants, likely by
+enlarging the active site for carbene transfer. The T268 residue
+in P450BM3 operates as the essential hydrogen bond donor in
+the cleavage of the O−O bond in the native O2 activation and
+oxygenation reaction.48 Previous investigation showed that
+replacing this threonine with an alanine led to a substantial
+decrease in the native oxygenase activity. The activating eﬀect of
+T268A in cyclopropanation thus implies fundamental mecha-
+nistic dichotomy between the native oxene transfer and the non-
+native carbene transfer chemistry.49
+■ AXIAL SERINE-LIGATED “P411” FOR CARBENE
+
+TRANSFER
+
+For cyclopropanation, the P450 has to be reduced to its ferrous
+state to initiate the catalytic cycle. In our early work, P450s were
+used either as puriﬁed protein or in cell-free extract in the
+presence of exogenous reducing agents such as sodium
+
+dithionite (Na2S2O4). We reasoned that we would be able to
+develop an in vivo cyclopropanation if the heme enzyme could
+be readily reduced by endogenous reducing agents such as
+NAD(P)H. Such whole-cell biocatalysts would greatly simplify
+the protein engineering process and enable new routes to the
+sustainable production of valuable compounds.
+
+We replaced the cysteine thiolate ligand in P450BM3 with a
+weakly donating serine (Scheme 4). The CO-binding assay of
+
+Scheme 4. Rationally Engineered “P411” Catalyst for in Vivo
+Cyclopropanation (2013)
+
+aReaction carried out with neat substrates (170 mM EDA) for 24 h.
+All other reactions were carried out with 8.5 mM EDA.
+
+this engineered P450 variant revealed a ferrous CO Soret peak at
+411 nm instead of 450 nm in the UV−vis spectrum,50 which is
+why we refer to the axial-serine-ligated P450 variants as “P411”
+enzymes. Replacement of this critical Cys residue was known to
+abolish its monooxygenation activity;
+in fact, the cysteine
+thiolate ligand is the only amino acid residue that is conserved in
+all known functional P450s. Electrochemical measurements
+indicated that the redox potential E°′(Fe(III)/Fe(II)) of P411
+shifted to −293 mV, which is well within the range of reduction
+by NADPH (E°′ = −320 mV). P411BM3-CIS demonstrated
+dramatically enhanced in vivo activity for cyclopropanation. By
+further increasing the substrate concentration, total turnover
+numbers of up to 67 800 were achieved in whole Escherichia coli
+cells (Scheme 4). This represented the ﬁrst highly active
+biocatalyst for carbene transfer. The advent of P411s turned out
+to be a key advance for biocatalytic carbene and nitrene transfer
+reactions. In subsequent studies, we found that serine-ligated
+P411s were uniquely active for a range of new-to-nature
+reactions where P450s displayed no or negligible activity.
+
+■ FURTHER DEVELOPMENT OF BIOCATALYTIC
+
+CYCLOPROPANATION
+
+Expansion of biocatalytic cyclopropanation followed two
+directions: (1) We further engineered P450BM3 variants to
+broaden the substrate scope of cyclopropanation, and (2) we
+explored other heme proteins for biocatalytic cyclopropanation.
+In subsequent P450BM3 engineering, we continued to explore
+the role of the Fe-binding axial ligand. Heme proteins naturally
+use a range of axial ligands, including cysteine, histidine, and
+tyrosine. The identity of the axial ligand profoundly inﬂuences
+the catalytic activity of heme enzymes.51 We found that the
+C400H variant exhibited the highest activity for in vivo
+cyclopropanation, while the C400Y and C400S variants shared
+similar kinetic proﬁles (Scheme 5).52
+
+Starting from P450BM3 T268A C400H, iterations of site-
+saturation mutagenesis (SSM) and screening furnished
+P450BM3 Hstar (Schemes 6),52 a highly active catalyst for the
+cyclopropanation of a wide range of α-substituted acrylamides
+
+1211
+
+https://dx.doi.org/10.1021/acs.accounts.0c00591
+Acc. Chem. Res. 2021, 54, 1209−1225
+
+Accounts of Chemical Research
+
+pubs.acs.org/accounts
+
+Article
+
+Scheme 5. Axial Ligand Eﬀect in the Biocatalytic
+Cyclopropanation in Vivo and the Development of P450BM3
+Hstar (2014)
+
+N, O, and S, Scheme 8).55 Later on, using P411-VACcis as the
+template, single mutants P411-VACcis V87C and P411-VACcis
+
+Scheme 8. Diastereodivergent Biocatalytic Synthesis of
+Heteroatom-Substituted Cyclopropanes (2018)
+
+Scheme 6. Development of P450BM3 Hstar
+
+and acrylates (Scheme 7).53 Subsequent studies on the
+inactivation mechanism of P450BM3 Hstar revealed that
+
+Scheme 7. Substrate Scope of P450BM3 Hstar
+
+aReaction carried out with P411-VACcis V87T. bReaction carried out
+with P411-VACcis V87I. cReaction carried out with P411-VACcis
+A328N. dReaction carried out with P411-VACcis V87F.
+
+V87F were found to furnish the cis- and trans-product,
+respectively,
+terminal aliphatic
+alkenes.56
+
+in the cyclopropanation of
+
+Cognizant of the vast structural diversity of hemoproteins, we
+found in P450BM3-
+surmised that stereoselectivities not
+catalyzed processes could be achieved by exploring other classes
+of heme proteins with altered active-site environments. Prior to
+this study, elegant work from the Fasan laboratory demonstrated
+the utility of engineered myoglobins in carbene transfer.57 We
+focused on thermophilic heme proteins due to their superior
+stability and evolvability.56 We found that wild-type Aeropyrum
+pernix protoglobin (ApePgb) and Rhodothermus marinus nitric
+oxide dioxygenase (RmaNOD) furnished measurable activity
+for the cyclopropanation of 1-octene (Scheme 9). Notably,
+
+Scheme 9. Stereodivergent Biocatalytic Synthesis of
+Disubstituted Cyclopropanes: Access to All Four
+Stereoisomers (2018)
+
+undesired modiﬁcation of nucleophilic amino acid residues
+took place following reaction with the incipient electrophilic Fe
+carbene.54 To reduce inactivation, we performed site-directed
+mutagenesis of residues prone to modiﬁcation, which aﬀorded a
+further improved biocatalyst, P450BM3 Hstar H92N H100N
+(>20 000 total turnover number, TTN).54
+
+Deeper mutational screening of the serine-ligated P411BM3-
+CIS was also fruitful. Directed evolution of P411BM3-CIS led to
+a set of complementary catalysts, P411-VACcis and P411-
+VACtrans, providing access to both the cis- and trans-
+diastereomers of heteroatom-substituted cyclopropanes (X =
+
+RmaNOD and ApePgb displayed opposite diastereoselectivity,
+and evolved variants RmaNOD Q52V and ApePgb W59A Y60G
+F145W furnished the (1S, 2S)- or (1R, 2S)-product with
+excellent stereocontrol. Combined with P411-VACcis V87C and
+P411-VACcis V87F, we developed a stereodivergent platform to
+access all four stereoisomers of cyclopropanation products with
+excellent diastereo- and enantiocontrol.
+
+1212
+
+https://dx.doi.org/10.1021/acs.accounts.0c00591
+Acc. Chem. Res. 2021, 54, 1209−1225
+
+Accounts of Chemical Research
+
+pubs.acs.org/accounts
+
+Article
+
+With a series of evolved biocatalysts, we applied these heme
+proteins in the stereoselective preparation of key cyclopropane
+intermediates of pharmaceuticals, including levomilnacipran52
+and ticagrelor (Scheme 10).58 In particular, a truncated globin
+
+Scheme 10. Biocatalytic Stereoselective Synthesis of
+Cyclopropane Cores of Medicinal Agents (2014 and 2016)
+
+biocatalysts. With the P-4 A87F and A87W mutants, additional
+rounds of SSM and screening ultimately produced variants
+P411−K10 and P411−C6. These ﬁnal variants allowed for the
+enantiodivergent synthesis of cyclopropenes with excellent
+enantiocontrol (Scheme 11). Recently, using P411 variants
+
+Scheme 11. Directed Evolution of Enantiodivergent P411
+Catalysts for Cyclopropenation (2018)
+
+further evolved from the C−H alkylation lineage,3 internal
+alkynes could also be eﬀectively transformed, aﬀording 1,2-
+disubstituted cyclopropenes in uniformly outstanding enantio-
+selectivity (>99% ee, Scheme 12).71
+
+Scheme 12. P411-Catalyzed Cyclopropenation of Terminal
+Aliphatic Alkynes and Internal Alkynes (2018 and 2020)
+
+from Bacillus subtilis59 was evolved to provide the desired
+stereoisomer of the ticagrelor cyclopropyl ester precursor with
+excellent diastereo- and enantioselectivity.52 Fasan’s group also
+demonstrated the gram-scale syntheses of tasimelteon and a
+TRPV1 inhibitor using their evolved myoglobin variants in
+whole-cell transformations.60 Collectively, these results show-
+cased the potential utility of non-natural biocatalysis in the
+manufacturing of value-added pharmaceuticals.
+
+■ BIOCATALYTIC CYCLOPROPENATION AND
+
+BICYCLOBUTANATION
+
+Cyclopropenes are highly strained carbocycles. With strain
+release, cyclopropenes can be easily converted to a broad
+spectrum of synthetically useful molecular architectures.
+Asymmetric catalytic cyclopropenation of alkynes is one of the
+most widely used methods for the preparation of these motifs in
+an enantiopure form. However, in contrast to Rh-,31,61−66 Cu-,
+Ir-,67 and Co-based68 catalysts, no Fe porphyrin complexes were
+known to catalyze the cyclopropenation process.47
+
+Curious whether engineered P411s could catalyze cyclo-
+propenation, we tested a terminal aliphatic alkyne as the
+substrate and found that a P411 variant (P-4) previously
+engineered for nitrene transfer could furnish the desired
+cyclopropene with modest activity (260 TTN, 91% ee).69
+Using P-4 as the parent, SSM at position 87 was carried out, as
+residue 87 resides above the heme cofactor, and it is known to
+play an essential role in controlling the stereochemistry in native
+oxygenation reactions.70 The P-4 A87F mutant showed
+improved activity and enantioselectivity relative to its
+predecessor (290 TTN, 94% ee). Surprisingly, a single A87W
+mutation completely reversed the enantiomeric outcome of this
+cyclopropenation process, aﬀording the opposite enantiomer in
+excellent enantioselectivity (240 TTN, −94% ee). The complete
+reversal of stereochemistry (+94% ee → −94% ee) upon the
+introduction of a single mutation, rarely observed in protein
+engineering, highlighted the outstanding evolvability of P411
+
+When aromatic alkynes were subjected to these enzymatic
+conditions, the carbene transfer did not stop at the cyclopropene
+stage. Instead, sequential delivery of the carbenoid fragment to
+the alkyne substrate aﬀorded the highly strained bicyclobutane
+as the ﬁnal product (Scheme 13).69 This unusual double transfer
+required the same enzyme to accommodate both the alkyne and
+the cyclopropene substrate, indicating a distinct promiscuity of
+evolved P411. Furthermore, the bicyclobutane product formed
+with complete exo, endo selectivity. This diastereoselectivity
+diﬀered from the endo, endo selectivity observed in the only
+known intermolecular bicyclobutanation, catalyzed by an
+osmium porphyrin.72 Thus, P411-catalyzed intermolecular
+bicyclobutanation represents a general method to prepare
+interesting bicyclobutanes using easily available starting
+materials.
+
+■ BIOCATALYTIC SI−H AND B−H INSERTION
+Silicon is the second most abundant element in Earth’s crust.
+Despite the abundance of silicon in nature, enzymes capable of
+
+1213
+
+https://dx.doi.org/10.1021/acs.accounts.0c00591
+Acc. Chem. Res. 2021, 54, 1209−1225
+
+Accounts of Chemical Research
+
+pubs.acs.org/accounts
+
+Article
+
+Scheme 13. P411-Catalyzed Bicyclobutanation of Aromatic
+Alkynes (2018)
+
+Scheme 15. Engineered Rma cyt c-Catalyzed Enantioselective
+Si−H Insertion (2016)
+
+Similar to silicon, biosynthetic machineries to form carbon−
+boron bonds were also not known. Furthermore, enantiopure
+organoboron compounds are coveted synthetic intermediates in
+organic synthesis, since well-established stereospeciﬁc trans-
+formations of these species allow access to a wide range of
+medicinally relevant scaﬀolds. Encouraged by our success in Si−
+H insertion, we embarked on the development of biocatalysts for
+enantioselective B−H insertion (Scheme 16).75 Using N-
+
+Scheme 16. Directed Evolution of Rma cyt c for
+Enantioselective B−H Insertion (2017)
+
+catalyzing the construction of carbon−silicon bonds are not
+known.73 Prior art in metal-carbene chemistry demonstrated
+that the insertion of metal carbenoids into Si−H bonds could
+lead to the construction of C−Si bonds. We recognized that, by
+repurposing heme proteins to catalyze the carbenoid insertion
+into Si−H bonds, we could develop a biocatalytic system to
+forge Si−C bonds.
+We were particularly interested in the Si−H insertion of α,α-
+disubstituted diazo compounds because the use of such
+carbenoid precursors would engender a stereogenic center at
+the α-carbon (Scheme 14). Although P450s were ineﬀective in
+
+Scheme 14. Directed Evolution of Rma cyt c for
+Enantioselective Si−H Insertion (2016)
+
+heterocyclic carbene (NHC)-boranes as our borylation agents
+due to their stability under aqueous conditions, we quickly
+found that wild-type Rma cyt c readily promoted the desired B−
+H insertion reaction in living E. coli cells,
+furnishing the
+corresponding enantioenriched organoborane product in 70%
+ee and 120 TTN. Directed evolution by targeting residues near
+the heme cofactor furnished Rma cyt c V75R M100D M103T
+(BORR1), which provided the organoboron product in 2490
+TTN and 95% ee.
+A notable feature of this biocatalytic B−H insertion lies in its
+compatibility with an exceptionally broad range of α,α-
+disubstituted diazo compounds (Scheme 17).75,76 Using
+iterative SSM and screening, the BOR variants could be evolved
+quickly for the customized synthesis of diverse enantioenriched
+organoboron products that are versatile building blocks in
+organic synthesis. Flexible loop engineering7 proved particularly
+fruitful in the directed evolution of Rma cyt c for borylation
+reactions. α-Triﬂuoromethyl-substituted organoboranes76 and
+α-boryl lactones77 could be synthesized with good enantiose-
+lectivity using BOR-CF3
+Collectively, the successful development of non-natural Si−H
+and B−H insertion reactions demonstrates a new strategy to
+unveil and augment
+the catalytic capability of proteins.
+Furthermore, the integration of enzymatic Si−H and B−H
+insertion into metabolic pathways in living cells could
+
+76 and BORLAC,77 respectively.
+
+1214
+
+https://dx.doi.org/10.1021/acs.accounts.0c00591
+Acc. Chem. Res. 2021, 54, 1209−1225
+
+inducing appreciable enantiodiﬀerentiation, we found that
+Rhodothermus marinus cytochrome c (Rma cyt c) aﬀorded the
+Si−H insertion product with excellent enantioselectivity (97%
+ee, 44 TTN).2 Even though Rma cyt c’s native function is not
+catalysis, its solvent-exposed heme center apparently accom-
+modates carbenoids bearing two large α-substituents, thus
+permitting their selective transformation. Further active-site
+engineering ultimately gave a triple mutant Rma cyt c V75T
+M100D M103E (“TDE”) that catalyzed the Si−H insertion with
+1518 TTN and >99% ee. It tolerated a range of hydrosilane
+substrates, giving rise to enantioenriched silanes with out-
+standing enantiocontrol (Scheme 15). More recently, using
+machine-learning-assisted directed evolution, we engineered an
+orthogonal set of RmaNOD biocatalysts to access either the (S)-
+or the (R)-enantiomeric product.74
+
+Accounts of Chemical Research
+
+pubs.acs.org/accounts
+
+Article
+
+Scheme 17. Engineered Rma cyt c-Catalyzed Enantioselective
+B−H Insertion (2017−2019)
+
+Scheme 18. Directed Evolution of P411CHF for
+Enantioselective Intermolecular C−H Insertion (2019)
+
+Scheme 19. P411CHF-Catalyzed Enantioselective
+Intermolecular C−H Insertion (2019)a
+
+aReaction carried out with Rma cyt c V75R M100D M103D.
+bReaction carried out with Rma cyt c V75R M100D M103F.
+cReaction carried out with Rma cyt c Y71C V75P M89C M99C
+M100D. dReaction carried out with Rma cyt c Y44I V75S M99A
+M100L M103D (BOR-CF3). eReaction carried out with Rma cyt c
+V75R M99Q M100D T101Y M103Y (BORLAC). The absolute
+stereochemistry of these products were not determined.
+
+potentially enable the production of unnatural organosilicon and
+organoboron compounds in vivo, thus bringing new oppor-
+tunities to synthetic biology.
+
+■ BIOCATALYTIC C−H INSERTION
+From a reactivity perspective, the insertion of a metal carbenoid
+into C−H bonds is much more challenging than insertion into
+Si−H and B−H bonds. Due to the ubiquity of C−H bonds in
+organic molecules, site- and stereoselective C−H insertion
+reactions hold the promise to signiﬁcantly simplify the syntheses
+of organic compounds. Unlike other late transition metals such
+as Rh, Cu, Ru, Ag, and Co, Fe catalysts displayed low activities
+for the catalytic insertion of carbenoids into C−H bonds in
+previous work.78,79 Prior to our work, a generally applicable Fe
+catalyst for the intermolecular C−H insertion was not available.
+iron-catalyzed enantioselective C−H insertion
+Furthermore,
+was recognized as a formidable challenge.
+
+In our heme protein collections of P450s, P411s, cytochromes
+c, and globins, we found only two variants, P-4 A82L and
+RmaNOD Y32G, with measurable activity for the intermolecular
+C−H insertion reaction (TTN = 13 and 7, respectively), which
+underscored the challenges this transformation presents.3
+Ultimately, however, directed evolution over 14 rounds of
+mutagenesis and screening culminated in the highly active
+variant P411CHF for C−H alkylation (Scheme 18). P411CHF
+diﬀers from wild-type P450BM3 by 23 amino acids and lacks the
+FAD domain of the reductase domain. This truncated P411
+variant catalyzed the carbene insertion into a variety of C(sp3)−
+H bonds,
+including benzylic, allylic, propargylic, and heter-
+oatom-stabilized ones, with excellent enantioselectivity
+(Scheme 19). The use of acceptor carbenes for asymmetric
+C−H insertion is relatively underdeveloped with rhodium
+catalysts. Thus, these engineered P411s provided a new solution
+
+aVariant P411-IY(T327I) was used.
+
+to enantioselective C−H insertion using acceptor carbenes.
+Furthermore, variants in the P411CHF lineage permitted the
+stereodivergent C−H insertion with N-methyl tetrahydroquino-
+line, thus allowing for the formal synthesis of both enantiomeric
+forms of natural product cuspareine.
+The biocatalytic enantioselective C−H insertion nicely
+illustrates the power of directed evolution in solving challenging
+problems in catalysis. Recently, we were able to engage α-
+triﬂuoromethyl- and perﬂuoroalkyl-substituted diazo com-
+pounds80 in C−H alkylation (Scheme 20).81 A set of
+stereocomplementary P411 catalysts was engineered to access
+either enantiomeric triﬂuoroethylation product.
+
+1215
+
+https://dx.doi.org/10.1021/acs.accounts.0c00591
+Acc. Chem. Res. 2021, 54, 1209−1225
+
+Accounts of Chemical Research
+
+Scheme 20. P411-PFA-Catalyzed Enantioselective
+Intermolecular C−H Insertion (2019)
+
+pubs.acs.org/accounts
+Scheme 21. Truncated P411-Catalyzed Selective C−H
+Functionalization of Indoles and Pyrroles (2019)
+
+Article
+
+the thiolate ligand,
+
+the Fe-binding residue in abiological
+
+Mutation L401P dramatically enhanced the catalytic activity
+and the enantioselectivity of P411-PFA (1510 TTN, +88% ee →
+4070 TTN, +98% ee). The L401 residue is located next to S400
+bound to the heme cofactor. Previous study on another P450
+enzyme, P450cam, showed that the leucine-to-proline mutation
+of the residue next to the heme-binding cysteine disrupted the
+hydrogen bonding network of
+thus
+enhancing the donor strength of the proximal thiolate.82−84
+Our ﬁnding showcased the importance of this hydrogen bonding
+network of
+trans-
+formations.
+Recently, Fasan,85 Koenigs,86 and our group87 all described
+biocatalytic methods for the C(sp2)−H functionalization of
+electron-rich heterocycles including indoles and pyrroles. We
+found that a range of indole substrates could be alkylated at the
+3-position using evolved P411-HF (Scheme 21). When Me-
+EDA was used as the diazo source, P411 biocatalysts could be
+evolved to furnish the alkylation product in an enantioselective
+fashion. This is a rare example of an evolved P411 enzyme
+showing promising stereocontrol for α,α-disubstituted diazo
+compounds. Prior to this, engineered Rma cyt c was the only
+protein class exhibiting good stereocontrol for these substrates.
+Moreover, when pyrrole was used as the substrate, the site
+selectivity could be easily tuned using the P411 catalyst, leading
+to the C2 or C3 alkylation product with good regiocontrol.
+
+■ BIOCATALYTIC C−H AMIDATION: INITIAL WORK
+Enantiopure amines represent key pharmacophores in small-
+molecule therapeutics.88 Consequently, general catalytic
+methods for stereoselective assembly of amines have long
+been sought after.89 In this context, catalytic nitrene transfer, i.e.,
+the delivery of a nitrene fragment (R−N:) to organic substrates,
+is a powerful technique for the synthesis of valuable amines from
+readily available alkanes and alkenes. In a pioneering study
+published in 1985, Dawson and Breslow demonstrated that
+mammalian microsomal P450s could catalyze C−H amidation
+with a turnover frequency (TOF) of ca. 2 min−1 using
+iminoiodinanes as the nitrene precursor.90 Unfortunately, the
+
+aReaction carried out with P411-HF M263A. bReaction carried out
+with P411-HF C87A M263E A268G T327P A328Y L437 M.
+
+rapid solvolysis of iminoiodinanes91 made it challenging to
+further optimize this system.
+
+Almost 30 years later, concurrent to our investigations into
+carbene transfer, we revisited this nitrene transfer chemistry and
+engineered P450BM3 variants to enhance the activity for C−H
+amidation (Scheme 22).37 We found sulfonyl azides to be
+Scheme 22. P450-Catalyzed Enantioselective C−H
+Amidation for Sultam Synthesis (2013)
+
+aReaction carried out using P411 in intact E. coli cells.
+
+superior nitrene precursors for biocatalytic amination reactions,
+in part due to the excellent water stability of organic azides.
+Similar to what we observed in P450BM3-catalyzed cyclo-
+propanation, the C−H amidation also starts with ferrous heme,
+and the T268A and C400S mutations were found to be
+beneﬁcial. Whole-cell biotransformations employing P411-CIS
+T438S (variant “P”) provided the sultam products with
+improved activity and enantioselectivity compared to the in
+vitro reaction. Parallel to our investigation, in 2014, Fasan and
+
+1216
+
+https://dx.doi.org/10.1021/acs.accounts.0c00591
+Acc. Chem. Res. 2021, 54, 1209−1225
+
+pubs.acs.org/accounts
+Article
+Scheme 25. P411-Catalyzed Intermolecular Benzylic C−H
+Amidation (2017)
+
+Scheme 26. P411-Catalyzed Asymmetric Amidation of
+Primary, Secondary, and Tertiary C(sp3)−H Bonds (2019)
+
+Accounts of Chemical Research
+co-workers also accomplished intramolecular C−H amidation
+using wild-type and engineered P450BM3.92
+
+In a subsequent study, we demonstrated that either the six- or
+the ﬁve-membered amidation product could be prepared with
+excellent site selectivity in an enzyme-controlled fashion
+(Scheme 23).93 Speciﬁcally, the I263F variant was found to
+Scheme 23. Enzyme-Controlled, Regiodivergent C−H
+Amidation (2014)
+
+favor the homobenzylic amidation, whereas the P450BM3
+T268A F87A variant was selective for benzylic amidation. This
+regiodivergent amidation showcased the power of enzymes to
+override the innate regiochemical preference through the
+delicate control of substrate binding in the active site. It also
+underscored the possibility of achieving site selectivities
+previously inaccessible with existing small-molecule catalysts.
+Furthermore, we expanded this biocatalytic enantioselective
+C−H amidation to intermolecular processes.94 In contrast to
+intramolecular nitrene transfer, only the serine-ligated P411
+variants could promote the entropically demanding intermo-
+lecular amidation. The P-4 A82L variant, a P411 previously
+developed for sulﬁde imidation, was critical to this development,
+showing low levels of promiscuous activity for benzylic C−H
+amidation (Scheme 24). Introduction of
+three active-site
+Scheme 24. Directed Evolution of Intermolecular C−H
+Amidase (2017)
+
+mutations greatly improved catalytic eﬃciency. The ﬁnal
+P411CHA variant eﬀectively transforms diverse benzylic sub-
+strates into the corresponding sulfonamides with excellent
+enantioselectivity (Scheme 25).
+
+More recently, with a signiﬁcantly expanded library of P411
+variants, we were eager to address unmet challenges in the area
+of enantioselective C−H functionalization using P411 nitrene
+transferases (Scheme 26). In principle,
+three classes of
+enantioselective C(sp3)−H functionalization reactions could
+be developed. Starting from a substrate bearing two prochiral
+secondary C(sp3)−H bonds, asymmetric C−H functionaliza-
+tion would furnish products with a trisubstituted stereocenter.
+Desymmetrization of geminal dimethyl-substituted substrates
+via primary C(sp3)−H functionalization would generate a
+
+quaternary stereocenter. Furthermore, enantioconvergent func-
+tionalization of tertiary C(sp3)−H bonds would allow for the
+formation of tetrasubstituted stereocenters. Such enantiocon-
+tertiary C−H functionalizations have long eluded
+vergent
+synthetic chemists, presumably due to the lack of suitable
+mechanisms for stereoconvergence as well as eﬀective catalysts
+to induce asymmetry.95
+Using the intramolecular C−H amidation of sulfamoyl azide
+as a model system, we demonstrated that all three modes of
+enantioinduction could be achieved using P411 catalysts.96
+
+1217
+
+https://dx.doi.org/10.1021/acs.accounts.0c00591
+Acc. Chem. Res. 2021, 54, 1209−1225
+
+Accounts of Chemical Research
+
+Among all the heme proteins tested, variants from the P411CHF
+carbene transferase lineage provided the most promising results
+for the amidation of secondary C(sp3)−H bonds. Active-site
+engineering led to P411Diane2, a variant capable of transforming a
+range of benzylic substrates into 1,2-diamines with excellent
+enantioselectivity. In addition, unactivated secondary C(sp3)−
+H bonds were also amidated eﬀectively. By using a set of P411s
+that only diﬀered by four mutations, both enantiomers could be
+accessed with good stereocontrol. Furthermore, P411Diane1
+I327P allowed the primary C(sp3)−H amidation to occur with
+excellent activity.
+tertiary C−H
+amidations via a putative stereoablative hydrogen atom transfer
+(HAT)/stereoselective rebound mechanism. With evolved
+P411Diane3 and P411Diane4, tetrasubstituted stereocenters pos-
+sessing a nitrogen group could be eﬃciently accessed. Notably,
+this biocatalytic platform could be engineered to construct
+“methyl−ethyl” stereocenters with excellent enantioselectivity
+(87% ee). Due to the minimal steric and electronic diﬀerence,
+catalytic asymmetric formation of “methyl−ethyl” stereocenters
+is a notoriously diﬃcult problem. Our study demonstrated that
+engineered enzymes could overcome this long-standing obstacle
+in asymmetric catalysis.
+
+We also developed enantioconvergent
+
+■ BIOCATALYTIC IMIDATION OF SULFIDES
+
+P450-catalyzed enantioselective oxidation of sulﬁdes is a
+powerful method for the preparation of optically active
+sulfoxides. Early in our nitrene transfer study, we wondered
+whether we could develop an analogous nitrene transfer to
+sulﬁdes to generate enantiomerically enriched sulﬁmides, which
+are key intermediates en route to many sulfoximide-containing
+agrochemicals and pharmaceuticals (Scheme 27). It was found
+
+Scheme 27. P411-Catalyzed Asymmetric Imidation of
+Sulﬁdes (2014 and 2016)
+
+pubs.acs.org/accounts
+
+Article
+
+sulﬁde as the model substrate.98 Using variant “P” as the
+template, active-site engineering provided variants P-4 and P-4
+A82I for the eﬀective conversion of both the (E)- and the (Z)-
+substrates. Further investigation revealed that
+this sulﬁde
+imidation was highly enantioselective. Partial erosion of
+stereochemical purity of the resulting allylic amine occurred
+during the [2,3]-sigmatropic rearrangement presumably due to
+the competing endo and exo transition states.
+
+■ BIOCATALYTIC AZIRIDINATION OF OLEFINS
+
+Optically pure aziridines are versatile building blocks to a variety
+of nitrogen-containing compounds. We demonstrated that
+P411s could catalyze the asymmetric aziridination of styrene
+derivatives using tosyl azide as the nitrene source (Scheme
+28).99 Through directed evolution,
+the competitive azide
+
+Scheme 28. P411-Catalyzed Asymmetric Aziridination
+(2015)
+
+reduction could be suppressed. The ﬁnal variant P I263F
+A328V L437V allowed for the preparation of a range of
+enantioenriched aziridines from electron-rich and electroneutral
+styrenes. Due to their attenuated nucleophilicity, electron-
+deﬁcient styrenes were less eﬀective substrates under these
+conditions.
+
+It was long believed that nitrene transfer to oleﬁns has no
+counterpart in the biological world. However, in 2018, spurred
+by the report of P411-catalyzed nitrene transfer, the Ohnishi
+group found that, during the biosynthesis of benzastatin natural
+products in Streptomyces sp. RI18, a cytochrome P450 (BezE) is
+responsible for the intramolecular aziridination via a nitrene
+transfer mechanism using N-acetoxyaniline as the nitrene
+surrogate (Scheme 29).100 We were thrilled that mechanistic
+insights gained through unnatural reactions in turn informed the
+discovery of natural enzymes that operate through unconven-
+tional pathways in biosynthesis.
+
+Scheme 29. Bez-Catalyzed Nitrene Transfer in the
+Biosynthesis of Benzastatins (2018)
+
+that the P411-CIS T438S variant already showed good activity
+toward the imidation of sulﬁdes without further engineering
+(300 TTN, +48% ee).97 Enantiodivergent imidation could also
+be achieved using an orthogonal set of P411 biocatalysts. Again,
+this early example showed that, despite the homochirality of
+biogenic protein catalysts, either antipode of the product could
+still be conveniently accessed by engineering the protein.
+
+The spontaneous [2,3]-sigmatropic rearrangement of allylic
+sulﬁmides leads to allylic amines. To reprogram this biocatalytic
+imidation for the asymmetric preparation of amines, we re-
+engineered our P411 nitrene transferases using phenyl allyl
+
+1218
+
+https://dx.doi.org/10.1021/acs.accounts.0c00591
+Acc. Chem. Res. 2021, 54, 1209−1225
+
+Accounts of Chemical Research
+
+■ BIOCATALYTIC C−H AMINATION USING
+
+EQUIVALENTS OF UNPROTECTED NITRENE
+
+In previously developed biocatalytic nitrene transfer reactions,
+sulfonyl azides were the privileged nitrene source. Unfortu-
+nately, the removal of the N-sulfonyl group requires harsh
+reaction conditions, thus limiting the synthetic utility of nitrene
+transfer products. To circumvent this problem, we initiated a
+program to explore alternative nitrene precursors with no
+protective groups attached to the nitrogen. We were particularly
+intrigued by N-hydroxylamine esters (RC(O)O−NH2) as
+aminating reagents, because the transformation of these reagents
+would furnish unprotected primary amines.101−103 The
+straightforward synthesis of unprotected, enantioenriched
+primary amines remains a challenging problem. The successful
+development of biocatalytic primary amination via a nitrene
+transfer mechanism would allow for the conversion of
+unfunctionalized alkanes and alkenes into enantioenriched
+primary amines, thereby complementing transaminase-cata-
+lyzed processes.
+From an enzymologist’s perspective, the putative iron nitrene
+species “FeNH” invoked in these amination reactions
+the FeO
+represents the closest structural mimic of
+intermediate (compound I) in native P450 catalysis (Scheme
+30). Thus, understanding the bonding and reactivity of this
+presumed “FeNH” intermediate is of considerable interest to
+the bioinorganic community.
+Scheme 30. Comparison between FeO and FeNH
+
+We ﬁrst targeted the amination of styrene derivatives (Scheme
+31). Using wild-type Rma cytochrome c as the catalyst, we found
+that the transfer of unprotected nitrene to styrenes aﬀorded
+aminoalcohols as the ﬁnal product, presumably due to the rapid
+ring opening of the unprotected aziridine under the reaction
+conditions.104 Starting from Rma cyt c, active-site engineering
+
+Scheme 31. Engineered Rma Cytochrome c-Catalyzed
+Asymmetric Aminohydroxylation (2019)
+
+pubs.acs.org/accounts
+
+Article
+
+furnished the “TQL” variant, a highly active biocatalyst for the
+asymmetric aminohydroxylation of diverse styrenes including
+electron-deﬁcient ones. Further mechanistic study showed that
+the hydrolysis of the unprotected, enantiopure aziridines is
+enantiospeciﬁc. This ﬁnding suggested that enzymatically
+formed enantioenriched aziridine is a possible precursor to the
+1,2-aminoalcohol product.
+We next explored C−H amination reactions using unpro-
+tected nitrene equivalents. Using a P411 variant from the
+P411CHA lineage94 as the parent, we engineered P411BPA for the
+primary amination of benzylic C−H bonds with high activity
+and excellent enantiocontrol. Most notably, no small-molecule
+catalysts are known to promote the primary amination of
+C(sp3)−H bonds despite extensive previous eﬀorts dedicated to
+the study of Fe-catalyzed amination.101−103 The successful
+development of this biocatalytic primary amination of C(sp3)−
+H bonds illustrates the enormous potential of enzymes to enable
+desirable reactivities elusive to small-molecule catalysts.
+Even more exciting, P411 enzymes were found to catalyze
+intermolecular allylic C−H amination with excellent enantiose-
+lectivity (Scheme 32). Variant P411APA chemoselectively
+
+Scheme 32. P411-Catalyzed Asymmetric Amination of
+Benzylic and Allylic C(sp3)−H Bonds (2020)
+
+aminates the allylic C−H bond,
+leaving the oleﬁn moiety
+completely untouched. This chemoselectivity is orthogonal to
+the Rma cyt c TQL variant previously engineered for oleﬁn
+aminohydroxylation.104 With P411BPA and P411APA, an array of
+easily available hydrocarbon starting materials could be
+converted into value-added primary amines. Further expanding
+this intermolecular amination activity to unactivated C(sp3)−H
+bonds would furnish an unprecedented, enzymatic method for
+the amination of hydrocarbon feedstocks.
+
+■ EVOLUTIONARY TRAJECTORY OF P450 CARBENE
+
+TRANSFERASES AND NITRENE TRANSFERASES
+
+P450BM3 has been the primary workhorse for the new-to-
+nature reactions described in this Account. Starting from the
+wild-type enzyme, we have evolved a family of P450BM3
+
+1219
+
+https://dx.doi.org/10.1021/acs.accounts.0c00591
+Acc. Chem. Res. 2021, 54, 1209−1225
+
+Accounts of Chemical Research
+
+pubs.acs.org/accounts
+
+Article
+
+Figure 1. Evolutionary trajectory of P450 carbene and nitrene transferases.
+
+variants to serve as highly active carbene and nitrene
+transferases. It
+is interesting to follow the evolutionary
+trajectories of these diﬀerent enzymes, delineated in Figure 1.
+These enzymes are all very closely related: the amino acid
+substitutions in key P450 variants are summarized in Table 1.
+As can be seen from Table 1, except for several early variants,
+the majority of our evolved P411 carbene and nitrene
+transferases share the same ancestor, P411-CIS. We often
+found that a newly engineered carbene transferase acquired
+promiscuous activity for previously elusive nitrene transfer
+reactions. Similarly, newly evolved nitrene transferases opened
+up exciting opportunities for challenging carbene transfer
+reactions. Thus, there is a great deal of functional overlap in
+these new enzymes, which provides starting points for evolution
+and optimization of yet more novel functions.
+
+Active-site evolution by site-saturation mutagenesis and
+screening has proven fruitful for P450-catalyzed carbene and
+nitrene transfer. Perhaps this is not surprising, since these
+activities do not require the same ﬁnely tuned amino acid
+environment evolved for P450BM3’s native function. Upon a
+
+closer examination of the data in Table 1, it is evident that the
+following residues are important for tuning the enzyme activity
+and selectivity: (1) residues 70−87 in the B′ region; (2) residues
+177−181 in the F helix; (3) residues 261−269 in the I helix; (4)
+residues 327−330 in the K/K′ loop; (5) residues 436−438 in
+the loop; and (6) the iron-binding residue 400. The ability to
+quickly improve an abiological reaction of interest by iteratively
+mutating a relatively small set of key residues makes this protein
+engineering approach very attractive for catalyst development.
+To help future engineering of P450BM3 biocatalysts for other
+transformations, we label privileged active-site residues of
+P450BM3 in Figure 2, whose mutation resulted in substantial
+improvements in previously developed carbene and nitrene
+transfer enzymes. Beneﬁcial mutations will of course also lie at
+more distant residues, as is often found in directed evolution
+campaigns. Thus, further optimization of a new catalytic activity
+is possible if the screening capacity is suﬃcient to capture these
+rarer events.
+
+1220
+
+https://dx.doi.org/10.1021/acs.accounts.0c00591
+Acc. Chem. Res. 2021, 54, 1209−1225
+
+Accounts of Chemical Research
+
+pubs.acs.org/accounts
+
+Article
+
+Table 1. Directed Evolution of P450BM3 as Carbene and Nitrene Transferases
+
+ref
+
+1
+
+93
+
+39,
+
+52,
+54
+
+1
+
+50
+
+55
+
+55
+
+37,
+97
+
+97
+
+93
+
+99
+
+98
+
+entry
+1
+
+2
+
+3
+
+4
+
+5
+
+6
+
+7
+
+8
+
+9
+
+10
+
+11
+
+12
+
+13
+
+type
+
+reaction
+
+mutations relative to WT P450BM3
+
+parent
+
+variant
+P450BM3
+T268A
+P450BM3
+T268A
+F87A
+
+carbene
+
+cyclopropanation
+
+T268A
+
+nitrene
+
+C−H amidation
+
+F87A, T268A
+
+P450 Hstar
+
+carbene
+
+cyclopropanation
+
+V78M, L181V, T268A, C400H, L437W
+
+mutations relative to
+
+parent
+
+T268A
+
+F87A
+
+V78M, L181V,
+
+C400H, L437W
+
+P450BM3
+
+P450BM3
+T268A
+
+P450BM3
+T268A
+
+carbene
+
+cyclopropanation
+
+V78A, F87V, P142S, T175I, A184V, S226R, H236Q, E252G,
+
+T268A, A290V, L353V, I366V, E442K
+
+9-10A-TS46
+
+F87V, T268A
+
+carbene
+
+cyclopropanation
+
+V78A, F87V, P142S, T175I, A184V, S226R, H236Q, E252G,
+
+T268A, A290V, L353V, I366V, C400S, E442K
+
+P450BM3-CIS
+
+C400S
+
+P450BM3-
+
+CIS
+(PDB:
+4H24)
+
+P411BM3-
+
+CIS
+(PDB:
+4H23)
+
+P411-VACcis
+
+carbene
+
+cyclopropanation
+
+P411-
+
+VACtrans
+
+“P” (P411-
+
+CIS
+T438S)
+P I263A
+
+P I263F
+(PDB:
+4WG2)
+P I263F
+A328V
+L437V
+
+“P-4”
+
+E10 (PDB:
+5UCW)
+
+carbene
+
+cyclopropanation
+
+nitrene
+
+C−H amidation,
+sulfide imidation
+
+nitrene
+
+sulfide imidation
+
+nitrene
+
+C−H amidation
+
+nitrene
+
+aziridination
+
+nitrene
+
+sulfide imidation
+
+nitrene
+
+C−H amidation
+
+14
+
+P411CHA
+
+nitrene
+
+C−H amidation
+
+15
+
+16
+
+E10 V78F
+
+S438A
+
+P411−K10
+
+carbene
+
+bicyclobutanation
+
+carbene
+
+cyclopropenation
+
+17
+
+P411−C6
+
+carbene
+
+cyclopropenation
+
+18
+
+P411CHF
+
+carbene
+
+C−H alkylation
+
+19
+
+P411PFA
+
+carbene
+
+C−H alkylation
+
+20
+
+P411Diane2
+
+nitrene
+
+C−H amidation
+
+21
+
+P411-WIRF
+
+carbene
+
+cyclopropenation
+
+22
+
+P411BPA
+
+nitrene
+
+C−H amination
+
+L75Y, V78A, F87V, P142S, T175I, L181I, A184V, S226R,
+H236Q, E252G, T268A, A290V, L353V, I366V, C400S,
+L437F, T438Q, E442K
+
+V78A, F87L, P142S, T175I, L181R, A184V, S226R, H236Q,
+
+E252G, I263G, T268A, A290V, L353V, I366V, C400S,
+L437F, E442K
+
+V78A, F87V, P142S, T175I, A184V, S226R, H236Q, E252G,
+
+T268A, A290V, L353V, I366V, C400S, T438S, E442K
+
+P411BM3-CIS
+
+L75Y, L181I, L437F,
+
+T438Q
+
+P411BM3-CIS
+
+V87L, L181R, I263G,
+
+L437F
+
+P411BM3-CIS
+
+T438S
+
+V78A, F87V, P142S, T175I, A184V, S226R, H236Q, E252G,
+
+I263A, T268A A290V, L353V, I366V, C400S, T438S,
+E442K
+
+V78A, F87V, P142S, T175I, A184V, S226R, H236Q, E252G,
+I263F, T268A A290V, L353V, I366V, C400S, T438S, E442K
+
+“P”
+
+“P”
+
+I263A
+
+I263F
+
+P I263F
+
+A328V, L437V
+
+P I263F
+
+V87A, A268G,
+
+A328V
+
+V78A, F87V, P142S, T175I, A184V, S226R, H236Q, E252G,
+
+I263F, T268A, A290V, A328V, L353V, I366V, C400S,
+L437V, T438S, E442K
+
+V78A, F87A, P142S, T175I, A184V, S226R, H236Q, E252G,
+
+I263F, T268G, A290V, A328V, L353V, I366V, C400S,
+T438S, E442K
+
+A82L, F87A, P142S, T175I, A184V, S226R, H236Q, E252G,
+
+I263L, T268G, A290V, A328V, L353V, I366V, C400S,
+T438S, E442K
+
+A82L, F87A, P142S, T175I, A184V, S226R, H236Q, E252G,
+
+I263L, E267D, T268G, A290V, A328V, L353V, I366V,
+C400S, T438S, E442K
+
+V78F, A82L, F87A, P142S, T175I, A184V, S226R, H236Q,
+
+E252G, I263L, T268G, A290V, A328V, L353V, I366V,
+C400S, T438A, E442K
+
+S72W, V78S, P142S, T175I, A184V, L188C, S226R, H236Q,
+
+E252G, F261G, I263F, T268G, T269L, A290V, T327P,
+A328V, A330V, L353V, I366V, C400S, T436M, L437F,
+T438S, E442K
+
+P-4
+
+P-4
+
+E10
+
+P-4
+
+V78W, F87A, P142S, T175I, A184V, S226R, H236Q, E252G,
+
+F261M, I263F, T268G, A290V, T327V, A328Y, L353V,
+I366V, C400S, T436H, L437G, T438S, E442K
+
+P-4
+
+N70E, A74P, V78L, A82L, F87A, P142S, T175I, M177L,
+A184V, S226R, H236Q, E252G, I263Y, H266V, T268G,
+A290V, A328V, A330Y, L353V, I366V, C400S, T436L,
+E442K ΔFAD
+N70T, A74G, V78L, A82L, F87A, P142S, T175I, A184V,
+S226T, H236Q, E252G, I263Y, H266V, T268G, A290V,
+T327V, A328V, A330V, L353V, I366V, C400S, I401P,
+T436L, L437Q, E442K ΔFAD
+A74G, V78L, A82L, F87A, P142S, T175I, M177L, A184V,
+S226R, H236Q, E252G, I263W, T268G, A290V, T327P,
+A328V, L353V, I366V, C400S, T436L, L437F, E442K
+ΔFAD
+N70E, S72F, A74G, V78L, A82L, F87A, M118S, P142S,
+
+F162L, T175I, M177L, A184V, S226R, H236Q, E252G,
+I263W, H266V, T268G, A290V, A328V, A330Y, L353V,
+I366V, C400S, I401L, T436R, L437I, E442K ΔFAD
+
+V78M, A82L, F87A, P142S, T175I, A184V, S226R, H236Q,
+
+E252G, I263M, E267D, T268P, A290V, T327A, A328V,
+L353V, I366V, C400S, I437F, T438G, E442K
+
+P-4 A82L
+
+P411CHF-C8
+(P411CHF
+P74G I401L
+L437Q)
+
+P411CHF-C2
+(P411CHF
+E70N P74G
+T327I L437Q)
+
+P411CHF-C10
+
+(P411CHF
+P74G M118S
+F162L I401L
+L437Q)
+
+E10 L263M
+
+A78V, A82L, F263L
+
+94
+
+A78V, A82L, F263L,
+
+E267D
+
+V78F, S438A
+
+S72W, A78S, A87F,
+
+L188C, F261G,
+T269L, T327P,
+A330V, T436M,
+L437F
+
+A78W, F261M,
+
+T327V, V328Y,
+T436H, L437G
+
+N70E, A74P, A78L,
+
+M177L, F263Y,
+H266V, A330Y,
+T436L, S438T
+
+E70T, L177M,
+
+R226T, T327V,
+Y330V, L401P
+
+Y263W, I327P,
+
+Q437F
+
+S72F, Y263W,
+
+L436R, Q437I
+
+V78M, E267D,
+
+T268P, T327A,
+I437F, T438G
+
+94
+
+71
+
+71
+
+71
+
+3
+
+81
+
+96
+
+71
+
+4
+
+1221
+
+https://dx.doi.org/10.1021/acs.accounts.0c00591
+Acc. Chem. Res. 2021, 54, 1209−1225
+
+Accounts of Chemical Research
+
+Table 1. continued
+
+entry
+23
+
+variant
+P411APA
+
+type
+nitrene
+
+reaction
+
+C−H amination
+
+pubs.acs.org/accounts
+
+Article
+
+mutations relative to WT P450BM3
+
+V78M, A82L, F87A, P142S, T175I, A184V, S226R, H236Q,
+
+E252G, I263M, E267D, T268P, A290V, T327A, A328V,
+L353V, I366V, N395R, C400S, I437F, T438A, E442K
+
+parent
+
+P411BPA G438S
+
+mutations relative to
+
+parent
+N395R, S438A
+
+ref
+
+4
+
+and nitrene transfer activities were achieved so easily. In
+retrospect, several factors may have played important roles (in
+addition to the inherent catalytic promiscuity of heme and heme
+proteins, which enabled improvement using reliable directed
+evolution approaches). First, the generation of Fe carbene and
+Fe nitrene is highly exergonic. Unlike the generation of
+compound I in native oxygenation reactions, the formation of
+Fe carbene and Fe nitrene is likely kinetically facile and does not
+require complex interactions with the protein scaﬀold. Second,
+the nascent iron carbene and iron nitrene are highly active,
+allowing for both bimolecular and unimolecular reactions to
+occur rapidly at ambient
+temperature. Based on these
+considerations, we propose that reaction rate (kcat) is more
+important than substrate binding (KM) for the initial develop-
+ment of new-to-nature reactions.
+
+Third, despite the highly active nature of iron carbene and
+nitrene intermediates, their synthetic precursors including diazo
+compounds and organic azides are relatively stable under
+physiological conditions, even in living cells. This bio-
+orthogonality limits the spontaneous decay of substrates and
+ensures the productivity of enzymatic chemistry. Fourth, the
+excellent evolvability of heme proteins dramatically accelerated
+engineering campaigns. Last but not least, numerous ideas taken
+straight from synthetic organic and organometallic chemistry
+guided our design of new-to-nature biocatalytic processes.
+Standing on the shoulders of giants, we saw great opportunities
+at
+the colliding ﬁelds of synthetic chemistry and protein
+engineering.
+
+We anticipate that the strategies underlying the work detailed
+lead to the development of yet more
+in this Account will
+enzymes for challenging transformations. After all,
+the
+astonishing structural and functional diversity of naturally
+available enzymes, and other proteins, will continue to provide
+exciting opportunities for catalyst discovery. Using an
+interdisciplinary approach combining genome mining, enzymol-
+ogy, protein engineering, and synthetic organic chemistry, a
+broader range of new-to-nature biocatalytic transformations is
+yet to come.
+
+■ AUTHOR INFORMATION
+
+Corresponding Author
+
+Frances H. Arnold − Division of Chemistry and Chemical
+Engineering, California Institute of Technology, Pasadena,
+California 91125, United States;
+orcid.org/0000-0002-
+4027-364X; Email: frances@cheme.caltech.edu
+
+Author
+
+Yang Yang − Division of Chemistry and Chemical Engineering,
+
+California Institute of Technology, Pasadena, California
+91125, United States;
+
+orcid.org/0000-0002-4956-2034
+
+Complete contact information is available at:
+https://pubs.acs.org/10.1021/acs.accounts.0c00591
+
+Notes
+The authors declare no competing ﬁnancial interest.
+
+1222
+
+https://dx.doi.org/10.1021/acs.accounts.0c00591
+Acc. Chem. Res. 2021, 54, 1209−1225
+
+Figure 2. Key active-site residues in P450BM3 for the engineering of
+carbene and nitrene transferases.
+
+■ CONCLUDING REMARKS
+
+Over the past eight years, the ﬁeld of unnatural biocatalysis has
+witnessed an explosion, and a variety of challenging stereo-
+selective C−C and C−heteroatom bond forming trans-
+formations have been realized through the directed evolution
+from a synthetic chemist’s
+of heme proteins. However,
+perspective, biocatalytic carbene and nitrene transfer is far
+from mature. Numerous processes of signiﬁcant synthetic utility
+remain to be discovered or optimized. For example, by taking
+advantage of the precise site- and stereocontrol imposed by the
+enzyme, exciting new possibilities of selective C−H function-
+alization await development.
+
+Developing new biocatalytic reactions with no natural
+counterparts was once considered very diﬃcult. Thus, one
+might ask why these new-to-nature enzymatic carbene transfer
+
+Accounts of Chemical Research
+
+pubs.acs.org/accounts
+
+Article
+
+Biographies
+Yang Yang received his bachelor’s degree in chemistry from Peking
+University in 2011. He carried out graduate research at MIT under the
+direction of Prof. Stephen L. Buchwald, studying copper hydride-
+catalyzed asymmetric hydrofunctionalization of simple oleﬁns. He was
+an NIH Postdoctoral Fellow in the Arnold lab at Caltech evolving P450
+enzymes for asymmetric C−H functionalization. In 2020, he started as
+an Assistant Professor in the Department of Chemistry and
+Biochemistry at the University of California, Santa Barbara.
+Frances H. Arnold is the Linus Pauling Professor of Chemical
+Engineering, Bioengineering and Biochemistry at
+the California
+Institute of Technology. She received her Ph.D. in chemical engineering
+from UC Berkeley in 1985. She was awarded the 2018 Nobel Prize in
+Chemistry for her pioneering work in directed enzyme evolution.
+
+■ ACKNOWLEDGMENTS
+
+This research is supported by the NSF Division of Molecular
+and Cellular Biosciences (2016137), the US Army Institute for
+Collaborative Biotechnologies (W911NF-19-2-0026 and
+W911NF-19-D0001), the US Department of Energy (DE-
+SC0021141), and the NIH NIGMS (R01GM138740). Y.Y. is
+grateful
+fellowship
+(F32GM133126). We thank Dr. Kai Chen for providing an
+earlier version of Figure 1. We acknowledge Prof. Yiming Wang
+(University of Pittsburgh), Dr. Sabine Brinkman-Chen, Dr. Kai
+Chen, Nathaniel Goldberg, Dr. David Miller, and Dr. Noah
+Dunham (Caltech) for critical reading.
+
+to the NIH for a postdoctoral
+
+■ REFERENCES
+
+(1) Coelho, P. S.; Brustad, E. M.; Kannan, A.; Arnold, F. H. Olefin
+CyclopropanationVia Carbene Transfer Catalyzed by Engineered
+Cytochrome P450 Enzymes. Science 2013, 339, 307−310. The
+Sciencexpress version of this paper is published online on December 20,
+2012.
+(2) Kan, S. B. J.; Lewis, R. D.; Chen, K.; Arnold, F. H. Directed
+Evolution of Cytochrome C for Carbon−Silicon Bond Formation:
+Bringing Silicon to Life. Science 2016, 354, 1048−1051.
+(3) Zhang, R. K.; Chen, K.; Huang, X.; Wohlschlager, L.; Renata, H.;
+Arnold, F. H. Enzymatic Assembly of Carbon−Carbon Bonds Via Iron-
+Catalysed sp3 C−H Functionalization. Nature 2019, 565, 67−72.
+(4) Jia, Z.-J.; Gao, S.; Arnold, F. H. Enzymatic Primary Amination of
+Benzylic and Allylic C(sp3)−H Bonds. J. Am. Chem. Soc. 2020, 142,
+10279−10283.
+(5) Chen, K.; Arnold, F. H. Engineering New Catalytic Activities in
+Enzymes. Nat. Catal. 2020, 3, 203−213.
+(6) Bornscheuer, U. T.; Huisman, G. W.; Kazlauskas, R. J.; Lutz, S.;
+Moore, J. C.; Robins, K. Engineering the Third Wave of Biocatalysis.
+Nature 2012, 485, 185−194.
+(7) Nestl, B. M.; Hauer, B. Engineering of Flexible Loops in Enzymes.
+ACS Catal. 2014, 4, 3201−3211.
+(8) Vinyard, D.
+J.; Ananyev, G. M.; Charles Dismukes, G.
+Photosystem Ii: The Reaction Center of Oxygenic Photosynthesis.
+Annu. Rev. Biochem. 2013, 82, 577−606.
+(9) Hoffman, B. M.; Lukoyanov, D.; Yang, Z.-Y.; Dean, D. R.; Seefeldt,
+L. C. Mechanism of Nitrogen Fixation by Nitrogenase: The Next Stage.
+Chem. Rev. 2014, 114, 4041−4062.
+(10) Hakemian, A. S.; Rosenzweig, A. C. The Biochemistry of
+Methane Oxidation. Annu. Rev. Biochem. 2007, 76, 223−241.
+(11) Brown, K. L. Chemistry and Enzymology of Vitamin B12. Chem.
+Rev. 2005, 105, 2075−2150.
+(12) Ortiz de Montellano, P. R. Cytochrome P450: Structure,
+Mechanism, and Biochemistry; Springer, 2016.
+(13) Coon, M. J. Cytochrome P450: Nature’s Most Versatile
+Biological Catalyst. Annu. Rev. Pharmacol. Toxicol. 2005, 45, 1−25.
+
+(14) Denisov, I. G.; Makris, T. M.; Sligar, S. G.; Schlichting, I.
+Structure and Chemistry of Cytochrome P450. Chem. Rev. 2005, 105,
+2253−2278.
+(15) Hammerer, L.; Winkler, C. K.; Kroutil, W. Regioselective
+Biocatalytic Hydroxylation of Fatty Acids by Cytochrome P450s. Catal.
+Lett. 2018, 148, 787−812.
+(16) Podust, L. M.; Sherman, D. H. Diversity of P450 Enzymes in the
+Biosynthesis of Natural Products. Nat. Prod. Rep. 2012, 29, 1251−1266.
+(17) Rittle, J.; Green, M. T. Cytochrome P450 Compound I: Capture,
+Characterization, and C-H Bond Activation Kinetics. Science 2010, 330,
+933.
+(18) Whitehouse, C. J. C.; Bell, S. G.; Wong, L.-L. P450BM3
+(CYP102A1): Connecting the Dots. Chem. Soc. Rev. 2012, 41, 1218−
+1260.
+(19) Glieder, A.; Farinas, E. T.; Arnold, F. H. Laboratory Evolution of
+a Soluble, Self-Sufficient, Highly Active Alkane Hydroxylase. Nat.
+Biotechnol. 2002, 20, 1135−1139.
+(20) Peters, M. W.; Meinhold, P.; Glieder, A.; Arnold, F. H. Regio-
+and Enantioselective Alkane Hydroxylation with Engineered Cyto-
+chromes P450 BM-3. J. Am. Chem. Soc. 2003, 125, 13442−13450.
+(21) Cirino, P. C.; Arnold, F. H. A Self-Sufficient Peroxide-Driven
+Hydroxylation Biocatalyst. Angew. Chem., Int. Ed. 2003, 42, 3299−
+3301.
+(22) Meinhold, P.; Peters, M. W.; Chen, M. M. Y.; Takahashi, K.;
+Arnold, F. H. Direct Conversion of Ethane to Ethanol by Engineered
+Cytochrome P450 BM3. ChemBioChem 2005, 6, 1765−1768.
+(23) Fasan, R.; Chen, M. M.; Crook, N. C.; Arnold, F. H. Engineered
+Alkane-Hydroxylating Cytochrome P450bm3 Exhibiting Nativelike
+Catalytic Properties. Angew. Chem., Int. Ed. 2007, 46, 8414−8418.
+(24) Roiban, G.-D.; Reetz, M. T. Expanding the Toolbox of Organic
+Chemists: Directed Evolution of P450 Monooxygenases as Catalysts in
+Regio- and Stereoselective Oxidative Hydroxylation. Chem. Commun.
+2015, 51, 2208−2224.
+(25) Fasan, R. Tuning P450 Enzymes as Oxidation Catalysts. ACS
+Catal. 2012, 2, 647−666.
+(26) Lu, H.; Zhang, X. P. Catalytic C−H Functionalization by
+Metalloporphyrins: Recent Developments and Future Directions.
+Chem. Soc. Rev. 2011, 40, 1899−1909.
+(27) Che, C.-M.; Lo, V. K.-Y.; Zhou, C.-Y.; Huang, J.-S. Selective
+Functionalisation of Saturated C−H Bonds with Metalloporphyrin
+Catalysts. Chem. Soc. Rev. 2011, 40, 1950−1975.
+(28) Singh, R.; Mukherjee, A. Metalloporphyrin Catalyzed C−H
+Amination. ACS Catal. 2019, 9, 3604−3617.
+(29) Liu, Y.; You, T.; Wang, T.-T.; Che, C.-M. Iron-Catalyzed C−H
+Amination and Its Application in Organic Synthesis. Tetrahedron 2019,
+75, 130607.
+(30) Doyle, M. P.; Duffy, R.; Ratnikov, M.; Zhou, L. Catalytic Carbene
+Insertion into C−H Bonds. Chem. Rev. 2010, 110, 704−724.
+(31) Doyle, M. P.; Protopopova, M.; Muller, P.; Ene, D.; Shapiro, E. A.
+Effective Uses of Dirhodium(II) Tetrakis[Methyl 2-Oxopyrrolidine-
+5(R or S)-Carboxylate] for Highly Enantioselective Intermolecular
+Cyclopropenation Reactions. J. Am. Chem. Soc. 1994, 116, 8492−8498.
+(32) Ye, T.; McKervey, M. A. Organic Synthesis With.Alpha.-Diazo
+Carbonyl Compounds. Chem. Rev. 1994, 94, 1091−1160.
+(33) Davies, H. M. L.; Liao, K. Dirhodium Tetracarboxylates as
+Catalysts for Selective Intermolecular C−H Functionalization. Nature
+Reviews Chemistry 2019, 3, 347−360.
+(34) Roizen, J. L.; Harvey, M. E.; Du Bois, J. Metal-Catalyzed
+Nitrogen-Atom Transfer Methods for the Oxidation of Aliphatic C−H
+Bonds. Acc. Chem. Res. 2012, 45, 911−922.
+(35) Park, Y.; Kim, Y.; Chang, S. Transition Metal-Catalyzed C−H
+Amination: Scope, Mechanism, and Applications. Chem. Rev. 2017,
+117, 9247−9301.
+(36) Hayashi, H.; Uchida, T. Nitrene Transfer Reactions for
+Asymmetric C−H Amination: Recent Development. Eur. J. Org.
+Chem. 2020, 2020, 909−916.
+(37) McIntosh, J. A.; Coelho, P. S.; Farwell, C. C.; Wang, Z. J.; Lewis,
+J. C.; Brown, T. R.; Arnold, F. H. Enantioselective Intramolecular C−H
+
+1223
+
+https://dx.doi.org/10.1021/acs.accounts.0c00591
+Acc. Chem. Res. 2021, 54, 1209−1225
+
+Accounts of Chemical Research
+
+pubs.acs.org/accounts
+
+Article
+
+Amination Catalyzed by Engineered Cytochrome P450 Enzymes in
+Vitro and in Vivo. Angew. Chem., Int. Ed. 2013, 52, 9309−9312.
+(38) Bornscheuer, U. T.; Kazlauskas, R. J. Catalytic Promiscuity in
+Biocatalysis: Using Old Enzymes to Form New Bonds and Follow New
+Pathways. Angew. Chem., Int. Ed. 2004, 43, 6032−6040.
+(39) Renata, H.; Wang, Z. J.; Arnold, F. H. Expanding the Enzyme
+Universe: Accessing Non-Natural Reactions by Mechanism-Guided
+Directed Evolution. Angew. Chem., Int. Ed. 2015, 54, 3351−3367.
+(40) Leveson-Gower, R. B.; Mayer, C.; Roelfes, G. The Importance of
+Catalytic Promiscuity for Enzyme Design and Evolution. Nature
+Reviews Chemistry 2019, 3, 687−705.
+(41) Pandya, C.; Farelli, J. D.; Dunaway-Mariano, D.; Allen, K. N.
+Enzyme Promiscuity: Engine of Evolutionary Innovation. J. Biol. Chem.
+2014, 289, 30229−30236.
+(42) Tawfik, O. K.; Dan, S. Enzyme Promiscuity: A Mechanistic and
+Evolutionary Perspective. Annu. Rev. Biochem. 2010, 79, 471−505.
+(43) Tokuriki, N.; Tawfik, D. S. Protein Dynamism and Evolvability.
+Science 2009, 324, 203.
+(44) Poulos, T. L. Cytochrome P450 Flexibility. Proc. Natl. Acad. Sci.
+U. S. A. 2003, 100, 13121.
+(45) Wolf, J. R.; Hamaker, C. G.; Djukic, J.-P.; Kodadek, T.; Woo, L.
+K. Shape and Stereoselective Cyclopropanation of Alkenes Catalyzed
+by Iron Porphyrins. J. Am. Chem. Soc. 1995, 117, 9194−9199.
+(46) Lewis, J. C.; Bastian, S.; Bennett, C. S.; Fu, Y.; Mitsuda, Y.; Chen,
+M. M.; Greenberg, W. A.; Wong, C.-H.; Arnold, F. H. Chemoenzymatic
+Elaboration of Monosaccharides Using Engineered Cytochrome
+P450BM3 Demethylases. Proc. Natl. Acad. Sci. U. S. A. 2009, 106,
+16550.
+(47) Zhu, S.-F.; Zhou, Q.-L. Iron-Catalyzed Transformations of Diazo
+Compounds. National Science Review 2014, 1, 580−603.
+(48) Clark, J. P.; Miles, C. S.; Mowat, C. G.; Walkinshaw, M. D.; Reid,
+G. A.; Daff, S. N.; Chapman, S. K. The Role of Thr268 and Phe393 in
+Cytochrome P450 BM3. J. Inorg. Biochem. 2006, 100, 1075−1090.
+(49) Gober, J. G.; Rydeen, A. E.; Gibson-O’Grady, E. J.; Leuthaeuser,
+J. B.; Fetrow, J. S.; Brustad, E. M. Mutating a Highly Conserved Residue
+in Diverse Cytochrome P450s Facilitates Diastereoselective Olefin
+Cyclopropanation. ChemBioChem 2016, 17, 394−397.
+(50) Coelho, P. S.; Wang, Z. J.; Ener, M. E.; Baril, S. A.; Kannan, A.;
+Arnold, F. H.; Brustad, E. M. A Serine-Substituted P450 Catalyzes
+Highly Efficient Carbene Transfer to Olefins in Vivo. Nat. Chem. Biol.
+2013, 9, 485.
+(51) Kumar, D.; de Visser, S. P.; Sharma, P. K.; Derat, E.; Shaik, S. The
+Intrinsic Axial Ligand Effect on Propene Oxidation by Horseradish
+Peroxidase Versus Cytochrome P450 Enzymes. JBIC, J. Biol. Inorg.
+Chem. 2005, 10, 181−189.
+(52) Wang, Z. J.; Renata, H.; Peck, N. E.; Farwell, C. C.; Coelho, P. S.;
+Arnold, F. H. Improved Cyclopropanation Activity of Histidine-Ligated
+Cytochrome P450 Enables the Enantioselective Formal Synthesis of
+Levomilnacipran. Angew. Chem., Int. Ed. 2014, 53, 6810−6813.
+(53) Renata, H.; Wang, Z. J.; Kitto, R. Z.; Arnold, F. H. P450-
+Catalyzed Asymmetric Cyclopropanation of Electron-Deficient Olefins
+under Aerobic Conditions. Catal. Sci. Technol. 2014, 4, 3640−3643.
+(54) Renata, H.; Lewis, R. D.; Sweredoski, M. J.; Moradian, A.; Hess,
+S.; Wang, Z. J.; Arnold, F. H. Identification of Mechanism-Based
+Inactivation in P450-Catalyzed Cyclopropanation Facilitates Engineer-
+ing of Improved Enzymes. J. Am. Chem. Soc. 2016, 138, 12527−12533.
+(55) Brandenberg, O. F.; Prier, C. K.; Chen, K.; Knight, A. M.; Wu, Z.;
+Arnold, F. H. Stereoselective Enzymatic Synthesis of Heteroatom-
+Substituted Cyclopropanes. ACS Catal. 2018, 8, 2629−2634.
+(56) Knight, A. M.; Kan, S. B. J.; Lewis, R. D.; Brandenberg, O. F.;
+Chen, K.; Arnold, F. H. Diverse Engineered Heme Proteins Enable
+Stereodivergent Cyclopropanation of Unactivated Alkenes. ACS Cent.
+Sci. 2018, 4, 372−377.
+(57) Bordeaux, M.; Tyagi, V.; Fasan, R. Highly Diastereoselective and
+Enantioselective Olefin Cyclopropanation Using Engineered Myoglo-
+bin-Based Catalysts. Angew. Chem., Int. Ed. 2015, 54, 1744−1748.
+(58) Hernandez, K. E.; Renata, H.; Lewis, R. D.; Kan, S. B. J.; Zhang,
+C.; Forte, J.; Rozzell, D.; McIntosh, J. A.; Arnold, F. H. Highly
+
+Stereoselective Biocatalytic Synthesis of Key Cyclopropane Inter-
+mediate to Ticagrelor. ACS Catal. 2016, 6, 7810−7813.
+(59) Giangiacomo, L.; Ilari, A.; Boffi, A.; Morea, V.; Chiancone, E.
+The Truncated Oxygen-Avid Hemoglobin from Bacillus Subtilis: X-Ray
+Structure and Ligand Binding Properties. J. Biol. Chem. 2005, 280,
+9192−9202.
+(60) Bajaj, P.; Sreenilayam, G.; Tyagi, V.; Fasan, R. Gram-Scale
+Synthesis of Chiral Cyclopropane-Containing Drugs and Drug
+Precursors with Engineered Myoglobin Catalysts Featuring Comple-
+mentary Stereoselectivity. Angew. Chem., Int. Ed. 2016, 55, 16110−
+16114.
+(61) Zhang, Z.-Q.; Zheng, M.-M.; Xue, X.-S.; Marek, I.; Zhang, F.-G.;
+Ma, J.-A. Catalytic Enantioselective Cyclopropenation of Internal
+Alkynes: Access to Difluoromethylated Three-Membered Carbocycles.
+Angew. Chem., Int. Ed. 2019, 58, 18191−18196.
+(62) Protopopova, M. N.; Doyle, M. P.; Mueller, P.; Ene, D. High
+Enantioselectivity for Intermolecular Cyclopropenation of Alkynes by
+Diazo Esters Catalyzed by Chiral Dirhodium(II) Carboxamides. J. Am.
+Chem. Soc. 1992, 114, 2755−2757.
+(63) Briones, J. F.; Hansen, J.; Hardcastle, K. I.; Autschbach, J.;
+Davies, H. M. L. Highly Enantioselective Rh2(S-DOSP)4-Catalyzed
+Cyclopropenation of Alkynes with Styryldiazoacetates. J. Am. Chem.
+Soc. 2010, 132, 17211−17215.
+(64) Davies, H. M. L.; Lee, G. H. Dirhodium(II) Tetra(N-
+(Dodecylbenzenesulfonyl)Prolinate) Catalyzed Enantioselective Cy-
+clopropenation of Alkynes. Org. Lett. 2004, 6, 1233−1236.
+(65) Goto, T.; Takeda, K.; Shimada, N.; Nambu, H.; Anada, M.; Shiro,
+M.; Ando, K.; Hashimoto, S. Highly Enantioselective Cyclopropena-
+tion Reaction of 1-Alkynes with α-Alkyl-α-Diazoesters Catalyzed by
+Dirhodium(II) Carboxylates. Angew. Chem., Int. Ed. 2011, 50, 6803−
+6808.
+(66) Lindsay, V. N. G.; Fiset, D.; Gritsch, P. J.; Azzi, S.; Charette, A. B.
+Stereoselective Rh2(S-Ibaz)4-Catalyzed Cyclopropanation of Alkenes,
+Alkynes, and Allenes: Asymmetric Synthesis of Diacceptor Cyclo-
+propylphosphonates and Alkylidenecyclopropanes. J. Am. Chem. Soc.
+2013, 135, 1463−1470.
+(67) Uehara, M.; Suematsu, H.; Yasutomi, Y.; Katsuki, T.
+Enantioenriched Synthesis of Cyclopropenes with a Quaternary
+Stereocenter, Versatile Building Blocks. J. Am. Chem. Soc. 2011, 133,
+170−171.
+(68) Cui, X.; Xu, X.; Lu, H.; Zhu, S.; Wojtas, L.; Zhang, X. P.
+Enantioselective Cyclopropenation of Alkynes with Acceptor/Accept-
+or-Substituted Diazo Reagents via Co(II)-Based Metalloradical
+Catalysis. J. Am. Chem. Soc. 2011, 133, 3304−3307.
+(69) Chen, K.; Huang, X.; Kan, S. B. J.; Zhang, R. K.; Arnold, F. H.
+Enzymatic Construction of Highly Strained Carbocycles. Science 2018,
+360, 71−75.
+(70) Vottero, E.; Rea, V.; Lastdrager, J.; Honing, M.; Vermeulen, N. P.
+E.; Commandeur, J. N. M. Role of Residue 87 in Substrate Selectivity
+and Regioselectivity of Drug-Metabolizing Cytochrome P450
+CYP102A1M11. JBIC, J. Biol. Inorg. Chem. 2011, 16, 899−912.
+(71) Chen, K.; Arnold, F. H. Engineering Cytochrome P450s for
+Enantioselective Cyclopropenation of Internal Alkynes. J. Am. Chem.
+Soc. 2020, 142, 6891−6895.
+(72) Hamaker, C. G.; Djukic, J.-P.; Smith, D. A.; Woo, L. K.
+Mechanism of Cyclopropanation Reactions Mediated by (5,10,15,20-
+Tetra-P-Tolylporphyrinato)Osmium(II) Complexes. Organometallics
+2001, 20, 5189−5199.
+(73) Frampton, M. B.; Zelisko, P. M. Organosilicon Biotechnology.
+Silicon 2009, 1, 147−163.
+(74) Wu, Z.; Kan, S. B. J.; Lewis, R. D.; Wittmann, B. J.; Arnold, F. H.
+Machine Learning-Assisted Directed Protein Evolution with Combi-
+natorial Libraries. Proc. Natl. Acad. Sci. U. S. A. 2019, 116, 8852.
+(75) Kan, S. B. J.; Huang, X.; Gumulya, Y.; Chen, K.; Arnold, F. H.
+Genetically Programmed Chiral Organoborane Synthesis. Nature 2017,
+552, 132.
+(76) Huang, X.; Garcia-Borràs, M.; Miao, K.; Kan, S. B. J.; Zutshi, A.;
+Houk, K. N.; Arnold, F. H. A Biocatalytic Platform for Synthesis of
+
+1224
+
+https://dx.doi.org/10.1021/acs.accounts.0c00591
+Acc. Chem. Res. 2021, 54, 1209−1225
+
+Accounts of Chemical Research
+
+pubs.acs.org/accounts
+
+Article
+
+Chiral α-Trifluoromethylated Organoborons. ACS Cent. Sci. 2019, 5,
+270−276.
+(77) Chen, K.; Huang, X.; Zhang, S.-Q.; Zhou, A. Z.; Kan, S. B. J.;
+Hong, X.; Arnold, F. H. Engineered Cytochrome C-Catalyzed Lactone-
+Carbene B-H Insertion. Synlett 2019, 30, 378−382.
+(78) Li, Y.; Huang, J.-S.; Zhou, Z.-Y.; Che, C.-M.; You, X.-Z.
+Remarkably Stable Iron Porphyrins Bearing Nonheteroatom-Stabilized
+Carbene or (Alkoxycarbonyl)Carbenes: Isolation, X-Ray Crystal
+Structures, and Carbon Atom Transfer Reactions with Hydrocarbons.
+J. Am. Chem. Soc. 2002, 124, 13185−13193.
+(79) Griffin, J. R.; Wendell, C. I.; Garwin, J. A.; White, M. C. Catalytic
+C (Sp3)−H Alkylation Via an Iron Carbene Intermediate. J. Am. Chem.
+Soc. 2017, 139, 13624−13627.
+(80) Tinoco, A.; Steck, V.; Tyagi, V.; Fasan, R. Highly Diastereo- and
+Enantioselective Synthesis of Trifluoromethyl-Substituted Cyclo-
+propanes Via Myoglobin-Catalyzed Transfer of Trifluoromethylcar-
+bene. J. Am. Chem. Soc. 2017, 139, 5293−5296.
+J.; Huang, X.; Zhang, R. K.; Arnold, F. H.
+(81) Zhang,
+Enantiodivergent Α-Amino C−H Fluoroalkylation Catalyzed by
+Engineered Cytochrome P450s. J. Am. Chem. Soc. 2019, 141, 9798−
+9802.
+(82) Yoshioka, S.; Takahashi, S.; Ishimori, K.; Morishima, I. Roles of
+the Axial Push Effect in Cytochrome P450cam Studied with the Site-
+Directed Mutagenesis at the Heme Proximal Site. J. Inorg. Biochem.
+2000, 81, 141−151.
+(83) Nagano, S.; Tosha, T.; Ishimori, K.; Morishima, I.; Poulos, T. L.
+Crystal Structure of the Cytochrome P450cam Mutant That Exhibits
+the Same Spectral Perturbations Induced by Putidaredoxin Binding. J.
+Biol. Chem. 2004, 279, 42844−42849.
+(84) Xu, F.; Bell, S. G.; Lednik, J.; Insley, A.; Rao, Z.; Wong, L.-L. The
+Heme Monooxygenase Cytochrome P450cam Can Be Engineered to
+Oxidize Ethane to Ethanol. Angew. Chem., Int. Ed. 2005, 44, 4029−
+4032.
+(85) Vargas, D. A.; Tinoco, A.; Tyagi, V.; Fasan, R. Myoglobin-
+Catalyzed C−H Functionalization of Unprotected Indoles. Angew.
+Chem., Int. Ed. 2018, 57, 9911−9915.
+(86) Hock, K. J.; Knorrscheidt, A.; Hommelsheim, R.; Ho, J.;
+Weissenborn, M. J.; Koenigs, R. M. Tryptamine Synthesis by Iron
+Porphyrin Catalyzed C−H Functionalization of
+Indoles with
+Diazoacetonitrile. Angew. Chem., Int. Ed. 2019, 58, 3630−3634.
+(87) Brandenberg, O. F.; Chen, K.; Arnold, F. H. Directed Evolution
+of a Cytochrome P450 Carbene Transferase for Selective Functional-
+ization of Cyclic Compounds. J. Am. Chem. Soc. 2019, 141, 8989−8995.
+(88) Vitaku, E.; Smith, D. T.; Njardarson, J. T. Analysis of the
+Structural Diversity, Substitution Patterns, and Frequency of Nitrogen
+Heterocycles among U.S. Fda Approved Pharmaceuticals. J. Med. Chem.
+2014, 57, 10257−10274.
+(89) Nugent, T. C.; Nugent, T. C. Chiral Amine Synthesis: Methods,
+Developments and Applications; Wiley: Hoboken, 2010.
+(90) Svastits, E. W.; Dawson, J. H.; Breslow, R.; Gellman, S. H.
+Functionalized Nitrogen Atom Transfer Catalyzed by Cytochrome P-
+450. J. Am. Chem. Soc. 1985, 107, 6427−6428.
+(91) White, R. E. Methanolysis of ((Tosylimimo)Iodo)Benzene.
+Inorg. Chem. 1987, 26, 3916−3919.
+(92) Bordeaux, M.; Singh, R.; Fasan, R. Intramolecular C(sp3)−H
+Amination of Arylsulfonyl Azides with Engineered and Artificial
+Myoglobin-Based Catalysts. Bioorg. Med. Chem. 2014, 22, 5697−5704.
+(93) Hyster, T. K.; Farwell, C. C.; Buller, A. R.; McIntosh, J. A.;
+Arnold, F. H. Enzyme-Controlled Nitrogen-Atom Transfer Enables
+Regiodivergent C−H Amination. J. Am. Chem. Soc. 2014, 136, 15505−
+15508.
+(94) Prier, C. K.; Zhang, R. K.; Buller, A. R.; Brinkmann-Chen, S.;
+Arnold, F. H. Enantioselective, Intermolecular Benzylic C−H
+Amination Catalysed by an Engineered Iron-Haem Enzyme. Nat.
+Chem. 2017, 9, 629.
+(95) Yang, C.-J.; Zhang, C.; Gu, Q.-S.; Fang, J.-H.; Su, X.-L.; Ye, L.;
+Sun, Y.; Tian, Y.; Li, Z.-L.; Liu, X.-Y. Cu-Catalysed Intramolecular
+Radical Enantioconvergent Tertiary β−C(sp3)−H Amination of
+Racemic Ketones. Nat. Catal. 2020, 3, 539−546.
+
+(96) Yang, Y.; Cho, I.; Qi, X.; Liu, P.; Arnold, F. H. An Enzymatic
+Platform for the Asymmetric Amination of Primary, Secondary and
+Tertiary C(sp3)−H Bonds. Nat. Chem. 2019, 11, 987−993.
+(97) Farwell, C. C.; McIntosh, J. A.; Hyster, T. K.; Wang, Z. J.; Arnold,
+F. H. Enantioselective Imidation of Sulfides Via Enzyme-Catalyzed
+Intermolecular Nitrogen-Atom Transfer. J. Am. Chem. Soc. 2014, 136,
+8766−8771.
+(98) Prier, C. K.; Hyster, T. K.; Farwell, C. C.; Huang, A.; Arnold, F.
+H. Asymmetric Enzymatic Synthesis of Allylic Amines: A Sigmatropic
+Rearrangement Strategy. Angew. Chem., Int. Ed. 2016, 55, 4711−4715.
+(99) Farwell, C. C.; Zhang, R. K.; McIntosh, J. A.; Hyster, T. K.;
+Arnold, F. H. Enantioselective Enzyme-Catalyzed Aziridination
+Enabled by Active-Site Evolution of a Cytochrome P450. ACS Cent.
+Sci. 2015, 1, 89−93.
+(100) Tsutsumi, H.; Katsuyama, Y.; Izumikawa, M.; Takagi, M.; Fujie,
+M.; Satoh, N.; Shin-ya, K.; Ohnishi, Y. Unprecedented Cyclization
+Catalyzed by a Cytochrome P450 in Benzastatin Biosynthesis. J. Am.
+Chem. Soc. 2018, 140, 6631−6639.
+(101) Legnani, L.; Morandi, B. Direct Catalytic Synthesis of
+Unprotected 2-Amino-1-Phenylethanols from Alkenes by Using
+Iron(II) Phthalocyanine. Angew. Chem., Int. Ed. 2016, 55, 2248−2251.
+(102) Legnani, L.; Prina Cerai, G.; Morandi, B. Direct and Practical
+Synthesis of Primary Anilines through Iron-Catalyzed C−H Bond
+Amination. ACS Catal. 2016, 6, 8162−8165.
+(103) Legnani, L.; Prina-Cerai, G.; Delcaillau, T.; Willems, S.;
+Morandi, B. Efficient Access to Unprotected Primary Amines by Iron-
+Catalyzed Aminochlorination of Alkenes. Science 2018, 362, 434.
+(104) Cho, I.; Prier, C. K.; Jia, Z.-J.; Zhang, R. K.; Görbe, T.; Arnold,
+F. H. Enantioselective Aminohydroxylation of Styrenyl Olefins
+Catalyzed by an Engineered Hemoprotein. Angew. Chem., Int. Ed.
+2019, 58, 3138−3142.
+
+1225
+
+https://dx.doi.org/10.1021/acs.accounts.0c00591
+Acc. Chem. Res. 2021, 54, 1209−1225
+
+

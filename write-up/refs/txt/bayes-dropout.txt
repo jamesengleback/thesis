@@ -1,0 +1,957 @@
+5
+1
+0
+2
+
+ 
+t
+c
+O
+1
+3
+
+ 
+
+ 
+ 
+]
+L
+M
+
+.
+t
+a
+t
+s
+[
+ 
+ 
+
+4
+v
+2
+4
+1
+2
+0
+
+.
+
+6
+0
+5
+1
+:
+v
+i
+X
+r
+a
+
+Dropout as a Bayesian Approximation:
+
+Representing Model Uncertainty in Deep Learning
+
+Yarin Gal
+
+University of Cambridge
+
+{yg279,zg201}@cam.ac.uk
+
+Zoubin Ghahramani
+
+Abstract
+
+Deep learning tools have gained tremendous attention in applied machine learn-
+ing. However such tools for regression and classiﬁcation do not capture model
+uncertainty. In comparison, Bayesian models offer a mathematically grounded
+framework to reason about model uncertainty, but usually come with a prohibitive
+computational cost. In this paper we develop a new theoretical framework casting
+dropout training in deep neural networks (NNs) as approximate Bayesian infer-
+ence in deep Gaussian processes. A direct result of this theory gives us tools to
+model uncertainty with dropout NNs – extracting information from existing mod-
+els that has been thrown away so far. This mitigates the problem of representing
+uncertainty in deep learning without sacriﬁcing either computational complexity
+or test accuracy. We perform an extensive study of the properties of dropout’s un-
+certainty. Various network architectures and non-linearities are assessed on tasks
+of regression and classiﬁcation, using MNIST as an example. We show a consid-
+erable improvement in predictive log-likelihood and RMSE compared to existing
+state-of-the-art methods, and ﬁnish by using dropout’s uncertainty in deep rein-
+forcement learning.
+
+1
+
+Introduction
+
+Deep learning has attracted tremendous attention from researchers in ﬁelds such as physics, biology,
+and manufacturing, to name a few [1, 2, 3]. Tools such as the neural network (NN), dropout, con-
+volutional neural networks (convnets), and others are used extensively. However, these are ﬁelds in
+which representing model uncertainty is of crucial importance [4, 5]. With the recent shift in many
+of these ﬁelds towards the use of Bayesian uncertainty [6, 7, 8] new needs arise from deep learning
+tools.
+Standard deep learning tools for regression and classiﬁcation do not capture model uncertainty. In
+classiﬁcation, predictive probabilities obtained at the end of the pipeline (the softmax output) are
+often erroneously interpreted as model conﬁdence. A model can be uncertain in its predictions even
+with a high softmax output (ﬁg. 1). Passing a point estimate of a function (solid line 1a) through a
+softmax (solid line 1b) results in extrapolations with unjustiﬁed high conﬁdence for points far from
+the training data. x∗ for example would be classiﬁed as class 1 with probability 1. However, passing
+the distribution (shaded area 1a) through a softmax (shaded area 1b) better reﬂects classiﬁcation
+uncertainty far from the training data.
+Model uncertainty is indispensable for the deep learning practitioner as well. With model conﬁdence
+at hand we can treat uncertain inputs and special cases explicitly. For example, in the case of
+classiﬁcation, a model might return a result with high uncertainty. In this case we might decide to
+pass the input to a human for classiﬁcation. This can happen in a post ofﬁce, sorting letters according
+to their zip code, or in a nuclear power plant with a system responsible for critical infrastructure [9].
+Uncertainty is important in reinforcement learning (RL) as well [10]. With uncertainty information
+an agent can decide when to exploit and when to explore its environment. Recent advances in RL
+
+1
+
+(a) Softmax input as a function of data x: f (x)
+
+(b) Softmax output as a function of data x: σ(f (x))
+
+Figure 1: A sketch of softmax input and output for an idealised binary classiﬁcation problem.
+Training data is given between the dashed grey lines. Function point estimate is shown with a solid
+line. Function uncertainty is shown with a shaded area. Marked with a dashed red line is a point
+x∗ far from the training data. Ignoring function uncertainty, point x∗ is classiﬁed as class 1 with
+probability 1.
+have made use of NNs for Q-value function approximation. These are functions that estimate the
+quality of different actions an agent can make. Epsilon greedy search is often used where the agent
+selects its best action with some probability and explores otherwise. With uncertainty estimates over
+the agent’s Q-value function, techniques such as Thompson sampling [11] can be used to learn much
+faster.
+Bayesian probability theory offers us mathematically grounded tools to reason about model uncer-
+tainty, but these usually come with a prohibitive computational cost. It is perhaps surprising then
+that it is possible to cast recent deep learning tools as Bayesian models – without changing either
+the models or the optimisation. We show that the use of dropout (and its variants) in NNs can be
+interpreted as a Bayesian approximation of a well known probabilistic model: the Gaussian process
+(GP) [12]. Dropout is used in many models in deep learning as a way to avoid over-ﬁtting [13],
+and our interpretation suggests that dropout approximately integrates over the models’ weights. We
+develop tools for representing model uncertainty of existing dropout NNs – extracting information
+that has been thrown away so far. This mitigates the problem of representing model uncertainty in
+deep learning without sacriﬁcing either computational complexity or test accuracy.
+In this paper we give a complete theoretical treatment of the link between Gaussian processes and
+dropout, and develop the tools necessary to represent uncertainty in deep learning. We perform an
+extensive exploratory assessment of the properties of the uncertainty obtained from dropout NNs and
+convnets on the tasks of regression and classiﬁcation. We compare the uncertainty obtained from
+different model architectures and non-linearities in regression, and show that model uncertainty
+is indispensable for classiﬁcation tasks, using MNIST as a concrete example. We then show a
+considerable improvement in predictive log-likelihood and RMSE compared to existing state-of-
+the-art methods. Lastly we give a quantitative assessment of model uncertainty in the setting of
+reinforcement learning, on a practical task similar to that used in deep reinforcement learning [14].
+
+2 Related Research
+
+It has long been known that inﬁnitely wide (single hidden layer) NNs with distributions placed over
+their weights converge to Gaussian processes [15, 16]. This known relation is through a limit argu-
+ment that does not allow us to translate properties from the Gaussian process to ﬁnite NNs easily.
+Finite NNs with distributions placed over the weights have been studied extensively as Bayesian
+neural networks [15, 17]. These offer robustness to over-ﬁtting as well, but with challenging infer-
+ence and additional computational costs. Variational inference has been applied to these models,
+but with limited success [18, 19, 20]. Recent advances in variational inference introduced new
+techniques into the ﬁeld such as sampling-based variational inference and stochastic variational in-
+ference [21, 22, 23, 24, 25]. These have been used to obtain new approximations for Bayesian neural
+networks that perform as well as dropout [26]. However these models come with a prohibitive com-
+putational cost. To represent uncertainty, the number of parameters in these models is doubled for
+the same network size. Further, they require more time to converge and do not improve on existing
+techniques. Given that good uncertainty estimates can be cheaply obtained from common dropout
+models, this results in unnecessary additional computation. An alternative approach to variational
+inference makes use of expectation propagation [27] and has improved considerably in RMSE and
+uncertainty estimation on VI approaches such as [20]. In the results section we compare dropout to
+these approaches and show a signiﬁcant improvement in both RMSE and uncertainty estimation.
+
+2
+
+3 Dropout as a Bayesian Approximation
+
+(1)
+
+We show that a neural network with arbitrary depth and non-linearities, with dropout applied before
+every weight layer, is mathematically equivalent to an approximation to the probabilistic deep Gaus-
+sian process [28]. We would like to stress that no simplifying assumptions are made on the use of
+dropout in the literature, and that the results derived are applicable to any network architecture that
+makes use of dropout exactly as it appears in practical applications. Furthermore, our results carry
+to other variants of dropout as well (such as drop-connect [29], multiplicative Gaussian noise [13],
+hashed neural networks [30], etc.). We show that the dropout objective, in effect, minimises the
+Kullback–Leibler divergence between an approximate model and the deep Gaussian process. Due
+to space constraints we refer the reader to the appendix for an in depth review of dropout, Gaussian
+processes, and variational inference (section 2), as well as the main derivation for dropout and its
+variations (section 3). The results are summarised here and in the next section we obtain uncertainty
+estimates for dropout NNs.
+
+Let(cid:98)y be the output of a NN model with L layers and a loss function E(·,·) such as the softmax
+
+loss or the Euclidean loss (square loss). We denote by Wi the NN’s weight matrices of dimensions
+Ki × Ki−1, and by bi the bias vectors of dimensions Ki for each layer i = 1, ..., L. We denote
+by yi the observed output corresponding to input xi for 1 ≤ i ≤ N data points, and the input and
+output sets as X, Y. During NN optimisation a regularisation term is often added. We often use
+L2 regularisation weighted by some weight decay λ, resulting in a minimisation objective (often
+referred to as cost),
+
+N(cid:88)
+
+i=1
+
+E(yi,(cid:98)yi) + λ
+
+(cid:0)||Wi||2
+
+L(cid:88)
+
+i=1
+
+(cid:1).
+
+2 + ||bi||2
+
+2
+
+Ldropout :=
+
+1
+N
+
+function of the form K(x, y) = (cid:82) p(w)p(b)σ(wT x + b)σ(wT y + b)dwdb with some element-
+
+With dropout, we sample binary variables for every input point and for every network unit in each
+layer (apart from the last one). Each binary variable takes value 1 with probability pi for layer i. A
+unit is dropped (i.e. its value is set to zero) for a given input if its corresponding binary variable takes
+value 0. We use the same values in the backward pass propagating the derivatives to the parameters.
+In comparison to the non-probabilistic NN, the deep Gaussian process [28] is a powerful tool in
+statistics that allows us to model distributions over functions. Assume we are given a covariance
+wise non-linearity σ(·) and distributions p(w), p(b). In sections 3 and 4 in the appendix we show
+that a deep Gaussian process with L layers and covariance function K(x, y) can be approximated
+by placing a variational distribution over each component of a spectral decomposition of the GPs’
+covariance functions. This spectral decomposition maps each layer of the deep GP to a layer of
+explicitly represented hidden units, as will be brieﬂy explained next.
+
+Let(cid:99)Mi be a random matrix of dimensions Ki × Ki−1 for each layer i, and write ω = {(cid:99)Mi}L
+A-priori, we let each row of(cid:99)Mi distribute according to the p(w) above. In addition, assume vectors
+
+mi of dimensions Ki for each GP layer. The predictive probability of the deep GP model (with a
+ﬁnite rank covariance function and some precision parameter τ > 0) can be re-parametrised as
+
+i=1.
+
+p(y|x, X, Y) =
+
+p(y|x, ω)p(ω|X, Y)dω
+
+p(y|x, ω) = N(cid:0)y;(cid:98)y(x, ω), τ−1ID
+(cid:114) 1
+
+(cid:18)
+
+(cid:98)y(cid:0)x, ω = {(cid:99)M1, ...,(cid:99)ML}(cid:1) =
+
+(cid:1)
+(cid:99)M2σ(cid:0)(cid:99)M1x + m1
+
+(cid:99)MLσ
+
+(cid:19)
+(cid:1)...
+
+(4)
+The posterior distribution p(ω|X, Y) in eq. (2) is intractable. We use q(ω), a distribution over
+matrices whose columns are randomly set to zero, to approximate the intractable posterior. We
+deﬁne q(ω) as:
+
+KL
+
+K1
+
+...
+
+(cid:90)
+(cid:114) 1
+
+(2)
+
+(3)
+
+(5)
+(6)
+(7)
+given some probabilities pi and matrices Mi as variational parameters. The binary variable zi,j = 0
+corresponds then to unit j in layer i − 1 being dropped out as an input to layer i. The variational
+
+zi,j ∼ Bernoulli(pi) for i = 1, ..., L, j = 1, ..., Ki−1
+
+j=1)
+
+ω = {(cid:99)Mi}L
+(cid:99)Mi = Mi · diag([zi,j]Ki
+
+i=1
+
+3
+
+(cid:90)
+
+distribution q(ω) is highly multi-modal, inducing strong joint correlations over the rows of the
+
+matrices(cid:99)Mi (which correspond to the frequencies in the sparse spectrum GP approximation).
+
+We minimise the KL divergence between the approximate posterior q(ω) above and the posterior of
+the full deep GP, p(ω|X, Y). We can rewrite this KL to obtain a minimisation objective
+
+(8)
+
+−
+
+q(ω) log p(Y|X, ω)dω + KL(q(ω)||p(ω)).
+
+(cid:90)
+
+n=1
+
+We rewrite the ﬁrst term as a sum
+
+q(ω) log p(yn|xn, ω)dω
+
+− N(cid:88)
+and approximate each term in the sum by Monte Carlo integration with a single sample(cid:98)ωn ∼ q(ω)
+(section 3.4 in the appendix) to get − log p(yn|xn,(cid:98)ωn). We further approximate the second term
+(cid:1) with prior length-scale l (see section 4.2 in
+(cid:0) pil2
+in eq. (8) and obtain(cid:80)L
+2 ||mi||2
+2 ||Mi||2
+(cid:18) pil2
+N(cid:88)
+L(cid:88)
+− log p(yn|xn,(cid:98)ωn)
+E(yn,(cid:98)y(xn,(cid:98)ωn)) = − log p(yn|xn,(cid:98)ωn)/τ
+The sampled (cid:98)ωn result in realisations from the Bernoulli distribution zn
+
+we recover eq. (1) for an appropriate setting of the precision hyper-parameter τ and length-scale l.
+i,j equivalent to the binary
+
+the appendix). Given model precision τ we scale the result by the constant 1/τ N to obtain the
+objective:
+
+LGP-MC ∝ 1
+N
+
+||Mi||2
+
+||mi||2
+
+l2
+2τ N
+
+2 + l2
+
+Setting
+
+(cid:19)
+
+2τ N
+
+2 +
+
+(9)
+
+n=1
+
+i=1
+
+i=1
+
++
+
+τ
+
+2
+
+2
+
+.
+
+variables in the dropout case1.
+
+4 Obtaining Model Uncertainty
+
+We next derive results extending on the above showing that model uncertainty can be obtained from
+dropout NN models.
+Following section 2.3 in the appendix, our approximate predictive distribution is given by
+
+q(y∗|x∗) =
+
+p(y∗|x∗, ω)q(ω)dω
+
+(10)
+
+(cid:90)
+
+i=1 is our set of random variables for a model with L layers.
+
+We will perform moment-matching and estimate the ﬁrst two moments of the predictive distribu-
+tion empirically. More speciﬁcally, we sample T sets of vectors of realisations from the Bernoulli
+distribution {zt
+
+1, ..., zt
+
+L}T
+
+t=1 with probabilities {p1, ..., pL} and estimate
+1, ...,(cid:99)Mt
+
+(cid:98)y∗(x∗,(cid:99)Mt
+
+Eq(y∗|x∗)(y∗) ≈ 1
+T
+
+T(cid:88)
+
+L)
+
+t=1
+
+following proposition C in the appendix. We refer to this Monte Carlo estimate as MC dropout.
+In practice this is equivalent to performing T stochastic forward passes through the network and
+averaging the results.
+This result has been presented in the literature before as model averaging. We have given a new
+derivation for this result which allows us to derive mathematically grounded uncertainty estimates
+as well. Srivastava et al. [13, section 7.5] have reasoned empirically that this quantity can be approx-
+imated by averaging the weights of the network (multiplying each Wi by pi at test time, referred to
+as standard dropout).
+We estimate the second raw moment in the same way:
+
+(cid:0)(y∗)T (y∗)(cid:1) ≈ τ−1ID +
+
+Eq(y∗|x∗)
+
+T(cid:88)
+
+t=1
+
+1
+T
+
+(cid:98)y∗(x∗,(cid:99)Mt
+
+1, ...,(cid:99)Mt
+
+L)T(cid:98)y∗(x∗,(cid:99)Mt
+
+1, ...,(cid:99)Mt
+
+L)
+
+(11)
+
+1In the appendix (section 4.1) we extend this derivation to classiﬁcation. E(·,·) is deﬁned as the softmax
+
+loss and τ is set to 1.
+
+4
+
+where ω = {(cid:99)Mi}L
+
+(cid:0)y∗(cid:1) ≈
+T(cid:88)
+
+following proposition D in the appendix. To obtain the model’s predictive variance we have:
+Varq(y∗|x∗)
+
+(cid:98)y∗(x∗,(cid:99)Mt
+
+1, ...,(cid:99)Mt
+
+L)T(cid:98)y∗(x∗,(cid:99)Mt
+
+1, ...,(cid:99)Mt
+
+1
+T
+
+τ−1ID +
+
+L) − Eq(y∗|x∗)(y∗)T Eq(y∗|x∗)(y∗)
+which equals the sample variance of T stochastic forward passes through the NN plus the inverse
+model precision. Note that y∗ is a row vector thus the sum is over the outer-products. Given the
+weight-decay λ (and our prior length-scale l) we can ﬁnd the model precision from the identity
+
+t=1
+
+τ =
+
+pl2
+2N λ
+
+.
+
+(12)
+
+(cid:18)
+
+(cid:19)
+
+τ||y −(cid:98)yt||2
+
+We can estimate our predictive log-likelihood by Monte Carlo integration of eq. (2). This is an
+estimate of how well the model ﬁts the mean and uncertainty (see section 4.4 in the appendix). For
+regression this is given by:
+
+log τ−1
+
+(13)
+
+log p(y∗|x∗, X, Y) ≈ logsumexp
+
+with a sum of T terms and(cid:98)yt stochastic forward passes through the network.
+
+− log T − 1
+2
+
+− 1
+2
+
+log 2π − 1
+2
+
+Our predictive distribution q(y∗|x∗) is expected to be highly multi-modal, and the above approxi-
+mations only give a glimpse into its properties. This is because the approximating variational distri-
+bution placed on each weight matrix column is bi-modal, and as a result the joint distribution over
+each layer’s weights is multi-modal (section 3.2 in the appendix).
+Note that the dropout NN model itself is not changed. To estimate the predictive mean and predictive
+uncertainty we simply collect the results of stochastic forward passes through the model. As a
+result, this information can be used with existing NN models trained with dropout. Furthermore, the
+forward passes can be done concurrently, resulting in constant time complexity identical to that of
+standard dropout.
+
+5 Experiments
+
+We next perform an extensive assessment of the properties of the uncertainty estimates obtained from
+dropout NNs and convnets on the tasks of regression and classiﬁcation. We compare the uncertainty
+obtained from different model architectures and non-linearities, both on tasks of extrapolation, and
+show that model uncertainty is important for classiﬁcation tasks using MNIST [31] as an example.
+We then show that using dropout’s uncertainty we can obtain a considerable improvement in pre-
+dictive log-likelihood and RMSE compared to existing state-of-the-art methods. We ﬁnish with an
+example use of the model’s uncertainty in a Bayesian pipeline. We give a quantitative assessment
+of the model’s performance in the setting of reinforcement learning on a task similar to that used in
+deep reinforcement learning [14].
+Using the results from the previous section, we begin by qualitatively evaluating the dropout NN un-
+certainty on two regression tasks. We use two regression datasets and model scalar functions which
+are easy to visualise. These are tasks one would often come across in real-world data analysis. We
+use a subset of the atmospheric CO2 concentrations dataset derived from in situ air samples collected
+at Mauna Loa Observatory, Hawaii [32] (referred to as CO2) to evaluate model extrapolation. In the
+appendix (section D.1) we give further results on a second dataset, the reconstructed solar irradiance
+dataset [33], to assess model interpolation. The datasets are fairly small, with each dataset consisting
+of about 200 data points. We centred and normalised both datasets.
+5.1 Model Uncertainty in Regression Tasks
+We trained several models on the CO2 dataset. We use NNs with either 4 or 5 hidden layers and
+1024 hidden units. We use either ReLU non-linearities or TanH non-linearities in each network, and
+use dropout probabilities of either 0.1 or 0.2. Exact experiment set-up is given in section E.1 in the
+appendix.
+Extrapolation results are shown ﬁgure 2. The model is trained on the training data (left of the dashed
+blue line), and tested on the entire dataset. Fig. 2a shows the results for standard dropout (i.e. with
+weight averaging and without assessing model uncertainty) for the 5 layer ReLU model. Fig. 2b
+
+5
+
+(a) Standard dropout with weight averaging
+
+(b) Gaussian process with SE covariance function
+
+(c) MC dropout with ReLU non-linearities
+
+(d) MC dropout with TanH non-linearities
+
+Figure 2: Predictive mean and uncertainties on the Mauna Loa CO2 concentrations dataset, for
+various models. In red is the observed function (left of the dashed blue line); in blue is the predictive
+mean plus/minus two standard deviations (8 for ﬁg. 2d). Different shades of blue represent half a
+standard deviation. Marked with a dashed red line is a point far away from the data: standard dropout
+conﬁdently predicts an insensible value for the point; the other models predict insensible values as
+well but with the additional information that the models are uncertain about their predictions.
+
+shows the results obtained from a Gaussian process with a squared exponential covariance function
+for comparison. Fig. 2c shows the results of the same network as in ﬁg. 2a, but with MC dropout
+used to evaluate the predictive mean and uncertainty for the training and test sets. Lastly, ﬁg. 2d
+shows the same using the TanH network with 5 layers (plotted with 8 times the standard deviation
+for visualisation purposes). The shades of blue represent model uncertainty: each colour gradient
+represents half a standard deviation (in total, predictive mean plus/minus 2 standard deviations are
+shown, representing 95% conﬁdence). Not plotted are the models with 4 layers as these converge to
+the same results.
+Extrapolating the observed data, none of the models can capture the periodicity (although with a
+suitable covariance function the GP will capture it well). The standard dropout NN model (ﬁg. 2a)
+predicts value 0 for point x∗ (marked with a dashed red line) with high conﬁdence, even though
+it is clearly not a sensible prediction. The GP model represents this by increasing its predictive
+uncertainty – in effect declaring that the predictive value might be 0 but the model is uncertain. This
+behaviour is captured in MC dropout as well. Even though the models in ﬁgures 2 have an incorrect
+predictive mean, the increased standard deviation expresses the models’ uncertainty about the point.
+Note that the uncertainty is increasing far from the data for the ReLU model, whereas for the TanH
+model it stays bounded. This is not surprising, as dropout’s uncertainty draws its properties from the
+GP in which different covariance functions correspond to different uncertainty estimates. ReLU and
+TanH approximate different GP covariance functions (section 3.1 in the appendix) and TanH satu-
+rates whereas ReLU does not. For the TanH model we assessed the uncertainty using both dropout
+probability 0.1 and dropout probability 0.2. Models initialised with dropout probability 0.1 initially
+exhibit smaller uncertainty than the ones initialised with dropout probability 0.2, but towards the
+end of the optimisation when the model has converged the uncertainty is almost undistinguishable.
+This is because the moments of the dropout models converge to the moments of the GP – its mean
+and uncertainty. It is worth mentioning that we attempted to ﬁt the data with models with a smaller
+number of layers unsuccessfully.
+The number of forward iterations used to estimate the uncertainty (T ) was 1000 for drawing pur-
+poses. A much smaller numbers can be used to get a reasonable estimation to the predictive mean
+and uncertainty (see ﬁg. 3 for example with T = 10).
+
+Figure 3: Predictive mean and uncertainties on the Mauna Loa CO2 concentrations dataset for the
+MC dropout model with ReLU non-linearities, approximated with 10 samples.
+
+6
+
+10123201510505101520101232015105051015201012320151050510152010123201510505101520(a) Softmax input scatter
+
+(b) Softmax output scatter
+
+Figure 4: A scatter of 100 forward passes of the softmax input and output for dropout LeNet.
+On the X axis is a rotated image of the digit 1. The input is classiﬁed as digit 5 for images 6-7, even
+though model uncertainty is extremly large (best viewed in colour).
+
+5.2 Model Uncertainty in Classiﬁcation Tasks
+To assess model classiﬁcation conﬁdence in a real world example we test a convolutional neural
+network trained on the full MNIST dataset [31]. We trained the LeNet convolutional neural network
+model [34] with dropout applied before the last fully connected inner-product layer (the usual way
+dropout is used in convnets). We used dropout probability of 0.5. We trained the model for 1e6
+iterations with the same learning rate policy as before with γ = 0.0001 and p = 0.75. We used
+Caffe [35] reference implementation for this experiment.
+We evaluated the trained model on a continuously rotated image of the digit 1 (shown on the X axis
+of ﬁg. 4). We scatter 100 stochastic forward passes of the softmax input (the output from the last
+fully connected layer, ﬁg. 4a), as well as of the softmax output for each of the top classes (ﬁg. 4b).
+For the 12 images, the model predicts classes [1 1 1 1 1 5 5 7 7 7 7 7].
+The plots show the softmax input value and softmax output value for the 3 digits with the largest
+values for each corresponding input. When the softmax input for a class is larger than that of all
+other classes (class 1 for the ﬁrst 5 images, class 5 for the next 2 images, and class 7 for the rest
+in ﬁg 4a), the model predicts the corresponding class. Looking at the softmax input values, if the
+uncertainty envelope of a class is far from that of other classes’ (for example the left most image)
+then the input is classiﬁed with high conﬁdence. On the other hand, if the uncertainty envelope
+intersects that of other classes (such as in the case of the middle input image), then even though
+the softmax output can be arbitrarily high (as far as 1 if the mean is far from the means of the other
+classes), the softmax output uncertainty can be as large as the entire space. This signiﬁes the model’s
+uncertainty in its softmax output value – i.e. in the prediction. In this scenario it is not reasonable to
+use probit to return class 5 for the middle image when its uncertainty is so high. One would expect
+the model to ask an external annotator for a label for this input.
+Compared to the regression case where predictive uncertainty can be captured with output standard
+deviation, in classiﬁcation tasks we often use variation ratios instead. In practice this means that
+we would sample from the softmax probabilities at the end of each stochastic forward pass to get a
+label for the input. Collecting a set of labels from multiple stochastic forward passes on the same
+input we can ﬁnd the mode of the distribution. The variation ratio is then a measure of dispersion –
+how “spread” the distribution is around the mode. If most labels agree with the mode, the model is
+certain about the output. This happens when both the mean of the softmax output is high, and the
+envelope around it is small. Large dispersion indicates model uncertainty. This happens when either
+the softmax mean is low (e.g. two classes with probabilities 0.5), or when the envelope is large (so
+different classes will have high probability at different stochastic passes through the network).
+5.3 Predictive Performance
+Predictive log-likelihood captures how well a model ﬁts the data, with larger values indicating better
+model ﬁt. Uncertainty quality can be determined from this quantity as well (see section 4.4 in the
+appendix). We replicate the experiment set-up in Hern´andez-Lobato and Adams [27] and compare
+the RMSE and predictive log-likelihood of dropout (referred to as “Dropout” in the experiments)
+
+7
+
+Dataset
+Boston Housing
+Concrete Strength
+Energy Efﬁciency
+Kin8nm
+Naval Propulsion
+Power Plant
+Protein Structure
+Wine Quality Red
+Yacht Hydrodynamics
+Year Prediction MSD
+
+PBP
+
+PBP
+
+Avg. Test LL and Std. Errors
+VI
+
+Avg. Test RMSE and Std. Errors
+Dropout
+VI
+Dropout
+-2.90 ±0.07 -2.57 ±0.09 -2.46 ±0.25
+4.32 ±0.29 3.01 ±0.18 2.97 ±0.85
+-3.39 ±0.02 -3.16 ±0.02 -3.04 ±0.09
+7.19 ±0.12 5.67 ±0.09 5.23 ±0.53
+-2.39 ±0.03 -2.04 ±0.02 -1.99 ±0.09
+2.65 ±0.08 1.80 ±0.05 1.66 ±0.19
+0.90 ±0.01
+0.95 ±0.03
+0.10 ±0.00 0.10 ±0.00 0.10 ±0.00
+3.73 ±0.12
+3.80 ±0.05
+0.01 ±0.00 0.01 ±0.00 0.01 ±0.00
+-2.89 ±0.01 -2.84 ±0.01 -2.80 ±0.05
+4.33 ±0.04 4.12 ±0.03 4.02 ±0.18
+-2.99 ±0.01 -2.97 ±0.00 -2.89 ±0.01
+4.84 ±0.03 4.73 ±0.01 4.36 ±0.04
+0.65 ±0.01 0.64 ±0.01 0.62 ±0.04
+-0.98 ±0.01 -0.97 ±0.01 -0.93 ±0.06
+-3.43 ±0.16 -1.63 ±0.02 -1.55 ±0.12
+6.89 ±0.67 1.02 ±0.05 1.11 ±0.38
+9.034 ±NA 8.879 ±NA 8.849 ±NA -3.622 ±NA -3.603 ±NA -3.588 ±NA
+
+0.90 ±0.01
+3.73 ±0.01
+
+Table 1: Average test performance in RMSE and predictive log likelihood for a popular varia-
+tional inference method (VI, Graves [20]), Probabilstic back-propagation (PBP, Hern´andez-Lobato
+and Adams [27]), and dropout uncertainty (Dropout).
+
+to that of Probabilistic Back-propagation (referred to as “PBP”, [27]) and to a popular variational
+inference technique in Bayesian NNs (referred to as “VI”, [20]). The aim of this experiment is to
+compare the uncertainty quality obtained from standard dropout networks (in the same way they are
+used in current research) to that of specialised models developed to capture uncertainty.
+Following our Bayesian interpretation of dropout (eq. (9)) we need to deﬁne a prior length-scale,
+and ﬁnd an optimal model precision parameter τ which will allow us to evaluate the predictive log-
+likelihood (eq. (13)). Similarly to [27] we use Bayesian optimisation (BO, [36, 37]) to ﬁnd optimal
+τ, and set the prior length-scale to 10−2 for most datasets based on the range of the data. Note that
+this is a standard dropout NN, where the prior length-scale l and model precision τ are simply used
+to deﬁne the model’s weight decay through eq. (12). We used dropout with probabilities 0.05 and
+0.005 since the network size is very small (with 50 units) and the datasets are fairly small as well.
+We used 10x more iterations with the optimal parameter values as dropout takes longer to converge,
+but for BO we used the original number of 40 iterations. Even though the model doesn’t converge, it
+gives BO a good indication of whether the parameter is good or not. Finally, we used mini-batches
+of size 32 and the Adam optimiser [38]. Further details about the various datasets are given in [27].
+The results are shown in table 1. Dropout signiﬁcantly outperforms all other models both in terms of
+RMSE as well as test log-likelihood on all datasets apart from Yacht, for which PBP obtains better
+RMSE. All experiments were averaged on 20 random splits of the data (apart from Protein for which
+only 5 splits were used and Year for which one split was used). Some of the dropout results have a
+rather large standard deviation because of single outliers: the median for most datasets gives much
+better performance than the mean. For example, on the Boston Housing dataset dropout achieves
+median RMSE of 2.68 with an IQR interval of [2.45, 3.35] and predictive log-likelihood median of
+-2.34 with IQR [-2.54, -2.29]. In the Concrete Strength dataset dropout achieves median RMSE of
+5.15.
+To implement the model we used Keras [39], an open source deep learning package based on Theano
+[40]. In [27] BO for VI seems to require a considerable amount of additional time compared to PBP.
+However our model’s running time (including BO) is comparable to PBP’s Theano implementation.
+On Naval Propulsion for example our model takes 276 seconds on average per split (start-to-ﬁnish,
+divided by the number of splits). With the optimal parameters BO found, model training took 95
+seconds. This is in comparison to PBP’s 220 seconds. For Kin8nm our model requires 188 seconds
+on average including BO, 65 seconds without, compared to PBP’s 156 seconds.
+Dropout’s RMSE in table 1 is given by averaging stochastic forward passes through the network
+following eq. (11) (MC dropout). We observed an improvement using this estimate compared to the
+standard dropout weight averaging, and also compared to much smaller dropout probabilities (near
+zero). For the Boston Housing dataset for example, repeating the same experiment with dropout
+probability 0 results in RMSE of 3.07 and predictive log-likelihood of -2.59. This demonstrates
+that dropout signiﬁcantly affects the predictive log-likelihood and RMSE, even though the dropout
+probability is fairly small.
+5.4 Model Uncertainty in Reinforcement Learning
+In reinforcement learning an agent receives various rewards from different states, and its aim is to
+maximise its expected reward over time. The agent tries to learn to avoid transitioning into states
+
+8
+
+Figure 5: Depiction of the reinforcement learning
+problem used in the experiments. The agent is in
+the lower left part of the maze, facing north-west.
+
+Figure 6: Log plot of average reward obtained
+by both epsilon greedy (in green) and our ap-
+proach (in blue), as a function of the number of
+batches.
+
+with low rewards, and to pick actions that lead to better states instead. Uncertainty is of great
+importance in this task – with uncertainty information an agent can decide when to exploit rewards
+it knows of, and when to explore its environment.
+Recent advances in RL have made use of NNs to estimate agents’ Q-value functions (referred to as
+Q-networks), a function that estimates the quality of different actions the agent can make at different
+states. This has led to impressive results on Atari game simulations, where agents superseded human
+performance on a variety of games [14]. Epsilon greedy search was used in this setting, where
+the agent selects the best action following its current Q-function estimation with some probability,
+and explores otherwise. With our uncertainty estimates given by a dropout Q-network we can use
+techniques such as Thompson sampling [11] to converge faster than epsilon greedy while avoiding
+over-ﬁtting.
+We use code by [41] that replicated the results by [14] with a simpler 2D setting. We simulate an
+agent in a 2D world with 9 eyes pointing in different angles ahead (depicted in ﬁg. 5). Each eye can
+sense a single pixel intensity of 3 colours. The agent navigates by using one of 5 actions controlling
+two motors at its base. An action turns the motors at different angles and different speeds. The
+environment consists of red circles which give the agent a positive reward for reaching, and green
+circles which result in a negative reward. The agent is further rewarded for not looking at (white)
+walls, and for walking in a straight line.
+We trained the original model and an additional model with dropout with probability 0.1 applied
+before the every weight layer. To make use of the dropout Q-network’s uncertainty estimates, we
+use Thompson sampling instead of epsilon greedy. In effect this means that we perform a single
+stochastic forward pass through the network every time we need to make an action.
+In replay,
+we perform a single stochastic forward pass and then back-propagate with the sampled Bernoulli
+random variables. Exact experiment set-up is given in section E.2 in the appendix.
+In ﬁg. 6 we show a log plot of the average reward obtained by both the original implementation (in
+green) and our approach (in blue), as a function of the number of batches. Not plotted is the burn-in
+intervals of 25 batches (random moves). Thompson sampling gets reward larger than 1 within 25
+batches from burn-in. Epsilon greedy takes 175 batches to achieve the same performance. It is
+interesting to note that our approach seems to get worse results after 1K batches. This is because we
+are still sampling random moves, whereas epsilon greedy only exploits at this stage.
+
+6 Conclusions and Future Research
+
+We have built a probabilistic interpretation of dropout which allowed us to obtain model uncertainty
+out of existing deep learning models. We have studied the properties of this uncertainty in detail,
+and demonstrated possible applications, interleaving Bayesian models and deep learning models
+together. This extends on initial research studying dropout from the Bayesian perspective [42, 43].
+
+9
+
+102103Batches0.50.60.70.80.91.01.11.2Average rewardThompson sampling (using uncertainty)Epsilon greedyBernoulli dropout is only one example of a regularisation technique corresponding to an approximate
+variational distribution which results in uncertainty estimates. Other variants of dropout follow our
+interpretation as well and correspond to alternative approximating distributions. These would result
+in different uncertainty estimates, trading-off uncertainty quality with computational complexity.
+We explore these in follow-up work.
+Furthermore, each GP covariance function has a one-to-one correspondence with the combination
+of both NN non-linearities and weight regularisation. This suggests techniques to select appropriate
+NN structure and regularisation based on our a-priori assumptions about the data. For example, if
+one expects the function to be smooth and the uncertainty to increase far from the data, cosine non-
+linearities and L2 regularisation might be appropriate. The study of non-linearity–regularisation
+combinations and the corresponding predictive mean and variance are subject of current research.
+Acknowledgements
+The authors would like to thank Dr Yutian Chen, Mr Christof Angermueller, Mr Roger Frigola,
+Mr Rowan McAllister, Dr Gabriel Synnaeve, Mr Mark van der Wilk, Mr Yan Wu, and many other
+reviewers for their helpful comments. Yarin Gal is supported by the Google European Fellowship in
+Machine Learning.
+References
+
+[1] P Baldi, P Sadowski, and D Whiteson. Searching for exotic particles in high-energy physics with deep
+
+learning. Nature communications, 5, 2014.
+
+[2] O Anjos, C Iglesias, F Peres, J Mart´ınez, ´A Garc´ıa, and J Taboada. Neural networks applied to discrimi-
+
+nate botanical origin of honeys. Food chemistry, 175:128–136, 2015.
+
+[3] S Bergmann, S Stelzer, and S Strassburger. On the use of artiﬁcial neural networks in simulation-based
+
+manufacturing control. Journal of Simulation, 8(1):76–90, 2014.
+
+[4] M Krzywinski and N Altman. Points of signiﬁcance: Importance of being uncertain. Nature methods, 10
+
+(9), 2013.
+
+[5] Z Ghahramani. Probabilistic machine learning and artiﬁcial intelligence. Nature, 521(7553), 2015.
+[6] S Herzog and D Ostwald. Experimental biology: Sometimes Bayesian statistics are better. Nature, 494,
+
+2013.
+
+[7] D Traﬁmow and M Marks. Editorial. Basic and Applied Social Psychology, 37(1), 2015.
+[8] Regina Nuzzo. Statistical errors. Nature, 506(13):150–152, 2014.
+[9] O Linda, T Vollmer, and M Manic. Neural network based intrusion detection system for critical infras-
+
+tructures. In Neural Networks, 2009. IJCNN 2009. International Joint Conference on. IEEE, 2009.
+
+[10] C Szepesv´ari. Algorithms for reinforcement learning. Synthesis Lectures on Artiﬁcial Intelligence and
+
+Machine Learning, 4(1), 2010.
+
+[11] W R Thompson. On the likelihood that one unknown probability exceeds another in view of the evidence
+
+of two samples. Biometrika, 1933.
+
+[12] C E Rasmussen and C K I Williams. Gaussian Processes for Machine Learning (Adaptive Computation
+
+and Machine Learning). The MIT Press, 2006.
+
+[13] N Srivastava, G Hinton, A Krizhevsky, I Sutskever, and R Salakhutdinov. Dropout: A simple way to
+
+prevent neural networks from overﬁtting. The Journal of Machine Learning Research, 15(1), 2014.
+
+[14] V Mnih, K Kavukcuoglu, D Silver, A A Rusu, J Veness, et al. Human-level control through deep rein-
+
+forcement learning. Nature, 518(7540):529–533, 2015.
+
+[15] R M Neal. Bayesian learning for neural networks. PhD thesis, University of Toronto, 1995.
+[16] C K I Williams. Computing with inﬁnite networks. NIPS, 1997.
+[17] D J C MacKay. A practical Bayesian framework for backpropagation networks. Neural computation, 4
+
+(3), 1992.
+
+[18] G E Hinton and D Van Camp. Keeping the neural networks simple by minimizing the description length
+
+of the weights. In Proceedings of the sixth annual conference on Computational learning theory, 1993.
+
+[19] D Barber and C M Bishop. Ensemble learning in Bayesian neural networks. NATO ASI SERIES F
+
+COMPUTER AND SYSTEMS SCIENCES, 168:215–238, 1998.
+
+[20] A Graves. Practical variational inference for neural networks. In NIPS, 2011.
+
+10
+
+[21] D M Blei, M I Jordan, and J W Paisley. Variational Bayesian inference with stochastic search. In ICML,
+
+2012.
+
+[22] D P Kingma and M Welling. Auto-encoding variational Bayes. arXiv preprint arXiv:1312.6114, 2013.
+[23] D J Rezende, S Mohamed, and D Wierstra. Stochastic backpropagation and approximate inference in
+
+deep generative models. In ICML, 2014.
+
+[24] M Titsias and M L´azaro-Gredilla. Doubly stochastic variational Bayes for non-conjugate inference. In
+
+ICML, 2014.
+
+[25] M D Hoffman, D M Blei, C Wang, and J Paisley. Stochastic variational inference. The Journal of Machine
+
+Learning Research, 14(1):1303–1347, 2013.
+
+[26] C Blundell, J Cornebise, K Kavukcuoglu, and D Wierstra. Weight uncertainty in neural networks. ICML,
+
+2015.
+
+[27] J M Hern´andez-Lobato and R P Adams. Probabilistic backpropagation for scalable learning of bayesian
+
+neural networks. In ICML-15, 2015.
+
+[28] A Damianou and N Lawrence. Deep Gaussian processes. In AISTATS, 2013.
+[29] L Wan, M Zeiler, S Zhang, Y LeCun, and R Fergus. Regularization of neural networks using dropconnect.
+
+In ICML-13, 2013.
+
+[30] W Chen, J T Wilson, S Tyree, K Q Weinberger, and Y Chen. Compressing neural networks with the
+
+hashing trick. In ICML-15, 2015.
+
+[31] Y LeCun and C Cortes. The mnist database of handwritten digits, 1998.
+[32] C D Keeling, T P Whorf, and the Carbon Dioxide Research Group. Atmospheric CO2 concentrations
+
+(ppmv) derived from in situ air samples collected at Mauna Loa Observatory, Hawaii, 2004.
+
+[33] J Lean. Solar irradiance reconstruction. NOAA/NGDC Paleoclimatology Program, USA, 2004.
+[34] Y LeCun, L Bottou, Y Bengio, and P Haffner. Gradient-based learning applied to document recognition.
+
+Proceedings of the IEEE, 86(11):2278–2324, 1998.
+
+[35] Y Jia, E Shelhamer, J Donahue, S Karayev, J Long, R Girshick, S Guadarrama, and T Darrell. Caffe:
+
+Convolutional architecture for fast feature embedding. arXiv preprint arXiv:1408.5093, 2014.
+
+[36] Jasper Snoek, Hugo Larochelle, and Ryan P Adams. Practical Bayesian optimization of machine learning
+
+algorithms. In Advances in neural information processing systems, pages 2951–2959, 2012.
+
+[37] Jasper Snoek and authors. Spearmint. https://github.com/JasperSnoek/spearmint, 2015.
+arXiv preprint
+[38] Diederik Kingma and Jimmy Ba. Adam: A method for stochastic optimization.
+
+arXiv:1412.6980, 2014.
+
+[39] Franc¸ois Chollet. Keras. https://github.com/fchollet/keras, 2015.
+[40] James Bergstra, Olivier Breuleux, Fr´ed´eric Bastien, Pascal Lamblin, Razvan Pascanu, Guillaume Des-
+jardins, Joseph Turian, David Warde-Farley, and Yoshua Bengio. Theano: a CPU and GPU math expres-
+sion compiler. In Proceedings of the Python for Scientiﬁc Computing Conference (SciPy), June 2010.
+Oral Presentation.
+
+[41] A Karpathy and authors. A Javascript implementation of neural networks. https://github.com/
+
+karpathy/convnetjs, 2014–2015.
+
+[42] S Wang and C Manning. Fast dropout training. ICML, 2013.
+[43] S Maeda. A Bayesian encourages dropout. arXiv preprint arXiv:1412.7003, 2014.
+
+11
+
+

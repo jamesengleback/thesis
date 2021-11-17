@@ -1,0 +1,3347 @@
+Journal of Industrial Microbiology & Biotechnology (2019) 46:1313–1326 
+https://doi.org/10.1007/s10295-019-02191-5
+
+METABOLIC ENGINEERING AND SYNTHETIC BIOLOGY - REVIEW
+
+Tools and systems for evolutionary engineering of biomolecules 
+and microorganisms
+
+Sungho Jang1 · Minsun Kim2 · Jaeseong Hwang2 · Gyoo Yeol Jung1,2 
+
+Received: 28 February 2019 / Accepted: 20 May 2019 / Published online: 27 May 2019 
+© Society for Industrial Microbiology and Biotechnology 2019
+
+Abstract
+Evolutionary approaches have been providing solutions to various bioengineering challenges in an efficient manner. In 
+addition to traditional adaptive laboratory evolution and directed evolution, recent advances in synthetic biology and fluidic 
+systems have opened a new era of evolutionary engineering. Synthetic genetic circuits have been created to control mutagen-
+esis and enable screening of various phenotypes, particularly metabolite production. Fluidic systems can be used for high-
+throughput screening and multiplexed continuous cultivation of microorganisms. Moreover, continuous directed evolution 
+has been achieved by combining all the steps of evolutionary engineering. Overall, modern tools and systems for evolutionary 
+engineering can be used to establish the artificial equivalent to natural evolution for various research applications.
+
+Keywords  Evolutionary engineering · Mutagenesis · High-throughput screening · Selection · Continuous evolution
+
+Introduction
+
+Evolution enables living organisms to survive and adapt to 
+changing environments. The mechanism underlying this 
+process, descent with modification, not only shapes nature 
+but also help researchers to engineer useful phenotypes. 
+Adaptive laboratory evolution reproduces natural evolution 
+in a research laboratory by passaging microbial cultures 
+under selective pressures to which the cell must adapt [22, 
+48, 59, 66]. The evolutionary process has also been mim-
+icked through directed evolution of enzymes [1, 14, 79], in 
+which variants of a target gene are generated in vitro and 
+transformed to cells and selected for the desired phenotype 
+such as binding affinity. These evolutionary engineering 
+approaches have emerged as important strategies for bio-
+engineering. Numerous technologies are used in each step, 
+
+Sungho Jang and Minsun Kim have contributed equally to this 
+work.
+
+gyjung@postech.ac.kr
+
+ *  Gyoo Yeol Jung 
+ 
+1  Department of Chemical Engineering, Pohang University 
+of Science and Technology, 77 Cheongam-Ro, Nam-Gu, 
+Pohang, Gyeongbuk 37673, Korea
+
+2  School of Interdisciplinary Bioscience and Bioengineering, 
+
+Pohang University of Science and Technology, 77 
+Cheongam-Ro, Nam-Gu, Pohang, Gyeongbuk 37673, Korea
+
+with thenext-generation sequencing (NGS) technology ena-
+bling determination of genotype–phenotype relationships 
+after the evolution [40, 71, 95].
+
+In  addition  to  the  traditional  technologies,  recent 
+advances in synthetic biology have improved the efficiency 
+of evolutionary engineering and broadened the field to which 
+these approaches can be applied. In vivo mutagenesis meth-
+ods increased the library size and reduced the time and labor 
+required to generate a library [105]. Genetically encoded 
+biosensors have expanded the range of phenotypes that 
+can be selected beyond the tolerance to stress and binding 
+affinity of a ligand [51]. Microfluidic systems enabled high-
+throughput, single-cell screening [6, 43]. Synthetic genetic 
+circuits and continuous evolution systems facilitated whole 
+evolution cycles by reducing or even eliminating interven-
+tions by researchers.
+
+In this review, we describe recent progress in evolu-
+tionary engineering of biomolecules and microorganisms 
+(Fig. 1). The main objective of this article is to provide an 
+updated view of the tools and systems useful for accelerat-
+ing evolutionary engineering. Therefore, we focus on the 
+methods used in each step of evolutionary engineering: 
+diversity generation and phenotype screening. Thereafter, a 
+more advanced concept for an efficient evolution known as 
+continuous directed evolution will be explained that requires 
+least interventions by researchers such as PCR, cloning, and 
+transformation.
+
+l
+
+D
+o
+w
+n
+o
+a
+d
+e
+d
+
+ 
+f
+r
+o
+m
+h
+
+ 
+
+t
+t
+
+p
+s
+:
+/
+/
+
+i
+
+a
+c
+a
+d
+e
+m
+c
+.
+o
+u
+p
+.
+c
+o
+m
+
+/
+j
+i
+
+l
+
+/
+
+/
+
+/
+
+/
+
+m
+b
+a
+r
+t
+i
+c
+e
+4
+6
+9
+-
+1
+0
+1
+3
+1
+3
+6
+0
+1
+7
+4
+2
+6
+b
+y
+ 
+g
+u
+e
+s
+t
+ 
+
+/
+
+ 
+
+ 
+
+ 
+
+o
+n
+2
+1
+O
+c
+t
+o
+b
+e
+r
+ 
+2
+0
+2
+1
+
+Vol.:(0123456789)1 31314
+ 
+
+Journal of Industrial Microbiology & Biotechnology (2019) 46:1313–1326
+
+l
+
+D
+o
+w
+n
+o
+a
+d
+e
+d
+
+ 
+f
+r
+o
+m
+h
+
+ 
+
+t
+t
+
+p
+s
+:
+/
+/
+
+i
+
+a
+c
+a
+d
+e
+m
+c
+.
+o
+u
+p
+.
+c
+o
+m
+
+Fig. 1   Scheme of evolutionary engineering
+
+Tools and systems for generating diversity
+
+Directed evolution guides a mutant pool towards desired 
+phenotypes by associating the phenotype with the fitness 
+of a variant in the iterative cycle of diversity generation, 
+selection, and amplification. A concept of the fitness land-
+scape is generally used to illustrate the effect of a genetic 
+variation to a given phenotype of interest. In the fitness 
+landscape, the horizontal plane represents different genetic 
+variations and the magnitude of the phenotype of interest 
+for each genetic variation is plotted as height. Because 
+the fitness landscape resembles a mountain range, we can 
+interpret the goal of evolutionary engineering as climb-
+ing up the fitness landscape to reach a maximum peak 
+where the genetic variation at such a point results in the 
+phenotype of interest at its maximum [73]. To successfully 
+evolve biomolecules, genetic pathways, or even genomes 
+in a directed manner, it is crucial that the evolution sys-
+tem meets three fundamental criteria. (i) The mutant 
+library should be designed to contain sufficient genetic 
+diversity to increase the probability of reaching a maxi-
+mum peak in the fitness landscape [73]. (ii) Appropriate 
+selection pressure should be applied to eliminate inferior 
+mutants, so that propagation of false-positives or cheater 
+mutants is minimized [86, 102]. (iii) The evolution cycle 
+
+should be easily iterated for efficient evolution of a desired 
+phenotype.
+
+In vitro mutagenesis technologies such as error-prone 
+PCR and DNA shuffling have been broadly utilized for 
+directed evolution [82, 103, 104], as they allow a tunable 
+mutation window in a targeted region. Nevertheless, in vitro 
+mutagenesis is labor-intensive and involves sub-cloning and 
+transformation, which leads to significant loss of the mutant 
+pool because of the limited transformation efficiency [4, 18]. 
+To overcome the drawbacks of in vitro methods and repeat 
+iterative cycles of directed evolution, in vivo approaches 
+have been developed by creating mutagenesis machinery 
+in the cell. However, typical in vivo mutagenesis such as 
+hypermutator strains [29, 30] or mutator plasmids [3, 78] 
+involve the risk of accumulating detrimental mutations in the 
+host genome, because every genetic information in the cell is 
+equally affected by mutagenesis [70]. As random mutagen-
+esis (non-targeted, global) threatens the viability of the host 
+cell and eventually directed evolution, orthogonality, the 
+ability to focus mutations only to a target site (targeted) not 
+to non-target sites (Fig. 2a), has become an integral fea-
+ture of in vivo mutagenesis while showing a good muta-
+tion rate, window, and spectrum. Here, we reviewed several 
+mutagenesis tools (Table 1) according to their strategies to 
+achieve the orthogonality of mutagenesis by (i) implement-
+ing an orthogonal cis–trans pair, (ii) detouring the central 
+
+/
+j
+i
+
+l
+
+/
+
+/
+
+/
+
+/
+
+m
+b
+a
+r
+t
+i
+c
+e
+4
+6
+9
+-
+1
+0
+1
+3
+1
+3
+6
+0
+1
+7
+4
+2
+6
+b
+y
+ 
+g
+u
+e
+s
+t
+ 
+
+/
+
+ 
+
+ 
+
+ 
+
+o
+n
+2
+1
+O
+c
+t
+o
+b
+e
+r
+ 
+2
+0
+2
+1
+
+1 3Journal of Industrial Microbiology & Biotechnology (2019) 46:1313–1326 
+
+1315
+
+dogma, (iii) repurposing a pair of programmed guide RNA 
+and CRISPR-associated endonuclease, and (iv) exploiting 
+the infectious cycle of phage. 
+
+Orthogonal pair: ColE1/Pol1, OrthoRep, TaG‑TEAM, 
+Muta T7
+
+It is pivotal to mutate the target sequence while maintain-
+ing the genomic integrity and error-prone capacity of the 
+mutagenesis machinery to sustain directed evolution contin-
+uously within the cell. To minimize the interaction of error-
+generating machinery with unwanted genetic loci, orthogo-
+nal replication pairs are employed as in vivo mutagenesis 
+tools.
+
+The ColE1 origin found in bacterial plasmid requires 
+initial transient catalyzation of DNA polymerase I (Pol I) 
+for its distinct replication machinery. Given the complete 
+reliance on Pol I, ColE1 provides the cis element for tar-
+geted mutation and amplification [10]. Through catalysis 
+by error-prone Pol I encoded in another plasmid, the gene 
+of interest localized downstream of the ColE1 origin can 
+acquire mutations and replicate simultaneously. Although 
+unwanted chromosomal mutation is inevitable because of 
+the contribution of DNA polymerase I to Okazaki fragment 
+joining and DNA repair [46], mutagenesis performed under 
+saturated growth conditions maximizes the gap between the 
+plasmid and chromosomal mutation rate. Despite the even 
+distribution of mutations, the switch from the error-prone 
+Pol I to the endogenous Pol III during the target plasmid 
+replication limits the mutation window to 650 base pairs 
+(bp) downstream, which has a minimal chance of encoding 
+a single gene.
+
+Another orthogonal pair of plasmid and polymerase 
+is applied in a yeast-specific mutagenesis tool named as 
+OrthoRep [70]. The linear cytoplasmic plasmid pGKL-1 
+(p1), derived from Kluyveromyces lactis used in OrthoRep, 
+necessitates dimerization of the terminal protein (TP) 
+anchored at the terminal end and TP-DNAP for initiation 
+of replication [87]. Deduced from the distinctive protein-
+primed replication machinery and spatial segregation from 
+the chromosome, Ravikumar et al. hypothesized that p1 
+could be extended as a vector of the target gene for orthog-
+onal mutagenesis and observed an elevated mutation rate 
+on p1 using error-prone TP-DNAP1 with minimal cross-
+talk between the host chromosome [69]. Recently, they 
+further engineered TP-DNAP1 to reduce fidelity without 
+impairing processivity, which dramatically increased the 
+mutation rate. Error-prone TP-DNAP1 is an indispensa-
+ble enzyme for sustaining the replication of p1 and leads 
+to the inevitable introduction of mutations on its pair of 
+plasmids, preventing impairment of the trans element of 
+mutagenesis on the nuclear plasmid. The low off-target 
+
+mutation rate enables the replication over 90 generations 
+with a stable mutation rate, which is an important prop-
+erty for in vivo mutagenesis to facilitate continuous evolu-
+tion. However, the applicable host being confined to the 
+yeast strain and meticulous genetic manipulation limits the 
+applications of this method.
+
+Finney-Manchester and Maheshri constructed targeting 
+glycosylases to embedded arrays for mutagenesis (TaG-
+TEAM) system based on base excision repair (BER) and 
+the specific interaction between tetR and its cognate opera-
+tor, tetO (Fig. 2b) [26]. 3-Methyladenine DNA glycosy-
+lase derived from Saccharomyces cerevisiae has a broad 
+substrate range and excises alkylated bases in the first step 
+of BER [62]. Apyrimidinic/apurinic (AP) sites caused by 
+glycosylase are further removed from the phosphate back-
+bone through the action of AP endonuclease. However, 
+a previous study reported that overexpressed glycosylase 
+excises normal base pairs in AP endonuclease knock-outs, 
+increasing the spontaneous mutation rate [96, 97]. This is 
+because unprocessed AP sites cause stalling of DNA syn-
+thesis machinery and recruit error-prone trans-lesion poly-
+merase [7]. The authors designed a fusion of non-specific 
+yeast glycosylase Mag1 with single-chain tetR (sctetR). 
+The fusion protein bound to one of the tetO arrays near the 
+mutagenesis target and excised the normal bases nonspe-
+cifically. As a result, mutations were observed spanning 
+10 kb bi-directionally from the tetO array. TaG-TEAM 
+provides a fixed mutation range long enough to contain 
+several genes, albeit the mutation rate declines as the dis-
+tance from the anchored site increases. Moreover, there are 
+tricky requirements; an array of tetO should be embedded 
+in the vicinity of GOI and DNA repair machinery in the 
+host cell must be partially shut down, which increases the 
+risk non-targeted spontaneous mutations.
+
+Adopting a similar concept as a fusion protein, the Muta 
+T7 system utilized an orthogonal pair of the T7 promoter 
+and cognate polymerase [58]. As opposed to TaG-TEAM 
+which induces mutations around tethered sites, the pro-
+cessivity of T7 RNA polymerase delivers mutations on 
+a sliding template. Thus, Muta T7 can establish a muta-
+tion window using the T7 promoter and tandem terminator 
+[75]. Moore et al. selected cytidine deaminase as a mutator 
+to promote the transition of cytosine to uracil, which is 
+recognized as thymine by DNA polymerase. However, the 
+accessible mutational spectrum configured by amino acid 
+substitution from cytidine deaminase is 32% of the total 
+case, which confers mutational bias [31]. To fill this gap, 
+an additional T7 promoter is introduced in the opposite 
+orientation to broaden the mutation spectrum. Neverthe-
+less, A and T remain intact, with the system compromising 
+the unreachable landscape of the genotype.
+
+l
+
+D
+o
+w
+n
+o
+a
+d
+e
+d
+
+ 
+f
+r
+o
+m
+h
+
+ 
+
+t
+t
+
+p
+s
+:
+/
+/
+
+i
+
+a
+c
+a
+d
+e
+m
+c
+.
+o
+u
+p
+.
+c
+o
+m
+
+/
+j
+i
+
+l
+
+/
+
+/
+
+/
+
+/
+
+m
+b
+a
+r
+t
+i
+c
+e
+4
+6
+9
+-
+1
+0
+1
+3
+1
+3
+6
+0
+1
+7
+4
+2
+6
+b
+y
+ 
+g
+u
+e
+s
+t
+ 
+
+/
+
+ 
+
+ 
+
+ 
+
+o
+n
+2
+1
+O
+c
+t
+o
+b
+e
+r
+ 
+2
+0
+2
+1
+
+1 31316
+ 
+
+Journal of Industrial Microbiology & Biotechnology (2019) 46:1313–1326
+
+l
+
+D
+o
+w
+n
+o
+a
+d
+e
+d
+
+ 
+f
+r
+o
+m
+h
+
+ 
+
+t
+t
+
+p
+s
+:
+/
+/
+
+i
+
+a
+c
+a
+d
+e
+m
+c
+.
+o
+u
+p
+.
+c
+o
+m
+
+/
+j
+i
+
+l
+
+/
+
+/
+
+/
+
+/
+
+m
+b
+a
+r
+t
+i
+c
+e
+4
+6
+9
+-
+1
+0
+1
+3
+1
+3
+6
+0
+1
+7
+4
+2
+6
+b
+y
+ 
+g
+u
+e
+s
+t
+ 
+
+/
+
+ 
+
+ 
+
+ 
+
+o
+n
+2
+1
+O
+c
+t
+o
+b
+e
+r
+ 
+2
+0
+2
+1
+
+1 3Journal of Industrial Microbiology & Biotechnology (2019) 46:1313–1326 
+
+◂
+Fig. 2   In  vivo  mutagenesis  methods.  a  Orthogonality  of  mutagen-
+esis methods. b Targeted mutagenesis based on orthogonal tetO-tetR 
+pair.  Mag1-sctetR  fusion  protein  expressed  from  the  plasmid  binds 
+tetO array and excises bases on the target locus (upper). In contrast, 
+Mag1-sctetR fusion cannot excise non-target genes located alongside 
+non-specific  operators  (lower).  Mag1,  3-methyladenine  glycosylase; 
+sctetR, single chain tetR. c Synthetic retroelement constructed using 
+retrotransposon Ty1 and mutagenic T7 RNA polymerase-retron sys-
+tem. Mutagenesis target is cloned into the genome as a genetic cargo 
+between  Ty1RT  (Gag-Pol)  and  3′-LTR  (Long  Terminal  Repeat). 
+Transcribed mRNA is converted into mutation-containing cDNA as a 
+result of error-prone reverse transcription by reverse transcriptase and 
+re-integrated into the genome. The red box indicates mutation and the 
+black boxes indicate LTRs (upper). Error-prone T7 RNA polymerase 
+synthesizes the transcript of targeting sequence, generating mutations. 
+Then, the transcript is converted into cDNA. Subsequently, msDNA 
+complex comprised of gRNA and error-containing target cDNA edits 
+homologous  genomic  locus  (lower).  Orange  box  and  red  line  indi-
+cates reverse transcriptase recognition site and mutation, respectively. 
+d  CRISPR-guided  mutagenesis  tools.  Error-prone  DNA  polymerase 
+I introduces mutations to the target sequence guided by gRNA and 
+nCas9 (left). CRISPR-mediated double-strand break induces homol-
+ogous recombination with pooled error-prone PCR products (right). 
+Green,  purple,  and  red  boxes  indicate  homologous  sequences  and 
+mutation, respectively. e Mutator plasmid. Genes located downstream 
+of  PBAD promoter are overexpressed upon arabinose induction to dis-
+rupt replication maintenance and repair pathways
+
+Detour central dogma: ICE (Ty1 retrotransposon), 
+retroelement
+
+A mutagenesis tool implementing reverse transcription 
+(RT) was established to minimize the interaction with the 
+innate cellular machinery of the host that is not equipped 
+with reverse transcriptase. Crook et al. applied the yeast 
+long terminal repeat transposon Ty1 to enable in vivo con-
+tinuous evolution (ICE) (Fig. 2c, upper) [15]. The target 
+gene inside the retrotransposon cassette as cargo gains 
+mutations in tandem with error-prone transposition. The 
+authors optimized factors such as the cargo expression 
+level, host factors involved in the transposition rate, and 
+induction conditions to increase targeted mutagenesis by 
+over 50-fold compared to the wild type and, therefore, 
+enlarge the library size in each round. Retroelement-based 
+mutagenesis showed a consistent mutation rate across 
+cargo and moderate mutation bias compared to mutagenic 
+polymerases. Interestingly, by comparing two independent 
+in vivo continuous evolution methods, different mutation 
+profiles were found to be induced from the Ty1 cassette 
+conveying xylose isomerase and one xylulokinase vari-
+ant with different consumption rates as a pair. This sup-
+ports that the mutation range comprising multiple genes 
+requires a parameter in the mutagenesis tool that drives a 
+novel evolutionary landscape for metabolic engineering. 
+Moreover, by combining the fitness of evolved mutants 
+from ep-PCR and the retrotransposon element, more than 
+half of the latter surpassed the former. Despite the appeal-
+ing performances of the Ty1 retrotransposon cassette as a 
+
+1317
+
+mutagenesis tool, the applicable host is limited to yeast 
+strains, which allows Ty1 transposition.
+
+RT-based targeted gene editing machinery operating in 
+prokaryotic taxa was reported, followed by the discovery of 
+retrotransposons in eukaryotes [25]. Based on the previous 
+studies, Simon et al. optimized the editing frequency and 
+length for continuous evolution applications (Fig. 2c, lower) 
+[81]. In contrast to Ty1-based mutagenesis, mutagenic T7 
+RNA polymerase introduce errors on the transcript of mul-
+ticopy single-stranded DNA containing a target sequence 
+[55]. Error-containing targeting DNA converted by RT edits 
+the genomic sequence driven by homologous recombina-
+tion. Simon et al. controlled the promoter strength of the 
+retrotransposon cassette and fidelity of T7 RNA polymerase 
+along with the efficiency of host DNA repair machinery to 
+improve the editing frequency. However, the short muta-
+tion range and limited number of multiple point mutations 
+as well as damaged repair machinery prevents successful 
+continuous evolution.
+
+CRISPR guided: EvolvR, CREATE, CasPER
+
+As a navigator of the CRISPR-Cas9 complex, guide RNA 
+designates the target loci based on sequence homology, 
+which confers orthogonality to CRISPR-based mutagenesis 
+tools. A mutagenesis system named as EvolvR utilizes a 
+fusion protein which consists of a nicking variant of Cas9 
+(nCas9) and error-prone DNA polymerase I (Fig. 2d, left) 
+[31]. nCas9 guided by gRNA forms a nick on targeted loci 
+where coupled DNA polymerase synthesizes a new strand 
+of up to 200 bp with low fidelity and cleaves the displaced 
+strand. Halperin et al. tuned each component to enhance 
+the mutation rate and range and minimize off-target effects. 
+They aimed to alleviate the affinity of nCas9 with DNA to 
+promote mutagenic sliding of Pol I while introducing a triple 
+combination of fidelity-reducing mutations on Pol I. The 
+processivity of Pol I is also modified to expand the muta-
+tion window. Finally, the coding sequence of EvolvR is opti-
+mized to fit the codon usage and remove innate strong RBS 
+to diminish off-target mutations. In addition, combinatorial 
+mutagenesis within a single target gene and multiplexed tar-
+geting on distant genes can use multiple targeting sequences. 
+Considering the average size of the gene, however, the tun-
+able window of EvolvR requires the design and use of sev-
+eral programmed gRNAs simultaneously. Moreover, non-
+targeted nickase activity also shows a risk of unintended 
+genomic modification.
+
+Another CRISPR-based mutagenesis system coupled with 
+in vitro mutagenesis named as CRISPR-enabled trackable 
+genome engineering (CREATE) was introduced by Garst 
+et al. [28]. CREATE employs homologous repair to integrate 
+a mutation pool by generating site-specific DSBs by pro-
+grammed gRNA and Cas9 in Escherichia coli. As reported 
+
+l
+
+D
+o
+w
+n
+o
+a
+d
+e
+d
+
+ 
+f
+r
+o
+m
+h
+
+ 
+
+t
+t
+
+p
+s
+:
+/
+/
+
+i
+
+a
+c
+a
+d
+e
+m
+c
+.
+o
+u
+p
+.
+c
+o
+m
+
+/
+j
+i
+
+l
+
+/
+
+/
+
+/
+
+/
+
+m
+b
+a
+r
+t
+i
+c
+e
+4
+6
+9
+-
+1
+0
+1
+3
+1
+3
+6
+0
+1
+7
+4
+2
+6
+b
+y
+ 
+g
+u
+e
+s
+t
+ 
+
+/
+
+ 
+
+ 
+
+ 
+
+o
+n
+2
+1
+O
+c
+t
+o
+b
+e
+r
+ 
+2
+0
+2
+1
+
+1 31318
+ 
+
+Journal of Industrial Microbiology & Biotechnology (2019) 46:1313–1326
+
+Table 1   Mutagenesis methods
+Location Orthogonal-
+
+Name
+
+In vivo
+
+ity
+Orthogonal 
+pair
+
+Machinery
+
+Mutagenesis Machinery
+
+ColE1/PolI Orthogonal 
+plasmid/
+polymerase 
+pair
+
+Error-prone 
+DNAPI
+
+Replication
+
+Mutational 
+range
+< 2 kb
+
+Host organ-
+ism
+E. coli
+
+22 kb
+
+Yeast
+S. cerevisiae
+
+Error-prone 
+TP-DNAPI
+
+Orthogonal 
+plasmid/
+polymerase 
+pair
+
+OrthoRep
+
+Muta T7
+
+Phage 
+derived 
+promoter/
+polymerase 
+pair
+
+TaG-TEAM tetO/tetR
+
+Cytidine 
+deaminase
+
+Repair
+
+Multi-kb
+
+Compartmen-
+talized
+
+PACE
+
+Detour cen-
+tral dogma
+
+ICE
+
+Separation 
+of space 
+(phage-
+assisted)
+Retrotranspo-
+son
+
+Retron
+
+Retron
+
+CRISPR-
+guided
+
+EvolvR
+
+gRNA tar-
+geted
+
+In vitro
+
+CasPER
+
+CREATE
+
+20 kb
+
+Eukaryotic
+
+Repair defi-
+cient
+
+Reverse tran-
+scription
+
+Phage-sus-
+ceptible
+
+5 kb/cargo
+
+Eukaryotes
+
+Prokaryotes Mutational 
+range is 
+limited
+Off-target 
+effect
+
+Transcription Within 30 bp 
+
+(11 bp)
+
+Repair
+
+200 bp
+
+Recombina-
+tion
+
+300–600 bp
+
+Unwanted 
+mutation 
+could be 
+introduced by 
+the competi-
+tion with 
+NHEJ
+
+DNA 
+glycosy-
+lase-driven 
+error-prone 
+homolo-
+gous 
+recombina-
+tion
+Mutator plas-
+mid MP6
+
+Error-prone 
+reverse 
+tran-
+scriptase
+
+Error-prone 
+RNAP
+
+Nick-
+ase + error-
+prone 
+DNAPI
+DSB + error-
+prone PCR
+
+DSB + oligo-
+nucleotide 
+synthesis
+
+Disadvantage
+
+Reference
+
+[10]
+
+[69, 70]
+
+[58]
+
+[26]
+
+[3, 23]
+
+Not fully 
+orthogonal 
+Host cell is 
+limited to E. 
+coli
+Difficult 
+genetic 
+manipulation
+Works only in 
+yeasts
+Narrow muta-
+tion spectrum 
+(C:G → T:A)
+
+tetO array 
+should be 
+inserted in 
+genome
+Mutational 
+range is fixed 
+to 20 kb
+
+Specialized 
+turbidostat is 
+required
+
+Efficiency is 
+limited by 
+homologous 
+recombina-
+tion
+
+[15]
+
+[81]
+
+[31]
+
+[35]
+
+[28]
+
+l
+
+D
+o
+w
+n
+o
+a
+d
+e
+d
+
+ 
+f
+r
+o
+m
+h
+
+ 
+
+t
+t
+
+p
+s
+:
+/
+/
+
+i
+
+a
+c
+a
+d
+e
+m
+c
+.
+o
+u
+p
+.
+c
+o
+m
+
+/
+j
+i
+
+l
+
+/
+
+/
+
+/
+
+/
+
+m
+b
+a
+r
+t
+i
+c
+e
+4
+6
+9
+-
+1
+0
+1
+3
+1
+3
+6
+0
+1
+7
+4
+2
+6
+b
+y
+ 
+g
+u
+e
+s
+t
+ 
+
+/
+
+ 
+
+ 
+
+ 
+
+o
+n
+2
+1
+O
+c
+t
+o
+b
+e
+r
+ 
+2
+0
+2
+1
+
+previously, a DSB dramatically increases the efficiency 
+of HR by at least two orders of magnitude [76, 83]. They 
+support a web tool for the automated design of a CREATE 
+cassette which serves as a guiding sequence for targeting, 
+template used in HR, and barcode for tracking. However, 
+the toxicity arising from the DSB decreases transformation 
+
+efficiency, limiting the expandability of library construction 
+and stability of the barcode in plasmids and restricting the 
+tracking of genotype–phenotype relationships. Ronda et al. 
+introduced another CRISPR-based multiplexed genome 
+engineering method called CRISPR/Cas9 and λ Red recom-
+bineering-based MAGE (CRMAGE) [74]. This technology 
+
+1 3Journal of Industrial Microbiology & Biotechnology (2019) 46:1313–1326 
+
+1319
+
+utilized two curable plasmids encoding Cas9, λ Red protein, 
+and target-specific sgRNA under the control of inducible 
+promoters. They also contained self-eliminating genetic 
+circuit for subsequent rounds and efficiency-enhancing ele-
+ments such as RecX and dam methyltransferase that confers 
+transient MutS and RecA- phenotypes. The CRMAGE sys-
+tem showed higher efficiency compared to the traditional 
+MAGE and was provided with a web-based tool to facilitate 
+the design of an experiment. However, the incomplete kill-
+ing of non-engineered, wild-type cells remains a challenge. 
+Jakočiūnas et al. developed Cas9-mediated Protein Evolution 
+Reaction (CasPER) which enables the integration of large 
+mutant fragments into genomic loci (Fig. 2d, right). CasPER 
+exploits the specific targeting ability of CRISPR and DSB-
+induced HR and an error-containing target gene generated 
+by five consecutive ep-PCR [35].
+
+Mutator plasmid
+
+Badran and Liu developed a mutator plasmid as an induc-
+ible episomal vector, which prevents redundant replication 
+maintenance mechanisms such as proofreading, mismatch 
+repair, and base selection (Fig. 2e) [3]. By combining sev-
+eral genes representing the mutator phenotype, plasmids 
+with diverse mutational spectra were constructed. Among 
+them, MP6 showed the highest mutation rate and unbiased 
+mutation spectrum along with a very large dynamic range. 
+The mutagenic performance of the random mutagenic plas-
+mid was shown to be sustainable in phage-assisted continu-
+ous evolution in a subsequent study [2]. Although partially 
+blocked DNA repair machinery shows compromised viabil-
+ity, the mutation rate does not exceed the error threshold of 
+essential genes [9, 45].
+
+Tools and systems for screening 
+and selection
+
+Directed evolution and evolutionary engineering have ena-
+bled the production of numerous strains to form new chemi-
+cal bonds, such as carbon–silicon bonding that has never 
+been observed in nature [44], improve the solubilities of 
+heterologous proteins [53, 93], and increase tolerance to 
+chemicals [5, 11, 41, 47]. The previous studies using these 
+applications have already been reviewed [14, 63]. Thus, 
+here, we focus on artificial selection and screening for chem-
+ical high-producing cells using synthetic genetic devices 
+consisting of a biosensor including transcription factor or 
+RNA-based regulatory elements and selectable marker or 
+fluorescence reporters with fluidic devices. It is important 
+to create genetic diversity and effectively screen variants 
+showing a desired phenotype (typically chemical high-
+producer) from the generated library in directed evolution 
+
+and adaptive laboratory evolution [18, 90]. As a promising 
+industrial strain, E. coli can be used with maximum library 
+sizes of up to  1010; this value is limited by transformation 
+efficiency [33, 42, 91]. However, because the phenotypes 
+are typically inconspicuous, it is difficult to effectively iden-
+tify the improved strain with the desired phenotype [72]. In 
+the conventional screening methods, individual strains are 
+separated, and their productivities are measured directly by 
+high-performance liquid chromatography, gas chromatogra-
+phy, and microtiter plates. However, the analytical methods 
+are less likely to detect meaningful positive mutants in the 
+library, because the number of variants tested per experi-
+ment is generally lower than  104, which is time-consuming 
+and labor-intensive for assessing library spaces [51, 52, 97]. 
+Therefore, high-throughput screening methods are required 
+to alleviate the limitations and cover the entire library 
+size to effectively screen for positive mutants [39]. High-
+throughput screening of strains with phenotypes such as high 
+production of target metabolites has become possible with 
+the introduction of a screening and selection system based 
+on a genetically encoded biosensor including a riboswitch 
+and transcription factor (Fig. 3a, Table 2) [57]. A synthetic 
+genetic device for high-throughput screening consists of a 
+specific upstream ligand-responsive biosensor and down-
+stream expression module [51]. An antibiotic-resistant gene, 
+essential gene, or gene encoding a fluorescent protein is 
+mainly used as an expression module. When a biosensor spe-
+cifically binds to a cognate ligand, conformational changes 
+occur in response to the intracellular ligand concentration, 
+and expression of the downstream module is regulated at the 
+transcriptional or translational levels [19, 21, 27, 50].
+
+First, we summarize recent studies that have used growth-
+coupled selection to obtain a strain with an improved target 
+metabolite productivity and review recent studies of cell 
+sorting and screening through fluorescence signal detection 
+based on microfluidics in the following section (Fig. 3b).
+
+Genetic devices and circuits for artificial screening 
+selection
+
+Transcription factor‑based selection tools
+
+Transcription factors (TFs) have been reported to regulate 
+expression in response to a variety of metabolites including 
+amino acids, flavonoids, and cofactors [60, 68]. Natural TFs-
+cognate promoter sets were used as detectors, or artificial 
+promoters that responded to the desired metabolites were 
+identified by proteomics analysis [54]. Selection devices 
+for regulating the expression of antibiotics-resistance genes 
+using TFs as a sensor protein that responds to target metabo-
+lites have been constructed and applied [24, 77, 98, 101]. A 
+synthetic selection device responding to the 3-hydroxypropi-
+onic acid concentration was constructed to control tetA gene 
+
+l
+
+D
+o
+w
+n
+o
+a
+d
+e
+d
+
+ 
+f
+r
+o
+m
+h
+
+ 
+
+t
+t
+
+p
+s
+:
+/
+/
+
+i
+
+a
+c
+a
+d
+e
+m
+c
+.
+o
+u
+p
+.
+c
+o
+m
+
+/
+j
+i
+
+l
+
+/
+
+/
+
+/
+
+/
+
+m
+b
+a
+r
+t
+i
+c
+e
+4
+6
+9
+-
+1
+0
+1
+3
+1
+3
+6
+0
+1
+7
+4
+2
+6
+b
+y
+ 
+g
+u
+e
+s
+t
+ 
+
+/
+
+ 
+
+ 
+
+ 
+
+o
+n
+2
+1
+O
+c
+t
+o
+b
+e
+r
+ 
+2
+0
+2
+1
+
+1 31320
+ 
+
+Journal of Industrial Microbiology & Biotechnology (2019) 46:1313–1326
+
+l
+
+D
+o
+w
+n
+o
+a
+d
+e
+d
+
+ 
+f
+r
+o
+m
+h
+
+ 
+
+t
+t
+
+p
+s
+:
+/
+/
+
+i
+
+a
+c
+a
+d
+e
+m
+c
+.
+o
+u
+p
+.
+c
+o
+m
+
+/
+j
+i
+
+l
+
+/
+
+/
+
+/
+
+/
+
+m
+b
+a
+r
+t
+i
+c
+e
+4
+6
+9
+-
+1
+0
+1
+3
+1
+3
+6
+0
+1
+7
+4
+2
+6
+b
+y
+ 
+g
+u
+e
+s
+t
+ 
+
+/
+
+ 
+
+ 
+
+ 
+
+o
+n
+2
+1
+O
+c
+t
+o
+b
+e
+r
+ 
+2
+0
+2
+1
+
+expression exploiting 3-HP-responsive-TF, LysR, and the 
+cognate promoter,  PC4M. An aldehyde-binding site library 
+of alpha-ketoglutaric semialdehyde dehydrogenase, a 3-HP 
+production pathway enzyme, was constructed and applied 
+for growth-coupled selection. A selected ALDH variant 
+
+showed a 2.79-fold improvement in the catalytic efficiency 
+and E. coli with an ALDH variant exhibited 25% improved 
+3-HP productivity compared to the parental strain [80]. 
+Single-cell level quality control devices, population quality 
+control (PopQCs), were developed and applied to prepare 
+
+1 3Journal of Industrial Microbiology & Biotechnology (2019) 46:1313–1326 
+
+◂
+Fig. 3   Genetically  encoded  biosensors  and  high-throughput  screen-
+ing methods for metabolite-producing microbial cells. a Genetically 
+encoded biosensors. On-type transcription factor (TF)-based biosen-
+sor and riboswitch-based biosensor are illustrated. Ligands (particu-
+larly,  metabolites  in  this  article)  bind  specifically  to  their  cognate 
+biosensor. Conformational changes occur upon binding of a specific 
+ligand to the ligand-binding domain (LBD) of TF or riboswitch. Both 
+biosensors  regulate  the  expression  of  ‘Output’  genes  depending  on 
+the  metabolite  concentration.  Antibiotic  resistance  gene,  essential 
+gene, and fluorescent protein gene are typically used for the down-
+stream  genes  in  the  biosensors.  b  Selection  and  screening  of  the 
+chemical producers from a mutant library. Biosensors confer differ-
+ent levels of fitness under the selection pressure or fluorescence to the 
+mutant strains according to the intracellular metabolite concentration. 
+Growth-coupled selection strategy enriches high producers from the 
+mutant  population  through  serial  cultures  (upper).  High-throughput 
+screening analyzes individual cells and collects positive strains using 
+fluorescence-activated cell sorting (FACS) instruments microfluidics 
+devices (not shown in this figure) (lower)
+
+strains producing high levels of chemicals as the major pop-
+ulation, while the minor population which could not produce 
+sufficient amounts of metabolites was eliminated by antibi-
+otic selection. In this research, the free fatty acid-responsive 
+transcription factor FadR and synthetic promoter PAR and 
+tyrosine-responsive TF TyrR with the tyrosine-activated pro-
+moter, PT1 or PT2, were utilized to maintain the quality of 
+the population for a and b production, respectively [97]. By 
+expanding the scope of evolutionary metabolic engineering 
+to the whole biosynthesis process of metabolites, 18 endog-
+enous loci in E. coli were simultaneously mutagenized by 
+multiplex automated genomic engineering within regula-
+tory and coding sequences to construct a mutational library. 
+Expression of the membrane protein TolC was regulated by 
+a natural transcription factor, TtgR, and sensing by the  Pttga 
+promoter depends on the naringenin concentration. Tog-
+gling positive and negative selection applied to libraries can 
+enrich higher-producing cells and reduce the possibility that 
+cheater cells dominate the population [68]. Modifications 
+of an allosteric transcription factor are based on a computa-
+tional strategy for altering effector specificity of the protein. 
+In this study, the repressor protein LacI was re-engineered 
+to respond to fucose, gentiobiose, lactitol, and sucralose 
+[85]. In addition to the allostery, the stability of proteins 
+can be used to engineer biosensors. Jester et al. engineered 
+steroid biosensors using dimeric ligand-binding domains, 
+the stability of which can be controlled by the ligand [40]. 
+By fusing each dimeric domain to a DNA-binding domain 
+and a transcriptional activation domain, a full transcriptional 
+activator was able to be reconstituted only in the presence of 
+two ligands that bind and stabilize the dimeric domains. The 
+researchers further engineered the heterodimerization and 
+selectivity of the sensor through directed evolution. Selected 
+mutants were subsequently analyzed by NGS, elucidating 
+the spectrum of mutations that allowed improved sensor 
+performance.
+
+1321
+
+Riboswitch‑based selection tools
+
+The riboswitch is a cis-regulatory RNA element that con-
+sists of an aptamer domain that specifically binds small mol-
+ecules and an expression platform that regulates downstream 
+gene expression by causing a conformational change upon 
+ligand binding to the aptamer [39]. The riboswitches used 
+for directed evolution function mainly at two levels: tran-
+scriptional and translational. Forming the rho-independent 
+transcription terminator, which regulates gene expression at 
+the transcription level leading to premature transcription ter-
+mination and sequestering or releasing the ribosome-binding 
+site (RBS), can control gene expression at the translational 
+level [12]. Likes TFs, numerous RNA-based biosensors are 
+known to exist in nature. Furthermore, natural detector ele-
+ments were identified by methods such as NGS and Par-
+allel Analysis of RNA Conformations Exposed to Ligand 
+binding (PARCEL) [17, 84]. High-throughput screening 
+of the riboregulator can control transcription termination 
+in response to a specific metabolite concentration by com-
+bining the transcription start site sequencing and transcrip-
+tion termination site sequencing method based on NGS 
+[17]. Furthermore, an experimental strategy for identifying 
+RNA aptamers in vitro known as PARCEL in the transcrip-
+tomes revealed 58 novel RNA aptamers in both untranslated 
+regions and coding sequences [84]. A natural riboswitch 
+was engineered with specificity for non-natural small mol-
+ecules and no response to the original ligand [20]. For a 
+suitable RNA-based detector that specifically responds to 
+target biochemicals that do not exist in nature, riboswitch 
+binding to the desired chemical can be artificially prepared 
+using an in vitro selection method known as systematic evo-
+lution of ligands by exponential enrichment [36, 37, 100]. 
+The riboswitch-based biosensor was successfully applied 
+for growth-coupled selection [61, 88, 89]. For example, 
+a riboselector as a synthetic RNA device that specifically 
+reacts with l-lysine and l-tryptophan to express the tetracy-
+cline resistance gene was constructed. The riboselector con-
+ferred a fitness advantage to strains with high performance 
+by expressing tetracycline resistance. Particularly, selection 
+of the ppc promoter library to obtain the high-producing 
+strain of l-lysine resulted in successful enrichment of the 
+top 3 improved strains to 75% of the population in only four 
+rounds of enrichment cycles [99]. In addition to the ribos-
+witch, metabolite-responsive ribozymes have been exploited 
+to select metabolite high producers. For example, a glmS 
+ribozyme, which responds to the glucosamine 6-phosphate 
+concentration, was combined with the 3′-untranslated region 
+of the cytosine deaminase, FCY1, in S. cerevisiae to con-
+struct a synthetic suicide riboswitch to screen for an N-acetyl 
+glucosamine-overproducing S. cerevisiae strain. A glu-
+tamine–fructose-6-phosphate transaminase mutant library 
+and haloacid dehalogenase-like phosphatases library were 
+
+l
+
+D
+o
+w
+n
+o
+a
+d
+e
+d
+
+ 
+f
+r
+o
+m
+h
+
+ 
+
+t
+t
+
+p
+s
+:
+/
+/
+
+i
+
+a
+c
+a
+d
+e
+m
+c
+.
+o
+u
+p
+.
+c
+o
+m
+
+/
+j
+i
+
+l
+
+/
+
+/
+
+/
+
+/
+
+m
+b
+a
+r
+t
+i
+c
+e
+4
+6
+9
+-
+1
+0
+1
+3
+1
+3
+6
+0
+1
+7
+4
+2
+6
+b
+y
+ 
+g
+u
+e
+s
+t
+ 
+
+/
+
+ 
+
+ 
+
+ 
+
+o
+n
+2
+1
+O
+c
+t
+o
+b
+e
+r
+ 
+2
+0
+2
+1
+
+1 31322
+ 
+
+Journal of Industrial Microbiology & Biotechnology (2019) 46:1313–1326
+
+Table 2   Genetically encoded biosensors for chemicals
+Product
+Naringenin
+
+3-Hydroxypropionic acid Transcription factor/cognate promoter 
+
+Glucaric acid
+
+Threonine
+
+Free fatty acid
+
+Tyrosine
+
+Naringenin
+Lysine
+N-acetyl glucosamine
+Tryptophan
+
+Detector
+Transcription factor/cognate promoter 
+pair
+Transcription factor/cognate promoter 
+pair
+Transcription factor/cognate promoter 
+pair
+
+pair
+Transcription factor/cognate promoter 
+pair
+Transcription factor/cognate promoter 
+pair
+Riboswitch
+Riboswitch
+Ribozyme
+Riboswitch
+
+Output
+Expression of TolC Growth-coupled selection, counter 
+
+Function
+
+Reference
+[68]
+
+selection
+
+Expression of TolC Growth-coupled selection, counter 
+
+[68]
+
+selection
+Screening of improved production strain [54]
+
+Expression of eGFP 
+beta-Galactosidase
+Expression of TetA Growth-coupled selection
+
+Expression of TetA Growth-coupled selection
+
+Expression of TetA Growth-coupled selection
+
+Expression of GFP Naringenin sensor
+Expression of TetA Growth-coupled selection
+Expression of FCY1 Growth-coupled selection
+Expression of sGFP Representing the intracellular l-trypto-
+phan concentration of each single cell
+Screening of improved enzyme
+
+Expression of GFP
+
+[80]
+
+[97]
+
+[97]
+
+[36]
+[99]
+[49]
+[38]
+
+[56]
+
+Theophylline
+
+Aptazyme
+
+efficiently screened with the growth-coupled genetic circuit, 
+resulting in the N-acetyl glucosamine overproducer [49].
+
+High‑throughput screening with fluidic systems
+
+High-throughput screening, in which positive strains domi-
+nate following library selection, has been widely used for 
+directed evolution, as it is possible to exploit selectable 
+markers and appropriate selection pressures without addi-
+tional equipment. However, cheater cells adapted to resist-
+ance under the selection pressure may be selected rather than 
+positive mutants with the desired phenotype, which are not 
+selected. Counterfeit transcription, such as a mutation in a 
+promoter expressing a metabolic sensor or selectable marker 
+in an antibiotic resistance gene, may have growth advantages 
+under the selection pressure regardless of production of the 
+desired metabolite. As a result, cheater cells dominate the 
+population [72]. In addition, to enrich the positive strain, 
+labor-intensive and long-term serial culture is required. 
+Furthermore, artificial selection cannot confirm the target 
+metabolite production ability at the individual cell level in 
+real time [19]. Therefore, genetically encoded biosensors 
+were constructed by connecting expression of the fluores-
+cence markers GFP and RFP to the target metabolite con-
+centration; these biosensors have been applied with various 
+types of analysis equipment such as microfluidics devices 
+and fluorescence-activated cell sorting (FACS) instruments 
+[38, 92]. FACS can be used in combination with geneti-
+cally encoded biosensors to screen mutant enzymes with 
+increased product selectivity and activity. For example, a 
+caffeine demethylase library containing  106–107 variants 
+
+was screened in a few hours through FACS using fluores-
+cence from a ribozyme-based biosensor as a readout. A 
+screened variant showed 22- and 33-fold higher selectivity 
+and activity, respectively, compared to the parental strain. 
+Modular assembly of input domain (aptamer) and output 
+domain (ribozyme) of the biosensors can create synthetic 
+RNA switches that will be applied to various metabolic path-
+ways [56]. Furthermore, FACS was also utilized to select 
+variants with increased target metabolite production. For 
+example, FACS was coupled with a biosensor to select thre-
+onine high producers [54]. A threonine biosensor was devel-
+oped by placing a fluorescent protein gene under the con-
+trol of a threonine-responsive promoter cysJHp. A mutant 
+library containing 2 × 107 mutants was constructed based on 
+an industrial threonine producer strain ThrH(pTZL2). The 
+mutant library was screened using FACS and the threonine 
+biosensor within 1 week and 465 mutants were selected. 
+Forty-four strains sorted from the library showed higher 
+threonine productivities compared to the parental strain, 
+and the highest mutant produced approximately 18% higher 
+levels of threonine [54]. In addition to FACS, a microfluidics 
+system was applied for the screening of high-performance 
+cells. The microfluidic static droplet array can trap a sin-
+gle E. coli cell in a droplet in assigned wells. A tryptophan 
+riboswitch-based biosensor linked to the fluorescence pro-
+tein was constructed and tryptophan overproduction strains 
+were collected by detecting the output signals with the 
+static droplet array system [38]. Screening that relies on the 
+intracellular concentration of a substance using biosensor 
+neglects the extracellular content. For secreted products, it 
+is difficult to screen for true-positive strains with a system 
+
+l
+
+D
+o
+w
+n
+o
+a
+d
+e
+d
+
+ 
+f
+r
+o
+m
+h
+
+ 
+
+t
+t
+
+p
+s
+:
+/
+/
+
+i
+
+a
+c
+a
+d
+e
+m
+c
+.
+o
+u
+p
+.
+c
+o
+m
+
+/
+j
+i
+
+l
+
+/
+
+/
+
+/
+
+/
+
+m
+b
+a
+r
+t
+i
+c
+e
+4
+6
+9
+-
+1
+0
+1
+3
+1
+3
+6
+0
+1
+7
+4
+2
+6
+b
+y
+ 
+g
+u
+e
+s
+t
+ 
+
+/
+
+ 
+
+ 
+
+ 
+
+o
+n
+2
+1
+O
+c
+t
+o
+b
+e
+r
+ 
+2
+0
+2
+1
+
+1 3Journal of Industrial Microbiology & Biotechnology (2019) 46:1313–1326 
+
+1323
+
+that detects only intracellular concentrations, and obtaining 
+false-positives is very likely. This resulted in a reduced prob-
+ability of screening of true-positive strains that produce and 
+secrete more product and increased probability of screening 
+of false-positive strains that accumulate more products. To 
+evaluate extracellular concentrations, screening with a drop-
+let compartment is necessary. A single cell or cells required 
+for co-culture were compartmented into a single droplet, 
+and then incubated for fluorescence-based screening to 
+ensure true-positive strain screening including extracellular 
+content. One study conducted library screening of innately 
+fluorescent riboflavin-producing strains. Single-cell FACS 
+and droplet-based FACS screening were conducted to dem-
+onstrate that the extracellular concentration represents total 
+production rather than the intracellular concentration. The 
+results showed that screening based on extracellular concen-
+trations was more effective for isolating strains with higher 
+total production [92].
+
+Systems for continuous evolution
+
+Natural evolution occurs continuously: genetic diversity is 
+generated, selective pressure is applied, and adapted off-
+spring reproduce. This cycle repeats indefinitely. In contrast, 
+many evolutionary engineering techniques involve frequent 
+intervention at each step of evolution. This requirement for 
+intermittent handling by a researcher limits the efficiency, 
+multiplexity, and scalability of evolutionary engineering. 
+Therefore, researchers have attempted to conduct artifi-
+cial continuous evolution which operates autonomously 
+with minimal intervention [16]. The most critical issue for 
+establishing continuous evolution would be how to control 
+mutagenesis to generate sufficient genetic diversity at the 
+genetic level while maintaining host cell stability. To address 
+this challenge, there have been several attempts to develop 
+genetic circuits for regulating mutagenesis or mutating only 
+desired genetic loci.
+
+First,  synthetic  genetic  circuits  enabled  controlled 
+mutagenesis in response to the phenotype of interest. In this 
+approach, the expression of mutagenic genes is repressed 
+after achieving the desired phenotype in a cell through the 
+accumulation of sufficient mutations. For example, metab-
+olite-responsive promoters controlled the expression of 
+an error-prone DNA polymerase subunit to evolve mutant 
+strains with improved metabolite productivity such as tyros-
+ine and lycopene [13]. In another example, an engineered 
+riboswitch responsive to changes in pH was utilized to con-
+trol the expression of an integrase [65]. The pH-dependent 
+expression of the integrase, in turn, controlled the expression 
+of a mutagenic gene. Mutant strains that maintained intra-
+cellular pH at a neutral value or in a low pH environment 
+
+deactivated mutagenic gene expression and stopped further 
+mutagenesis.
+
+Next, mutagenesis can be focused to desired genetic loci 
+to minimize any undesired non-specific mutations that may 
+lead to serious growth retardation or even elimination of 
+the host cell. These strategies are explained in Sects. 2.1, 
+2.2, and 2.3. The target gene(s) was cloned in a specific 
+plasmid or locus with specialized elements in the OrthoRep 
+[70] or using the retrotransposon method [15], respectively. 
+These methods mutated the cloned “cargo” efficiently, but 
+background mutagenesis was maintained at a low level. In 
+contrast, EvolvR [31] enabled targeted mutagenesis at any 
+locus in the genome by designing gRNAs for target genes. 
+However, this method has a relatively short mutagenesis 
+window (~ 350 nucleotides) compared to other methods. 
+Another well-known pioneering strategy is using viral repli-
+cation to propagate the evolved mutants. The phage-assisted 
+continuous evolution (PACE) [23] system utilized the M13 
+bacteriophage genome as a vector for target genes. In a con-
+tinuous bioreactor, E. coli cells are used to mutate the target 
+gene, and mutants that activate the expression of a phage 
+coat protein are packed in an M13 bacteriophage virion. This 
+released virion infects fresh E. coli cells to continue the next 
+round of mutagenesis and selection. Phage-assisted continu-
+ous evolution has been utilized to evolve various proteins 
+including TALEN [34], insecticidal toxin [2], aminoacyl-
+tRNA synthetase [8], RNA polymerase [67], protease [64], 
+antibody [93], and Cas9 [32].
+
+In addition to mutagenesis methods, a continuous cul-
+turing  apparatus  was  fabricated  to  support  continuous 
+evolution. Evolutionary engineering requires a continuous 
+culturing system that allows for a multiplexed experiment 
+with highly controlled culture parameters. However, the 
+parameters in batch culture cannot be precisely controlled, 
+while current continuous culture systems are not suitable for 
+parallelized cultures. Recently, a framework for continuous 
+culture known as eVOLVER was reported [94]. This system 
+measures various culture parameters such as optical density 
+or temperature in real time and enables automated control 
+of the parameters. Moreover, a high-throughput evolution 
+study using eVOLVER was conducted for 468 continuous 
+cultures, at a level that cannot be achieved using previous 
+methods. Because of its modularity, small size, and auto-
+mated nature, multiplexed evolutionary engineering can be 
+performed more easily using this platform.
+
+Concluding remarks
+
+Evolutionary approaches have enabled engineering of bio-
+molecules and microorganisms for useful applications. 
+Discovery of new biological components and mechanisms 
+have led to the development of advanced technologies for 
+
+l
+
+D
+o
+w
+n
+o
+a
+d
+e
+d
+
+ 
+f
+r
+o
+m
+h
+
+ 
+
+t
+t
+
+p
+s
+:
+/
+/
+
+i
+
+a
+c
+a
+d
+e
+m
+c
+.
+o
+u
+p
+.
+c
+o
+m
+
+/
+j
+i
+
+l
+
+/
+
+/
+
+/
+
+/
+
+m
+b
+a
+r
+t
+i
+c
+e
+4
+6
+9
+-
+1
+0
+1
+3
+1
+3
+6
+0
+1
+7
+4
+2
+6
+b
+y
+ 
+g
+u
+e
+s
+t
+ 
+
+/
+
+ 
+
+ 
+
+ 
+
+o
+n
+2
+1
+O
+c
+t
+o
+b
+e
+r
+ 
+2
+0
+2
+1
+
+1 31324
+ 
+
+Journal of Industrial Microbiology & Biotechnology (2019) 46:1313–1326
+
+mutagenesis and screening. In this progression, synthetic 
+biology has provided a theoretical and experimental founda-
+tion to create synthetic genetic circuits. In addition, micro-
+fluidic and millifluidic systems have assisted in cultivation 
+and screening in a high-throughput manner. Furthermore, 
+previously discrete steps in evolutionary engineering can 
+now be merged, allowing for continuous directed evolution 
+without intervention by researchers. Even with this signifi-
+cant progress, some challenges remain. The size of genetic 
+cargo that can be mutated should be larger than the current 
+size limit (~ 20 kb) to evolve large genetic constructs such as 
+biosynthetic gene clusters for secondary metabolites. Uni-
+versal methods that can be applied to both prokaryotes and 
+eukaryotes are needed for a wide variety of applications. 
+For example, microbial consortium consisting of prokaryotic 
+and eukaryotic cells can be engineered as a whole using 
+such universal method. Finally, evolved genes, pathways, 
+and strains from initial rounds of continuous evolution can 
+be recombined with each other during the evolution process 
+to provide an improved mutant pool for the next round of 
+evolution which will eventually facilitate the identification 
+of superior mutants in a limited timeframe.
+
+Acknowledgements  This work was supported by the C1 Gas Refin-
+ery Program [Grant Number NRF-2018M3D3A1A01055754] and the 
+Global  Research  Laboratory  Program  [Grant  Number  NRF-
+2016K1A1A2912829] funded by the Ministry of Science and ICT of 
+the Republic of Korea through the National Research Foundation of 
+Korea and by the Korea Institute of Energy Technology Evaluation 
+and Planning (KETEP) and the Ministry of Trade, Industry & Energy 
+(MOTIE) of the Republic of Korea [Grant Number 20174030201600].
+
+Compliance with ethical standards 
+
+Conflict of interest  The authors declare no conflict of interests.
+
+References
+
+  1.  Arnold FH (2018) Directed evolution: bringing new chemistry 
+
+to life. Angew Chem Int Ed 57:4143–4148
+
+  2.  Badran AH, Guzov VM, Huai Q et al (2016) Continuous evolu-
+tion of Bacillus thuringiensis toxins overcomes insect resistance. 
+Nature 533:58–63
+
+  3.  Badran AH, Liu DR (2015) Development of potent in vivo 
+mutagenesis plasmids with broad mutational spectra. Nat Com-
+mun 6:8425
+
+  4.  Badran AH, Liu DR (2015) In vivo continuous directed evolution. 
+
+Curr Opin Chem Biol 24:1–10
+
+  5.  Betteridge AL, Sumby KM, Sundstrom JF et al (2018) Applica-
+tion of directed evolution to develop ethanol tolerant Oenococcus 
+oeni for more efficient malolactic fermentation. Appl Microbiol 
+Biotechnol 102:921–932
+
+  6.  Bjork SM, Joensson HN (2018) Microfluidics for cell factory and 
+
+bioprocess development. Curr Opin Biotechnol 55:95–102
+
+  7.  Boiteux S, Guillet M (2004) Abasic sites in DNA: repair and bio-
+logical consequences in Saccharomyces cerevisiae. DNA Repair 
+3:1–12
+
+  8.  Bryson DI, Fan C, Guo L-T et al (2017) Continuous directed 
+evolution of aminoacyl-tRNA synthetases. Nat Chem Biol 
+13:1253–1260
+
+  9.  Bull JJ, Sanjuán R, Wilke CO (2007) Theory of lethal mutagen-
+
+esis for viruses. J Virol 81:2930–2939
+
+  10.  Camps  M,  Naukkarinen  J,  Johnson  BP,  Loeb  LA  (2003) 
+Targeted gene evolution in Escherichia coli using a highly 
+error-prone DNA polymerase I. Proc Natl Acad Sci USA 
+100:9727–9732
+
+  11.  Carter JLL, Bekhouche M, Noiriel A et al (2014) Directed 
+evolution of a formate dehydrogenase for increased tolerance 
+to ionic liquids reveals a new site for increasing the stability. 
+ChemBioChem 15:2710–2718
+
+  12.  Chang  AL,  Wolf  JJ,  Smolke  CD  (2012)  Synthetic  RNA 
+switches as a tool for temporal and spatial control over gene 
+expression. Curr Opin Biotechnol 23:679–688
+
+  13.  Chou HH, Keasling JD (2013) Programming adaptive con-
+trol to evolve increased metabolite production. Nat Commun 
+4:2595
+
+  14.  Cobb RE, Chao R, Zhao H (2013) Directed evolution: past, pre-
+
+sent and future. AIChE J 59:1432–1440
+
+  15.  Crook N, Abatemarco J, Sun J et al (2016) In vivo continuous 
+evolution of genes and pathways in yeast. Nat Commun 7:13051
+  16.  d’Oelsnitz S, Ellington A (2018) Continuous directed evolu-
+tion for strain and protein engineering. Curr Opin Biotechnol 
+53:158–163
+
+  17.  Dar D, Shamir M, Mellin JR et al (2016) Term-seq reveals abun-
+dant ribo-regulation of antibiotics resistance in bacteria. Science 
+352:aad9822
+
+  18.  Dietrich JA, McKee AE, Keasling JD (2010) High-throughput 
+metabolic engineering: advances in small-molecule screening 
+and selection. Annu Rev Biochem 79:563–590
+
+  19.  Dietrich JA, Shis DL, Alikhani A, Keasling JD (2013) Transcrip-
+tion factor-based screens and synthetic selections for microbial 
+small-molecule biosynthesis. ACS Synth Biol 2:47–58
+
+  20.  Dixon N, Duncan JN, Geerlings T et al (2010) Reengineering 
+orthogonally selective riboswitches. Proc Natl Acad Sci USA 
+107:2830–2835
+
+  21.  Dougherty MJ, Arnold FH (2009) Directed evolution: new parts 
+
+and optimized function. Curr Opin Biotechnol 20:486–491
+
+  22.  Dragosits M, Mattanovich D (2013) Adaptive laboratory evolu-
+tion—principles and applications for biotechnology. Microb Cell 
+Fact 12:64
+
+  23.  Esvelt KM, Carlson JC, Liu DR (2011) A system for the continu-
+
+ous directed evolution of biomolecules. Nature 472:499–503
+
+  24.  Farmer WR, Liao JC (2000) Improving lycopene production in 
+Escherichia coli by engineering metabolic control. Nat Biotech-
+nol 18:533–537
+
+  25.  Farzadfard F, Lu TK (2014) Genomically encoded analog mem-
+ory with precise in vivo DNA writing in living cell populations. 
+Science 346:1256272
+
+  26.  Finney-Manchester SP, Maheshri N (2013) Harnessing muta-
+genic homologous recombination for targeted mutagenesis 
+in vivo by TaGTEAM. Nucl Acids Res 41:e99
+
+  27.  Frommer WB, Davidson MW, Campbell RE (2009) Genetically 
+encoded biosensors based on engineered fluorescent proteins. 
+Chem Soc Rev 38:2833–2841
+
+  28.  Garst AD, Bassalo MC, Pines G et al (2017) Genome-wide map-
+ping of mutations at single-nucleotide resolution for protein, 
+metabolic and genome engineering. Nat Biotechnol 35:48–55
+
+  29.  Glassner BJ, Rasmussen LJ, Najarian MT et al (1998) Genera-
+tion of a strong mutator phenotype in yeast by imbalanced base 
+excision repair. Proc Natl Acad Sci USA 95:9997–10002
+
+  30.  Greener A, Callahan M, Jerpseth B (1997) An efficient random 
+mutagenesis technique using an E. coli mutator strain. Mol Bio-
+technol 7:189–195
+
+l
+
+D
+o
+w
+n
+o
+a
+d
+e
+d
+
+ 
+f
+r
+o
+m
+h
+
+ 
+
+t
+t
+
+p
+s
+:
+/
+/
+
+i
+
+a
+c
+a
+d
+e
+m
+c
+.
+o
+u
+p
+.
+c
+o
+m
+
+/
+j
+i
+
+l
+
+/
+
+/
+
+/
+
+/
+
+m
+b
+a
+r
+t
+i
+c
+e
+4
+6
+9
+-
+1
+0
+1
+3
+1
+3
+6
+0
+1
+7
+4
+2
+6
+b
+y
+ 
+g
+u
+e
+s
+t
+ 
+
+/
+
+ 
+
+ 
+
+ 
+
+o
+n
+2
+1
+O
+c
+t
+o
+b
+e
+r
+ 
+2
+0
+2
+1
+
+1 3Journal of Industrial Microbiology & Biotechnology (2019) 46:1313–1326 
+
+1325
+
+  31.  Halperin SO, Tou CJ, Wong EB et al (2018) CRISPR-guided 
+DNA polymerases enable diversification of all nucleotides in a 
+tunable window. Nature 560:248–252
+
+  32.  Hu JH, Miller SM, Geurts MH et al (2018) Evolved Cas9 variants 
+with broad PAM compatibility and high DNA specificity. Nature 
+556:57–63
+
+  33.  Huang G, Zhong Z, Miersch S et al (2018) Construction of syn-
+thetic phage displayed Fab library with tailored diversity. J Vis 
+Exp 135:e57357
+
+  34.  Hubbard BP, Badran AH, Zuris JA et al (2015) Continuous 
+directed evolution of DNA-binding proteins to improve TALEN 
+specificity. Nat Methods 12:939–942
+
+  35.  Jakočiūnas  T,  Pedersen  LE,  Lis  AV  et  al  (2018)  CasPER, 
+a method for directed evolution in genomic contexts using 
+mutagenesis and CRISPR/Cas9. Metab Eng 48:288–296
+
+  36.  Jang S, Jang S, Xiu Y et al (2017) Development of artificial 
+riboswitches for monitoring of naringenin in vivo. ACS Synth 
+Biol 6:2077–2085
+
+  37.  Jang S, Jang S, Yang J et al (2018) RNA-based dynamic genetic 
+controllers: development strategies and applications. Curr Opin 
+Biotechnol 53:1–11
+
+  38.  Jang S, Lee B, Jeong H-H et al (2016) On-chip analysis, indexing 
+and screening for chemical producing bacteria in a microfluidic 
+static droplet array. Lab Chip 16:1909–1916
+
+  39.  Jang S, Yang J, Seo SW, Jung GY (2015) Riboselector: ribos-
+witch-based synthetic selection device to expedite evolution 
+of metabolite-producing microorganisms. Methods Enzymol 
+550:341–362
+
+  40.  Jester BW, Tinberg CE, Rich MS et al (2018) Engineered bio-
+sensors from dimeric ligand-binding domains. ACS Synth Biol 
+7:2457–2467. https ://doi.org/10.1021/acssy nbio.8b002 42
+
+  41.  Johnson TJ, Halfmann C, Zahler JD et al (2016) Increasing the 
+tolerance of filamentous cyanobacteria to next-generation biofu-
+els via directed evolution. Algal Res 18:250–256
+
+  42.  Ju M-S, Min S-W, Lee SM et al (2017) A synthetic library for 
+rapid isolation of humanized single-domain antibodies. Biotech-
+nol Bioprocess Eng 22:239–247
+
+  43.  Kaminski TS, Scheler O, Garstecki P (2016) Droplet microfluid-
+ics for microbiology: techniques, applications and challenges. 
+Lab Chip 16:2168–2187
+
+  44.  Kan SBJ, Lewis RD, Chen K, Arnold FH (2016) Directed evolu-
+tion of cytochrome c for carbon-silicon bond formation: bringing 
+silicon to life. Science 354:1048–1051
+
+  45.  Kellenberger CA, Sales-Lee J, Pan Y et al (2015) A minimalist 
+biosensor: quantitation of cyclic di-GMP using the conforma-
+tional change of a riboswitch aptamer. RNA Biol 12:1189–1197
+  46.  Kingsbury DT, Helinski DR (1970) DNA polymerase as a 
+requirement  for  the  maintenance  of  the  bacterial  plasmid 
+colicinogenic  factor  E1.  Biochem  Biophys  Res  Commun 
+41:1538–1544
+
+  47.  Korman TP, Sahachartsiri B, Charbonneau DM et al (2013) Dies-
+elzymes: development of a stable and methanol tolerant lipase for 
+biodiesel production by directed evolution. Biotechnol Biofuels 
+6:70
+
+  48.  LaCroix RA, Sandberg TE, O’Brien EJ et al (2015) Use of adap-
+tive laboratory evolution to discover key mutations enabling 
+rapid growth of Escherichia coli K-12 MG1655 on glucose 
+minimal medium. Appl Environ Microbiol 81:17–30. https ://
+doi.org/10.1128/AEM.02246 -14
+
+  49.  Lee S-W, Oh M-K (2015) A synthetic suicide riboswitch for the 
+high-throughput screening of metabolite production in Saccha-
+romyces cerevisiae. Metab Eng 28:143–150
+
+  50.  Li S, Si T, Wang M, Zhao H (2015) Development of a synthetic 
+malonyl-CoA sensor in Saccharomyces cerevisiae for intracel-
+lular metabolite monitoring and genetic screening. ACS Synth 
+Biol 4:1308–1315
+
+  51.  Lim HG, Jang S, Jang S et al (2018) Design and optimization 
+of genetically encoded biosensors for high-throughput screen-
+ing of chemicals. Curr Opin Biotechnol 54:18–25
+
+  52.  Lin J-L, Wagner JM, Alper HS (2017) Enabling tools for 
+high-throughput detection of metabolites: metabolic engi-
+neering and directed evolution applications. Biotechnol Adv 
+35:950–970
+
+  53.  Liu J-W, Hadler KS, Schenk G, Ollis D (2007) Using directed 
+evolution to improve the solubility of the C-terminal domain 
+of Escherichia coli aminopeptidase P. Implications for metal 
+binding and protein stability. FEBS J 274:4742–4751
+
+  54.  Liu Y, Li Q, Zheng P et al (2015) Developing a high-through-
+put screening method for threonine overproduction based on 
+an artificial promoter. Microb Cell Fact 14:121
+
+  55.  Maas WK, Wang C, Lima T et al (1994) Multicopy single-
+stranded DNAs with mismatched base pairs are mutagenic in 
+Escherichia coli. Mol Microbiol 14:437–441
+
+  56.  Michener JK, Smolke CD (2012) High-throughput enzyme 
+evolution in Saccharomyces cerevisiae using a synthetic RNA 
+switch. Metab Eng 14:306–316
+
+  57.  Michener JK, Thodey K, Liang JC, Smolke CD (2012) Appli-
+cations of genetically-encoded biosensors for the construction 
+and control of biosynthetic pathways. Metab Eng 14:212–222
+  58.  Moore CL, Papa LJ, Shoulders MD (2018) A processive pro-
+tein chimera introduces mutations across defined DNA regions 
+in vivo. J Am Chem Soc 140:11560–11564
+
+  59.  Mundhada H, Seoane JM, Schneider K et al (2017) Increased 
+production of l-serine in Escherichia coli through adaptive 
+laboratory evolution. Metab Eng 39:141–150. https ://doi.
+org/10.1016/j.ymben .2016.11.008
+
+  60.  Nguyen NH, Kim J-R, Park S (2018) Application of transcrip-
+tion factor-based 3-hydroxypropionic acid biosensor. Biotech-
+nol Bioprocess Eng 23:564–572
+
+  61.  Nomura Y, Yokobayashi Y (2007) Reengineering a natu-
+ral riboswitch by dual genetic selection. J Am Chem Soc 
+129:13814–13815
+
+  62.  O’Brien EJ, Utrilla J, Palsson BO (2016) Quantification and 
+classification of E. coli proteome utilization and unused protein 
+costs across environments. PLoS Comput Biol 12:e1004998
+
+  63.  Packer MS, Liu DR (2015) Methods for the directed evolution 
+
+of proteins. Nat Rev Genet 16:379–394
+
+  64.  Packer MS, Rees HA, Liu DR (2017) Phage-assisted continu-
+ous evolution of proteases with altered substrate specificity. 
+Nat Commun 8:956
+
+  65.  Pham HL, Wong A, Chua N et al (2017) Engineering a ribos-
+witch-based genetic platform for the self-directed evolution of 
+acid-tolerant phenotypes. Nat Commun 8:411
+
+  66.  Portnoy VA, Bezdan D, Zengler K (2011) Adaptive labora-
+tory evolution—harnessing the power of biology for metabolic 
+engineering. Curr Opin Biotechnol 22:590–594
+
+  67.  Pu J, Zinkus-Boltz J, Dickinson BC (2017) Evolution of a split 
+RNA polymerase as a versatile biosensor platform. Nat Chem 
+Biol 13:432–438
+
+  68.  Raman S, Rogers JK, Taylor ND, Church GM (2014) Evolu-
+tion-guided optimization of biosynthetic pathways. Proc Natl 
+Acad Sci USA 111:17803–17808
+
+  69.  Ravikumar A, Arrieta A, Liu CC (2014) An orthogonal DNA 
+
+replication system in yeast. Nat Chem Biol 10:175–177
+
+  70.  Ravikumar A, Arzumanyan GA, Obadi MKA et al (2018) Scal-
+able, continuous evolution of genes at mutation rates above 
+genomic error thresholds. Cell 175:1946–1957
+
+  71.  Ravn U, Gueneau F, Baerlocher L et al (2010) By-passing 
+in vitro screening—next generation sequencing technologies 
+applied to antibody display and in silico candidate selection. 
+Nucl Acids Res 38:e193
+
+l
+
+D
+o
+w
+n
+o
+a
+d
+e
+d
+
+ 
+f
+r
+o
+m
+h
+
+ 
+
+t
+t
+
+p
+s
+:
+/
+/
+
+i
+
+a
+c
+a
+d
+e
+m
+c
+.
+o
+u
+p
+.
+c
+o
+m
+
+/
+j
+i
+
+l
+
+/
+
+/
+
+/
+
+/
+
+m
+b
+a
+r
+t
+i
+c
+e
+4
+6
+9
+-
+1
+0
+1
+3
+1
+3
+6
+0
+1
+7
+4
+2
+6
+b
+y
+ 
+g
+u
+e
+s
+t
+ 
+
+/
+
+ 
+
+ 
+
+ 
+
+o
+n
+2
+1
+O
+c
+t
+o
+b
+e
+r
+ 
+2
+0
+2
+1
+
+1 31326
+ 
+
+Journal of Industrial Microbiology & Biotechnology (2019) 46:1313–1326
+
+  72.  Rogers JK, Taylor ND, Church GM (2016) Biosensor-based 
+engineering of biosynthetic pathways. Curr Opin Biotechnol 
+42:84–91
+
+  73.  Romero PA, Arnold FH (2009) Exploring protein fitness land-
+scapes by directed evolution. Nat Rev Mol Cell Biol 10:866–876. 
+https ://doi.org/10.1038/nrm28 05
+
+  74.  Ronda C, Pedersen LE, Sommer MOA, Nielsen AT (2016) 
+CRMAGE: CRISPR optimized MAGE recombineering. Sci Rep 
+6:19452
+
+  75.  Rong M, He B, McAllister WT, Durbin RK (1998) Promoter 
+specificity determinants of T7 RNA polymerase. Proc Natl Acad 
+Sci USA 95:515–519
+
+  76.  Rouet P, Smih F, Jasin M (1994) Introduction of double-strand 
+breaks into the genome of mouse cells by expression of a rare-
+cutting endonuclease. Mol Cell Biol 14:8096–8106
+
+  77.  Scalcinati G, Partow S, Siewers V et al (2012) Combined meta-
+bolic engineering of precursor and co-factor supply to increase 
+α-santalene production by Saccharomyces cerevisiae. Microb 
+Cell Fact 11:117
+
+  78.  Selifonova O, Valle F, Schellenberger V (2001) Rapid evolu-
+tion of novel traits in microorganisms. Appl Environ Microbiol 
+67:3645–3649
+
+  79.  Seo J-H, Min W-K, Lee S-G et al (2018) To the final goal: can 
+we predict and suggest mutations for protein to develop desired 
+phenotype? Biotechnol Bioprocess Eng 23:134–143
+
+  80.  Seok JY, Yang J, Choi SJ et al (2018) Directed evolution of 
+the 3-hydroxypropionic acid production pathway by engineer-
+ing aldehyde dehydrogenase using a synthetic selection device. 
+Metab Eng 47:113–120
+
+  81.  Simon AJ, Morrow BR, Ellington AD (2018) Retroelement-based 
+
+genome editing and evolution. ACS Synth Biol 7:2600–2611
+
+  82.  Stemmer WPC (2002) Molecular breeding of genes, pathways 
+
+and genomes by DNA shuffling. Sci World J 2:130–131
+
+  83.  Storici F, Durham CL, Gordenin DA, Resnick MA (2003) Chro-
+mosomal site-specific double-strand breaks are efficiently tar-
+geted for repair by oligonucleotides in yeast. Proc Natl Acad Sci 
+USA 100:14994–14999
+
+  84.  Tapsin S, Sun M, Shen Y et al (2018) Genome-wide identifica-
+tion of natural RNA aptamers in prokaryotes and eukaryotes. Nat 
+Commun 9:1289
+
+  85.  Taylor ND, Garruss AS, Moretti R et al (2016) Engineering an 
+allosteric transcription factor to respond to new ligands. Nat 
+Methods 13:177–183
+
+  86.  Tizei PAG, Csibra E, Torres L, Pinheiro VB (2016) Selection 
+platforms for directed evolution in synthetic biology. Biochem 
+Soc Trans 44:1165–1175
+
+  87.  Tokunaga M, Wada N, Hishinuma F (1987) Expression and iden-
+tification of immunity determinants on linear DNA killer plas-
+mids pGKLl and pGKL2 in Kluyveromyces lactis. Nucl Acids 
+Res 15:1031–1046
+
+  88.  Topp S, Gallivan JP (2008) Random walks to synthetic ribos-
+witches—a high-throughput selection based on cell motility. 
+ChemBioChem 9:210–213
+
+  89.  Topp S, Gallivan JP (2010) Emerging applications of ribos-
+
+witches in chemical biology. ACS Chem Biol 5:139–148
+
+  90.  Tyo KE, Alper HS, Stephanopoulos GN (2007) Expanding the 
+metabolic engineering toolbox: more options to engineer cells. 
+Trends Biotechnol 25:132–137
+
+  91.  Vaughan TJ, Williams AJ, Pritchard K et al (1996) Human anti-
+bodies with sub-nanomolar affinities isolated from a large non-
+immunized phage display library. Nat Biotechnol 14:309–314
+
+  92.  Wagner JM, Liu L, Yuan S-F et al (2018) A comparative analysis 
+of single cell and droplet-based FACS for improving production 
+phenotypes: riboflavin overproduction in Yarrowia lipolytica. 
+Metab Eng 47:346–356
+
+  93.  Wang T, Badran AH, Huang TP, Liu DR (2018) Continuous 
+directed evolution of proteins with improved soluble expression. 
+Nat Chem Biol 14:972–980
+
+  94.  Wong BG, Mancuso CP, Kiriakov S et al (2018) Precise, auto-
+mated control of conditions for high-throughput growth of yeast 
+and bacteria with eVOLVER. Nat Biotechnol 36:614–623
+
+  95.  Wrenbeck EE, Faber MS, Whitehead TA (2017) Deep sequencing 
+methods for protein engineering and design. Curr Opin Struct 
+Biol 45:36–44
+
+  96.  Xiao W, Samson L (1993) In vivo evidence for endogenous DNA 
+alkylation damage as a source of spontaneous mutation in eukar-
+yotic cells. Proc Natl Acad Sci USA 90:2117–2121
+
+  97.  Xiao Y, Bowen CH, Liu D, Zhang F (2016) Exploiting nonge-
+netic cell-to-cell variation for enhanced biosynthesis. Nat Chem 
+Biol 12:339–344
+
+  98.  Xu P, Li L, Zhang F et al (2014) Improving fatty acids produc-
+tion by engineering dynamic pathway regulation and metabolic 
+control. Proc Natl Acad Sci USA 111:11299–11304
+
+  99.  Yang J, Seo SW, Jang S et al (2013) Synthetic RNA devices to 
+expedite the evolution of metabolite-producing microbes. Nat 
+Commun 4:1413
+
+ 100.  Yang W, Lai L (2017) Computational design of ligand-binding 
+
+proteins. Curr Opin Struct Biol 45:67–73
+
+ 101.  Zhang F, Carothers JM, Keasling JD (2012) Design of a dynamic 
+sensor-regulator system for production of chemicals and fuels 
+derived from fatty acids. Nat Biotechnol 30:354–359
+
+ 102.  Zhao  H,  Arnold  FH  (1997)  Combinatorial  protein  design: 
+strategies for screening protein libraries. Curr Opin Struct Biol 
+7:480–485
+
+ 103.  Zhao H, Arnold FH (1997) Optimization of DNA shuffling for 
+
+high fidelity recombination. Nucl Acids Res 25:1307–1308
+
+ 104.  Zhao H, Giver L, Shao Z et al (1998) Molecular evolution by 
+staggered extension process (StEP) in vitro recombination. Nat 
+Biotechnol 16:258–261
+
+ 105.  Zheng X, Xing X-H, Zhang C (2017) Targeted mutagenesis: a 
+sniper-like diversity generator in microbial engineering. Synth 
+Syst Biotechnol 2:75–86
+
+Publisher’s  Note  Springer  Nature  remains  neutral  with  regard  to 
+jurisdictional claims in published maps and institutional affiliations.
+
+l
+
+D
+o
+w
+n
+o
+a
+d
+e
+d
+
+ 
+f
+r
+o
+m
+h
+
+ 
+
+t
+t
+
+p
+s
+:
+/
+/
+
+i
+
+a
+c
+a
+d
+e
+m
+c
+.
+o
+u
+p
+.
+c
+o
+m
+
+/
+j
+i
+
+l
+
+/
+
+/
+
+/
+
+/
+
+m
+b
+a
+r
+t
+i
+c
+e
+4
+6
+9
+-
+1
+0
+1
+3
+1
+3
+6
+0
+1
+7
+4
+2
+6
+b
+y
+ 
+g
+u
+e
+s
+t
+ 
+
+/
+
+ 
+
+ 
+
+ 
+
+o
+n
+2
+1
+O
+c
+t
+o
+b
+e
+r
+ 
+2
+0
+2
+1
+
+1 3

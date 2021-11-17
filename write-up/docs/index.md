@@ -10,6 +10,9 @@ It also helps facilitate efficient collabloration with multiple parties via git
 !!! info "help"
 	:fontawesome-solid-edit: see [contributing](contributing.md) for info on suggesting edits etc via github
 
+!!! info todo
+	:notepad_spiral: [**To do list**](todo.md)
+
 ## Overveiw 
 I'm structuring this thesis as two independent papers, though some background and methods overlap so these will be shared.
 The appendix details the software developed for this work.

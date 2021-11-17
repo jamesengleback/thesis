@@ -1,0 +1,1414 @@
+1
+2
+0
+2
+
+ 
+
+p
+e
+S
+9
+
+ 
+
+ 
+ 
+]
+
+.
+
+M
+B
+o
+i
+b
+-
+q
+[
+ 
+ 
+
+1
+v
+0
+6
+4
+4
+0
+
+.
+
+9
+0
+1
+2
+:
+v
+i
+X
+r
+a
+
+Protein Folding Neural Networks Are Not Robust
+
+Sumit Kumar Jha1*, Arvind Ramanathan2, Rickard Ewetz3, Alvaro Velasquez4, Susmit Jha5
+
+1 Computer Science Department, University of Texas at San Antonio, TX 78249
+2 Data Science and Learning, Argonne National Laboratory, Lemont, IL, 60439
+
+2 Electrical and Computer Engineering Department, University of Central Florida, Orlando, FL 32816
+
+4 Information Directorate, Air Force Research Laboratory, Rome, NY 13441
+5 Computer Science Laboratory, SRI International, Menlo Park, CA, 94709
+
+sumit.jha@utsa.edu, arvind.ramanathan@anl.gov, rickard.ewetz@ucf.edu, alvaro.velasquez@ucf.edu, susmit.jha@sri.com
+
+Abstract
+
+Deep neural networks such as AlphaFold and RoseTTAFold
+predict remarkably accurate structures of proteins compared
+to other algorithmic approaches. It is known that biologically
+small perturbations in the protein sequence do not
+lead
+to drastic changes in the protein structure. In this paper,
+we demonstrate that RoseTTAFold does not exhibit such
+a robustness despite its high accuracy, and biologically
+small perturbations for some input sequences result
+in
+radically different predicted protein structures. This raises the
+challenge of detecting when these predicted protein structures
+cannot be trusted. We deﬁne the robustness measure for
+the predicted structure of a protein sequence to be the
+inverse of the root-mean-square distance (RMSD) in the
+predicted structure and the structure of its adversarially
+perturbed sequence. We use adversarial attack methods to
+create adversarial protein sequences, and show that
+the
+RMSD in the predicted protein structure ranges from 0.119 ˚A
+to 34.162 ˚A when the adversarial perturbations are bounded
+by 20 units in the BLOSUM62 distance. This demonstrates
+very high variance in the robustness measure of the predicted
+structures. We show that the magnitude of the correlation
+(0.917) between our robustness measure and the RMSD
+between the predicted structure and the ground truth is high,
+that is, the predictions with low robustness measure cannot be
+trusted. This is the ﬁrst paper demonstrating the susceptibility
+of RoseTTAFold to adversarial attacks.
+
+Introduction
+
+Proteins form the building blocks of life as they enable a
+variety of vital functions essential to life and reproduction.
+Naturally occurring proteins are bio-polymers composed of
+20 amino acids and this primary sequence of amino acids is
+well known for many proteins, thanks to high throughput
+sequencing techniques. However, in order to understand
+the functions of different protein molecules and complexes,
+it is essential to comprehend their three-dimensional (3D)
+structure. Until recently, one of the grand challenges in
+structural biology has been the accurate determination of
+the 3D structure of the protein from its primary sequence.
+Accurate predictive protein folding promises to have a
+profound impact on the design of therapeutics for diseases
+and drug discovery (Chan et al. 2019).
+
+*
+
+(i) RMSD=34.162 ˚A
+
+(ii) RMSD=0.119 ˚A
+
+the SFP1 interferon stimulator
+
+Figure 1: The predicted structure for the original (shown in
+blue) and the adversarial (shown in red) protein sequences
+(left) and 2QJF 1
+for
+human bifunctional 3’-phosphoadenosine 5’-phosphosulfate
+synthetase 1 (right) as predicted by RoseTTAFold and
+aligned using PyMOL. RMSD is the Root Mean Square
+Distance, typically measured in ˚A (10−10m). The predicted
+structure on the right
+to biologically small
+perturbations, while the one on the left is too sensitive even
+to biologically small changes.
+
+is robust
+
+AlphaFold achieved unparalleled success in predicting
+protein structures using neural networks and remains ﬁrst at
+the CASP2020 competition. RoseTTAFold is the ﬁrst open
+source deep learning model for predicting protein structure
+with high accuracy. In this paper, we use adversarial
+attack methods to investigate the ability of these models to
+generalize to new sequences and propose a robustness metric
+that identiﬁes input protein sequences on which the output
+of these protein folding neural networks (PFNN) cannot be
+trusted. We make the following contributions in this paper:
+(i) We demonstrate the susceptibility of RoseTTAFold
+to adversarial attacks (Goodfellow, McDaniel, and
+Papernot 2018) by generating several examples where
+protein sequences which vary only in ﬁve residues
+result in very different 3D protein structures. We use
+sequence alignment scores (Henikoff and Henikoff
+1992) such as those derived from Block Substitution
+Matrices (BLOSUM62) to identify a space of similar
+protein sequences used in constructing adversarial
+
+perturbations. We deﬁne a new robustness measure
+for the predicted structure of a protein sequence to be
+the inverse of the root-mean-square distance (RMSD)
+in the predicted structure and the structure of its
+adversarially perturbed sequence.
+
+on
+
+and
+
+geometry
+
+co-ordinate
+
+(ii) We propose the use of different distance measures
+distance
+based
+fast
+geometry (Blumenthal 1970),
+including a
+the
+linear-time provably approximate variant of
+distance geometry metric. The latter
+is invariant
+under rigid-body motion and, hence, does not suffer
+from the deﬁciencies of the co-ordinate geometry
+representation during adversarial attacks. Our distance
+geometry
+adversarial
+examples that have up to 37 times larger RMSD than
+those produced using co-ordinate geometry based
+representation. Further, our approximate distance
+geometry approach is provably approximate and
+produces no less than 0.69 times the exact RMSD
+while achieving 14X speedups in our experiments on
+a 80GB A100 GPU system.
+
+approach
+
+produces
+
+based
+
+(iii) Our experiments show that different
+
+ranges
+
+input protein
+sequences have very different adversarial robustness.
+RMSD in the protein structure predicted by
+RoseTTAFold (Baek et al. 2021)
+from
+0.119 ˚A to 34.162 ˚A when the adversarial perturbations
+are bounded by 20 units in the BLOSUM62 distance.
+Hence, our proposed approach can be used to identify
+protein sequences on which the predicted 3D structure
+cannot be trusted. We show that the magnitude of the
+correlation (0.917) between our robustness measure
+and the RMSD between the predicted structure and
+the ground truth is high. This compares favorably
+with DeepAccNet (Hiranuma et al. 2021) (correlation
+magnitude: 0.869) used for estimating accuracy of
+predicted protein structures.
+
+Summary and Related Work
+
+Motivation
+PFNNs (Jumper et al. 2021; Baek et al. 2021) should be
+expected to obey the natural observation that biologically
+small changes in the sequence of a protein usually do not
+lead to drastic changes in the protein structure. Almost four
+decades ago, it was noted that two structures with 50%
+sequence identity align within approximately 1 ˚A RMSD
+from each other (Chothia and Lesk 1986). Two proteins with
+even 40% sequence identity and at least 35 aligned residues
+align within approximately 2.5 ˚A (Sander and Schneider
+1991). The phenomenon of sequence-similar proteins
+producing similar structures have also been observed in
+larger studies (Rost 1999). As with almost any rule in
+biology, a small number of counterexamples to the similar
+sequence leading to similar structure dogma do exist, where
+by even small perturbations can potentially alter the entire
+fold of a protein. However, such exceptions are not frequent
+and often lead to exciting investigations (Cordes et al. 2000;
+Tuinstra et al. 2008).
+
+Robustness Metric using Adversarial Attacks
+The similar-sequence implies similar-structure paradigm
+dictates that PFNNs should make robust predictions.
+Given a protein sequence S with a three-dimensional
+structure A(S), we deﬁne a notion of biologically similar
+sequence structures S using Block Substitution Matrices
+(BLOSUM) (Henikoff and Henikoff 1992), and then employ
+adversarial attacks (Goodfellow, McDaniel, and Papernot
+2018) on PFNNs within this space of similar sequences to
+identify a sequence Sadv ∈ S that produces a maximally
+three-dimensional structure A(Sadv). We then
+different
+compute a distance Dstr(A(S),A(Sadv)) between the
+structures for the original input and the adversarial structure,
+and use the inverse of this distance as the robustness
+measure. If the distance is small, the response of the PFNN is
+robust; a large distance indicates that the predicted structure
+is not robust.
+BLOSUM Similarity Measures
+We identify the space of biologically similar sequences S
+for a given protein sequence S. We expect the predicted
+structures for the similar sequences to be similar. If there is
+a large RMSD between the predicted structure A(S) and the
+structure A(Sadv) of the adversarial sequence Sadv ∈ S,
+it would reﬂect a lack of robustness in the prediction of
+the network. We adopt a sequence similarity measure that
+counts replacement frequencies in conserved blocks across
+different proteins; the BLOSUM matrix [Bij] is a matrix of
+integers, where each entry denotes the similarity between a
+residue of type bi and type bj.
+Given two sequences S = s1s2 . . . sn and S(cid:48) =
+s(cid:48)
+1s(cid:48)
+2 . . . s(cid:48)
+n where T (si) denotes the type of the residue si,
+the BLOSUM distance between the two sequences is given
+. If
+si = s(cid:48)
+i i.e. the two sequences have the same residue, the
+contribution of this residue is 0; otherwise, the contribution
+of the change in residue to the BLOSUM distance is
+the positive integer BT (si)T (si) less the new contribution
+i).
+BT (si)T (s(cid:48)
+Distance Geometric Representation
+Adversarial attacks on predicted structures need a distance
+measure D between two 3D structural predictions A(S)
+of sequence S and A(S(cid:48)) of sequence S(cid:48). The most
+straightforward candidate is the distance Dcoord between the
+three-dimensional co-ordinates of the predicted structures.
+However,
+this leads to scenarios where the adversarial
+attack causes signiﬁcant
+translation and rotation of the
+structures, and does not necessarily change the structure of
+the protein that is invariant to rigid-body motion. See Fig. 2
+for an illustration of an adversarial attack using co-ordinate
+geometry representations. Hence, we propose using distance
+geometry during adversarial attacks to describe a protein
+structure S = s1s2 . . . sn by the (element-wise square of
+the) Euclidean distance matrix [d(si, sj)]n×n between all
+pairs si and sj of its residues. Given two such distance
+geometry representations [d(si, sj)]n×n and [d(s(cid:48)
+j)]n×n
+of two sequences S and S(cid:48), the distance-geometric measure
+
+by Dseq(S, S(cid:48)) =(cid:80)
+
+BT (si)T (si) − BT (si)T (s(cid:48)
+
+1≤i≤n
+
+i, s(cid:48)
+
+(cid:16)
+
+(cid:17)
+
+i)
+
+Andriushchenko et al. 2020; Bai et al. 2020; Croce and Hein
+2021). Given a neural network A mapping a sequence S of
+residues to a three-dimensional geometry A(S) describing
+the structure of the protein, we seek to obtain a sequence
+S(cid:48) such that the sequence similarity measure Dseq(S, S(cid:48))
+between S and S(cid:48) is small (that is, it is below a threshold
+T set to 20 in our experiments), and the structural distance
+measure Dstr(A(S),A(S(cid:48))) is maximized. This can be
+achieved by solving the following optimization problem:
+
+max
+
+S(cid:48) (Dstr (A(S),A(S(cid:48))) s.t. Dseq(S, S(cid:48)) ≤ T
+
+of
+
+over
+
+their
+
+1, z(cid:48)
+
+1, y(cid:48)
+
+n, y(cid:48)
+
+in the
+
+(cid:80)
+
+2 . . . s(cid:48)
+
+1), . . . (x(cid:48)
+
+Structural Distance Measure
+its
+Given a sequence of n residues S = s1s2 . . . sn,
+three dimensional structure A(S) is an ordered n-tuple of
+three-dimensional co-ordinates (x1, y1, z1), . . . (xn, yn, zn).
+1s(cid:48)
+Similarly, the structure of a sequence S(cid:48) = s(cid:48)
+n is
+given by A(S(cid:48)) = (x(cid:48)
+n, z(cid:48)
+n). Our goal
+is to develop a structural distance measure that captures
+the variations in the two structures A(S) and A(S(cid:48)) and is
+invariant to rigid-body motion. Further, we seek to ensure
+that the structural distance measure can be approximated
+efﬁciently in linear time.
+Inadequacy
+A
+structural
+use
+the
+geometric
+1≤i≤n
+
+deﬁne
+similarity
+be
+Euclidean metric
+representation: Dcoord(A(S),A(S(cid:48)))
+i)2 + (yi − y(cid:48)
+
+Representations
+the
+to
+co-ordinate
+=
+
+i)2(cid:1). However,
+
+a
+i)2 + (zi − z(cid:48)
+
+(cid:0)(xi − x(cid:48)
+
+solution
+measure
+
+straightforward
+
+to
+would
+
+Co-ordinate
+
+in terms of
+
+(cid:0)(xi − xj)2 + (yi − yj)2 + (zi − zj)2(cid:1)
+
+simple translation of the structural co-ordinates of one
+relative rigid body rotation causes
+structure or
+the Euclidean metric
+co-ordinate geometric
+representation to increase without
+really changing the
+three-dimensional structure of the proteins. See Figures 2
+and 5 for illustrations showing the inadequacy of co-ordinate
+geometric representations.
+Distance Geometry Representation In
+to
+compute
+the distance between two structures, we
+use the distance geometry representation and denote
+each structure
+the pairwise distance
+d(si, sj)
+=
+between all pairs of residues in the three-dimensional
+structure. Hence, we denote the predicted structure A(S) of
+the protein using a two-dimensional n×n matrix of pairwise
+distance measures [d(si, sj)]n×n. This representation is
+independent of translation and rigid-body rotation, and
+adversarial attacks have no incentives for
+rotating or
+translating protein structures.
+Given the Euclidean distance matrices [d(si, sj)]n×n
+two sequences S and S(cid:48) with
+and [d(s(cid:48)
+structures A(S) and A(S(cid:48)), we use the Frobenius norm
+the two matrices Ddistgeo =
+of
+i, s(cid:48)
+j))2. The new distance measure
+to rigid-body motion,
+including
+Ddistgeo
+rotations and translations as shown in Theorem 1 (proof in
+appendix).
+
+(cid:80)
+the difference of
+1≤i,j≤n(d(si, sj)−d(s(cid:48)
+
+j)]n×n of
+
+is invariant
+
+i, s(cid:48)
+
+order
+
+2: Adversarial
+
+co-ordinate
+Figure
+representation may produce structures that are rotations,
+translations or mirror images of the original structure
+without being substantially different.
+
+attacks
+
+using
+
+(cid:80)
+
+between the two structures is deﬁned as Ddistgeo =
+
+(cid:0)d(si, sj) − d(s(cid:48)
+
+j)(cid:1)2. Theorem 1 shows that
+
+i, s(cid:48)
+
+this distance measure collapses to 0 only when the two
+structures can be aligned perfectly;
+to
+rigid-body motions.
+
+is invariant
+
+it
+
+1≤i,j≤n
+
+Approximate Distance
+Our computational experiments (see Table 3) show that the
+distance geometry based representations requires more than
+a day of computation time on a 80GB A100 GPU. These
+results are consistent with the fact that the distance geometry
+approach needs O(n2) computations for a protein sequence
+of length n. Instead of computing the difference between
+sum of distance between all pairs of two structures, we seek
+to compute the distance Dmax = (d(sa, sb) − d(s(cid:48)
+b))2
+between the farthest pair of residues sa and sb in the
+sequence S and the corresponding residues s(cid:48)
+b in
+S(cid:48). Theorem 2 shows that it is possible to approximate
+Dmax using a O(n) algorithm. Table 5 and 4 show that
+this approximation approach is up to 14X faster and still
+produces adversarial examples that are no less than 0.69
+times the exact RMSD.
+
+a, s(cid:48)
+a and s(cid:48)
+
+Approach
+
+the use of BLOSUM matrices for
+
+Our approach to evaluating the robustness of PFNNs is
+based on two main ideas: (i) the existence of adversarial
+examples in PFNNs that produce adversarial structures
+possibly very different from the original structure, and
+(ii)
+identifying a
+neighborhood of a given sequence that are biologically
+similar and hence expected to have similar 3D structures. We
+employ the inverse of the RMSD between the structure of an
+original protein sequence and the structure of the adversarial
+sequence as a measure of robustness of a protein folding
+network on the given input sequence.
+
+Adversarial Attacks on PFNN
+Small carefully crafted changes in a few pixels of input
+images cause well-trained neural networks with otherwise
+high accuracy to consistently produce incorrect responses
+in domains such as computer vision (Croce et al. 2020;
+
+2
+
+2
+
+2
+
+protein
+
+1−y(cid:48)
+
+1−x(cid:48)
+
+2 + y(cid:48)
+
+structures
+
+2)2 +(y(cid:48)
+
+Theorem 1 (Uniqueness) Two
+are
+identical up to rigid body transformations if and only if
+Ddistgeo(A(S),A(S(cid:48))) = 0
+Proof 1 Rotations,
+inversions and translations do not
+change the pairwise distance between points; so, the “only
+if” part of the result is straightforward.
+We prove the other direction by induction on the length
+n of the proteins. For the base case, we consider n=2. If
+2, s(cid:48)
+Ddistgeo = 0, d(s1, s2) = d(s(cid:48)
+2) Now, rewriting in terms
+of Euclidean co-ordinates, (x1 − x2)2 + (y1 − y2)2 + (z1 −
+1−z(cid:48)
+2)2 +(z(cid:48)
+z2)2 = (x(cid:48)
+2)2. We translate the
+co-ordinate system for S and S(cid:48) such that its s1 and s(cid:48)
+1 are
+aligned at the origin; then x1 = x(cid:48)
+1 = 0, y1 = y(cid:48)
+1 = 0, z1 =
+z(cid:48)
+1 = 0. Thus, the following follows from Ddistgeo = 0:
+2 = x(cid:48)
+2 + z(cid:48)
+2 = h2(say) in the new
+x2
+2 + y2
+2 + z2
+co-ordinate system. We rotate the co-ordinate system such
+that x2 = x(cid:48)
+2 = 0. Then, z2 = z(cid:48)
+2 = 0 and y2 = y(cid:48)
+2 = h in
+the new co-ordinates. Thus, the two structures are identical
+up to translation and rotation.
+two protein
+structures of length n − 1 or less are identical up to rigid
+body transformations if Ddistgeo(A(S),A(S(cid:48))) = 0.
+Inductive Step: We consider two protein structures S and
+S(cid:48) of length n such that Ddistgeo = 0 i.e. d(si, sj) =
+d(s(cid:48)
+i, s(cid:48)
+j) for all residues i and j as Ddistgeo is the sum of
+squares. Using the inductive hypothesis, we translate the
+co-ordinate system for S(2:n) and S(cid:48)(2:n) such that the two
+n − 1 residue fragments are aligned and then translate until
+s1 is at the origin. Then, rewriting in terms of Euclidean
+co-ordinates, (xi − xj)2 + (yi − yj)2 + (zi − zj)2 =
+i − x(cid:48)
+j)2 + (z(cid:48)
+(x(cid:48)
+j)2 for all residues i and
+j. In particular, (x1 − xj)2 + (y1 − yj)2 + (z1 − zj)2 =
+1 − x(cid:48)
+j)2 + (z(cid:48)
+(x(cid:48)
+j)2 for all values of j.
+Since the other n − 1 residues are aligned and s1 is at the
+1− xj)2 +
+j = (x(cid:48)
+origin, this can be simpliﬁed to x2
+1 − yj)2 + (z(cid:48)
+(y(cid:48)
+1 = 0
+is a solution to this system of equations. Hence, s(cid:48)
+1 can also
+be placed at the origin and the two structures S and S(cid:48) are
+identical.
+
+i − z(cid:48)
+1 − z(cid:48)
+j + y2
+1 − zj)2. Clearly, x(cid:48)
+
+Our inductive hypothesis assumes that
+
+j)2 + (y(cid:48)
+j)2 + (y(cid:48)
+
+i − y(cid:48)
+1 − y(cid:48)
+
+j + z2
+1 = 0, y(cid:48)
+
+1 = 0, z(cid:48)
+
+While the new distance geometric measures are invariant
+to rigid-body dynamics, they are computationally expensive.
+Instead of the O(n) computation required to compute
+structural distance measures between two protein structures
+represented using co-ordinate geometry, the computation
+of the distance measure using distance geometry Ddistgeo
+needs O(n2) pairwise computations. As shown in Table 3,
+this leads to a signiﬁcant computational challenge and our
+adversarial robustness computation take more than a day on
+a 80GB A100 GPU.
+Approximation Strategy Another
+is
+invariant to translations and rotations but still useful in
+measuring the structural changes is the maximum distance
+between two residues in a protein structure. Let sa and sb be
+the farthest residues in the protein S. We suggest replacing
+the sum computation in Ddistgeo by the computation
+Dmax(S, S(cid:48)) = (d(sa, sb) − d(s(cid:48)
+b))2. Here, we assume
+that d(s(cid:48)
+b) = αd(ss, sb) for the farthest pair a, b and
+
+quantity
+
+a, s(cid:48)
+
+a, s(cid:48)
+
+that
+
+some distortion α depending on the sequence. Instead of
+computing the sum of all changes, this measure computes
+the impact of the adversarial attack on the farthest residues.
+Theorem 2 (Strategy for 4(1 − α)2-Approximation)
+Consider a residue sk in the protein and determine the
+farthest residue sl from this residue in the protein. Then, let
+sm be the farthest residue from sl. Given a distortion factor
+α, d2(sm, sl) is a 4(1 − α)2-approximation for Dmax.
+Proof 2 We know that sa and sb are the farthest residues in
+a protein S and further Dmax(S, S(cid:48)) = (1 − α)2d2(sa, sb)
+by deﬁnition of Dmax and α.
+
+Now, consider points sa, sb, sm and sl. By choice of sm,
+we know that d(sl, sm) is at least as large as d(sl, sa)
+and d(sl, sb) i.e. d(sl, sm) ≥ d(sl, sa) and d(sl, sm) ≥
+d(sl, sb).
+Then, applying triangle inequality to ∆sasbsl, we get
+d(sa, sb) ≤ d(sl, sa) + d(sl, sb).
+Putting the above two steps together, we get d(sa, sb) ≤
+2d(sl, sm). Thus, Dmax(S) ≤ 4(1 − α)2d2(sl, sm).
+
+The approximate distance measure using distance
+geometry Dapprox(S, S(cid:48)) = d2(sm, sl) is a 4(1 −
+α)2-approximation to the square of the change in the
+maximum distance between pairs of points Dmax as shown
+in Theorem 2 (proof in appendix). Thus,
+the distance
+measure Dapprox(S, S(cid:48)) provides a O(n) approach for
+computing change in protein structures during adversarial
+attacks that are invariant to translations and rotations.
+
+1s(cid:48)
+
+2 . . . s(cid:48)
+
+Sequence Similarity Measures
+Given two sequences of n residues S = s1s2 . . . sn and
+S(cid:48) = s(cid:48)
+n, a natural question is to compute the
+sequence similarity Dseq between these proteins. A naive
+approach would be to count only the number of residues
+that are different; however, an analysis of naturally occurring
+proteins shows that all changes in residues do not have the
+same impact on protein structures. Changes to one type of
+residue are more likely to cause structural variations than
+changes to another type of residue.
+
+Early work in bioinformatics focused on properties of
+amino acids and reliance on genetic codes. However,
+more modern methods have relied on the creation of
+amino-acid scoring matrices that are derived from empirical
+observations of frequencies of amino acid replacements
+in homologous sequences (Dayhoff, Schwartz, and Orcutt
+1978; Jones, Taylor, and Thornton 1992).
+
+The original scoring matrix, called the PAM250 matrix,
+was based on empirical analysis of 1, 572 mutations
+observed in 71 different families of closely-related proteins
+which are 85% or more identical after they have been
+aligned. The PAM1 model-based scoring matrix was
+obtained by normalizing the frequency of mutations to
+achieve a 99% identity between homologous proteins. These
+results were then extrapolated to create scoring matrices
+PAM10, PAM30, PAM70 and PAM120 with 90%, 75%,
+55%, and 37% identity between homologous proteins.
+
+Another interesting approach (Henikoff and Henikoff
+1992) to understanding protein similarity is the direct
+
+(a) 6NT5 1
+
+(b) 60EU 1
+
+(c) NP 010457.3
+
+(d) 2BBJ 1
+
+(e) 2ROP 1
+
+(f) 6NT3 1
+
+Figure 3: The predicted structure of protein sequences (blue) and the structures of their adversarial perturbations (red) produced
+using RoseTTAFold and aligned using PyMOL.
+
+counting of replacement frequencies using the so-called
+Block Substitution Matrices (BLOSUM). Instead of relying
+solely on sequences of homologous proteins that are
+relatively harder to ﬁnd,
+the new approach focuses on
+identifying conserved blocks or conserved sub-sequences
+in a larger variety of proteins potentially unrelated by
+evolutionary pathways. The BLOSUM approach then counts
+the frequency of replacements within these conserved
+sub-sequences. BLOSUM 62, BLOSUM 80 and BLOSUM
+90 denote block substitution matrices that are obtained from
+blocks or subsequences with at least 62%, 80% and 90%
+similarity, respectively. The BLOSUM matrix [Bij] is a
+matrix of integers where each entry denotes the similarity
+between residue of type bi and type bj
+Given two sequences S = s1s2 . . . sn and S(cid:48) =
+s(cid:48)
+1s(cid:48)
+2 . . . s(cid:48)
+n where T (si) denotes the type of the residue si,
+the BLOSUM distance between the two sequences is given
+.
+If si = s(cid:48)
+the two sequences have the same
+i,
+residue, the contribution of this residue is 0; otherwise,
+the contribution of the change in residue to the BLOSUM
+distance is the positive integer BT (si)T (si) less the new
+contribution BT (si)T (s(cid:48)
+i). In our experiments, we have used
+a sequence similarity measure derived from the popularly
+used BLOSUM62 matrix.
+
+by Dseq(S, S(cid:48)) = (cid:80)
+
+BT (si)T (si) − BT (si)T (s(cid:48)
+
+1≤i≤n
+
+(cid:16)
+
+(cid:17)
+
+i.e.
+
+i)
+
+Experimental Results
+
+Our computational experiments employ the RoseTTAFold
+protein structure prediction neural network and investigate
+the following questions:
+
+1. Can we show that adversarial attacks on protein folding
+networks demonstrate that the predicted 3D structures
+are not robust for some protein sequences? If so,
+does our robustness measure (where higher robustness
+corresponds to low RMSDs) correlate with the accuracy
+of the predicted 3D protein structures?
+
+2. Do larger BLOSUM62 distances (corresponding to low
+biological similarity) between adversarial and original
+sequences lead to higher RMSDs in predicted adversarial
+structures?
+
+3. Can
+
+three-dimensional
+
+co-ordinate
+
+representations
+
+correctly estimate RMSDs of adversarial examples?
+
+answer
+
+residues
+
+4. Is our approximation strategy for maximum distance
+justiﬁed in terms of
+
+between pairs of
+computational time and the accuracy of RMSDs?
+We
+
+the ﬁrst question afﬁrmatively using
+quantitative case studies in the next subsection, where
+RMSDs ranges from 0.119 ˚A to 34.162 ˚A. The magnitude
+of the correlation between our robustness measure and the
+RMSD between the predicted structure and the ground truth
+is 0.917, that is, the predictions with low robustness measure
+cannot be trusted. The second question is also answered
+afﬁrmatively in the next section where we compare results
+from BLOSUM62 sequence similarity measures of 20 and
+40. We answer the third question in the negative and
+thereby establish the need for our distance geometry based
+distance measures for adversarial attacks on protein folding
+networks. Finally, we show that the exact approach can be
+prohibitively expensive and can take more than 1 day for
+a single sequence on a 80GB A100 GPU. On the other
+
+hand, our approximation strategy takes about 2 hours and 10
+minutes, and produces RMSD values that are no less than
+0.69 times the exact RMSD values.
+
+Quantitative Case Studies
+We performed adversarial attacks on 10 naturally occurring
+proteins. The adversarial
+sequences and the original
+sequences differed in BLOSUM62 distance of at most 20,
+and are thus biologically close to each other.
+
+6NT5 1: Stimulator of interferon protein in human
+beings As shown in Fig. 3(a), the alignment involving
+all residues has a RMSD score of 5.026 ˚A showing that
+the structures for the original
+input and its adversarial
+perturbation are quite different.
+
+SFP1 YEAST: Yeast transcription factor Figure 1(left)
+shows its structure and the structure of its adversarial
+perturbation aligned together with a high RMSD score of
+25.641 ˚A.
+
+6OEU 1: Protein patched homolog 1
+Figure 3(b) shows
+the aligned structures for the sequence and its adversarial
+perturbation. The two sequences were aligned using PyMOL
+and achieved a RMSD of 34.162 ˚A.
+
+NP 010457.3: Yeast
+translation termination factor
+GTPase eRF3 Figure 3(c) shows the structure of the
+original sequence and the structure of the adversarial
+sequence aligned together with a high RMSD of 6.870 ˚A.
+
+Eubacteria
+
+2BBJ 1:
+transporter
+Figure 3(d) shows the structures for the original and
+adversarial sequences with a high RMSD score of 6.76 ˚A.
+
+CorA Mg2+
+
+2ROP 1: Human Copper-transporting ATPase 2 As
+illustrated in Figure 3(e),
+the alignment between the
+structure corresponding to this sequence and its adversarial
+perturbation has a high RMSD score of 8.495.
+
+6NT3 1: Sodium channel protein type 9 As shown
+in Figure 3(f),
+the alignment between the structures
+corresponding to the original and the adversarial sequences
+has a high RMSD score of 15.361 ˚A.
+
+6O77 1: Transient receptor potential catio channel
+subfamily M member 8 The structures corresponding to
+the original and the adversarial sequences are very different
+with a RMSD of 19.001 ˚A.
+
+2QK4 1: Trifunctional purine biosynthetic protein
+adenosine-3 The structures corresponding to the original
+and the adversarial sequences are quite similar and their
+alignment has a RMSD of only 0.730 ˚A.
+
+Bifunctional
+
+2QJF 1:
+3’-phosphoadenosine
+5’-phosphosulfate synthetase 1 Figure 1(right) shows
+the alignment between the structures corresponding to the
+original and the adversarial sequences with a really small
+RMSD score of 0.119 ˚A.
+
+Comparison with Ground Truth and DeepAccNet
+An inaccurate prediction has low robustness measure
+(inverse of RMSD) as shown in Table 1. We compare the
+RMSD distances associated with our robustness measure
+with the ground truth, and ﬁnd a correlation of 0.917. We
+also compared the RMSD distance between the ground
+truth and the predicted structure with the local distance
+difference test
+(lDDT) prediction implemented in the
+DeepAccNet (Hiranuma et al. 2021) tool. Our results are
+shown in Table 1.
+
+Ground Truth DeepAccNet
+
+Computed RMSD
+
+(1/robustness-measure)
+
+5.026
+25.641
+34.162
+6.870
+6.760
+8.495
+15.361
+19.001
+0.730
+0.119
+
+RMSD
+4.112
+
+-
+
+-
+
+37.276
+
+7.593
+12.355
+25.453
+10.933
+1.299
+0.922
+
+Accuracy
+0.4631
+0.10254
+0.1755
+0.36
+0.6704
+0.4006
+0.1847
+0.3481
+0.7324
+0.6885
+
+Table 1: High robustness measure (low RMSD) corresponds
+to low ground truth RMSD. The correlation measure
+between robustness measure
+and ground truth has
+magnitude 0.917 while the correlation measure between the
+DeepAccNet lDDT predictions and the ground truth has
+magnitude 0.869.
+
+Impact of BLOSUM Sequence Similarity Distances
+We have introduced the use of protein sequence similarity
+measures such as BLOSUM matrices to ensure that
+adversarial attacks create sequences that are biologically
+similar. A natural question to investigate is how a change in
+the bound on biological similarity changes the adversarial
+sequence. In order to study this, we launched adversarial
+attacks on the 10 proteins studied in the previous section
+using thresholds of 20 and 40 BLOSUM62 distances, and
+computed the RMSD of the two adversarial attacks.
+
+Figure 4: The adversarial sequence for 2QJF 1 protein with
+a BLOSUM62 threshold of 40 (blue) is farther away from
+the adversarial sequence with a BLOSUM62 threshold of
+20 (red). See inset zoomed picture. The original sequence is
+shown in green.
+
+NP 010457.3
+
+Protein
+
+ID
+
+6NT5 1
+SFP 1
+6OEU 1
+
+2BBJ 1
+2ROP 1
+6NT3 1
+6O77 1
+2QK4 1
+2QJF 1
+
+BLOSUM62-20 BLOSUM62-40
+
+RMSD ( ˚A)
+
+RMSD ( ˚A)
+
+5.026
+25.641
+34.162
+6.870
+6.760
+8.495
+15.361
+19.001
+0.730
+0.119
+
+9.756
+26.355
+35.295
+9.609
+7.504
+10.969
+17.714
+26.532
+0.893
+0.266
+
+Table 2: Comparison of RMSD for adversarial examples
+using thresholds of 20 and 40 BLOSUM62 distances.
+
+As shown in Table 2,
+
+the RMSD for threshold of
+20 BLOSUM62 distance is smaller than the RMSD for
+threshold of 40 BLOSUM62 distance.
+
+Figure 4 shows the adversarial examples obtained from
+one protein sequence.
+In particular, we observe that
+the adversarial attack using a threshold of 40 for the
+BLOSUM62 distance makes more changes to the structure
+than the adversarial attack constrained by a threshold of 20
+for the BLOSUM62 distance.
+Co-ordinate vs. Distance Geometry
+We have introduced the idea of using distance geometry
+instead of geometric co-ordinates for adversarial attacks on
+PFNNs. We present experimental results to show that the
+use of geometric co-ordinates leads to adversarial structures
+that are different from the original structure in geometric
+co-ordinates, but such structures can be translated, rotated
+and ﬂipped to nearly the same structure. We illustrate this
+with an adversarial attack example in Fig. 5.
+
+Figure 5: Adversarial attacks using geometric co-ordinates
+produce adversarial structures that are essentially translated,
+rotated or mirror images of the original structure.
+
+Table 3 shows the quantitative results of computing
+adversarial attacks using distance geometry and using
+
+co-ordinate
+
+respectively.
+3-dimensional
+Geometric co-ordinates are not
+to rigid-body
+motion, and hence high loss functions during attacks do not
+correlate well with high RMSDs after alignment.
+
+geometry,
+robust
+
+Protein
+
+ID
+
+NP 010457.3
+
+6NT5 1
+SFP 1
+6OEU 1
+
+2BBJ 1
+2ROP 1
+6NT3 1
+6O77 1
+2QK4 1
+2QJF 1
+
+Distance
+Geometry
+RMSD ( ˚A)
+5.026
+25.641
+34.162
+6.870
+6.760
+8.495
+15.361
+19.001
+0.730
+0.119
+
+Three-dimensional
+
+Co-ordinates
+RMSD ( ˚A)
+
+3.685
+21.530
+18.132
+0.165
+0.293
+5.014
+14.933
+17.558
+0.042
+0.104
+
+Table 3: Comparison of RMSD for distance geometry vs.
+co-ordinate geometry representations after alignment using
+PyMOL. Our distance geometry based approach produces
+adversarial examples that have up to 37 times larger RMSD
+than those produced using co-ordinate geometry.
+
+Exact vs. Approximation Distance Measures
+We have
+introduced an approximation strategy for
+computing adversarial examples for protein folding neural
+networks using distance geometry. Theoretically, this leads
+to a simpliﬁcation from O(n2) computations for computing
+the exact Euclidean distance matrix to O(n) computations
+for our approximation strategy. Our approximate distance
+geometry approach is provably approximate and produces
+no less than 0.69 times the exact RMSD (Table 4) while
+achieving 14X speedups (Table 5) in our experiments on a
+80GB A100 GPU system.
+
+Protein
+
+ID
+
+NP 010457.3
+
+6NT5 1
+SFP 1
+6OEU 1
+
+2BBJ 1
+2ROP 1
+6NT3 1
+6O77 1
+2QK4 1
+2QJF 1
+
+Exact
+
+Approximate
+
+Distance Matrices Distance Matrices
+
+RMSD ( ˚A)
+
+RMSD ( ˚A)
+
+9.053
+28.452
+36.647
+11.529
+8.868
+10.595
+25.640
+21.813
+1.096
+0.146
+
+5.026
+25.641
+34.162
+6.870
+6.760
+8.495
+15.361
+19.001
+0.730
+0.119
+
+Table 4: Comparison of RMSD for exact and approximate
+Euclidean distance measures after alignment using PyMOL.
+
+2019. Advancing drug discovery via artiﬁcial intelligence.
+Trends in pharmacological sciences, 40(8): 592–604.
+Chothia, C.; and Lesk, A. M. 1986. The relation between
+the divergence of sequence and structure in proteins. The
+EMBO journal, 5(4): 823–826.
+Cordes, M. H. J.; Burton, R. E.; Walsh, N. P.; McKnight,
+C. J.; and Sauer, R. T. 2000. An evolutionary bridge to a new
+protein fold. Nature Structural Biology, 7(12): 1129–1132.
+Croce, F.; Andriushchenko, M.; Sehwag, V.; Flammarion,
+N.; Chiang, M.; Mittal, P.; and Hein, M. 2020. Robustbench:
+arXiv
+a standardized adversarial robustness benchmark.
+preprint arXiv:2010.09670.
+Croce, F.; and Hein, M. 2021. Mind the box: l 1-APGD
+for sparse adversarial attacks on image classiﬁers. arXiv
+preprint arXiv:2103.01208.
+Dayhoff, M.; Schwartz, R.; and Orcutt, B. 1978. 22 a model
+of evolutionary change in proteins. Atlas of protein sequence
+and structure, 5: 345–352.
+Goodfellow, I.; McDaniel, P.; and Papernot, N. 2018.
+Making machine learning robust against adversarial inputs.
+Communications of the ACM, 61(7): 56–66.
+Henikoff, S.; and Henikoff, J. G. 1992. Amino acid
+substitution matrices from protein blocks. Proceedings of
+the National Academy of Sciences, 89(22): 10915–10919.
+I.;
+Hiranuma, N.; Park, H.; Baek, M.; Anishchenko,
+Dauparas, J.; and Baker, D. 2021.
+Improved protein
+structure reﬁnement guided by deep learning based accuracy
+estimation. Nature communications, 12(1): 1–11.
+Jones, D. T.; Taylor, W. R.; and Thornton, J. M. 1992.
+The rapid generation of mutation data matrices from protein
+sequences. Bioinformatics, 8(3): 275–282.
+Jumper, J.; Evans, R.; Pritzel, A.; Green, T.; Figurnov, M.;
+Ronneberger, O.; Tunyasuvunakool, K.; Bates, R.; ˇZ´ıdek,
+A.; Potapenko, A.; et al. 2021. Highly accurate protein
+structure prediction with AlphaFold. Nature, 596(7873):
+583–589.
+Rost, B. 1999.
+alignments. Protein engineering, 12(2): 85–94.
+Sander, C.; and Schneider, R. 1991.
+Database of
+homology-derived protein structures and the structural
+Proteins: Structure,
+meaning of sequence alignment.
+Function, and Bioinformatics, 9(1): 56–68.
+Tuinstra, R. L.; Peterson, F. C.; Kutlesa, S.; Elgin, E. S.;
+Kron, M. A.; and Volkman, B. F. 2008.
+Interconversion
+between two unrelated protein folds in the lymphotactin
+Proceedings of the National Academy of
+native state.
+Sciences, 105(13): 5057–5062.
+
+Twilight zone of protein sequence
+
+NP 010457
+
+Protein
+
+ID
+
+6NT5 1
+SFP 1
+6OEU 1
+
+2BBJ 1
+2ROP 1
+6NT3 1
+6O77 1
+2QK4 1
+2QJF 1
+
+Exact
+
+Approximate
+
+Runtime Memory Runtime Memory
+
+(min)
+146.58
+372.23
+840.37
+421.08
+192.17
+66.54
+1375.31
+1476.17
+185.28
+124.43
+
+(MB)
+25,003
+52,809
+79,593
+58,021
+27,867
+19,011
+77,141
+74,965
+39,031
+21,725
+
+(min)
+22.13
+43.27
+130.28
+33.03
+21.01
+11.18
+102.08
+105.10
+21.26
+13.23
+
+(MB)
+18,433
+29,229
+79,635
+34,265
+18,315
+12,035
+77,171
+74,965
+31,003
+20,713
+
+Table 5: Comparison of exact vs. approximate approach in
+terms of runtime and memory.
+
+Conclusions & Future Work
+
+The progress made in recent years on the prediction of
+protein folding structures promises to enable profound
+advances in the understanding of diseases, and the design
+of drugs and therapeutics. However, until these predictions
+are shown to be robust, the grand challenge of predictive
+protein folding persists. In this paper, we have presented
+the ﬁrst step in this direction by demonstrating that PFNNs
+are susceptible to adversarial attacks. RMSD in the protein
+structure predicted by RoseTTAFold (Baek et al. 2021)
+ranges from 0.119 ˚A to 34.162 ˚A when the adversarial
+perturbations are bounded by 20 units in the BLOSUM62
+distance. We deﬁne a new robustness measure for the
+predicted structure of a protein sequence, and show that the
+magnitude of the correlation (0.917) between our robustness
+measure and the RMSD between the predicted structure and
+the ground truth is high. Hence, our robustness measure can
+be used to responsibly deploy PFNNs.
+
+References
+
+Andriushchenko, M.; Croce, F.; Flammarion, N.; and Hein,
+Square attack: a query-efﬁcient black-box
+M. 2020.
+In European
+adversarial attack via random search.
+Conference on Computer Vision, 484–501. Springer.
+Baek, M.; DiMaio, F.; Anishchenko, I.; Dauparas, J.;
+Ovchinnikov, S.; Lee, G. R.; Wang, J.; Cong, Q.; Kinch,
+L. N.; Schaeffer, R. D.; et al. 2021. Accurate prediction of
+protein structures and interactions using a three-track neural
+network. Science, 373(6557): 871–876.
+Bai, Y.; Zeng, Y.; Jiang, Y.; Wang, Y.; Xia, S.-T.; and
+Improving query efﬁciency of black-box
+Guo, W. 2020.
+In Computer Vision–ECCV 2020: 16th
+adversarial attack.
+European Conference, Glasgow, UK, August 23–28, 2020,
+Proceedings, Part XXV 16, 101–116. Springer.
+Blumenthal, L. 1970. Theory and Applications of Distance
+Geometry.
+AMS Chelsea Publishing Series. Chelsea
+Publishing Company. ISBN 9780828402422.
+Chan, H. S.; Shan, H.; Dahoun, T.; Vogel, H.; and Yuan, S.
+
+

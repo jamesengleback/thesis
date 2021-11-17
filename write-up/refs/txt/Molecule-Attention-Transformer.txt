@@ -1,0 +1,1960 @@
+Molecule Attention Transformer
+
+0
+2
+0
+2
+
+ 
+
+b
+e
+F
+9
+1
+
+ 
+
+ 
+ 
+]
+
+G
+L
+.
+s
+c
+[
+ 
+ 
+
+1
+v
+4
+6
+2
+8
+0
+
+.
+
+2
+0
+0
+2
+:
+v
+i
+X
+r
+a
+
+Łukasz Maziarka 1 2 Tomasz Danel 1 2 Sławomir Mucha 2 Krzysztof Rataj 1 Jacek Tabor 2
+
+Stanisław Jastrz˛ebski 3 4
+
+Abstract
+
+Designing a single neural network architec-
+ture that performs competitively across a range
+of molecule property prediction tasks remains
+largely an open challenge, and its solution may un-
+lock a widespread use of deep learning in the drug
+discovery industry. To move towards this goal, we
+propose Molecule Attention Transformer (MAT).
+Our key innovation is to augment the attention
+mechanism in Transformer using inter-atomic dis-
+tances and the molecular graph structure. Exper-
+iments show that MAT performs competitively
+on a diverse set of molecular prediction tasks.
+Most importantly, with a simple self-supervised
+pretraining, MAT requires tuning of only a few
+hyperparameter values to achieve state-of-the-art
+performance on downstream tasks. Finally, we
+show that attention weights learned by MAT are
+interpretable from the chemical point of view.
+
+1. Introduction
+The task of predicting properties of a molecule lies at the
+center of applications such as drug discovery or material
+design. In particular, estimated 85% drug candidates fail
+the clinical trials in the United States after a long and costly
+development process (Wong et al., 2018). Potentially, many
+of these failures could have been avoided by having correctly
+predicted a clinically relevant property of a molecule such
+as its toxicity or bioactivity.
+Following the breakthroughs in image (Krizhevsky et al.,
+2012) and text classiﬁcation (Vaswani et al., 2017), deep
+neural networks (DNNs) are expected to revolutionize other
+ﬁelds such as drug discovery or material design (Jr et al.,
+
+1Ardigen, Cracow, Poland.
+2Jagiellonian University, Cracow, Poland.
+3Molecule.one, Warsaw, Poland.
+4New York University, New York, USA.
+
+Correspondence to:
+Łukasz Maziarka <lukasz.maziarka@ardigen.com>,
+Stanisław Jastrz˛ebski <staszek.jastrzebski@gmail.com>.
+
+Preprint. Work in progress.
+
+2019). However, on many molecular property prediction
+tasks DNNs are outperformed by shallow models such as
+support vector machine or random forest (Korotcov et al.,
+2017; Wu et al., 2018). On the other hand, while DNNs can
+outperform shallow models on some tasks, they tend to be
+difﬁcult to train (Ishiguro et al., 2019; Hu et al., 2019), and
+can require tuning of a large number of hyperparameters.
+We also observe both issues on our benchmark (see Section
+4.2).
+Making deep networks easier to train has been the central
+force behind their widespread use. In particular, one of
+the most important breakthroughs in deep learning was the
+development of initialization methods that allowed to train
+easily deep networks end-to-end (Goodfellow et al., 2016).
+In a similar spirit, our aim is to develop a deep model that
+is simple to use out-of-the-box, and achieves strong perfor-
+mance on a wide range of tasks in the ﬁeld of molecule
+property prediction.
+In this paper we propose the Molecule Attention Trans-
+former (MAT). We adapt Transformer (Devlin et al., 2018)
+to chemical molecules by augmenting the self-attention
+with inter-atomic distances and molecular graph structure.
+Figure 1 shows the architecture. We demonstrate that
+MAT, in contrast to other tested models, achieves strong
+performance across a wide range of tasks (see Figure 2).
+Next, we show that self-supervised pre-training further im-
+proves performance, while drastically reducing the time
+needed for hyperparameter tuning (see Table 3). In these
+experiments we tuned only the learning rate, testing 7
+different values. Finally, we ﬁnd that MAT has inter-
+pretable attention weights. We share pretrained weights
+at https://github.com/gmum/MAT.
+
+2. Related work
+Molecule property prediction. Predicting properties of
+a candidate molecule lies at the heart of many ﬁelds such
+as drug discovery and material design. Broadly speaking,
+there are two main approaches to predicting molecular prop-
+erties. First, we can use our knowledge of the underlying
+physics (Lipinski et al., 1997). However, despite recent
+advances (Schütt et al., 2017), current approaches remain
+prohibitively costly to accurately predict many properties of
+
+Molecule Attention Transformer
+
+Figure 1. Molecule Attention Transformer architecture. We largely base our model on the Transformer encoder. In the ﬁrst layer we
+embed each atom using one-hot encoding and atomic features. The main innovation is the Molecule Multi-Head Self-Attention layer
+that augments attention with distance and graph structure of the molecule. We implement this using a weighted (by λd, λg, and λa)
+element-wise sum of the corresponding matrices.
+
+interest such as bioactivity. The second approach is to use
+existing data to train a predictive model (Haghighatlari &
+Hachmann, 2019). Here the key issue is the lack of large
+datasets. Even for the most popular drug targets, such as
+5-HT1A (a popular target for depression), only thousands
+of active compounds are known. Promising direction is
+using hybrid approaches such as Wallach et al. (2015) or
+approaches leveraging domain knowledge and underlying
+physics to impose a strong prior such as Feinberg et al.
+(2018).
+
+Deep learning for molecule property prediction. Deep
+learning has become a valuable tool for modeling molecules.
+During the years, the community has progressed from us-
+ing handcrafted representations to representing molecules
+as strings of symbols, and ﬁnally to the currently popular
+approaches based on molecular graphs.
+Graph convolutional networks in each subsequent layer
+gather information from adjacent nodes in the graph. In
+this way after N convolution layers each node has informa-
+tion from its N-edges distant neighbors. Using the graph
+structure improves performance in a range of molecule mod-
+eling tasks (Wu et al., 2018). Some of the most recent works
+
+implement more sophisticated generalization methods for
+gathering the neighbor data. Veliˇckovi´c et al. (2017); Shang
+et al. (2018) propose to augment GCNs with an attention
+mechanism. Li et al. (2018) introduces a model that dynam-
+ically learns neighbourhood function in the graph.
+In parallel to these advances, using the three-dimensional
+structure of the molecule is becoming increasingly popu-
+lar. Perhaps the most closely related models are 3D Graph
+Convolutional Neural Network (3DGCN), Message Passing
+Neural Network (MPNN), and Adaptive Graph Convolu-
+tional Network (AGCN) (Cho & Choi, 2018; Gilmer et al.,
+2017; Li et al., 2018). 3DGCN and MPNN integrate graph
+and distance information in a single model, which enables
+them to achieve strong performance on tasks such as solu-
+bility prediction. In contrast to them, we additionally allow
+for a ﬂexible neighbourhood based on self-attention.
+Transformer, originally developed for natural language pro-
+cessing (Vaswani et al., 2017), has been recently applied to
+retrosynthesis in Karpov et al. (2019). They represent com-
+pounds as sentences using the SMILES notation (Weininger,
+1988). In contrast to them, we represent compounds as a list
+of atoms, and ensure that models understand the structure of
+
+NH2SNEmbedding LayerLayer NormMolecule Multi-HeadSelf-AttentionLayer NormPosition-WiseFeed Forward× KLayer NormGlobal PoolingFully-Connected LayerPrediction× NInputNH2SNNH2SNλgλdλaNH2SNself-attentionadjacencydistanceMolecule Attention Transformer
+
+the molecule by augmenting the self-attention mechanism
+(see Figure 1). Our ablation studies show it is a critical
+component of the model.
+To summarize, methods related to our model have been
+proposed in the literature. Our contribution is unifying
+these ideas in a single model based on the state-of-the-art
+Transformer architecture that preserves strong performance
+across many chemical tasks.
+
+How easy is it to use deep learning for molecule prop-
+erty prediction? DNNs performance is not always com-
+petitive to methods such as support vector machine or ran-
+dom forest. MoleculeNet is a popular benchmark for meth-
+ods for molecule property prediction (Wu et al., 2018) that
+demonstrates this phenomenon. Similar results can be found
+in Withnall et al. (2019). We reproduce a similar issue on
+our benchmark. This makes using deep learning less appli-
+cable to molecule property prediction because in some cases
+practitioners might actually beneﬁt from using other meth-
+ods. Another issue is that graph neural networks, which are
+the most popular class of models for molecule property pre-
+diction, can be difﬁcult to train. Ishiguro et al. (2019) show
+and try to address the problem that graph neural networks
+tend to underﬁt the training set. We also reproduce this issue
+on our benchmark (see also App. C).
+There has been a considerable interest in developing easier
+to use deep models for molecule property prediction. Goh
+et al. (2017) pretrains a deep network that takes as an input
+an image of a molecule. Another studies highlight the need
+to augment feedforward (Mayr et al., 2018) and graph neural
+networks (Yang et al., 2019) with handcrafted representa-
+tions of molecules. Hu et al. (2019) proposes pretraining
+methods for graph neural networks and shows this largely
+alleviates the problem of underﬁtting, present in these ar-
+chitectures (Ishiguro et al., 2019). We take inspiration from
+Hu et al. (2019) and use one of the three pretraining tasks
+proposed therein.
+Concurrently, Wang et al. (2019); Honda et al. (2019) pre-
+train a vanilla Transformer (Devlin et al., 2018) that takes as
+input a text representation (SMILES) of a molecule. Honda
+et al. (2019) shows that decoding based approach improves
+data efﬁciency of the model. A similar approach, special-
+ized to the task of drug-target interaction prediction, was
+concurrently proposed in Shin et al. (2019). In contrast to
+them, we adapt Transformer to chemical structures, which
+in our opinion is crucial for achieving strong empirical per-
+formance. We also use a domain-speciﬁc pretraining based
+on Wu et al. (2018). We further conﬁrm importance of both
+approaches by comparing directly with Honda et al. (2019).
+
+Self-attention based models. Arguably,
+the attention
+mechanism (Bahdanau et al., 2014) has been one of the
+
+most important breakthroughs in deep learning. This is per-
+haps best illustrated by the wide-spread use of Transformer
+architecture in natural language processing (Vaswani et al.,
+2017; Devlin et al., 2018).
+Multiple prior works have augmented self-attention in Trans-
+former using domain-speciﬁc knowledge (Chen et al., 2018;
+Shaw et al., 2018; Bello et al., 2019; Guo et al., 2019). Guo
+et al. (2019) encourages Transformer to attend to adjacent
+words in a sentence, and Chen et al. (2018) encourages an-
+other attention-based model to focus on pairs of words in a
+sentence that are connected in an external knowledge base.
+Our novelty is applying this successive modeling idea to
+molecule property prediction.
+
+3. Molecule Attention Transformer
+As the rich literature on deep learning for molecule property
+prediction suggests, it is necessary for a model to be ﬂex-
+ible enough to represent a range of possible relationships
+between atoms of a compound. Inspired by its ﬂexibility
+and strong empirical performance, we base our model on
+the Transformer encoder (Vaswani et al., 2017; Devlin et al.,
+2018). It is worth noting that natural language processing
+has inspired important advances in cheminformatics (Segler
+et al., 2017; Gómez-Bombarelli et al., 2018), which might
+be due to similarities between the two domains (Jastrz˛ebski
+et al., 2016).
+
+Transfomer. We begin by brieﬂy introducing the Trans-
+former architecture. On a high level, Transformer for classi-
+ﬁcations has N attention blocks followed by a pooling and
+a classiﬁcation layer. Each attention block is composed of a
+multi-head self-attention layer, followed by a feed-forward
+block that includes a residual connection and layer normal-
+ization.
+The multi-head self-attention is composed of H heads. Head
+i (i = 1, . . . , H) takes as input hidden state H and computes
+ﬁrst Qi = HWQ
+i . These
+are used in the attention operation as follows:
+
+i , and Vi = HWV
+
+i , Ki = HWH
+
+(cid:19)
+
+(cid:18) QiKT
+
+i√
+dk
+
+A(i) = ρ
+
+Vi,
+
+(1)
+
+Molecule Self-Attention. Using a naive Transformer ar-
+chitecture would require encoding of chemical molecules
+as sentences. Instead, inspired by Battaglia et al. (2018),
+we interpret the self-attention as a soft adjacency matrix
+between the elements of the input sequence. Following this
+line of thought, it is natural to augment the self-attention
+using information about the actual structure of the model.
+This allows us to avoid using linearized (textual) representa-
+tion of molecule as input (Jastrz˛ebski et al., 2016), which
+we expect to be a better inductive bias for the model.
+
+Molecule Attention Transformer
+
+More concretely, we propose the Molecule Self-Attention
+layer, which we describe in Equation 2. We augment the
+self-attention matrix as follows: let A ∈ {0, 1}Natoms×Natoms
+denote the graph adjacency matrix, and D ∈ RNatoms×Natoms.
+denote the inter-atomic distances. Let λa, λd, and λg denote
+scalars weighting the self-attention, distance, and adjacency
+matrices. We modify Equation 1 as follows:
+
+(cid:18)
+
+(cid:19)
+
+(cid:18) QiKT
+
+i√
+dk
+
+A(i) =
+
+λaρ
+
+(cid:19)
+
++ λdg(D) + λgA
+
+Vi,
+
+(2)
+
+see also Figure 1. We denote λa, λd, and λg jointly as λ.
+We use as g either softmax (normalized over the rows), or an
+element-wise g(d) = exp(−d). Finally, the distance matrix
+D is computed using RDKit package (Landrum, 2016).
+Note that while we use only the adjacency and the distance
+matrices, MAT can be easily extended to include other types
+of information, e.g. forces between the atoms.
+
+Molecule Attention Transformer. To deﬁne the model,
+we replace all self-attention layers in the original Trans-
+former encoder by our Molecular Self Attention layers. We
+embed each atom as a 26 dimensional vector following (Co-
+ley et al., 2017), shown in Table 1. In the experiments,
+we treat λa, λd, and λg as hyperparameters and keep them
+frozen during training. Figure 1 illustrates the model.
+
+Pretraining. We experiment with one of the two node-
+level pretraining tasks proposed in Hu et al. (2019), which
+involves predicting the masked input nodes. Consistently
+with Hu et al. (2019), we found it stabilizes learning (see
+Figure 6) and reduces the need for an extensive hyperparam-
+eter search (see Table 3). Given that MAT already achieves
+good performance using this simple pretraining task, we
+leave for future work exploring the other tasks proposed in
+Hu et al. (2019).
+
+Other details.
+Inspired by Li et al. (2017); Clark et al.
+(2019), we add an artiﬁcial dummy node to the molecule.
+The dummy node is not connected by an edge to any other
+atom and the distance to any of them is set to 106. Our
+motivation is to allow the model to skip searching for a
+molecular pattern if none is to ﬁnd by putting higher atten-
+tion on that distant node, which is similar to how BERT uses
+the separation token (Devlin et al., 2018; Clark et al., 2019).
+We conﬁrm this intuition in Section 4.4 and Section 4.5.
+Finally, the distance matrices are calculated from 3D con-
+formers calculated using UFFOPTIMIZEMOLECULE func-
+tion from the RDKit package (Landrum, 2016), and the
+default parameters (MAXITERS=200, VDWTHRESH=10.0,
+CONFID=−1, IGNOREINTERFRAGINTERACTIONS=True).
+For each compound we use one pre-computed conformation.
+
+We experimented with sampling more conformations for
+each compound, but did not observe a consistent boost in
+performance, however it is possible that using more sophis-
+ticated algorithms for compound 3D structure minimization
+could improve the results. We leave this for future work.
+
+Table 1. Featurization used to embed atoms in MAT.
+
+INDICES
+0 − 11
+12 − 17
+18 − 22
+
+23
+24
+25
+
+DESCRIPTION
+
+ATOMIC IDENTITY AS A ONE-HOT VECTOR OF
+B, N, C, O, F, P, S, CL, BR, I, DUMMY, OTHER
+NUMBER OF HEAVY NEIGHBORS AS ONE-HOT
+
+VECTOR OF 0, 1, 2, 3, 4, 5
+
+NUMBER OF HYDROGEN ATOMS AS
+ONE-HOT VECTOR OF 0, 1, 2, 3, 4
+
+FORMAL CHARGE
+
+IS IN A RING
+IS AROMATIC
+
+4. Experiments
+We begin by comparing MAT to other popular models in the
+literature on a wide range of tasks. We ﬁnd that with simple
+pretraining MAT outperforms other methods, while using a
+small budget for hyperparameter tuning.
+In the rest of this section we try to develop understanding
+of what makes MAT work well. In particular, we ﬁnd that
+individual heads in the multi-headed self-attention layers
+learn chemically interpretable functions.
+
+4.1. Experimental settings
+
+Comparing different models for molecule property predic-
+tion is challenging. Despite considerable efforts, the com-
+munity still lacks a standardized way to compare different
+models. In our work, we use a similar setting to Molecu-
+leNet (Wu et al., 2018).
+
+Evaluation. Following recommendations of Wu et al.
+(2018) and the experimental setup of Podlewska & Kafel
+(2018), we use random split for FreeSolv, ESOL, and Met-
+Stab. For all the other datasets we use scaffold split, which
+assigns compounds that share the same molecular scaffold-
+ing to different subsets of the data (Bemis & Murcko, 1996).
+In regression tasks, the property value was standardized.
+Test performance is based on the model which gave best
+results in the validation setting. Each training was repeated
+6 times, on different train/validation/test splits. All the other
+experimental details are reported in the Supplement.
+
+Datasets. We run experiments on a wide range of datasets
+that represent typical tasks encountered in molecule mod-
+
+Molecule Attention Transformer
+
+eling. Below, we include a short description of these tasks,
+and a more detailed description is moved to App. A.
+
+• FreeSolv, ESOL. Regression tasks used in Wu et al.
+(2018) for predicting water solubility in terms of the
+hydration free energy (FreeSolv) and log solubility in
+mols per litre (ESOL). The datasets have 642 and 1128
+molecules, respectively.
+
+• Blood-brain barrier permeability (BBBP). Binary
+classiﬁcation task used in Wu et al. (2018) for predict-
+ing the ability of a molecule to penetrate the blood-
+brain barrier. The dataset has 2039 molecules.
+
+• Estrogen Alpha, Estrogen Beta. The tasks are to pre-
+dict whether a compound is active towards a given
+target (Estrogen-α, Estrogen-β) based on experimen-
+tal data from the ChEMBL database (Gaulton et al.,
+2011). The datasets have 2398, and 1961 molecules,
+respectively.
+
+• MetStabhigh, MetStablow. Binary classiﬁcation tasks
+based on data from Podlewska & Kafel (2018) to pre-
+dict whether a compound has high (over 2.32 h half-
+time) or low (lower than 0.6 h half-time) metabolic sta-
+bility. Both datasets contain the same 2127 molecules.
+
+4.2. Molecule Attention Transformer
+Models. Similarly to Wu et al. (2018), we test a com-
+prehensive set of baselines that span both shallow and
+deep models. We compare MAT to the following base-
+lines: GCN (Duvenaud et al., 2015), Random Forest (RF)
+and Support Vector Machine with RBF kernel (SVM). We
+also test the following recently proposed models: Edge
+Attention-based Multi-Relational Graph Convolutional Net-
+work (EAGCN) (Shang et al., 2018), and Weave (Kearnes
+et al., 2016).
+
+Hyperparameter tuning. For each method we ex-
+tensively tune their hyperparameters using random
+search (Bergstra & Bengio, 2012). To ensure fair com-
+parison, each model is given the same budget for hyperpa-
+rameter search. We run two sets of experiments with budget
+of 150 and 500 evaluations. We include hyperparameter
+ranges in App. B.
+
+Results. We evaluate models by their average rank accord-
+ing to the test set performance on the 7 datasets. Figure 2
+reports ranks of all methods for the two considered hyperpa-
+rameter budgets (150 and 500). Additionally, we report in
+Table 2 detailed scores on all datasets. We make three main
+observations.
+First, graph neural networks (GCN, Weave, EAGCN) on
+average do not outperform the other models. The best graph
+
+model achieves average rank 3.28 compared to 3.14 by RF.
+On the whole, performance of the deep models improves
+with larger hyperparameter search budget. This further cor-
+roborates the original motivation of our study. Indeed, using
+common deep learning methods for molecule property pre-
+diction is challenging in practice. It requires a large compu-
+tational budget, and might still result in poor performance.
+Second, MAT outperforms the other tested methods in terms
+of the average rank. MAT achieves average rank of 2.71
+and 2.42 for 150 and 500 budgets, compared to 3.14 of RF,
+which is the second best performing model. This shows
+that architecture MAT is ﬂexible enough and has the correct
+inductive bias to perform well on a wide range of tasks.
+Examining performance of MAT across individual datasets,
+we observe that RF and SVM perform better on Estrogen-β,
+MetStablow, and MetStabhigh. Both RF and SVM use
+extended-connectivity ﬁngerprint (Rogers & Hahn, 2010)
+as input representation, which encodes substructures in the
+molecule as features. Metabolic stability of a compound
+depends on existence of particular moieties, which are rec-
+ognized by enzymes. Therefore a simple structure-based ﬁn-
+gerprints perform well in such a setting. Wang et al. (2019);
+Mayr et al. (2018) show that using ﬁngerprint as input repre-
+sentation improves performance of deep networks on related
+datasets. These two observations suggest that MAT could
+beneﬁt from using ﬁngerprints. Instead, we avoid using
+handcrafted representations, and investigate pretraining as
+an alternative in the next section. Though ﬁngerprint-based
+models show excellent performance in all presented tasks,
+there are datasets on which they fail to match the perfor-
+mance of graph approaches. We observed this also on an
+energy prediction task (see the extension of our benchmark
+in App. C).
+
+4.3. Pretrained Molecule Attention Transformer
+
+Self-supervised pretraining has revolutionized natural lan-
+guage processing (Devlin et al., 2018) and has improved
+performance in molecule property prediction (Hu et al.,
+2019). We apply here node-level self-supervised pretraining
+from Hu et al. (2019) to MAT. The task is to predict features
+of masked out nodes. We refer the reader to App. D for
+more details.
+
+Models. We compare MAT to the two following baselines.
+First, we apply the same pretraining to EAGCN, which we
+will refer to as “Pretrained EAGCN”. Second, we compare
+to a concurrent work by Honda et al. (2019). They pretrain
+a vanilla Transformer by decoding textual representation
+(SMILES) of molecules. We will refer to their method as
+“SMILES Transformer”.
+
+Molecule Attention Transformer
+
+(a) Hyperparameter search budget of 500 combinations.
+
+(b) Hyperparameter search budget of 150 combinations.
+
+Figure 2. The average rank across the 7 datasets in the benchmark. For each model we test 500 (left) or 150 (right) hyperparameter
+combinations. We split the data using random or scaffold split (according to the dataset description) 6 times into train/validation/test folds
+and use the mean metrics across the test folds to obtain the ranklists of models. Interestingly, shallow models (RF and SVM) outperform
+graph models (GCN, EAGCN and Weave).
+
+Table 2. Test performances in the benchmark. For each model we test 500 (top) and 150 (bottom) hyperparameter combinations. On
+ESOL and FreeSolv we report RMSE (lower is better). The other tasks are evaluated using ROC AUC (higher is better). Experiments are
+repeated 6 times.
+
+(a) Hyperparameter search budget of 500 combinations.
+
+SVM
+RF
+GCN
+WEAVE
+EAGCN
+MAT (OURS)
+
+BBBP
+
+.707 ± .000
+.725 ± .006
+.712 ± .010
+.701 ± .016
+.680 ± .014
+.728 ± .008
+
+ESOL
+
+.478 ± .054
+.534 ± .073
+.357 ± .032
+.311 ± .023
+.316 ± .024
+.285 ± .022
+
+FREESOLV
+.461 ± .077
+.523 ± .097
+.271 ± .048
+.311 ± .072
+.345 ± .051
+.263 ± .046
+
+ESTROGEN-α
+.973 ± .000
+.977 ± .001
+.975 ± .003
+.974 ± .003
+.961 ± .011
+.979 ± .003
+
+ESTROGEN-β METSTABLOW METSTABHIGH
+.778 ± .000
+.890 ± .029
+.888 ± .030
+.797 ± .007
+.875 ± .036
+.730 ± .006
+.882 ± .043
+.769 ± .023
+.781 ± .012
+.868 ± .034
+.765 ± .007
+.888 ± .027
+
+.893 ± .030
+.885 ± .029
+.881 ± .031
+.863 ± .028
+.883 ± .024
+.862 ± .038
+
+(b) Hyperparameter search budget of 150 combinations.
+
+SVM
+RF
+GCN
+WEAVE
+EAGCN
+MAT (OURS)
+
+BBBP
+
+.723 ± .000
+.721 ± .003
+.695 ± .013
+.702 ± .009
+.680 ± .014
+.727 ± .006
+
+ESOL
+
+.479 ± .055
+.534 ± .073
+.369 ± .032
+.298 ± .025
+.322 ± .052
+.290 ± .019
+
+FREESOLV
+.461 ± .077
+.524 ± .098
+.299 ± .068
+.298 ± .049
+.337 ± .042
+.289 ± .047
+
+ESTROGEN-α
+.973 ± .000
+.977 ± .001
+.975 ± .003
+.974 ± .003
+.961 ± .011
+.979 ± .003
+
+ESTROGEN-β METSTABLOW METSTABHIGH
+.890 ± .029
+.772 ± .000
+.888 ± .030
+.791 ± .012
+.730 ± .006
+.875 ± .036
+.769 ± .023
+.885 ± .042
+.781 ± .012
+.844 ± .037
+.844 ± .052
+.765 ± .007
+
+.893 ± .030
+.892 ± .026
+.884 ± .033
+.863 ± .028
+.859 ± .024
+.861 ± .029
+
+Hyperparameters. For all methods
+that use pre-
+training we reduce the hyperparameter grid to a
+minimum.
+We tune only the learning rate in
+{1e−3, 5e−4, 1e−4, 5e−5, 1e−5, 5e−6, 1e−6}. We set
+the other hyperparameters to reasonable defaults based on
+results from Section 4.2. For MAT and EAGCN, we fol-
+low (Devlin et al., 2018) and use the largest model that still
+ﬁts the GPU memory. For SMILES Transformer we use
+pretrained weights provided by Honda et al. (2019).
+
+Results. As in previous section, we compare the models
+based on their average rank on our benchmark. Figure 3
+and Table 3 summarize the results.
+We observe that Pretrained MAT achieves average rank of
+1.57 and outperforms MAT (average rank of 2.14). Impor-
+tantly, for Pretrained MAT we only tuned the learning rate
+by evaluating 7 different values. This is in stark contrast to
+the 500 hyperparameter combinations tested for MAT and
+EAGCN. To visualize this, in Figure 4 we plot the average
+test performance of all models as a function of the number
+of tested hyperparameter combinations. We also note that
+
+SVMRFGCWeaveEAGCNMAT123456Rank3.433.143.863.864.292.43SVMRFGCWeaveEAGCNMAT123456Rank3.143.144.03.294.712.71Molecule Attention Transformer
+
+Knowing molecular graph and distances between atoms
+improves performance. Our key architectural innovation
+is integrating the molecule graph and inter-atomic distances
+with the self-attention layer in Transformer, as shown in
+Figure 1. To probe the importance of each of these sources
+of information, we removed them individually during train-
+ing. Results in Table 5 suggest that keeping all sources of
+information results in the most stable performance across
+the three tasks, which is our primary goal. We also show
+that MAT can effectively use distance information in a toy
+task involving 3-dimensional distances between functional
+groups (see App.F).
+
+Using a more complex featurization does not improve
+performance. Many models for predicting molecule prop-
+erties use additional edge features (Coley et al., 2017; Shang
+et al., 2018; Gilmer et al., 2017). In Table 6 we show that
+adding additional edge features does not improve MAT per-
+formance. This is certainly possible that a more compre-
+hensive set of edge features or a better method to integrate
+them would improve performance, which we leave for fu-
+ture work. Procedure of using edge features is described in
+detail in App. E.
+
+4.5. Analysis.
+
+To understand MAT better, we investigate attention weights
+of the model, and the effect of pretraining on the learning
+dynamics.
+
+What is MAT looking at? In natural language process-
+ing, it has been shown that heads in Transformer seem to
+implement interpretable functions (Htut et al., 2019; Clark
+et al., 2019). Similarly, we investigate here the chemical
+function implemented by self-attention heads in MAT. We
+show patterns found in the model that was pretrained with
+the atom masking strategy (Hu et al., 2019), and then we
+verify our ﬁndings on a set of molecules extracted from the
+BBBP testing dataset.
+Based on a manual inspection of attention matrices of MAT,
+we ﬁnd two broad patterns: (1) many attention heads are
+almost fully focused on the dummy node, (2) many attention
+heads focus only on a few atoms. This seems consistent
+with observations about Transformer in Clark et al. (2019).
+We also notice that initial self-attention layers learn simple
+and easily interpretable chemical patterns, while subsequent
+layers capture more complex arrangements of atoms. In Fig-
+ure 5 we exemplify attention patterns on a random molecule
+from the BBBP dataset.
+To quantify the above ﬁndings, we select six heads from the
+ﬁrst layer that ﬁt the second category and seem to implement
+six patterns: (i) focuses on 2-neighboured aromatic carbons
+(not substituted); (ii) focuses on sulfurs; (iii) focuses on non-
+
+Figure 3. The average ranks across the 7 datasets in the benchmark.
+Pretrained MAT outperforms the other methods, despite a drasti-
+cally smaller number of tested hyperparameters (7) compared to
+MAT and EAGCN (500).
+
+Pretrained MAT is more competitive on the three datasets
+mentioned in the previous section.
+We also ﬁnd that Pretrained MAT outperforms the other two
+pretrained methods. Pretraining degrades the performance
+of EAGCN (average rank of 4.0), and SMILES Transformer
+achieves the worst average rank (average rank of 4.29). This
+suggests that both the architecture, and the choice of the
+pretraining task are important for the overall performance
+of the model.
+
+4.4. Ablation studies
+
+To better understand what contributes to the performance of
+MAT, we run a series of ablation studies on three representa-
+tive datasets from our benchmark. We leave understanding
+how these choices interact with pretraining for future work.
+For experiments in this section we generated additional
+splits for ESOL, FreeSolv and BBBP datasets (different
+than in Section 4.2). For each conﬁguration we select the
+best hyperparameters settings using random search under
+a budget of 100 evaluations. Experiments are repeated 3
+times.
+
+Dummy node is not so dummy. MAT uses a dummy
+node that is disconnected from other atoms in the graph (Li
+et al., 2017). Our intuition is that such functionality can
+be useful to automatically adapt capacity on small datasets.
+By attending to the dummy node, the model can effectively
+choose to avoid changing the internal representation in a
+given layer. To examine this architectural choice, in Table 4
+we compare MAT to a variant that does not include the
+dummy node. Results show that dummy node improves
+performance of the model.
+
+PretrainedSMILESEAGCNPretrainedEAGCNMATPretrainedMAT1.01.52.02.53.03.54.04.55.0Rank4.293.04.02.141.57Molecule Attention Transformer
+
+Table 3. Test set performances of methods that use pretraining. Experiments are repeated 6 times. SMILES refers to SMILES Transformer
+from Honda et al. (2019).
+
+MAT
+EAGCN
+SMILES
+
+BBBP
+
+.737 ± .009
+.687 ± .023
+.717 ± .008
+
+ESOL
+
+.278 ± .020
+.323 ± .031
+.356 ± .017
+
+FREESOLV
+.265 ± .042
+1.244 ± .341
+.393 ± .032
+
+ESTROGEN-α
+.998 ± .000
+.994 ± .002
+.953 ± .002
+
+ESTROGEN-β METSTABLOW METSTABHIGH
+.773 ± .012
+.884 ± .030
+.839 ± .038
+.770 ± .010
+.881 ± .036
+.757 ± .002
+
+.862 ± .025
+.861 ± .029
+.860 ± .038
+
+(a) Regression tasks.
+
+(b) Classiﬁcation tasks.
+
+Figure 4. Test performance of all models as a function of the number of tested hyperparameter combinations (on a logarithmic scale).
+Figures show the aggregated mean RMSE for regression tasks (left) and the aggregated mean ROC AUC for classiﬁcation tasks (right).
+Pretrained MAT requires tuning an order of magnitude less hyperparameters, and performs competitively on both sets of tasks.
+
+Table 4. Test performance of MAT model variant without the
+dummy node (- DUMMY) compared to performance of the original
+MAT.
+
+MAT
+- DUMMY
+
+BBBP
+
+.723 ± .008
+.714 ± .010
+
+ESOL
+
+.286 ± .006
+.317 ± .014
+
+FREESOLV
+.250 ± .007
+.249 ± .014
+
+Table 5. Test performance of MAT with different sources of in-
+formation removed (equivalent to setting the corresponding λ to
+zero).
+
+MAT
+- GRAPH
+- DISTANCE
+- ATTENTION
+
+BBBP
+
+.723 ± .008
+.716 ± .009
+.729 ± .013
+.692 ± .001
+
+ESOL
+
+.286 ± .006
+.316 ± .036
+.281 ± .001
+.306 ± .026
+
+FREESOLV
+.250 ± .007
+.276 ± .034
+.281 ± .013
+.329 ± .014
+
+Table 6. Test performance of MAT using additional edge features
+(+ EDGES F.), compared to vanilla MAT.
+
+MAT
++ EDGES F.
+
+BBBP
+
+.723 ± .008
+.683 ± .008
+
+ESOL
+
+.286 ± .006
+.314 ± .014
+
+FREESOLV
+.250 ± .007
+.358 ± .023
+
+ring nitrogens; (iv) focuses on oxygen in carbonyl groups;
+(v) focuses on 3-neighboured aromatic atoms (positions
+of aromatic ring substitutions) and on sulfur for different
+atoms; (vi) focuses on nitrogens in aromatic rings. We found
+that on the BBBP testing dataset the atoms corresponding to
+these deﬁnitions (queried with SMARTS expressions) have
+indeed higher attention weights assigned to them than other
+atoms. For each head, we calculated attention weights for
+all atoms in all molecules and compared those matching
+our hypothesis against the other atoms. Their distributions
+differ signiﬁcantly (p < 0.001 in Kruskal-Wallis test) for
+all the patterns. The statistics and experimental details are
+summarized in App. G.
+
+Effect of pretraining. Wu et al. (2018) observed that us-
+ing pretraining stabilizes and speeds up training of graph
+convolutional models. We observe a similar effect in our
+case. Figure 6 reports training error of MAT and Pretrained
+MAT on the ESOL (left), and the FreeSolv (right) datasets.
+We use the learning rate that achieved the best generalization
+on each dataset in Sec. 4.3. The experiments are repeated 6
+times. On both datasets, Pretrained MAT converges faster
+and has a lower variance of training error across repetitions.
+Mean standard deviation of training error for Pretrained
+MAT (MAT) is 0.027 (0.057) and 0.040 (0.076) for ESOL
+
+100101102Hyperparameters tested0.20.30.40.50.60.70.80.91.01.11.2Test RMSERFSVMGCNWeaveEAGCNMATBest non-pretrainedPretrained MAT100101102Hyperparameters tested0.700.710.720.730.740.750.760.770.780.790.800.810.820.830.840.850.860.87Test ROC AUCRFSVMGCNWeaveEAGCNMATBest non-pretrainedPretrained MATMolecule Attention Transformer
+
+as well as inspire new modeling approaches. One particu-
+larly promising avenue for future work is exploring better
+pretraining tasks for MAT.
+
+References
+Bahdanau, D., Cho, K., and Bengio, Y. Neural machine
+translation by jointly learning to align and translate, 2014.
+
+Battaglia, P. W., Hamrick, J. B., Bapst, V., Sanchez-
+Gonzalez, A., Zambaldi, V. F., Malinowski, M., Tacchetti,
+A., Raposo, D., Santoro, A., Faulkner, R., Gülçehre, Ç.,
+Song, F., Ballard, A. J., Gilmer, J., Dahl, G. E., Vaswani,
+A., Allen, K., Nash, C., Langston, V., Dyer, C., Heess,
+N., Wierstra, D., Kohli, P., Botvinick, M., Vinyals, O.,
+Li, Y., and Pascanu, R. Relational inductive biases, deep
+learning, and graph networks. CoRR, abs/1806.01261,
+2018.
+
+Bello, I., Zoph, B., Vaswani, A., Shlens, J., and Le, Q. V.
+Attention augmented convolutional networks. CoRR,
+abs/1904.09925, 2019.
+
+Bemis, G. W. and Murcko, M. A. The properties of known
+drugs. 1. molecular frameworks. Journal of medicinal
+chemistry, 39(15):2887–2893, 1996.
+
+Bergstra, J. and Bengio, Y. Random search for hyper-
+parameter optimization. J. Mach. Learn. Res., 13(1):
+281–305, February 2012. ISSN 1532-4435.
+
+Chen, G., Chen, P., Hsieh, C.-Y., Lee, C.-K., Liao, B., Liao,
+R., Liu, W., Qiu, J., Sun, Q., Tang, J., et al. Alchemy: A
+quantum chemistry dataset for benchmarking ai models.
+arXiv preprint arXiv:1906.09427, 2019.
+
+Chen, Q., Zhu, X., Ling, Z.-H., Inkpen, D., and Wei, S.
+Neural natural language inference models enhanced with
+external knowledge. In Proceedings of the 56th Annual
+Meeting of the Association for Computational Linguistics
+(Volume 1: Long Papers), pp. 2406–2417, Melbourne,
+Australia, July 2018. Association for Computational Lin-
+guistics.
+
+Cho, H. and Choi, I. S. Three-dimensionally embedded
+graph convolutional network (3DGCN) for molecule in-
+terpretation. CoRR, abs/1811.09794, 2018.
+
+Clark, K., Khandelwal, U., Levy, O., and Manning, C. D.
+What does bert look at? an analysis of bert’s attention.
+arXiv preprint arXiv:1906.04341, 2019.
+
+Coley, C. W., Barzilay, R., Green, W. H., Jaakkola, T. S.,
+and Jensen, K. F. Convolutional embedding of attributed
+molecular graphs for physical property prediction. Jour-
+nal of Chemical Information and Modeling, 57(8):1757–
+1772, 2017. doi: 10.1021/acs.jcim.6b00601. PMID:
+28696688.
+
+Figure 5. The heatmaps show selected self-attention weights from
+the ﬁrst layer of MAT, on a random molecule from the BBBP
+dataset (center). The atoms, which these heads focus on, are
+marked with the same color as the corresponding matrix. The
+interpretation of the presented patterns is described in the text.
+
+and FreeSolv, respectively.
+
+(a) ESOL
+
+(b) FreeSolv
+
+Figure 6. Training of MAT with (blue) and without (orange) pre-
+training, on ESOL (left) and FreeSolv (right). Pretraining stabilizes
+training (smaller variance of the training error) and improves con-
+vergence speed.
+
+5. Conclusions.
+In this work we propose Molecule Attention Transformer as
+a versatile architecture for molecular property prediction. In
+contrast to other tested models, MAT performs well across a
+wide range of molecule property prediction tasks. Moreover,
+inclusion of self-supervised pretraining further improves its
+performance, and drastically reduces the need for tuning of
+hyperparameters.
+We hope that our work will widen adoption of deep learn-
+ing in applications involving molecular property prediction,
+
+282212282319161312010311221928141724HOONNHSOONHNO12310987611125418171615142021192223242526272813050010001500200025003000Train steps0.000.050.100.150.200.250.300.350.40Training errorPretrained MATMAT02505007501000125015001750Train steps0.000.050.100.150.200.250.300.350.40Training errorPretrained MATMATMolecule Attention Transformer
+
+Devlin, J., Chang, M.-W., Lee, K., and Toutanova,
+K. Bert: Pre-training of deep bidirectional trans-
+formers for
+cite
+arxiv:1810.04805Comment: 13 pages.
+
+language understanding, 2018.
+
+Duvenaud, D. K., Maclaurin, D., Iparraguirre, J., Bom-
+barell, R., Hirzel, T., Aspuru-Guzik, A., and Adams, R. P.
+Convolutional networks on graphs for learning molecular
+ﬁngerprints. In Cortes, C., Lawrence, N. D., Lee, D. D.,
+Sugiyama, M., and Garnett, R. (eds.), Advances in Neu-
+ral Information Processing Systems 28, pp. 2224–2232.
+Curran Associates, Inc., 2015.
+
+Feinberg, E. N., Sur, D., Wu, Z., Husic, B. E., Mai, H.,
+Li, Y., Sun, S., Yang, J., Ramsundar, B., and Pande,
+V. S. Potentialnet for molecular property prediction. ACS
+Central Science, 4(11):1520–1530, 2018. doi: 10.1021/
+acscentsci.8b00507.
+
+Gaulton, A., Bellis, L. J., Bento, A. P., Chambers, J., Davies,
+M., Hersey, A., Light, Y., McGlinchey, S., Michalovich,
+D., Al-Lazikani, B., and Overington, J. P. ChEMBL: a
+large-scale bioactivity database for drug discovery. Nu-
+cleic Acids Research, 40(D1):D1100–D1107, 09 2011.
+ISSN 0305-1048. doi: 10.1093/nar/gkr777.
+
+Gilmer, J., Schoenholz, S. S., Riley, P. F., Vinyals, O., and
+Dahl, G. E. Neural message passing for quantum chem-
+istry. In Precup, D. and Teh, Y. W. (eds.), Proceedings of
+the 34th International Conference on Machine Learning,
+volume 70 of Proceedings of Machine Learning Research,
+pp. 1263–1272, International Convention Centre, Sydney,
+Australia, 06–11 Aug 2017. PMLR.
+
+Goh, G., Siegel, C., Vishnu, A., Hodas, N., and Baker,
+N. Chemception: A deep neural network with min-
+imal chemistry knowledge matches the performance
+of expert-developed qsar/qspr models. arXiv preprint
+arXiv:1706.06689, 06 2017.
+
+Gómez-Bombarelli, R., Wei,
+
+J. N., Duvenaud, D.,
+Hernández-Lobato, J., Sánchez-Lengeling, B., Sheberla,
+D., Aguilera-Iparraguirre, J., Hirzel, T. D., Adams, R. P.,
+and Aspuru-Guzik, A. Automatic chemical design us-
+ing a data-driven continuous representation of molecules.
+ACS Central Science, 4(2):268–276, 02 2018.
+doi:
+10.1021/acscentsci.7b00572.
+
+Goodfellow, I., Bengio, Y., and Courville, A. Deep Learning.
+
+MIT Press, 2016.
+
+Guo, M., Zhang, Y., and Liu, T. Gaussian transformer: a
+lightweight approach for natural language inference. In
+AAAI 2019, 2019.
+
+Haghighatlari, M. and Hachmann, J. Advances of machine
+learning in molecular modeling and simulation. Cur-
+rent Opinion in Chemical Engineering, 23:51 – 57, 2019.
+
+ISSN 2211-3398. doi: https://doi.org/10.1016/j.coche.
+2019.02.009. Frontiers of Chemical Engineering: Molec-
+ular Modeling.
+
+Honda, S., Shi, S., and Ueda, H. R. Smiles transformer: Pre-
+trained molecular ﬁngerprint for low data drug discovery,
+2019.
+
+Htut, P. M., Phang, J., Bordia, S., and Bowman, S. R. Do at-
+tention heads in bert track syntactic dependencies?, 2019.
+
+Hu, W., Liu, B., Gomes, J., Zitnik, M., Liang, P., Pande,
+V. S., and Leskovec, J. Pre-training graph neural networks.
+CoRR, abs/1905.12265, 2019.
+
+Ishiguro, K., Maeda, S., and Koyama, M. Graph warp
+module: an auxiliary module for boosting the power of
+graph neural networks. CoRR, abs/1902.01020, 2019.
+
+Jastrz˛ebski, S., Le´sniak, D., and Czarnecki, W. M. Learning
+
+to smile (s). arXiv preprint arXiv:1602.06289, 2016.
+
+Jr, J. F. R., Florea, L., de Oliveira, M. C. F., Diamond,
+D., and Jr, O. N. O. A survey on big data and machine
+learning for chemistry, 2019.
+
+Karpov, P., Godin, G., and Tetko, I. V. A transformer model
+for retrosynthesis. In International Conference on Artiﬁ-
+cial Neural Networks, pp. 817–830. Springer, 2019.
+
+Kearnes, S., McCloskey, K., Berndl, M., Pande, V., and
+Riley, P. Molecular graph convolutions: Moving beyond
+ﬁngerprints. Journal of Computer-Aided Molecular De-
+sign, 30, 03 2016. doi: 10.1007/s10822-016-9938-8.
+
+Kim, S., Chen, J., Cheng, T., Gindulyte, A., He, J., He, S.,
+Li, Q., Shoemaker, B. A., Thiessen, P. A., Yu, B., et al.
+Pubchem 2019 update: improved access to chemical data.
+Nucleic acids research, 47(D1):D1102–D1109, 2018.
+
+Kingma, D. P. and Ba, J. Adam: A method for stochastic
+
+optimization. arXiv preprint arXiv:1412.6980, 2014.
+
+Korotcov, A., Tkachenko, V., Russo, D. P., and Ekins, S.
+Comparison of deep learning with multiple machine learn-
+ing methods and metrics using diverse drug discovery
+data sets. Molecular Pharmaceutics, 14(12):4462–4475,
+12 2017. doi: 10.1021/acs.molpharmaceut.7b00578.
+
+Krizhevsky, A., Sutskever, I., and Hinton, G. E. Imagenet
+classiﬁcation with deep convolutional neural networks. In
+Pereira, F., Burges, C. J. C., Bottou, L., and Weinberger,
+K. Q. (eds.), Advances in Neural Information Process-
+ing Systems 25, pp. 1097–1105. Curran Associates, Inc.,
+2012.
+
+Landrum, G. Rdkit: Open-source cheminformatics software.
+
+2016.
+
+Molecule Attention Transformer
+
+Li, J., Cai, D., and He, X. Learning graph-level representa-
+tion for drug discovery. arXiv preprint arXiv:1709.03741,
+2017.
+
+Li, R., Wang, S., Zhu, F., and Huang, J. Adaptive graph
+convolutional neural networks. In Thirty-Second AAAI
+Conference on Artiﬁcial Intelligence, 2018.
+
+Lipinski, C. A., Lombardo, F., Dominy, B. W., and Feeney,
+P. J. Experimental and computational approaches to
+estimate solubility and permeability in drug discovery
+and development settings. Advanced Drug Delivery Re-
+views, 23(1):3 – 25, 1997. ISSN 0169-409X. doi: https:
+//doi.org/10.1016/S0169-409X(96)00423-1.
+In Vitro
+Models for Selection of Development Candidates.
+
+Mayr, A., Klambauer, G., Unterthiner, T., Steijaert, M., Weg-
+ner, J. K., Ceulemans, H., Clevert, D.-A., and Hochreiter,
+S. Large-scale comparison of machine learning meth-
+ods for drug target prediction on chembl. Chem. Sci., 9:
+5441–5451, 2018. doi: 10.1039/C8SC00148K.
+
+Podlewska, S. and Kafel, R. Metstabon—online platform
+for metabolic stability predictions. International journal
+of molecular sciences, 19(4):1040, 2018.
+
+Ramsundar, B., Eastman, P., Walters, P., Pande, V., Leswing,
+K., and Wu, Z. Deep Learning for the Life Sciences.
+O’Reilly Media, 2019.
+
+Rogers, D. and Hahn, M. Extended-connectivity ﬁnger-
+prints. Journal of chemical information and modeling, 50
+(5):742–754, 2010.
+
+Schütt, K. T., Arbabzadah, F., Chmiela, S., Müller, K. R.,
+and Tkatchenko, A. Quantum-chemical insights from
+deep tensor neural networks. Nature Communications, 8:
+13890, Jan 2017. doi: 10.1038/ncomms13890.
+
+Segler, M., Kogej, T., Tyrchan, C., and Waller, M. Gener-
+ating focused molecule libraries for drug discovery with
+recurrent neural networks. ACS Central Science, 4, 01
+2017. doi: 10.1021/acscentsci.7b00512.
+
+Shang, C., Liu, Q., Chen, K.-S., Sun, J., Lu, J., Yi, J., and Bi,
+J. Edge Attention-based Multi-Relational Graph Convo-
+lutional Networks. arXiv e-prints, art. arXiv:1802.04944,
+Feb 2018.
+
+Shaw, P., Uszkoreit, J., and Vaswani, A. Self-attention with
+relative position representations. In Proceedings of the
+2018 Conference of the North American Chapter of the
+Association for Computational Linguistics: Human Lan-
+guage Technologies, Volume 2 (Short Papers), pp. 464–
+468, New Orleans, Louisiana, June 2018. Association for
+Computational Linguistics. doi: 10.18653/v1/N18-2074.
+
+Shin, B., Park, S., Kang, K., and Ho, J. C. Self-attention
+based molecule representation for predicting drug-target
+interaction.
+In Doshi-Velez, F., Fackler, J., Jung, K.,
+Kale, D., Ranganath, R., Wallace, B., and Wiens, J. (eds.),
+Proceedings of the 4th Machine Learning for Health-
+care Conference, volume 106 of Proceedings of Machine
+Learning Research, pp. 230–248, Ann Arbor, Michigan,
+09–10 Aug 2019. PMLR.
+
+Vaswani, A., Shazeer, N., Parmar, N., Uszkoreit, J., Jones,
+L., Gomez, A. N., Kaiser, L., and Polosukhin, I. Attention
+is all you need. CoRR, abs/1706.03762, 2017.
+
+Veliˇckovi´c, P., Cucurull, G., Casanova, A., Romero, A., Liò,
+P., and Bengio, Y. Graph Attention Networks. arXiv
+e-prints, art. arXiv:1710.10903, Oct 2017.
+
+Wallach, I., Dzamba, M., and Heifets, A. Atomnet: A deep
+convolutional neural network for bioactivity prediction in
+structure-based drug discovery. ArXiv, abs/1510.02855,
+2015.
+
+Wang, S., Guo, Y., Wang, Y., Sun, H., and Huang, J. Smiles-
+bert: Large scale unsupervised pre-training for molec-
+In Proceedings of the 10th
+ular property prediction.
+ACM International Conference on Bioinformatics, Com-
+putational Biology and Health Informatics, BCB ’19,
+pp. 429–436, New York, NY, USA, 2019. Association
+for Computing Machinery. ISBN 9781450366663. doi:
+10.1145/3307339.3342186.
+
+Weininger, D. Smiles, a chemical language and information
+system. 1. introduction to methodology and encoding
+rules. Journal of chemical information and computer
+sciences, 28(1):31–36, 1988.
+
+Withnall, M., Lindelöf, E., Engkvist, O., and Chen, H. Build-
+ing attention and edge convolution neural networks for
+bioactivity and physical-chemical property prediction,
+Sep 2019.
+
+Wong, C. H., Siah, K. W., and Lo, A. W. Estimation of
+clinical trial success rates and related parameters. Bio-
+statistics, 20(2):273–286, 01 2018. ISSN 1465-4644. doi:
+10.1093/biostatistics/kxx069.
+
+Wu, Z., Ramsundar, B., Feinberg, E. N., Gomes, J., Ge-
+niesse, C., Pappu, A. S., Leswing, K., and Pande, V.
+Moleculenet: a benchmark for molecular machine learn-
+ing. Chem. Sci., 9:513–530, 2018.
+doi: 10.1039/
+C7SC02664A.
+
+Yang, K., Swanson, K., Jin, W., Coley, C., Eiden, P., Gao,
+H., Guzman-Perez, A., Hopper, T., Kelley, B., Mathea,
+M., et al. Analyzing learned molecular representations
+for property prediction. Journal of chemical information
+and modeling, 59(8):3370–3388, 2019.
+
+Molecule Attention Transformer
+
+A. Dataset details.
+We include below a more detailed description of the datasets
+used in our benchmark.
+
+• FreeSolv, ESOL. Regression tasks. Popular tasks for
+predicting water solubility in terms of the hydration
+free energy (FreeSolv) and logS (ESOL). Solubility of
+molecules is an important property that inﬂuences the
+bioavailability of drugs.
+
+• Blood-brain barrier permeability (BBBP). Binary
+classiﬁcation task. The blood-brain barrier (BBB) sep-
+arates the central nervous system from the bloodstream.
+Predicting BBB penetration is especially relevant in
+drug design when the goal for the molecule is either to
+reach the central nervous system or the contrary – not
+to affect the brain.
+
+• MetStabhigh, MetStablow. Binary classiﬁcation tasks.
+The metabolic stability of a compound is a measure
+of the half-life time of the compound within an or-
+ganism. The compounds for this task were taken
+from (Podlewska & Kafel, 2018), where compounds
+were divided into three sets: high, medium, and low
+stability. In this paper we concatenated these sets in
+order to build two classiﬁcation tasks: MetStabhigh
+(discriminating high against others) and MetStablow
+(discriminating low against others).
+
+• Estrogen Alpha, Estrogen Beta. Binary classiﬁca-
+tion tasks. Often in drug discovery, it is important that
+a molecule is not potent towards a given target. Modu-
+lating of the estrogen receptors changes the genomic
+expression throughout the body, which in turn may
+lead to the development of cancer. For these tasks, the
+compounds with known activities towards the receptors
+were extracted from ChEMBL (Gaulton et al., 2011)
+database and divided into active and inactive sets based
+on their reported inhibition constant (Ki), being < 100
+nM and > 1000 nM, respectively.
+
+B. Other experimental details
+In this section we include details for hyperparameters and
+training settings used in Section 4.2.
+
+• ATTENTION HEADS NUMBER – number of molecule
+
+self-attention heads,
+
+• PFFS NUMBER – number of dense layers in the
+
+position-wise feed forward block (K in Figure 1),
+
+• λatt – self-attention weight λatt,
+• λdist – distance weight λd,
+• DISTANCE MATRIX KERNEL – function g used to trans-
+
+form the distance matrix D,
+
+• MODEL DROPOUT – dropout applied after the embed-
+ding layer, position-wise feed forward layers, and resid-
+ual layers (before sum operation),
+
+• WEIGHT DECAY – optimizer weight decay,
+• LEARNING RATE – (see Equation 3)
+• EPOCHS NUMBER – number of epochs for which the
+
+model is trained
+
+• BATCH SIZE – batch size used during the training of
+
+the model
+
+• WARMUP FACTOR – fraction of epochs after which we
+end with increasing the learning rate linearly and begin
+with decreasing it proportionally to the inverse square
+root of the step number. (see Equation 3)
+
+Table 7. Molecule Attention Transformer hyperparameters ranges
+
+BATCH SIZE
+LEARNING RATE
+EPOCHS
+MODEL DIM
+LAYERS NUMBER
+ATTENTION HEADS NUMBER
+PFFS NUMBER
+λatt
+λdistance
+DISTANCE MATRIX KERNEL
+MODEL DROPOUT
+WEIGHT DECAY
+WARMUP FACTOR
+
+PARAMETERS
+8, 16, 32, 64, 128
+.01, .005, .001, .0005, .0001
+30, 100
+32, 64, 128, 256, 512, 1024
+1, 2, 4, 6, 8
+1, 2, 4, 8, 16
+1
+0, .1, .2, .3, .4, .5, .6, .7, .8, .9, 1
+0, .1, .2, .3, .4, .5, .6, .7, .8, .9, 1
+’SOFTMAX’, ’EXP’
+.0, .1, .2
+.0, .00001, .0001, .001, .01
+.0, .1, .2, .3, .4, .5
+
+Molecule Atention Trainsformer. Table 7 shows hyper-
+parameter ranges used in experiments for MAT. A short
+description of these hyperparameters is listed below:
+
+As suggested in (Vaswani et al., 2017), for optimization of
+MAT we used Adam optimizer (Kingma & Ba, 2014), with
+learning rate scheduler given by the following formula:
+
+• MODEL DIM – size of embedded atom features,
+• LAYERS NUMBER – number of encoder module repeats
+
+(N in Figure 1),
+
+· min(cid:0)step num−0.5, step num · warmup steps−0.5(cid:1) .
+
+StepLR = optimizer f actor · model dim−0.5·
+
+(3)
+
+Molecule Attention Transformer
+
+Where optimizer factor is given by 100 · LEARNING RATE
+and warmup steps is given by WARMUP FACTOR · total train
+steps number.
+After N layers embedding of the molecule is calculated by
+taking the mean of returned by the network vector repre-
+sentations of all atoms (Global pooling in Figure 1). Then
+it is passed to the single linear layer, which returns the
+prediction.
+
+SVM, RF, GCN, Weave.
+In our experiments, we used
+DeepChem (Ramsundar et al., 2019) implementation of
+baseline algorithms (SVM, RF, GCN, Weave). We used
+the same hyperparameters for tuning as were used in
+DeepChem, having regard to their proposed default values
+(we list them in Tables 8 - 11).
+RF and SVM work on the vector representation of molecule
+given by the Extended-connectivity ﬁngerprints (Rogers &
+Hahn, 2010). ECFP vectors were calculated using class
+CIRCULARFINGERPRINT from the DeepChem package,
+with default parameters (RADIUS=2, SIZE=2048).
+
+Table 8. SVM hyperparameter ranges
+
+PARAMETERS
+
+C
+
+GAMMA
+
+.25, .4375, .625, .8125, 1., 1.1875,
+1.375, 1.5625, 1.75, 1.9375, 2.125,
+2.3125, 2.5, 2.6875, 2.875, 3.0625,
+
+3.25, 3.4375, 3.625, 3.8125, 4.
+.0125, .021875, .03125, .040625,
+
+.05, .059375, .06875, .078125, .0875,
+
+.096875, .10625, .115625,
+
+.125, .134375, .14375, .153125,
+
+.1625, .171875, .18125, .190625, .2
+
+Table 9. RF hyperparameter ranges
+
+N ESTIMATORS
+
+PARAMETERS
+
+125, 218, 312, 406, 500, 593,
+687, 781, 875, 968, 1062, 1156,
+1250, 1343, 1437, 1531, 1625,
+
+1718, 1812, 1906, 2000
+
+Table 10. GCN hyperparameter ranges
+
+BATCH SIZE
+LEARNING RATE
+N FILTERS
+N FULLY CONNECTED NODES
+
+PARAMETERS
+64, 128, 256
+0.002, 0.001, 0.0005
+64, 128, 192, 256
+128, 256, 512
+
+EAGCN Table 12 shows hyperparameter ranges used in
+experiments for EAGCN. For EAGCN with weighted struc-
+
+Table 11. Weave hyperparameter ranges
+
+BATCH SIZE
+NB EPOCH
+LEARNING RATE
+N GRAPH FEAT
+N PAIR FEAT
+
+PARAMETERS
+16, 32, 64, 128
+20, 40, 60, 80, 100
+0.002, 0.001, 0.00075, 0.0005
+32, 64, 96, 128, 256
+14
+
+ture number of convolutional features n_sgc = n_sgc_1 +
+n_sgc_2 + n_sgc_3 + n_sgc_4 + n_sgc_5.
+
+Table 12. EAGCN hyperparameter ranges
+
+BATCH SIZE
+EAGCN STRUCTURE
+NUM EPOCHS
+LEARNING RATE
+DROPOUT
+WEIGHT DECAY
+N CONV LAYERS
+N DENSE LAYERS
+N SGC 1
+N SGC 2
+N SGC 3
+N SGC 4
+N SGC 5
+DENSE DIM
+
+PARAMETERS
+16, 32, 64, 128, 256, 512
+’CONCATE’, ’WEIGHTED’
+30, 100
+.01, .005, .001, .0005, .0001
+.0, .1, .3
+.0, .001, .01, .0001
+1, 2, 4, 6
+1, 2, 3, 4
+30, 60
+5, 10, 15, 20, 30
+5, 10, 15, 20, 30
+5, 10, 15, 20, 30
+5, 10, 15, 20, 30
+16, 32, 64, 128
+
+C. Additional results for Sec. 4.2
+Predicting internal energy We run an additional exper-
+iment on a regression task related to quantum mechanics.
+From the Alchemy dataset (Chen et al., 2019), which is
+a dataset of 12 quantum properties calculated for 200K
+molecules, we have chosen internal energy at 298.15 K to
+further test the performance of our model. We hypothesize
+that our molecule self-attention should perform particularly
+well in tasks involving atom level interactions such as energy
+prediction.
+Table 13 presents mean absolute errors of three methods:
+one classical method (RF), one graph method (GCN), and
+our pretrained MAT. We use original train/valid/test splits
+of the dataset. For RF and GCN we run a random search
+with budget of 500 hyperparameter sets. For pretrained
+MAT, we tune only the learning rate, that is selected from
+{1e−3, 5e−4, 1e−4, 5e−5, 1e−5, 5e−6, 1e−6}.
+MAT achieves a slightly lower error than GCN. As can
+be expected, both graph methods can learn internal energy
+function correctly because of the locality preserved in the
+graph structure. The classical method based on ﬁngerprints
+gives MAE that is almost two orders of magnitude higher
+than MAE of the other methods in the comparison.
+
+Molecule Attention Transformer
+
+Table 13. Test results for internal energy prediction reported as
+MAE. All methods were tuned with a random search with budget
+of 500 hyperparameter combinations.
+
+U (INTERNAL ENERGY)
+
+RF
+GCN
+MAT
+
+.380
+.006
+.004
+
+Figure 7. Training loss of MAT and GCN as a function of the
+number of layers (left) and model dimensionality (right).
+
+Training error for graph-based neural networks
+Ishig-
+uro et al. (2019) show that graph neural networks suffer
+from underﬁtting of the training set and their performance
+does not scale well with the complexity of the network. We
+reproduce their experiments and conﬁrm that this problem is
+indeed present for both GCN and MAT. According to Figure
+7, the training loss of GCN and MAT ﬂattens at some point
+and stops decreasing even if we keep increasing the number
+of layers and model dimensionality. Despite this issue, for
+almost all settings, MAT achieves lower training error than
+GCN.
+
+D. Additional details for Sec. 4.3
+Task description. As a node-level pretraining task we
+chose masking from (Hu et al., 2019) which is a version of
+BERT masked language model adapted to graph structured
+data. The idea is that predicting masked nodes based on their
+neighbourhood will encourage model to capture domain
+speciﬁc relationships between atoms.
+For each molecular graph we randomly replace 15% of
+input nodes (atom attributes) with special mask token. After
+forward pass we apply linear model to corresponding node
+embeddings to predict masked node attributes. In case of
+EAGCN we additionally mask attributes of edges connected
+to masked nodes to prevent model from learning simple
+value copying.
+
+Pretraining setting. Training dataset consisted of 2 mln
+molecules sampled from the ZINC15 database. Models
+
+were trained for 8 epochs with learning rate set to 0.001 and
+batch size 256. MAT was optimized with Noam optimizer
+(described in App. B), whereas for EAGCN we used Adam
+(Kingma & Ba, 2014). In both cases procedure minimized
+binary cross entropy loss.
+
+Fine-tuning setting. All our pretrained models are ﬁne-
+tuned on the target tasks for 100 epochs, with batch size
+equal to 32 and learning rate selected from the set of
+{1e−3, 5e−4, 1e−4, 5e−5, 1e−5, 5e−6, 1e−6}.
+In Estrogen Alpha experiments we excluded three molecules
+(with the highest number of atoms) from the dataset, due to
+the memory issues.
+
+Table 14. Pretrained MAT hyperparameters
+
+MODEL DIM
+LAYERS NUMBER
+ATTENTION HEADS NUMBER
+PFFS NUMBER
+λatt
+λdistance
+DISTANCE MATRIX KERNEL
+MODEL DROPOUT
+WEIGHT DECAY
+
+PARAMETERS
+1024
+8
+16
+1
+.33
+.33
+’EXP’
+.0
+.0
+
+Table 15. Pretrained EAGCN hyperparameters
+
+EAGCN STRUCTURE
+DROPOUT
+WEIGHT DECAY
+N CONV LAYERS
+N DENSE LAYERS
+N SGC
+
+PARAMETERS
+’WEIGHTED’
+.0
+.0
+8
+1
+1080
+
+SMILES Transformer. We used pretrained weights of
+SMILES-Transformers conducted by Honda et al. (2019).
+In this setting, according to the authors, we used MLP
+with 1 hidden layer, with 100 hidden units, that works
+on the 1024-dimensional molecule embedding returned
+by the pretrained transformer. We trained this MLP
+on the target
+tasks for 100 epochs, with batch size
+equal to 32 and learning rate selected from the set of
+{1e−3, 5e−4, 1e−4, 5e−5, 1e−5, 5e−6, 1e−6}.
+
+E. Additional results for Sec. 4.4
+Edge features. Every bond in the molecule was embed-
+ded by the vector of edge features (we used features sim-
+ilar to described in (Shang et al., 2018)). Every edge fea-
+ture was then passed through linear layer, followed by
+ReLU activation, which returned one single value for every
+
+246810Layers number0.20.30.40.50.6Training errorGCNMAT101102103104Model dim0.20.40.60.81.0Training errorGCNMATMolecule Attention Transformer
+
+single edge (if there is no edge between atoms, we pass
+zero vector through the layer). This results in the matrix
+E ∈ RNatoms×Natoms which was then used in Molecule Self-
+Attention layer, instead of the adjacency matrix.
+
+Table 16. Edge Features used for experiments form Table 6
+
+ATTRIBUTE
+BOND ORDER
+AROMATICITY
+CONJUGATION
+RING STATUS
+
+DESCRIPTION
+VALUES FROM SET { 1, 1.5, 2, 3 }
+IS AROMATIC
+IS CONJUGATED
+IS IN A RING
+
+F. Toy task
+Task description. The essential feature of Molecule At-
+tention Transformer is that it augments the self-attention
+module using molecule structure. Here we investigate MAT
+on a task heavily reliant on distances between atoms; we
+are primarily interested in how the performance of MAT
+depends on λa, λd, λg that are used to weight the adjacency
+and the distance matrices in Equation 2.
+Naturally, many properties of molecules depend on their
+geometry. For instance, steric effect happens when a spatial
+proximity of a given group, blocks reaction from happen-
+ing, due to an overlap in electronic groups. However, this
+type of reasoning can be difﬁcult to learn based only on the
+graph information, as it does not always reﬂect the geom-
+etry well. Furthermore, focusing on distance information
+might require selecting low values for either λg or λa (see
+Figure 1).
+To illustrate this, we designed a toy task to predict whether
+or not two substructures are closer to each other in space
+than a predeﬁned threshold; see also Figure 8a. We expect
+that MAT will work signiﬁcantly better than a vanilla graph
+convolutional network if λd is tuned well.
+
+Experimental setting. We construct the dataset by sam-
+pling 2677 molecules from PubChem (Kim et al., 2018),
+and use 20 Å threshold between -NH2 fragment and tert-
+butyl group to determine the binary label. The threshold
+was selected so that positive and negative examples are well
+balanced.
+
+Results. First, we plot Molecule Attention Transformer
+performance as a function of λd in Figure 8b for three set-
+tings of λ: λa = 0 (blue), λa = λg (orange), and λg = 0
+(green). In all cases we ﬁnd that using distance information
+improves the performance signiﬁcantly. Additionally, we
+found that GCN achieves 0.93 AUC on this task, compared
+to 0.98 by MAT with λd = 1.0. These results both motivate
+tuning λ, and show that MAT can efﬁciently use distance
+information if it is important for the task at hand.
+
+(a) The toy task is to predict whether two substructures (-NH2
+fragment and tert-butyl group) co-occur within given distance.
+
+(b) Molecule Attention Transformer performance on the toy task
+as a function of λd, for different settings of λg and λa.
+
+Figure 8. MAT can efﬁciently use the inter-atomic distances to
+solve the toy task (see left). Additionally, the performance is
+heavily dependent on λd, which motivates tuning λ in the main
+experiments (see right).
+
+Further details. The molecules
+in the toy task
+dataset were downloaded from PubChem.
+The
+SMARTS query used to ﬁnd the compounds was
+(C([C;H3])([C;H3])([C;H3]).[NX3H2]). All
+molecules were then ﬁltered so that only those with ex-
+actly one tert-butyl group and one -NH2 fragment were left.
+For each of them, ﬁve conformers were created with RDKit
+implementation of the Universal Force Field (UFF).
+The task is a binary classiﬁcation of the distance between
+two molecule fragments. If the euclidean distance between
+-NH2 fragment and tert-butyl group is greater than a given
+threshold, the label is 1 (0 otherwise). As the distance
+we mean the distance between the closest heavy atoms in
+these two fragments across calculated conformers. We used
+20 Å as the threshold as it leads to a balanced dataset.
+There are 2677 compounds total from which 1140 are in a
+positive class. The dataset was randomly split into training,
+validation, and test datasets.
+In experiments the hyperparameters that yielded promising
+results on our datasets were used (listed in Table 17). The
+values of λ parameters were tuned, and their scores are
+shown in Figure 8b. All three λ parameters (λd, λg, λa)
+sum to 1 in all experiments.
+
+t-butylamine0.00.20.40.60.81.0 distance0.750.800.850.900.95AUCa=0a=gg=0Molecule Attention Transformer
+
+each such pattern found in a qualitative manner, we tested
+quantitatively if our hypotheses are true about what these
+particular attention heads represent.
+For each pattern found in one of the attention heads, we con-
+struct a SMARTS expression describing atoms that belong
+to our hypothetical molecular structures. Then, all atoms
+matching the pattern are extracted from the BBBP dataset,
+and their mean attention weights (average column value of
+the attention matrix) are compared against atoms that do not
+match the pattern. Table 19 shows the distributions of atten-
+tion weights for matching and not matching atoms. Atoms
+which match the SMARTS expression have signiﬁcantly
+higher attention weights (µ+ > µ−).
+
+To compare our results with a standard graph convolutional
+neural network, we run a grid search over hyperparameters
+shown in Table 18. The hyperparameters for which the best
+validation AUC score was reached are emboldened, and
+their test AUC score is 0.925 ± 0.006.
+
+Table 17. MAT hyperparameters used.
+
+BATCH SIZE
+LEARNING RATE
+EPOCHS
+
+PARAMETERS
+16
+0.0005
+100
+MODEL DIM 64
+MODEL N 4
+8
+MODEL H
+2
+MODEL N DENSE
+’TANH’
+MODEL DENSE OUTPUT NONLINEARITY
+’SOFTMAX’
+DISTANCE MATRIX KERNEL
+0.0
+MODEL DROPOUT
+0.001
+WEIGHT DECAY
+’ADAM_ANNEAL’
+OPTIMIZER
+’MEAN’
+AGGREGATION TYPE
+
+Table 18. Hyperparameters used for tuning GCN.
+
+BATCH SIZE
+LEARNING RATE
+EPOCHS
+N FILTERS
+N FULLY CONNECTED NODES
+
+PARAMETERS
+16, 32, 64
+0.0005
+20, 40, 60, 80, 100
+64, 128
+128, 256
+
+G. Interpretability analysis
+
+Table 19. Statistics of the six attention head patterns described in
+the text. Each head function is deﬁned by a SMARTS that selects
+atoms with high attention weights. For each atom in the dataset
+we calculated mean weight assigned to them by the corresponding
+attention head (average column value of the attention matrix).
+Calculated means and standard deviations show the difference
+between attention weights of matching atoms (µ+, σ+) against the
+other atoms (µ−, σ−).
+
+HEAD
+SMARTS
+
+µ+
+σ+
+µ−
+σ−
+
+I
+
+[C;D2]
+
+.136
+.080
+.008
+.032
+
+II
+[S,S]
+
+.330
+.280
+.001
+.003
+
+III
+
+[N;R0]
+
+.061
+.074
+.002
+.016
+
+IV
+O=*
+
+.095
+.120
+.006
+.034
+
+V
+
+[A;D3]
+
+.043
+.032
+.006
+.014
+
+VI
+N
+
+.228
+.171
+.005
+.009
+
+We found several patterns in the self-attention heads by
+looking at the ﬁrst layer of MAT. These patterns correspond
+to chemical structures that can be found in molecules. For
+
+

@@ -1,0 +1,993 @@
+Review
+Directed Evolution Methods for Enzyme Engineering
+
+Saurabh Rajendra Nirantar
+
+Illumina Singapore Inc., Singapore 757716, Singapore; snirantar@illumina.com
+
+Abstract: Enzymes underpin the processes required for most biotransformations. However, natural
+enzymes are often not optimal for biotechnological uses and must be engineered for improved
+activity, speciﬁcity and stability. A rich and growing variety of wet-lab methods have been developed
+by researchers over decades to accomplish this goal. In this review such methods and their speciﬁc
+attributes are examined.
+
+Keywords: directed evolution; enzyme engineering; protein engineering; high throughput screening
+
+1. Introduction
+
+Enzymes catalyze all the fundamental transformations required to convert matter
+and energy into living systems. Society has beneﬁted profusely from adaptation of pre-
+existing enzymes for industrial, research and medical uses [1–6]. However, pre-existing
+enzymes are often not optimal for industrial applications due to temperature, pH and
+solvent stability, as well as substrate speciﬁcity and activity limitations [7–10].
+
+To overcome these limitations, researchers have been developing methods to replicate
+evolutionary processes to enable improvement of enzymes’ properties as required. These
+methods constitute a critical toolbox, whose importance for public welfare was recently
+recognized by the awarding of the Nobel Prize for Medicine in 2018 to Frances Arnold, and
+are reviewed in this article.
+
+2. Generation of Diversity to Explore Sequence Space
+
+The ﬁrst step for any enzyme evolution campaign is to create a library of mutants of
+the target enzyme. These mutants sample sequence space in which it is hoped a satisfactory
+solution will be present, which will be uncovered by the process employed for screening.
+Libraries can broadly be of two types, targeted or random.
+
+Targeted libraries mutagenize only a region of interest or speciﬁc amino acid positions
+of the gene, to increase the odds of ﬁnding a desirable mutant. The region of interest may
+be identiﬁed based on a crystal structure or homology model which can be used to infer
+amino acid positions important for substrate binding or catalysis. Targeted libraries are
+of particular interest when seeking to improve properties which are disproportionately
+determined by a few positions, such as substrate speciﬁcity. Targeted libraries can be
+constructed by using site directed mutagenesis using oligos with degenerate codons like
+nnk or nns at the site of interest [11–13]. An attractive alternative to degenerate codons are
+Trimer codon carrying oligos, which use an equimolar mix of trimeric phosphoramidates
+codingfor optimal codons (usually for E. coli) for 19 or 20 amino acids [14]. This avoids
+skewed representations or rare codons or stop codons. Such Trimer phosphoramidite mixes
+can also be ordered customized from certain vendors such as IDT. Another option is to
+have the entire library constructed from custom vendors like Twist or Genscript.
+
+Random libraries, in contrast, target the whole gene of interest and are more relevant
+when seeking to improve globally determined properties like thermal stability or where
+detailed information about the enzyme of interest is not available. Such libraries can be
+made easily using traditional error prone PCR [15]. One shortcoming of error prone PCR
+is that as a given codon will most likely have only one mutation, a given amino acid can
+
+Citation: Nirantar, S.R. Directed
+Evolution Methods for Enzyme
+Engineering. Molecules 2021, 26, 5599.
+https://doi.org/10.3390/
+molecules26185599
+
+Academic Editor: Rudy J. Richardson
+
+Received: 20 April 2021
+Accepted: 17 August 2021
+Published: 15 September 2021
+
+Publisher’s Note: MDPI stays neutral
+with regard to jurisdictional claims in
+published maps and institutional afﬁl-
+iations.
+
+Copyright: © 2021 by the author.
+Licensee MDPI, Basel, Switzerland.
+This article is an open access article
+distributed under
+the terms and
+conditions of the Creative Commons
+Attribution (CC BY) license (https://
+creativecommons.org/licenses/by/
+4.0/).
+
+Molecules 2021, 26, 5599. https://doi.org/10.3390/molecules26185599
+
+https://www.mdpi.com/journal/molecules
+
+molecules# &!*-0+/ .Molecules 2021, 26, 5599
+
+2 of 14
+
+only be mutagenized to a few others rather than all 19 other possibilities. For instance,
+a wild type GGT codon is highly unlikely to yield an ATG or TTT codon using random
+mutagenesis as more than one mutation would be required in the same codon. Under
+such circumstances, custom DNA library vendors can provide a “scanning” library which
+contains all 20 amino acids at each position, one mutation at a time, which might be
+preferable to in-house construction. Such libraries can then be combinatorially shufﬂed to
+yield a library with a greater sampling of the mutational space.
+
+Other possibilities and variations for library generation include mutagenic strains for
+continuous mutagenesis [16,17], shufﬂing of multiple single mutants to create synergisti-
+cally improved combined mutations [18].
+
+3. Library Screening Methods
+
+Once the library is designed and synthesized, it must then be screened to identify
+mutants with desired properties. The ﬁrst step, of course, is to express the library and
+create a pool of protein mutants for an assay (the phenotype), each of which must retain a
+traceable connection to the gene mutant (the genotype) from which it was derived. This is
+because only the gene can be ampliﬁed and sequenced and is therefore required to enable
+recovery and identiﬁcation of the useful protein mutant.
+
+This review classiﬁes screening methods into two broad categories: those based
+on optical signal detection and those based on survival, retrieval or growth advantages
+conferred on the host by the mutant enzyme. The former is generally more quantitative
+but requires more instrumentation as well as the establishment of an optical assay, while
+the latter is generally simpler to implement but is more qualitative or semi-quantitative.
+Optical methods have been further classiﬁed into micro scale vs. macro scale methods.
+Within each category, there are many different approaches, which are described in more
+detail below.
+
+3.1. Optical Methods
+3.1.1. Optical Methods > Micro-Scale Methods
+
+All other factors being equal, it is generally preferable to adopt a screening method
+which uses a small reaction scale, as this enables lower reagent costs as well as the option
+of screening large numbers to ﬁnd rare high performing mutants. The use of emulsions
+to generate isolated picoliter volume droplets, each acting as an independent reactor, has
+gained popularity since this technology was ﬁrst described by Tawﬁk and Grifﬁths [19].
+They used an emulsiﬁed in vitro transcription translation (IVTT) mix containing a DNA
+template coding for HaeIII methylase followed by a HaeIII site and thereafter a biotin
+moiety. Only a gene coding for a functional HaeIII methylase would methylate its site
+and prevent subsequent restriction by HaeIII restriction endonuclease, thereby enabling
+pulldown via the biotin moiety.
+
+Optical Methods > Micro Scale Methods > FACS Based Double Emulsion Methods
+
+Subsequently, other researchers have introduced many further reﬁnements, such as
+the use of ﬂuorogenic substrates, the encapsulation of whole cells expressing enzyme
+mutants (which allows for enzyme buffers other than those needed for IVTT—a limitation
+of the original paper mentioned above), and the use of water-in-oil-in-water “double
+emulsions”, whose aqueous outer phase allows for FACS (Fluorescence Activated Cell
+Sorting) sorting, thus enabling rapid, quantitative isolation of desirable mutants from
+libraries of millions and more. Bernath et al. demonstrated that heterogenous bulk double
+emulsions could be sorted on FACS and lead to enrichment of the correct moiety [20]. Later,
+Mastrobattista et al. used in vitro translation of a mixture of mutant genes along with a
+ﬂuorigenic substrate in water-in-oil emulsion, followed by double emulsiﬁcation, to create
+a continuous aqueous phase, followed by FACS sorting of these double emulsions to evolve
+β-galactosidase activity in Ebg, a protein of unknown activity [21]. Around the same time,
+Aharoni et al. used a library of >107 E. coli cells expressing mutants of serum paraoxonase
+
+Molecules 2021, 26, 5599
+
+3 of 14
+
+(PON1) encapsulated in a double emulsion and sorted by FACS to discover a variant with
+100× improved activity [22]. The double-emulsion followed by FACS approach has become
+progressively popular and technologically sophisticated (see schematic in Figure 1A), with
+microﬂuidic systems capable of generating uniform monodisperse droplets, and numerous
+applications to different enzymes have been demonstrated [23–26].
+
+Optical Methods > Micro Scale Methods > Water-in-Oil Emulsion Sorting Methods
+
+More recently, researchers have demonstrated the construction of microﬂuidic devices
+which allow Fluorescence Activated Droplet Sorting (FADS) using single (water-in-oil)
+emulsions (see Figure 1B for an example). Such devices allow for direct sorting of water-
+in-oil emulsions but generally have to be constructed in-house and may not match the
+sorting rate as well as the variety of ﬂuorescence options available with commercial FACS
+instruments used with water-in-oil-in-water double emulsions. Ahn and Kerbage ﬁrst
+demonstrated a microﬂuidic device able to sort water in oil emulsions [27]. Baret et al. [28]
+later demonstrated a device able to sort water in oil droplets at upto 2000 Hz, which could
+sort droplets containing β-galactosidase containing cells from an excess of droplets without
+such activity. Agresti and co-workers [29] used a device which could sort water-in-oil
+droplets containing yeast cells displaying variants of Horseradish Peroxidase (HRP). Based
+on the intensity of ﬂuorescence of HRP turnover products, they successfully evolved
+signiﬁcantly faster variants. Other groups have also demonstrated the use of such devices
+to evolve a variety of enzymes [30–33]. Interestingly, Gielen et al. [34] have demonstrated
+an absorbance based FADS device instead of the more common ﬂuorescence readout. These
+methods now routinely allow for the quantitative sorting of well over 107 variants.
+
+One limitation of the above-described emulsion methods is the inability to add or
+wash away reagents, limiting the read-out to cases where one-step ﬂuorescent assays
+are available. Recent work has demonstrated the addition of reagents at a later stage by
+controlled merger of droplets. For instance, Holstein et al. [35] recently demonstrated the
+selection of Savinase protease using a sophisticated microﬂuidic emulsion device capable
+of providing new reagents as required by controlled droplet merger. Other examples of
+devices capable of adding new reagents by droplet merger are reviewed by Weng and
+Spoonamore [36]; however, widespread use of such devices for enzyme evolution is still
+some distance away.
+
+Optical Methods > Micro Scale Methods > Matrix Capture Followed by FACS
+
+Other workers have developed FACS methods which allow for multiple steps of
+addition of new reagents and washing before assay. These methods use different matrices,
+such as Streptavidin beads or agarose, to capture genes and their cognate proteins on or
+in the same bead, followed by a ﬂuorescent assay whose outcome is also capture locally,
+allowing for genotype-phenotype linkage followed by sorting. For example, Grifﬁths
+and Tawﬁk [37] developed a multistep method which uses Streptavidin coated beads
+to successively capture a gene, then its cognate protein (in emulsion via biotinylated
+antibodies), and ﬁnally a substrate of the said protein, whose turnover can be detected
+using ﬂuorescent antibodies followed by FACS. This method has been applied by other
+researchers to different enzymes [38,39]. Other researchers have used inducible gelling
+agents like agarose to serve the same purpose (see schematic in Figure 1C) [40,41].
+
+Optical Methods > Micro Scale Methods > Well Arrays Combined with Microscopy
+
+An alternative format to emulsions is the use of microwell or microcapillary arrays.
+Like emulsions, these arrays physically retain the genotype and phenotype. Instead of a
+FACS instrument, however, a microscope is used to image the array. Unlike emulsions,
+these arrays can be repeatedly imaged to extract kinetic information; however, selective
+recovery is less convenient than with emulsions. Cochran’s group demonstrated a mi-
+crocapillary array with millions of individual capillaries, which stochastically captures
+individual yeast cells displaying protein mutants, which turn over a ﬂuorescent substrate.
+
+Molecules 2021, 26, 5599
+
+4 of 14
+
+After assay, live cells are recovered by using a laser pulse focused on the correct capillary
+which expels the contents thereof (Figure 1D). The authors demonstrated the evolution of
+alkaline phosphatase which is less inhibited by its phosphate by-product [42,43]. Similarly,
+Zhang et al. have shown the use of a femtoliter array combined with a microcapillary for
+selective recovery of genes expressing improved alkaline phosphatase [44].
+
+Optical Methods > Micro Scale Methods > Direct FACS Sorting of Cells
+
+A simpler option, if available, is to dispense with emulsions and directly sort intact
+cells. This requires ensuring that the ﬂuorescent signal generated by the enzyme remain
+associated with the cell carrying the cognate gene. Broadly speaking, there are three
+types of mechanisms in the literature to enable this to happen: (1) Having a surface
+exposed enzyme whose ﬂuorescent product is retained on the cell surface via covalent
+or non-covalent methods, (2) an intracellular enzyme with ﬂuorogenic product which is
+unable to diffuse out of the cell, and (3) a more sophisticated mechanism using ﬂuorescent
+proteins driven by transcription factors responsive to speciﬁc ligands to detect the activity
+of enzymes which produce (or degrade) said ligands.
+
+Paradigm 1 is exempliﬁed by Olsen et al., who used the adsorption of a positively
+charged FRET (Forster Resonance Energy Transfer) substrate on the negatively charged
+cell surface to isolate, using FACS, an OmpT outer membrane protease mutant with
+altered speciﬁcity [45]. The same group later reported other examples [46–48] of this
+approach. Pitzler et al. [49] reported an interesting variation wherein the presence of a
+hydrolase-glucose oxidase coupled activity leads to radical formation and polymerization
+of a ﬂuorescent monomer on the surface of E. coli, leading to a “fur-shell” structure which
+can be FACS sorted. This method was then utilized for phytase evolution.
+
+The Liu lab demonstrated a more generally adaptable example of this class by display-
+ing a Sortase A library on the cell surface of yeast S. cerevisiae, followed by the exogenous
+attachment of a Sortase A acceptor peptide. Thereafter, a biotinylated donor peptide was
+added to the yeast cell suspension to enable fast Sortase A variants to conjugate it to
+the above-mentioned acceptor peptide. Staining of the donor peptide with Streptavidin-
+phycoerythrin allowed for more active variants to be isolated by FACS (see schematic in
+Figure 1E) [50,51].
+
+The second approach is used for intracellular enzymes whose substrates can be
+expressed in vivo or provided externally and the products of which remain within the
+cell for FACS sorting, as exempliﬁed by Aharoni et al. [52] and Yang et al. [53]. However,
+this method is dependent on the presence of a cell permeable substrate and impermeable
+product, which is rarely available.
+
+The third concept starts by adapting an existing analyte sensitive transcription factor
+or ﬂuorescent reporter protein, or by engineering an existing biosensor [54] to be speciﬁc for
+the analyte of interest. This in vivo transcription factor then provides a ﬂuorescent signal
+proportional to the amount of the analyte present by transcribing a ﬂuorescent protein
+and can be used to monitor the activity of a biosynthetic enzyme which produces the
+analyte of interest. This concept has been recently demonstrated by Della Corte et al. [55],
+among others. Meister et al. [56] use a variation which involves the in vivo expression of
+a ﬂuorescent protein fused to an aggregation inducing peptide separated by a protease
+site. Cleavage of the non-standard protease site by a suitable mutant coxsackievirus 3C
+protease allows the reporter to remain soluble, thus enabling detection by FACS. In an
+interesting variation of this theme, Michener and Smolke [57] have demonstrated the use
+of analyte responsive RNA switches linked to GFP mRNA translation in yeast to enable
+the detection of the product theophylline, which was then exploited to evolve improved
+variants of caffeine demethylase. Other groups have also made use of this strategy to
+evolve or discover enzymes capable of catalyzing desired reactions [58,59].
+
+An important technical challenge with micro scale methods is DNA retrieval from
+single sorted cells. As the mutant library is generally present on a multi-copy plasmid,
+there are multiple copies of each mutant gene per cell. Some researchers report direct
+
+Molecules 2021, 26, 5599
+
+5 of 14
+
+transformation of recovered DNA into high efﬁciency electrocompetent cells [25,30,34]. In
+some cases, the host cells are still viable after sorting and can be directly placed in suitable
+medium for growth [50]. PCR to recover the mutant gene sequence is another common
+approach [44] but may require multiple nested PCRs and/or gel puriﬁcation to retrieve the
+desired product.
+
+In sum, micro-scale optical methods have shown excellent potential for enzyme evolu-
+
+tion with very high throughput. Some representative schematics are shown in Figure 1.
+
+Figure 1. Micro-scale optical methods for enzyme evolution. (A) Schematic adapted from Larsen et al. [25] showing the
+generation of water-in-oil-in-water droplets with cell encapsulation, FACS sorting and plasmid recovery. (B) Schematic from
+Kintses et al. [30] showing the use of a water-in-oil emulsion sorting device for isolation of ﬂuorescent cells expressing active
+mutants. (C) Capture of mutant expressing plasmids and ﬂuorescent substrate by an inducible solid polymer matrix to
+retain genotype and phenotype linkage prior to FACS for gene recovery. Reproduced from Fischlechner et al. [40]. (D) Steps
+involved in the use of the µscale microcapillary array for identiﬁcation and isolation of cells expressing active mutants.
+Reproduced from Chen et al. [42]. (E) Use of cell surface display of enzyme and substrate, followed by bond-formation,
+ﬂuorescent staining and FACS sorting. Reproduced from Chen et al. [50]. Permission was obtained from relevant publisher
+before reproducing the above ﬁgures.
+
+3.1.2. Optical Methods > Macro-Scale Methods
+
+In some cases where technical requirements do not allow for convenient adoption
+of the micro-scale methods listed above, or where the number of mutants to be screened
+is lower, it might be more expeditious to use macro-scale (i.e., naked-eye visible reaction
+scales) methods such as screening in 96 or 384 wells or directly on culture plates. These
+methods require relatively simpler instrumentation and allow a more ﬂexible assay at the
+cost of lower throughput. Some common formats are described below.
+
+Optical Methods > Macro Scale Methods > Well Plate-Based Methods
+
+96/384 plate-based screening methods are popular and accessible due to their sim-
+plicity and quantitative read-out. Broadly, the mutant library is transformed into E. coli
+and plated on a culture plate. Individual colonies are then inoculated into a 96 well plate
+(higher density plates generally give poor E. coli growth due to aeration issues) and grown
+in a plate shaker, followed by induction, lysis if needed and then assayed with an optical
+read-out such as ﬂuorescence or absorbance to indicate activity (see Figure 2A) [60–63].
+One issue that must be addressed with plate-based formats is whether the cells need to
+
+Molecules 2021, 26, 5599
+
+6 of 14
+
+be lysed, as in the case of intracellular enzymes and non-permeable substrates, which is
+usually the case. In cases where lysis is needed, options such as a water-bath sonicator
+or the use of permeabilizing reagents such as detergents (BugBuster or SoluLyse etc.) or
+anti-microbial peptides (e.g., Cecropin A, polymyxin B etc.), enzymes such as lysozyme,
+physical processes like freeze–thaw cycles, and autolysis strains such as XJb or combi-
+nations thereof are available [64]. The presence of endogenous enzymes from the cell
+lysate can interfere with the expressed enzyme assay. We found that simple dilution could
+sometimes be used to ameliorate this interference [61]. If this does not work, puriﬁcation
+of the expressed protein using afﬁnity tags may be required. Tags such as GFP or split
+GFP may also be used to normalize the amount of expressed protein to obtain a speciﬁc
+activity value, which helps resolve confounding factors such as differential expression
+levels [65,66]. High density plates with 1536 or more wells, and robotic instrumentation
+for liquid handling or colony picking are highly useful for well-plate based screening;
+however, with higher density than 96 wells, poor culture aeration becomes a limiting factor
+(personal observation).
+
+Optical Methods > Macro Scale Methods > Culture Plate Based Screening
+
+A simpler option which may be used when a qualitative read-out sufﬁces, and sub-
+strate accessibility is not an issue, is culture-plate based screening. This involves growing
+cell colonies on an agar plate with suitable media, followed optionally by plate replication
+onto agar plates, or nitrocellulose or Durapore membranes in cases where the protein
+may be toxic or a white background may be desired, and ﬁnally protein expression and
+exposure to substrate under controlled conditions. Secreted enzyme mutants or a perme-
+able substrate then allow for the generation of an optically distinguishable signal “halo”,
+highlighting colonies expressing outstanding mutants with larger halos [67–70]. In other
+cases, the signal remains in vivo, and the whole colony becomes colored or ﬂuorescent.
+For instance, O’Loughlin et al. devised a screen for HIV protease mutants with altered
+speciﬁcity by looking for proteases capable of cleaving a β-galactosidase protein reporter,
+which results in decreased blue coloration in the presence of X-gal, a chromogenic substrate
+of β-galactosidase [71]. A total of 60,000 variants were reported to have been screened in a
+single round, highlighting the high throughput and ease of process of plate-based methods.
+The use of dyes to highlight colonies secreting cellulases has been well attested [72,73].
+
+Further reﬁnements can include the use of freeze-thaw, to release intracellular en-
+zymes, and a “ﬁlter-sandwich” format, which allows for more complex multi-step assays
+with the released enzyme [74,75]. Kermekchiev et al. [76] successfully selected a cold-
+sensitive Taq polymerase from a total of 3800 mutants using a culture-plate derived ﬁlter
+assay. Weiß et al. [77] used a sophisticated process to screen transaminase variants using
+a plate based coupled assay, resulting in a colored colony in the presence of the desired
+speciﬁcity (see Figure 2B).
+
+In summary, culture-plate based optical screening allows for relatively high through-
+put (~105–106) and simple and convenient assays, albeit at the cost of precision. How-
+ever, where semi-quantitative or qualitative read-outs and moderate throughput suf-
+ﬁce, optical plate-based assays are a competitive option owing to their low cost and low
+equipment needs.
+
+3.2. Survival//Retrieval Based Methods
+
+Another common concept used for enzyme evolution is to link the desired performance
+of the enzyme to survival or retrieval of the cognate cell or gene. This method, which has
+multiple formats as described below, can be particularly useful under certain circumstances.
+
+Molecules 2021, 26, 5599
+
+7 of 14
+
+Figure 2. Macroscopic optical methods for enzyme evolution: (A) Schematic of the processes involved in a typical 96 well
+plate based optical assay. Adapted with publisher’s permission from Chua et al. [61]. (B) Plate based screening using
+chromogenic substrate to identify promising mutants. Reproduced with permission from [77].
+
+3.2.1. Survival/Retrieval Based Methods > Cell Survival Based Methods
+
+The most direct case is when the cell is unable to survive due to a lack of essential
+proteins or metabolites or due to the presence of toxic agents in the milieu. The assay is
+arranged in such a way that only the desired mutant of interest can relieve this blockage
+to growth and thus selectively allow for survival of only the cell carrying the desired
+enzyme variant (see schematic in Figure 3A). The upside of this methods is its simplicity
+and potentially very high throughput; variants are simply subjected to conditions that the
+original host cannot survive, and survivors are retrieved for veriﬁcation. The drawback
+is that it is not possible to link enzyme activity to cell survival in many cases, and the
+simple survival/death read-out does not allow for ﬁne activity distinctions. Nonetheless,
+under the right conditions, survival-based screening is unmatched in terms of speed
+and convenience.
+
+For instance, Hecky and Muller [78] evolved a thermostable variant of beta-lactamase
+by intentionally destabilizing beta-lactamase with a small C terminal truncation, which
+leads to decreased ampicillin resistance, expressing this in E. coli and selecting for mutants
+that restore resistance, and then re-attaching the truncated amino acids. This dramatically
+increased beta-lactamase thermostability as the restoration of the C terminus combined
+synergistically with the stabilizing effect of the new mutations. It is easy to foresee the
+same idea being applied to other essential enzymes to improve their thermostability
+and/or activity.
+
+Park et al. [79] similarly used a survival based selection process to engineer lactamase
+activity into an αβ/βα metallohydrolase scaffold of glyoxalase II enzyme by modiﬁca-
+tion of active site proximal loops and selection of mutants which could survive in the
+presence of cefotaxime. Numerous groups have used strains with deletions of metabolic
+enzymes as hosts to re-evolve the lost activity into a new protein scaffold. For instance,
+Jurgens et al. [80] selected a Thermotoga maritima N(cid:48)-[(5(cid:48)-Phosphoribosyl)formimino]-
+5-aminoimidazole-4-carboxamide ribonucleotide isomerase (HisA) variant which could
+also carry out phosphoribosylanthranilate isomerization by transforming a HisA library
+into an E. coli strain with a TrpF deletion, plating the transformants on minimal media
+lacking tryptophan and isolating plasmids from the survivors. Similar results have been
+
+Molecules 2021, 26, 5599
+
+8 of 14
+
+demonstrated with other enzymes [81–84] with up to 106 mutants screened simply by
+plating on suitable media.
+
+A particularly interesting application of survival-based selection is the adaptation
+of modiﬁed tRNA and their respective synthetases as orthogonal pairs translating amber
+stop codons in a different host organism. Such a modiﬁed pair can then be used to
+incorporate modiﬁed amino acids with functionality that is absent in the natural amino
+acids, such as alkynes for click chemistry, phosphate groups for studying the effect of
+site-speciﬁc phosphorylation, and so on [85–89]. In one illustrative example, [90] to evolve
+such an orthogonal tRNA and synthetase pair, both positive and negative selections are
+carried out in vivo using a toxic protein (e.g., barnase) and an antibiotic resistance protein
+(e.g., β-lactamase), both of which carry an amber STOP codon. A tRNACUA library is
+expressed without its cognate tRNA synthetase in an E. coli host which also carries a
+barnase gene with an Amber STOP codon at a non-essential position. If a given tRNACUA
+is recognized by an E. coli tRNA synthetase, it will suppress the Amber STOP codon in
+barnase, leading to cell death. Thus promiscuous tRNACUAs which can interact with
+E. coli synthetase will be lost. After this step, a positive selection is carried out where the
+remaining tRNACUA variants are expressed in the presence of the foreign (M. jannaschii)
+tRNA synthetase as well as a lactamase gene with an Amber STOP codon in a non-essential
+position. A functional tRNACUA and tRNA synthetase pair will suppress the Amber
+codon and permit full length lactamase protein translation, allowing for cell survival in the
+presence of ampicillin, thus creating an orthogonal pair. A recent interesting application
+of the survival strategy was demonstrated by Gaudelli et al. [91] who used a survival
+based selection to evolve a tRNA adenine deaminase (TadA from E. coli) to work on a
+DNA substrate for genome editing purposes by introducing a disabling G to A mutation in
+antibiotic resistance genes and looking for TadA mutants capable of reversing the same.
+
+Some directed evolution campaigns have used this method for negative selection, that
+is, to get rid of non-speciﬁc clones which form the vast majority of most mutant libraries by
+linking the said non-speciﬁc activity to transcription of a lethal protein [54] or to proteolytic
+cleavage of essential E. coli proteins [71], followed by a more ﬁne grained screening of
+the remaining library members for positive activity using more quantitative methods like
+FACS. Such a hybrid approach leverages the best features of plate-based selection (highly
+parallel but non-quantitative selection) and FACS (quantitative but serial screening).
+
+3.2.2. Survival/Retrieval Based Methods > In Vitro DNA Retrieval Based Methods
+
+Another class of methods which falls in the survival or retrieval-based selection cate-
+gory is Compartmentalized Self-Replication (CSR). It is emulsion based like the FACS/FADS
+based microdroplet methods discussed above, but instead of an optical read-out, in CSR
+typically polymerase mutants expressed in E. coli are isolated in emulsion droplets along
+with dNTPs and suitable primer in a suitable buffer and tasked with amplifying their own
+genes, akin to PCR, under challenging conditions like high temperatures, the presence of
+inhibitors like blood or mismatched primers (see Figure 3B) [92–94], or heavily modiﬁed
+nucleotides [95]. Ong et al. [96] demonstrated a variant of CSR called short patch CSR
+(spCSR) wherein PCR oligos amplify only a short mutagenized region of the polymerase
+gene instead of the whole ORF, thus retaining variation information but avoiding the
+strenuous requirement of amplifying long stretches of nucleic acid. Using spCSR, the
+authors evolved a polymerase with simultaneous DNA and RNA polymerase activity as
+well as reverse transcriptase activity.
+
+A further variant is Compartmentalized Self-Tagging (CST) [97–99], in which a bi-
+otinylated primer binds weakly to plasmids released after heatshock lysis from cells in
+emulsion. If the cognate polymerase is able to incorporate modiﬁed nucleotides into this
+primer, the strength of binding improves, allowing for robust pulldown of the relevant
+plasmid onto Streptavidin beads. CST has been used for the incorporation of modiﬁed
+bases such as Hexose Nucleic Acid (HNA), cyclohexenyl nucleic acids (CeNA), Locked
+nucleic acids (LNA) and others.
+
+Molecules 2021, 26, 5599
+
+9 of 14
+
+An interesting modiﬁcation of this concept uses ribosome display to link a protein and
+its cognate mRNA together, followed by compartmentalization and reverse transcription
+of the mRNA by the cognate enzyme, followed by recovery.
+
+3.2.3. Survival/Retrieval Based Methods > Phage Pulldown Retrieval Methods
+
+In many cases, it is necessary to undertake multiple rounds to reach a level or type of
+activity desired. The Liu group have developed a method called Phage Assisted Continuous
+Evolution (PACE) [100] in which multiple rounds of selection are undertaken without user
+intervention. Brieﬂy, M13 phages carrying mutant genes are selected on the basis of their
+ability to induce transcription of the essential gene III in the host cell, enabling assembly of
+viable phage particles. The produced phage particles also undergo mutagenesis owing to
+the presence of a “mutagenesis plasmid” in the host E. coli, generating new diversity at each
+round of host cell infection. This method was used to evolve T7 RNA polymerases [100],
+Bacillus thuringiensis (Bt) toxin [101], tRNA synthetases [102], and Cas9 with an altered
+protospacer adjacent motif (PAM) recognition sequence [103] among others.
+
+Apart from PACE, phage display is more commonly used for discovery of binding
+moieties like peptides or proteins. However, phage display has also been used for enzyme
+evolution in other contexts. Many different paradigms have been demonstrated, such as
+selection of antibodies binding to transition state analogs, which therefore may be able to act
+as catalysts or “Abzymes” [104], and selection of thermostable enzymes based on resistance
+to protease cleavage [105] or polymerases based on the ability to catalyze the addition
+of a biotinylated modiﬁed nucleotide onto a locally bound substrate (Figure 3C) [106].
+Interestingly, similar results have also been demonstrated by ribosome display as well,
+which holds the potential for much greater sequence space exploration [107–109].
+Some illustrative survival/retrieval based methods are depicted in Figure 3.
+
+Figure 3. Cont.
+
+Molecules 2021, 26, 5599
+
+10 of 14
+
+Figure 3. Survival/retrieval based selection: (A) A simple schematic showing the use of a mutant library to complement a
+defective host on minimal media. Only the good mutant can catalyze the generation of an essential metabolite, leading to the
+formation of a colony. (B) Compartmentalized self-replication schematic depiction showing the steps involved. Reproduced
+with permission from Ghadessy et al. [92]. (C) Phage display mediated selection of active polymerase. Polymerases which
+can incorporate a biotinylated modiﬁed nucleotide into a local substrate are able to be pulled down on a solid phase.
+Reproduced from Chen et al. [106] with permission.
+
+4. Conclusions
+
+From the ﬁrst attempts over 40 years ago [110] to modern methods capable of very
+high throughput and quantitative readouts, enzyme evolution/screening techniques have
+come a long way and are now able to screen over a billion mutants. Nonetheless, given
+the immense diversity present in even small enzymes, there is a great deal of space left
+to explore and, therefore, enzymes of great value left to discover. In particular, there is
+room for further miniaturization to single enzyme level, which should allow a signiﬁcant
+improvement in throughput and cost, much as moving from 96 well plate assays to
+emulsions did. Although ribosome or mRNA display technologies might be expected to
+provide this capability, at this time, these methods have yet to become widespread to the
+same extent as CSR or optical emulsion sorting. It falls to today’s researchers to come up
+with new solutions that can continue to improve our ability to locate these diamonds in
+the rough.
+
+Funding: This research received no external funding.
+
+Institutional Review Board Statement: Not applicable.
+
+Informed Consent Statement: Not applicable.
+
+Data Availability Statement: Not applicable.
+
+Conﬂicts of Interest: The author declares no conﬂict of interest.
+
+References
+1.
+
+Chen, C.-Y. DNA Polymerases Drive DNA Sequencing-by-Synthesis Technologies: Both Past and Present. Front. Microbiol. 2014,
+5, 305. [CrossRef] [PubMed]
+Zhu, H.; Zhang, H.; Xu, Y.; Laššáková, S.; Korabeˇcná, M.; Neužil, P. PCR Past, Present and Future. BioTechniques 2020, 69, 317–325.
+[CrossRef] [PubMed]
+Cabrera, M.Á.; Blamey, J.M. Biotechnological Applications of Archaeal Enzymes from Extreme Environments. Biol. Res. 2018,
+51, 37. [CrossRef]
+Läufer, A. Starch Bioreﬁnery Enzymes. Adv. Biochem. Eng. Biotechnol. 2019, 166, 137–152. [CrossRef]
+Thalji, N.K.; Camire, R.M. Rendering Factor Xa Zymogen-like as a Therapeutic Strategy to Treat Bleeding. Curr. Opin. Hematol.
+2017, 24, 453–459. [CrossRef]
+Gurung, N.; Ray, S.; Bose, S.; Rai, V. A Broader View: Microbial Enzymes and Their Relevance in Industries, Medicine, and
+Beyond. BioMed Res. Int. 2013, 2013, 329121. [CrossRef] [PubMed]
+
+2.
+
+3.
+
+4.
+5.
+
+6.
+
+Molecules 2021, 26, 5599
+
+11 of 14
+
+7. Minteer, S.D. Micellar Enzymology for Thermal, PH, and Solvent Stability. Methods Mol. Biol. Clifton NJ 2017, 1504, 19–23.
+
+8.
+
+[CrossRef]
+Alfaro-Chávez, A.L.; Liu, J.-W.; Porter, J.L.; Goldman, A.; Ollis, D.L. Improving on Nature’s Shortcomings: Evolving a Lipase for
+Increased Lipolytic Activity, Expression and Thermostability. Protein Eng. Des. Sel. PEDS 2019, 32, 13–24. [CrossRef]
+
+9. Matsumoto, T.; Yamada, R.; Ogino, H. Chemical Treatments for Modiﬁcation and Immobilization to Improve the Solvent-Stability
+
+of Lipase. World J. Microbiol. Biotechnol. 2019, 35, 193. [CrossRef]
+
+10. Harris, J.L.; Craik, C.S. Engineering Enzyme Speciﬁcity. Curr. Opin. Chem. Biol. 1998, 2, 127–132. [CrossRef]
+11. Belsare, K.D.; Andorfer, M.C.; Cardenas, F.S.; Chael, J.R.; Park, H.J.; Lewis, J.C. A Simple Combinatorial Codon Mutagenesis
+
+Method for Targeted Protein Engineering. ACS Synth. Biol. 2017, 6, 416–420. [CrossRef]
+
+12. Zheng, L.; Baumann, U.; Reymond, J.-L. An Efﬁcient One-Step Site-Directed and Site-Saturation Mutagenesis Protocol. Nucleic
+
+Acids Res. 2004, 32, e115. [CrossRef]
+
+13. Wrenbeck, E.E.; Klesmith, J.R.; Stapleton, J.A.; Adeniran, A.; Tyo, K.E.J.; Whitehead, T.A. Plasmid-Based One-Pot Saturation
+
+Mutagenesis. Nat. Methods 2016, 13, 928–930. [CrossRef]
+
+14. Randolph, J.; Yagodkin, A.; Lamaitre, M.; Azhayev, A.; Mackie, H. Codon Based Mutagenesis Using Trimer Phosphoramidites.
+
+Nucleic Acids Symp. Ser. 2008, 52, 479. [CrossRef]
+
+15. McCullum, E.O.; Williams, B.A.R.; Zhang, J.; Chaput, J.C. Random Mutagenesis by Error-Prone PCR. Methods Mol. Biol. Clifton NJ
+
+2010, 634, 103–109. [CrossRef]
+
+16. Badran, A.H.; Liu, D.R. Development of Potent in Vivo Mutagenesis Plasmids with Broad Mutational Spectra. Nat. Commun.
+
+2015, 6, 8425. [CrossRef] [PubMed]
+
+17. Muteeb, G.; Sen, R. Random Mutagenesis Using a Mutator Strain. Methods Mol. Biol. 2010. [CrossRef]
+18. Labrou, N.E. Random Mutagenesis Methods for in Vitro Directed Enzyme Evolution. Curr. Protein Pept. Sci. 2010, 11, 91–100.
+
+[CrossRef] [PubMed]
+
+19. Tawﬁk, D.S.; Grifﬁths, A.D. Man-Made Cell-like Compartments for Molecular Evolution. Nat. Biotechnol. 1998, 16, 652–656.
+
+[CrossRef]
+
+20. Bernath, K.; Hai, M.; Mastrobattista, E.; Grifﬁths, A.D.; Magdassi, S.; Tawﬁk, D.S. In Vitro Compartmentalization by Double
+Emulsions: Sorting and Gene Enrichment by Fluorescence Activated Cell Sorting. Anal. Biochem. 2004, 325, 151–157. [CrossRef]
+[PubMed]
+
+21. Mastrobattista, E.; Taly, V.; Chanudet, E.; Treacy, P.; Kelly, B.T.; Grifﬁths, A.D. High-Throughput Screening of Enzyme Libraries:
+In Vitro Evolution of a β-Galactosidase by Fluorescence-Activated Sorting of Double Emulsions. Chem. Biol. 2005, 12, 1291–1300.
+[CrossRef]
+
+22. Aharoni, A.; Amitai, G.; Bernath, K.; Magdassi, S.; Tawﬁk, D.S. High-Throughput Screening of Enzyme Libraries: Thiolactonases
+Evolved by Fluorescence-Activated Sorting of Single Cells in Emulsion Compartments. Chem. Biol. 2005, 12, 1281–1289. [CrossRef]
+[PubMed]
+
+23. Hardiman, E.; Gibbs, M.; Reeves, R.; Bergquist, P. Directed Evolution of a Thermophilic β-Glucosidase for Cellulosic Bioethanol
+
+Production. Appl. Biochem. Biotechnol. 2010, 161, 301–312. [CrossRef] [PubMed]
+
+24. Zinchenko, A.; Devenish, S.R.A.; Kintses, B.; Colin, P.-Y.; Fischlechner, M.; Hollfelder, F. One in a Million: Flow Cytometric
+Sorting of Single Cell-Lysate Assays in Monodisperse Picolitre Double Emulsion Droplets for Directed Evolution. Anal. Chem.
+2014, 86, 2526–2533. [CrossRef] [PubMed]
+
+25. Larsen, A.C.; Dunn, M.R.; Hatch, A.; Sau, S.P.; Youngbull, C.; Chaput, J.C. A General Strategy for Expanding Polymerase Function
+
+by Droplet Microﬂuidics. Nat. Commun. 2016, 7, 11235. [CrossRef]
+
+26. Ma, F.; Fischer, M.; Han, Y.; Withers, S.G.; Feng, Y.; Yang, G.-Y. Substrate Engineering Enabling Fluorescence Droplet Entrapment
+
+for IVC-FACS-Based Ultrahigh-Throughput Screening. Anal. Chem. 2016, 88, 8587–8595. [CrossRef] [PubMed]
+
+27. Ahn, K.; Kerbage, C.; Hunt, T.P.; Westervelt, R.M.; Link, D.R.; Weitz, D.A. Dielectrophoretic Manipulation of Drops for High-Speed
+
+Microﬂuidic Sorting Devices. Appl. Phys. Lett. 2006, 88, 024104. [CrossRef]
+
+28. Baret, J.-C.; Miller, O.J.; Taly, V.; Ryckelynck, M.; El-Harrak, A.; Frenz, L.; Rick, C.; Samuels, M.L.; Hutchison, J.B.; Agresti, J.J.;
+et al. Fluorescence-Activated Droplet Sorting (FADS): Efﬁcient Microﬂuidic Cell Sorting Based on Enzymatic Activity. Lab. Chip
+2009, 9, 1850–1858. [CrossRef]
+
+29. Agresti, J.J.; Antipov, E.; Abate, A.R.; Ahn, K.; Rowat, A.C.; Baret, J.-C.; Marquez, M.; Klibanov, A.M.; Grifﬁths, A.D.; Weitz,
+D.A. Ultrahigh-Throughput Screening in Drop-Based Microﬂuidics for Directed Evolution. Proc. Natl. Acad. Sci. USA 2010,
+107, 4004–4009. [CrossRef] [PubMed]
+
+30. Kintses, B.; Hein, C.; Mohamed, M.F.; Fischlechner, M.; Courtois, F.; Lainé, C.; Hollfelder, F. Picoliter Cell Lysate Assays in
+
+Microﬂuidic Droplet Compartments for Directed Enzyme Evolution. Chem. Biol. 2012, 19, 1001–1009. [CrossRef]
+
+31. Obexer, R.; Godina, A.; Garrabou, X.; Mittl, P.R.E.; Baker, D.; Grifﬁths, A.D.; Hilvert, D. Emergence of a Catalytic Tetrad during
+
+Evolution of a Highly Active Artiﬁcial Aldolase. Nat. Chem. 2017, 9, 50–56. [CrossRef] [PubMed]
+
+32. Nikoomanzar, A.; Vallejo, D.; Yik, E.J.; Chaput, J.C. Programmed Allelic Mutagenesis of a DNA Polymerase with Single Amino
+
+33.
+
+Acid Resolution. ACS Synth. Biol. 2020, 9, 1873–1881. [CrossRef]
+van Loo, B.; Heberlein, M.; Mair, P.; Zinchenko, A.; Schüürmann, J.; Eenink, B.D.G.; Holstein, J.M.; Dilkaute, C.; Jose, J.; Hollfelder,
+F.; et al. High-Throughput, Lysis-Free Screening for Sulfatase Activity Using Escherichia Coli Autodisplay in Microdroplets. ACS
+Synth. Biol. 2019, 8, 2690–2700. [CrossRef] [PubMed]
+
+Molecules 2021, 26, 5599
+
+12 of 14
+
+34. Gielen, F.; Hours, R.; Emond, S.; Fischlechner, M.; Schell, U.; Hollfelder, F. Ultrahigh-Throughput-Directed Enzyme Evolution by
+
+Absorbance-Activated Droplet Sorting (AADS). Proc. Natl. Acad. Sci. USA 2016, 113, E7383–E7389. [CrossRef] [PubMed]
+
+35. Holstein, J.M.; Gylstorff, C.; Hollfelder, F. Cell-Free Directed Evolution of a Protease in Microdroplets at Ultrahigh Throughput.
+
+ACS Synth. Biol. 2021, 10, 252–257. [CrossRef]
+
+36. Weng, L.; Spoonamore, J.E. Droplet Microﬂuidics-Enabled High-Throughput Screening for Protein Engineering. Micromachines
+
+2019, 10, 734. [CrossRef] [PubMed]
+
+37. Grifﬁths, A.D.; Tawﬁk, D.S. Directed Evolution of an Extremely Fast Phosphotriesterase by in Vitro Compartmentalization.
+
+EMBO J. 2003, 22, 24–35. [CrossRef]
+
+38. Levy, M.; Griswold, K.E.; Ellington, A.D. Direct Selection of Trans-Acting Ligase Ribozymes by in Vitro Compartmentalization.
+
+RNA 2005, 11, 1555–1562. [CrossRef]
+
+39. Gianella, P.; Snapp, E.L.; Levy, M. An in Vitro Compartmentalization-Based Method for the Selection of Bond-Forming Enzymes
+
+40.
+
+from Large Libraries. Biotechnol. Bioeng. 2016, 113, 1647–1657. [CrossRef] [PubMed]
+Fischlechner, M.; Schaerli, Y.; Mohamed, M.F.; Patil, S.; Abell, C.; Hollfelder, F. Evolution of Enzyme Catalysts Caged in Biomimetic
+Gel-Shell Beads. Nat. Chem. 2014, 6, 791–796. [CrossRef]
+
+41. Ma, C.; Tan, Z.L.; Lin, Y.; Han, S.; Xing, X.; Zhang, C. Gel Microdroplet–Based High-Throughput Screening for Directed Evolution
+
+of Xylanase-Producing Pichia Pastoris. J. Biosci. Bioeng. 2019, 128, 662–668. [CrossRef]
+
+42. Chen, B.; Lim, S.; Kannan, A.; Alford, S.C.; Sunden, F.; Herschlag, D.; Dimov, I.K.; Baer, T.M.; Cochran, J.R. High-Throughput
+
+Analysis and Protein Engineering Using Microcapillary Arrays. Nat. Chem. Biol. 2016, 12, 76–81. [CrossRef] [PubMed]
+
+43. Longwell, C.K.; Labanieh, L.; Cochran, J.R. High-Throughput Screening Technologies for Enzyme Engineering. Curr. Opin.
+
+Biotechnol. 2017, 48, 196–202. [CrossRef]
+
+44. Zhang, Y.; Minagawa, Y.; Kizoe, H.; Miyazaki, K.; Iino, R.; Ueno, H.; Tabata, K.V.; Shimane, Y.; Noji, H. Accurate High-Throughput
+Screening Based on Digital Protein Synthesis in a Massively Parallel Femtoliter Droplet Array. Sci. Adv. 2019, 5, eaav8185.
+[CrossRef]
+
+45. Olsen, M.J.; Stephens, D.; Grifﬁths, D.; Daugherty, P.; Georgiou, G.; Iverson, B.L. Function-Based Isolation of Novel Enzymes
+
+from a Large Library. Nat. Biotechnol. 2000, 18, 1071–1074. [CrossRef]
+
+46. Varadarajan, N.; Gam, J.; Olsen, M.J.; Georgiou, G.; Iverson, B.L. Engineering of Protease Variants Exhibiting High Catalytic
+
+Activity and Exquisite Substrate Selectivity. Proc. Natl. Acad. Sci. USA 2005, 102, 6855–6860. [CrossRef]
+
+47. Varadarajan, N.; Rodriguez, S.; Hwang, B.-Y.; Georgiou, G.; Iverson, B.L. Highly Active and Selective Endopeptidases with
+
+Programmed Substrate Speciﬁcities. Nat. Chem. Biol. 2008, 4, 290–294. [CrossRef] [PubMed]
+
+48. Denard, C.A.; Paresi, C.; Yaghi, R.; McGinnis, N.; Bennett, Z.; Yi, L.; Georgiou, G.; Iverson, B.L. YESS 2.0, a Tunable Platform for
+
+Enzyme Evolution, Yields Highly Active TEV Protease Variants. ACS Synth. Biol. 2021, 10, 63–71. [CrossRef] [PubMed]
+
+49. Pitzler, C.; Wirtz, G.; Vojcic, L.; Hiltl, S.; Böker, A.; Martinez, R.; Schwaneberg, U. A Fluorescent Hydrogel-Based Flow Cytometry
+
+High-Throughput Screening Platform for Hydrolytic Enzymes. Chem. Biol. 2014, 21, 1733–1742. [CrossRef]
+
+50. Chen, I.; Dorr, B.M.; Liu, D.R. A General Strategy for the Evolution of Bond-Forming Enzymes Using Yeast Display. Proc. Natl.
+
+Acad. Sci. USA 2011, 108, 11399–11404. [CrossRef]
+
+51. Dorr, B.M.; Ham, H.O.; An, C.; Chaikof, E.L.; Liu, D.R. Reprogramming the Speciﬁcity of Sortase Enzymes. Proc. Natl. Acad. Sci.
+
+USA 2014, 111, 13343–13348. [CrossRef]
+
+52. Aharoni, A.; Thieme, K.; Chiu, C.P.C.; Buchini, S.; Lairson, L.L.; Chen, H.; Strynadka, N.C.J.; Wakarchuk, W.W.; Withers, S.G.
+High-Throughput Screening Methodology for the Directed Evolution of Glycosyltransferases. Nat. Methods 2006, 3, 609–614.
+[CrossRef] [PubMed]
+
+53. Yang, G.; Rich, J.R.; Gilbert, M.; Wakarchuk, W.W.; Feng, Y.; Withers, S.G. Fluorescence Activated Cell Sorting as a General Ultra-
+High-Throughput Screening Method for Directed Evolution of Glycosyltransferases. J. Am. Chem. Soc. 2010, 132, 10570–10577.
+[CrossRef] [PubMed]
+
+54. Taylor, N.D.; Garruss, A.S.; Moretti, R.; Chan, S.; Arbing, M.A.; Cascio, D.; Rogers, J.K.; Isaacs, F.J.; Kosuri, S.; Baker, D.; et al.
+Engineering an Allosteric Transcription Factor to Respond to New Ligands. Nat. Methods 2016, 13, 177–183. [CrossRef] [PubMed]
+55. Della Corte, D.; van Beek, H.L.; Syberg, F.; Schallmey, M.; Tobola, F.; Cormann, K.U.; Schlicker, C.; Baumann, P.T.; Krumbach, K.;
+Sokolowsky, S.; et al. Engineering and Application of a Biosensor with Focused Ligand Speciﬁcity. Nat. Commun. 2020, 11, 4851.
+[CrossRef]
+
+56. Meister, S.W.; Hendrikse, N.M.; Löfblom, J. Directed Evolution of the 3C Protease from Coxsackievirus Using a Novel Fluorescence-
+
+Assisted Intracellular Method. Biol. Chem. 2019, 400, 405–415. [CrossRef]
+
+57. Michener, J.K.; Smolke, C.D. High-Throughput Enzyme Evolution in Saccharomyces Cerevisiae Using a Synthetic RNA Switch.
+
+Metab. Eng. 2012, 14, 306–316. [CrossRef]
+
+58. Yeom, S.-J.; Kim, M.; Kwon, K.K.; Fu, Y.; Rha, E.; Park, S.-H.; Lee, H.; Kim, H.; Lee, D.-H.; Kim, D.-M.; et al. A Synthetic Microbial
+
+Biosensor for High-Throughput Screening of Lactam Biocatalysts. Nat. Commun. 2018, 9, 5053. [CrossRef]
+
+59. Kwon, K.K.; Lee, D.-H.; Kim, S.J.; Choi, S.-L.; Rha, E.; Yeom, S.-J.; Subhadra, B.; Lee, J.; Jeong, K.J.; Lee, S.-G. Evolution of Enzymes
+with New Speciﬁcity by High-Throughput Screening Using DmpR-Based Genetic Circuits and Multiple Flow Cytometry Rounds.
+Sci. Rep. 2018, 8, 2659. [CrossRef]
+
+60. Xiao, H.; Bao, Z.; Zhao, H. High Throughput Screening and Selection Methods for Directed Enzyme Evolution. Ind. Eng. Chem.
+
+Res. 2015, 54, 4011–4020. [CrossRef]
+
+Molecules 2021, 26, 5599
+
+13 of 14
+
+61. Chua, J.P.S.; Go, M.K.; Osothprarop, T.; Mcdonald, S.; Karabadzhak, A.G.; Yew, W.S.; Peisajovich, S.; Nirantar, S. Evolving a
+
+Thermostable Terminal Deoxynucleotidyl Transferase. ACS Synth. Biol. 2020, 9, 1725–1735. [CrossRef]
+
+62. Williams, G.J.; Thorson, J.S. A High-Throughput Fluorescence-Based Glycosyltransferase Screen and Its Application in Directed
+
+Evolution. Nat. Protoc. 2008, 3, 357–362. [CrossRef]
+
+63. García-Ruiz, E.; Maté, D.; Ballesteros, A.; Martinez, A.T.; Alcalde, M. Evolving Thermostability in Mutant Libraries of Ligninolytic
+
+Oxidoreductases Expressed in Yeast. Microb. Cell Factories 2010, 9, 17. [CrossRef]
+
+64. Listwan, P.; Pédelacq, J.-D.; Lockard, M.; Bell, C.; Terwilliger, T.C.; Waldo, G.S. The Optimization of in Vitro High-Throughput
+Chemical Lysis of Escherichia Coli. Application to ACP Domain of the Polyketide Synthase PpsC from Mycobacterium
+Tuberculosis. J. Struct. Funct. Genom. 2010, 11, 41–49. [CrossRef] [PubMed]
+Santos-Aberturas, J.; Dörr, M.; Waldo, G.S.; Bornscheuer, U.T. In-Depth High-Throughput Screening of Protein Engineering
+Libraries by Split-GFP Direct Crude Cell Extract Data Normalization. Chem. Biol. 2015, 22, 1406–1414. [CrossRef] [PubMed]
+
+65.
+
+66. Knapp, A.; Ripphahn, M.; Volkenborn, K.; Skoczinski, P.; Jaeger, K.-E. Activity-Independent Screening of Secreted Proteins Using
+
+Split GFP. J. Biotechnol. 2017, 258, 110–116. [CrossRef]
+
+67. Bornscheuer, U.T.; Altenbuchner, J.; Meyer, H.H. Directed Evolution of an Esterase for the Stereoselective Resolution of a Key
+
+Intermediate in the Synthesis of Epothilones. Biotechnol. Bioeng. 1998, 58, 554–559. [CrossRef]
+
+68. Alexeeva, M.; Enright, A.; Dawson, M.J.; Mahmoudian, M.; Turner, N.J. Deracemization of α-Methylbenzylamine Using an
+
+Enzyme Obtained by In Vitro Evolution. Angew. Chem. Int. Ed. 2002, 41, 3177–3180. [CrossRef]
+
+69. Turner, N.J. Agar Plate-Based Assays. In Enzyme Assays; John Wiley & Sons, Ltd.: Hoboken, NJ, USA, 2005; pp. 137–161.
+
+[CrossRef]
+
+70. Carr, R.; Alexeeva, M.; Enright, A.; Eve, T.S.C.; Dawson, M.J.; Turner, N.J. Directed Evolution of an Amine Oxidase Possessing
+Both Broad Substrate Speciﬁcity and High Enantioselectivity. Angew. Chem. Int. Ed. 2003, 42, 4807–4810. [CrossRef] [PubMed]
+71. O’Loughlin, T.L.; Greene, D.N.; Matsumura, I. Diversiﬁcation and Specialization of HIV Protease Function During In Vitro
+
+Evolution. Mol. Biol. Evol. 2006, 23, 764–772. [CrossRef] [PubMed]
+
+72. Teather, R.M.; Wood, P.J. Use of Congo Red-Polysaccharide Interactions in Enumeration and Characterization of Cellulolytic
+
+Bacteria from the Bovine Rumen. Appl. Environ. Microbiol. 1982, 43, 777–780. [CrossRef]
+
+73. Kasana, R.C.; Salwan, R.; Dhar, H.; Dutt, S.; Gulati, A. A Rapid and Easy Method for the Detection of Microbial Cellulases on
+
+Agar Plates Using Gram’s Iodine. Curr. Microbiol. 2008, 57, 503–507. [CrossRef]
+
+74. Heinis, C.; Melkko, S.; Demartis, S.; Neri, D. Two General Methods for the Isolation of Enzyme Activities by Colony Filter
+
+Screening. Chem. Biol. 2002, 9, 383–390. [CrossRef]
+
+75. Asial, I.; Cheng, Y.X.; Engman, H.; Dollhopf, M.; Wu, B.; Nordlund, P.; Cornvik, T. Engineering Protein Thermostability Using a
+
+Generic Activity-Independent Biophysical Screen inside the Cell. Nat. Commun. 2013, 4, 2901. [CrossRef] [PubMed]
+
+76. Kermekchiev, M.B.; Tzekov, A.; Barnes, W.M. Cold-Sensitive Mutants of Taq DNA Polymerase Provide a Hot Start for PCR.
+
+Nucleic Acids Res. 2003, 31, 6139–6147. [CrossRef] [PubMed]
+
+77. Weiß, M.S.; Pavlidis, I.V.; Vickers, C.; Höhne, M.; Bornscheuer, U.T. Glycine Oxidase Based High-Throughput Solid-Phase Assay
+for Substrate Proﬁling and Directed Evolution of (R)- and (S)-Selective Amine Transaminases. Anal. Chem. 2014, 86, 11847–11853.
+[CrossRef]
+
+78. Hecky, J.; Müller, K.M. Structural Perturbation and Compensation by Directed Evolution at Physiological Temperature Leads to
+
+Thermostabilization of β-Lactamase. Biochemistry 2005, 44, 12640–12654. [CrossRef] [PubMed]
+
+79. Park, H.-S.; Nam, S.-H.; Lee, J.K.; Yoon, C.N.; Mannervik, B.; Benkovic, S.J.; Kim, H.-S. Design and Evolution of New Catalytic
+
+80.
+
+Activity with an Existing Protein Scaffold. Science 2006, 311, 535–538. [CrossRef]
+Jürgens, C.; Strom, A.; Wegener, D.; Hettwer, S.; Wilmanns, M.; Sterner, R. Directed Evolution of a (Bα)8-Barrel Enzyme to
+Catalyze Related Reactions in Two Different Metabolic Pathways. Proc. Natl. Acad. Sci. USA 2000, 97, 9925–9930. [CrossRef]
+[PubMed]
+
+81. Leopoldseder, S.; Claren, J.; Jürgens, C.; Sterner, R. Interconverting the Catalytic Activities of (Bα)8-Barrel Enzymes from Different
+
+Metabolic Pathways: Sequence Requirements and Molecular Analysis. J. Mol. Biol. 2004, 337, 871–879. [CrossRef]
+
+82. Claren, J.; Malisi, C.; Höcker, B.; Sterner, R. Establishing Wild-Type Levels of Catalytic Activity on Natural and Artiﬁcial
+
+83.
+
+84.
+
+(Bα)8-Barrel Protein Scaffolds. Proc. Natl. Acad. Sci. USA 2009, 106, 3704–3709. [CrossRef]
+Flores, H.; Lin, S.; Contreras-Ferrat, G.; Cronan, J.E.; Morett, E. Evolution of a New Function in an Esterase: Simple Amino Acid
+Substitutions Enable the Activity Present in the Larger Paralog, BioH. Protein Eng. Des. Sel. 2012, 25, 387–395. [CrossRef]
+Saab-Rincón, G.; Olvera, L.; Olvera, M.; Rudiño-Piñera, E.; Benites, E.; Soberón, X.; Morett, E. Evolutionary Walk between (β/α) 8
+Barrels: Catalytic Migration from Triosephosphate Isomerase to Thiamin Phosphate Synthase. J. Mol. Biol. 2012, 416, 255–270.
+[CrossRef] [PubMed]
+
+85. Wang, L.; Schultz, P.G. Expanding the Genetic Code. Angew. Chem. Int. Ed. 2005, 44, 34–66. [CrossRef]
+86. Pirman, N.L.; Barber, K.W.; Aerni, H.R.; Ma, N.J.; Haimovich, A.D.; Rogulina, S.; Isaacs, F.J.; Rinehart, J. A Flexible Codon in
+Genomically Recoded Escherichia Coli Permits Programmable Protein Phosphorylation. Nat. Commun. 2015, 6, 8130. [CrossRef]
+87. Lang, K.; Chin, J.W. Cellular Incorporation of Unnatural Amino Acids and Bioorthogonal Labeling of Proteins. Chem. Rev. 2014,
+
+114, 4764–4806. [CrossRef] [PubMed]
+
+88. Wang, L.; Zhang, Z.; Brock, A.; Schultz, P.G. Addition of the Keto Functional Group to the Genetic Code of Escherichia Coli. Proc.
+
+Natl. Acad. Sci. USA 2003, 100, 56–61. [CrossRef] [PubMed]
+
+Molecules 2021, 26, 5599
+
+14 of 14
+
+89. Chin, J.W.; Cropp, T.A.; Anderson, J.C.; Mukherji, M.; Zhang, Z.; Schultz, P.G. An Expanded Eukaryotic Genetic Code. Science
+
+2003, 301, 964–967. [CrossRef]
+
+90. Wang, L.; Schultz, P.G. A General Approach for the Generation of Orthogonal TRNAs. Chem. Biol. 2001, 8, 883–890. [CrossRef]
+91. Gaudelli, N.M.; Komor, A.C.; Rees, H.A.; Packer, M.S.; Badran, A.H.; Bryson, D.I.; Liu, D.R. Programmable Base Editing of A•T
+
+to G•C in Genomic DNA without DNA Cleavage. Nature 2017, 551, 464–471. [CrossRef]
+
+92. Ghadessy, F.J.; Ong, J.L.; Holliger, P. Directed Evolution of Polymerase Function by Compartmentalized Self-Replication. Proc.
+
+Natl. Acad. Sci. USA 2001, 98, 4552–4557. [CrossRef]
+
+93. Arezi, B.; McKinney, N.; Hansen, C.; Cayouette, M.; Fox, J.; Chen, K.; Lapira, J.; Hamilton, S.; Hogrefe, H. Compartmentalized
+Self-Replication under Fast PCR Cycling Conditions Yields Taq DNA Polymerase Mutants with Increased DNA-Binding Afﬁnity
+and Blood Resistance. Front. Microbiol. 2014, 5. [CrossRef]
+
+94. Kermekchiev, M.B.; Barnes, W.M. Use of Whole Blood in Pcr Reactions. WO2005113829A2, 1 December 2005.
+95. Ramsay, N.; Jemth, A.-S.; Brown, A.; Crampton, N.; Dear, P.; Holliger, P. CyDNA: Synthesis and Replication of Highly Cy-Dye
+
+Substituted DNA by an Evolved Polymerase. J. Am. Chem. Soc. 2010, 132, 5096–5104. [CrossRef]
+
+96. Ong, J.L.; Loakes, D.; Jaroslawski, S.; Too, K.; Holliger, P. Directed Evolution of DNA Polymerase, RNA Polymerase and Reverse
+
+Transcriptase Activity in a Single Polypeptide. J. Mol. Biol. 2006, 361, 537–550. [CrossRef]
+
+97. Pinheiro, V.B.; Arangundy-Franklin, S.; Holliger, P. Compartmentalized Self-Tagging for In Vitro-Directed Evolution of XNA
+
+Polymerases. Curr. Protoc. Nucleic Acid Chem. 2014, 57, 9. [CrossRef] [PubMed]
+
+98. Pinheiro, V.B.; Taylor, A.I.; Cozens, C.; Abramov, M.; Renders, M.; Zhang, S.; Chaput, J.C.; Wengel, J.; Peak-Chew, S.-Y.;
+McLaughlin, S.H.; et al. Synthetic Genetic Polymers Capable of Heredity and Evolution. Science 2012, 336, 341–344. [CrossRef]
+[PubMed]
+
+99. Arangundy-Franklin, S.; Taylor, A.I.; Porebski, B.T.; Genna, V.; Peak-Chew, S.; Vaisman, A.; Woodgate, R.; Orozco, M.; Holliger, P.
+A Synthetic Genetic Polymer with an Uncharged Backbone Chemistry Based on Alkyl Phosphonate Nucleic Acids. Nat. Chem.
+2019, 11, 533–542. [CrossRef]
+
+100. Esvelt, K.M.; Carlson, J.C.; Liu, D.R. A System for the Continuous Directed Evolution of Biomolecules. Nature 2011, 472, 499–503.
+
+[CrossRef] [PubMed]
+
+101. Badran, A.H.; Guzov, V.M.; Huai, Q.; Kemp, M.M.; Vishwanath, P.; Kain, W.; Nance, A.M.; Evdokimov, A.; Moshiri, F.; Turner,
+K.H.; et al. Continuous Evolution of Bacillus Thuringiensis Toxins Overcomes Insect Resistance. Nature 2016, 533, 58–63.
+[CrossRef]
+
+102. Bryson, D.I.; Fan, C.; Guo, L.-T.; Miller, C.; Söll, D.; Liu, D.R. Continuous Directed Evolution of Aminoacyl-TRNA Synthetases.
+
+Nat. Chem. Biol. 2017, 13, 1253–1260. [CrossRef]
+
+103. Hu, J.H.; Miller, S.M.; Geurts, M.H.; Tang, W.; Chen, L.; Sun, N.; Zeina, C.M.; Gao, X.; Rees, H.A.; Lin, Z.; et al. Evolved Cas9
+
+Variants with Broad PAM Compatibility and High DNA Speciﬁcity. Nature 2018, 556, 57–63. [CrossRef]
+
+104. Takahashi, N.; Kakinuma, H.; Liu, L.; Nishi, Y.; Fujii, I. In Vitro Abzyme Evolution to Optimize Antibody Recognition for
+
+Catalysis. Nat. Biotechnol. 2001, 19, 563–567. [CrossRef]
+
+105. Kather, I.; Jakob, R.P.; Dobbek, H.; Schmid, F.X. Increased Folding Stability of TEM-1 Beta-Lactamase by in Vitro Selection. J. Mol.
+
+106. Chen, T.; Hongdilokkul, N.; Liu, Z.; Adhikary, R.; Tsuen, S.S.; Romesberg, F.E. Evolution of Thermophilic DNA Polymerases for
+
+Biol. 2008, 383, 238–251. [CrossRef]
+the Recognition and Ampliﬁcation of C2(cid:48)-Modiﬁed DNA. Nat. Chem. 2016, 8, 556–562. [CrossRef]
+
+107. Amstutz, P.; Pelletier, J.N.; Guggisberg, A.; Jermutus, L.; Cesaro-Tadic, S.; Zahnd, C.; Plückthun, A. In Vitro Selection for Catalytic
+
+Activity with Ribosome Display. J. Am. Chem. Soc. 2002, 124, 9396–9403. [CrossRef] [PubMed]
+
+108. Bieberich, E.; Kapitonov, D.; Tencomnao, T.; Yu, R.K. Protein–Ribosome–MRNA Display: Afﬁnity Isolation of Enzyme–Ribosome–
+
+MRNA Complexes and CDNA Cloning in a Single-Tube Reaction. Anal. Biochem. 2000, 287, 294–298. [CrossRef]
+
+109. Skirgaila, R.; Pudzaitis, V.; Paliksa, S.; Vaitkevicius, M.; Janulaitis, A. Compartmentalization of Destabilized Enzyme–MRNA–
+Ribosome Complexes Generated by Ribosome Display: A Novel Tool for the Directed Evolution of Enzymes. Protein Eng. Des.
+Sel. 2013, 26, 453–461. [CrossRef] [PubMed]
+
+110. Hall, B.G. Experimental Evolution of a New Enzymatic Function. II. Evolution of Multiple Functions for Ebg Enzyme in E. Coli.
+
+Genetics 1978, 89, 453–465. [CrossRef] [PubMed]
+
+

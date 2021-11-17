@@ -1,0 +1,1112 @@
+pubs.acs.org/synthbio
+
+Research Article
+
+Engineering a CRISPRi Circuit for Autonomous Control of Metabolic
+Flux in Escherichia coli
+Cong Gao, Liang Guo, Guipeng Hu, Jia Liu, Xiulai Chen, Xiaoxia Xia, and Liming Liu*
+
+Cite This: https://doi.org/10.1021/acssynbio.1c00294
+
+Read Online
+
+ACCESS
+
+Metrics & More
+
+Article Recommendations
+
+*sı Supporting Information
+
+ABSTRACT: Building autonomous switches is an eﬀective approach for rewiring metabolic ﬂux during microbial synthesis of
+chemicals. However, current autonomous switches largely rely on metabolite-responsive biosensors or quorum-sensing circuits. In
+this study, a stationary phase promoter (SPP) and a protein degradation tag (PDT) were combined with the CRISPR interference
+(CRISPRi) system to construct an autonomous repression system that could shut down multiple-gene expression depending on the
+cellular physiological state. With this autonomous CRISPRi system to regulate one target gene, a fermenter-scale titer of shikimic
+acid reached 21 g/L, which was the highest titer ever reported by Escherichia coli in a minimal medium without any chemical
+inducers. With three target genes repressed, 26 g/L glutaric acid could be achieved with decreased byproduct accumulation. These
+results highlight the applicability of the autonomous CRISPRi system for microbial production of value-added chemicals.
+KEYWORDS: CRISPRi, stationary phase promoter, autonomous regulation, shikimic acid, glutaric acid
+
+■ INTRODUCTION
+
+With advantages including environmental
+friendliness and
+sustainable production, numerous microbial cell factories have
+been constructed to produce value-added chemicals such as
+biofuels,1 ﬁne chemicals,2 biomaterials,3 and pharmaceuticals.4
+During the pathway engineering process, maximizing meta-
+bolic ﬂux toward target pathways using static regulation such as
+gene knock-out or overexpression always causes tremendous
+cellular burden or growth retardation by draining resources
+from endogenous metabolism.5 Thus, building autonomous
+switches to coordinate cell growth and chemical production
+can provide alternative options for improving biosynthesis
+performance.6
+
+There are mainly three approaches to achieve autonomous
+metabolic ﬂux rewiring. The ﬁrst approach is using a
+metabolite-biosensor-based circuit. By mining natural metab-
+factors7,8 or engineering
+olite-responsive transcriptional
+synthetic biosensors,5 the intracellular metabolite concen-
+tration signal could be autonomously converted into gene
+transcriptional output to facilitate cell ﬁtness and bioproduc-
+tion performance.9 For example, by installing a natural
+muconic acid-responsive transcription factor CatR and an
+antisense RNA system, a bifunctional dynamic control network
+was recently developed for improving muconic acid biosyn-
+
+thesis in Escherichia coli.10 However, most biosensor-based
+circuits were metabolic pathway-dependent. The second
+approach is the use of a quorum sensing (QS)-based circuit.
+The QS system allowed microorganisms to respond to speciﬁc
+signal molecules such as acyl homoserine lactone or peptides at
+a speciﬁc threshold, which enabled suﬃcient biomass
+accumulation before pathway ﬂux redistribution.11,12 For
+instance, by integrating the QS system from Vibrio ﬁscheri
+and recombinase Cre, a cell density-dependent, Cre-triggered
+autonomous circuit was built
+to enable the autonomous
+decoupling of cell growth and shikimic acid (SA) biosyn-
+thesis.13 However, building such circuits required the mining
+of endogenous14 or heterologous12 QS elements. Recently, a
+third approach to build autonomous biomolecular switches
+was put forward. Speciﬁcally, the expression of tobacco etch
+virus protease and a reporter protein was controlled by a
+
+Received:
+
+June 28, 2021
+
+© XXXX American Chemical Society
+
+A
+
+https://doi.org/10.1021/acssynbio.1c00294
+ACS Synth. Biol. XXXX, XXX, XXX−XXX
+
+Downloaded via UNIV OF LIVERPOOL on October 11, 2021 at 07:12:49 (UTC).See https://pubs.acs.org/sharingguidelines for options on how to legitimately share published articles.ACS Synthetic Biology
+
+pubs.acs.org/synthbio
+
+Research Article
+
+Figure 1. Design and characterization of SPP-CRISPRi. (a) Design of CRISPRi and SPP-CRISPRi. Dynamic repression of mVenus was achieved
+by delaying the initiation of sgRNA transcription controlled by SPP. (b) Characterization of diﬀerent promoters on mVenus protein accumulation.
+(c) Fluorescence curve of strains with SPP-driven sgRNA. The control and CRISPRi groups represent strains expressing nontargeting or targeting
+sgRNA. (d) Cell growth curve of diﬀerent combinations of strains. (e) Normalized transcript abundance of sgRNA in diﬀerent strains at 3 and 12 h.
+(f) Normalized transcript abundance of mVenus in diﬀerent strains at 3 and 12 h. The error bars represent the standard deviation (SD) of the
+normalized transcript abundance values from three biological replicates. (g) Design of Dual-SPP-CRISPRi by installing various promoters on dCas9
+and sgRNA transcription. (h) Switch time in diﬀerent promoter combination strains. *P < 0.05; **P < 0.01.
+
+stationary phase promoter (SPP) and a growth phase
+promoter, respectively, to enable protease-mediated proteolysis
+that relied on the cellular physiological state.15
+
+for alleviating metabolic stress,
+
+Although autonomous biomolecular switches are eﬃcient
+strategies
+simultaneous
+regulation of multiple genes remains challenging. The CRISPR
+interference (CRISPRi) system contains a catalytically
+deactivated Cas9 (dCas9), which lacks endonuclease activity
+
+but retains DNA-binding activity.16 With a superior ability to
+ﬁne-tune gene expression with hundreds of folds,17 CRISPRi
+has been applied to control metabolic ﬂux for constructing
+factories.18 Moreover, compared to other
+microbial cell
+dynamic control methods such as transcriptional factor-based
+molecular switches,8 thermal switch systems,19 and optogenetic
+circuits20 that lack multiplexed regulation ability, the CRISPRi
+system enables simultaneous control of multiple genes by
+
+B
+
+https://doi.org/10.1021/acssynbio.1c00294
+ACS Synth. Biol. XXXX, XXX, XXX−XXX
+
+ACS Synthetic Biology
+
+pubs.acs.org/synthbio
+
+Research Article
+
+Figure 2. Characterization of the autonomous repression system. (a) Schematic diagram of the genetic circuits of SPP-CRISPRi and SPP/PDT-
+CRISPRi. (b) Fluorescence abundance curve in strain D1 and strains with diﬀerent PDTs. (c) Continuous ﬂuorescence imaging of diﬀerent strains
+for 16 h. (d) Fluorescence proﬁle detection for diﬀerent strains in a 96 h culture. (e) Cell growth as well as ﬂuorescence accumulation of E. coli D1-
+LAA in M9, NBS, and Lysogeny broth (LB) medium. (f) Studies on the morphology of the control and experimental strains with single-cell
+ﬂuorescence microscopy.
+
+expressing an array of single-guide RNAs (sgRNAs) to build
+diﬀerent sgRNA−dCas9 complexes binding to multiple targets.
+The cell’s capacity to degrade pre-existing proteins during
+transcriptional repression techniques has a signiﬁcant impact
+on the circuit response time. For proteins with lengthy half-
+lives, it may take several generations to dilute the protein to a
+concentration that precludes it from functioning.21 To obtain a
+quick response, numerous protein degradation tag (PDT)
+
+variants have been generated to alter the half-life of the tagged
+protein by endogenous protease ClpXP-mediated degrada-
+tion.22
+
+In this study, an SPP/PDT-CRISPRi system was proposed
+to achieve an autonomous switch that could shut down
+multiple-gene expression depending on the cellular physio-
+logical state. Titer improvements in both SA and glutaric acid
+
+C
+
+https://doi.org/10.1021/acssynbio.1c00294
+ACS Synth. Biol. XXXX, XXX, XXX−XXX
+
+ACS Synthetic Biology
+
+pubs.acs.org/synthbio
+
+Research Article
+
+Figure 3. SA production using the autonomous repression system. (a) Schematic of the production pathway of SA in E. coli S5. (b) Design of SPP/
+PDT-CRISPRi for SA production. (c) Cell growth curve between diﬀerent engineered strains. (d) Titers of SA in diﬀerent engineered strains. (e)
+Enzyme activity evaluation of shikimate kinase I in diﬀerent strains during fermentation. (f) RT-qPCR results of AroK in diﬀerent strains. (g)
+Substrate optimization for SA production. (h) SA production of engineered strain E. coli S5-DAS in a bioreactor. Abbreviation: Zmglf, glucose
+facilitator from Zymomonas mobilis; PTS, phosphotransferase system; G6P, glucose 6-phosphate; PPP, pentose phosphate pathway; PEP,
+phosphoenolpyruvate; E4P, erythrose-4-phosphate; PYR, pyruvate; DAHP, 3-deoxy-D-arabino-heptulosonate-7-phosphate; TktA, transketolase A;
+AroGfbr, feedback-resistant mutants of DAHP synthase (D146N); AroBopt, DHQ synthase with ﬁrst eight codons optimized; AroD, DHQ
+dehydratase; AroE, shikimate dehydrogenase; AroK/L, shikimate kinase I/II; DHQ, 3-dehydroquinic acid; QA, quinic acid; DHS, 3-
+dehydroshikimate; G3P, glyceraldehyde 3-phosphate; S3P, shikimate-3-phosphate; YdiB, quinate dehydrogenase. Values are shown as mean ± SD
+(n = 3). *P < 0.05; **P < 0.01.
+
+(GA) when equipping this circuit further demonstrated the
+potential of this system in building eﬃcient bio-reﬁneries.
+
+■ RESULTS
+
+Design of CRISPRi-Mediated Autonomous Repres-
+sion. To construct a CRISPRi-mediated dynamic repression
+system, sgRNA was designed to be expressed by a stationary
+phase promoter (SPP) (Figures 1a and S2) so that the target
+protein could be normally expressed at the growth phase and
+repressed at the stationary phase theoretically. To achieve this
+goal, 12 SPPs were screened and characterized (Figures S3 and
+S4). In the control strain in which the expression of reporter
+protein (mVenus) was driven by a constructive promoter PTrc,
+a continuous ﬂuorescence accumulation was recorded along
+with culture time. However, in the experimental strains, SPP-
+controlled mVenus expression was repressed before the cell
+
+entered the stationary phase (Figures 1b and S4). Among
+those SPPs, three SPPs with diﬀerent strengths (S71, BolA,
+and S143) were selected to build an SPP-based CRISPRi
+circuit (SPP-CRISPRi).
+
+Compared to the negative control strain E. coli NC that
+expressed nontargeting sgRNA to allow mVenus accumulation,
+approximately 26-fold repression was observed in a positive
+control strain E. coli PC containing sgRNA targeting the
+nontemplate strand of mVenus (Figure 1c). With negligible
+pressure on cell growth by replacing SPP, three SPP-CRISPRi
+including E. coli D1, D2, and D3 (with sgRNA
+strains,
+controlled by S71, BolA, and S143) exhibited 52.9, 20.5, and
+5.4% of the reporter expression compared to that of E. coli NC,
+respectively (Figure 1c,d). Moreover, the E. coli D1 strain
+exhibited a close ﬂuorescence level to strain E. coli NC for
+approximately 6 h, followed by gradual retardation, indicating
+
+D
+
+https://doi.org/10.1021/acssynbio.1c00294
+ACS Synth. Biol. XXXX, XXX, XXX−XXX
+
+ACS Synthetic Biology
+
+pubs.acs.org/synthbio
+
+Research Article
+
+that target gene expression could be autonomously shut down
+depending on the cellular physiological state.
+
+To elucidate the mechanism of autonomous repression, an
+real-time quantitative polymerase chain reaction (RT-qPCR)
+test was carried out for the E. coli D1 strain and two control
+strains (E. coli NC/PC) at 3 and 12 h. For sgRNA, results
+showed that the transcript abundances in E. coli NC and E. coli
+D1 were repressed when cells were cultured in the early period
+(3 h) compared to that of E. coli PC (Figure 1e). After cells
+entered the stationary phase (12 h), there was no signiﬁcant
+diﬀerence between the three strains (Figure 1e). For mVenus,
+coli D1 was
+the transcriptional
+signiﬁcantly downregulated compared to that of E. coli NC
+after cells entered the stationary phase, which was diﬀerent
+from that of E. coli PC that exhibited a comparable low
+transcriptional level both at 3 and 12 h (Figure 1f).
+
+level of mVenus in E.
+
+To quantify the time ranges of mVenus switch point, sgRNA
+and dCas9 were designed to be expressed under the control of
+either constitutive promoters (J23101 and J23106) or three
+SPPs (Figure 1g). The constructed 16 strains exhibited a
+variety of switch points of the reporter protein curve, ranging
+from 0.5 to 11 h. Among them, shorter switch times and lower
+mVenus accumulation could be observed in higher strength
+SPP combination strains. Moreover, eight strains showed a
+switch time of more than 6 h, which provided alternative tools
+to build a dynamic repression system (Figure 1h).
+
+Characterization of the Autonomous Repression
+System. To evaluate the tunability of the system, diﬀerent
+strengths of PDTs (LAA, GSD, and DAS) that can control
+protein stability to aﬀect protein half-life were fused to the
+reporter protein mVenus (Figures 2a and S5). Compared to
+the E. coli D1 strain that still exhibited a slight increase of
+ﬂuorescence after 6 h, strains with PDTs showed similar cell
+growth but suppressed the accumulation of mVenus after 6 h
+(Figure S6). The abundance of mVenus in strains of E. coli D1-
+LAA, D1-GSD, and D1-DAS lasted for 10, 14 h, and more than
+18 h, respectively, indicating that a stronger degradation tag
+could lead to less protein abundance (Figure 2b). To visually
+characterize the protein expression levels in diﬀerent systems,
+continuous ﬂuorescence imaging was performed at the colony
+levels. In contrast to a constitutive accumulation of mVenus in
+strain E. coli NC with nontargeting sgRNA, strain E. coli PC
+expressing correct targeting sgRNA exhibited strong repression
+of mVenus throughout the culture time. The mVenus in the
+core zone of the colony was nearly completely degraded after
+being cultured for 12 h in strain E. coli D1-LAA (SPP/PDT-
+in strain E. coli D1 without a
+CRISPRi system). However,
+degradation tag (SPP-CRISPRi system), mVenus accumulated
+for more than 16 h at a low but visible level. These results
+revealed that proteolysis played an important role in building a
+ﬁne-tuning circuit (Figure 2c).
+
+To assess the stability of the SPP/PDT-CRISPRi system, the
+abundance of mVenus in E. coli D1-LAA was detected for 96 h.
+Compared to the positive control strain E. coli PC that
+exhibited a low ﬂuorescence intensity throughout the 96 h
+culture, mVenus in strain E. coli D1-LAA displayed a tendency
+to increase ﬁrst and then decrease. Moreover, it showed a 2.6%
+ﬂuorescence intensity compared to the negative control strain
+E. coli NC even after 96 h. These results indicated that this
+SPP/PDT-CRISPRi system was stable in long-time culture for
+chemical production (Figure 2d).
+
+To evaluate the robustness of
+
+the SPP/PDT-CRISPRi
+system, the cell growth and the ﬂuorescence proﬁle of E. coli
+
+D1-LAA were tested in diﬀerent culture mediums. For a rich
+medium (LB), the mVenus abundance of engineered strain
+was
+increased in the early period, while a decreased
+ﬂuorescence proﬁle of engineered strain could be observed
+when cells entered the stationary phase after 12 h. For the
+minimal medium (M9 and NBS), similar results could be
+obtained in which mVenus was gradually increased before 24 h
+and then decreased after 24 h (Figure 2e).
+
+To test the portability of the SPP/PDT-CRISPRi circuit,
+mVenus was replaced by Ftsz (a key protein involved in cell
+division) in an FtsZ-inactivated E. coli strain. As a result, the
+mean cell length of the engineered strain was increased to 8.77
+μm from 1.87 μm of the control strain (Figure S7). This result
+was further conﬁrmed by a time-lapse microscopy study
+(Figure 2f).
+
+Dynamic Coordination of Cell Growth and Shikimic
+Acid Production. Shikimic acid, an important building block
+for
+the synthesis of anti-inﬂuenza drug oseltamivir, was
+traditionally obtained from Illicium plants or chemical cascade
+reactions.23 Although numerous microbial cell factories have
+been constructed to produce SA,13,22,24,25 current methods
+depend largely on the exogenous addition of expensive
+aromatic amino acids or chemical
+inducers during the
+fermentation process, which inevitably decreases its economic
+viability. To avoid such supplementation,
+the SPP/PDT-
+CRISPRi system was employed to decouple cell growth and SA
+production.
+
+First, an engineered E. coli S5 was constructed from a
+previous E. coli S4 by deleting quinate dehydrogenase to block
+the formation of byproduct quinic acid (QA)15 (Figure 3a).
+This strain could not grow normally in the minimal medium
+and was selected as a chassis strain for system evaluation.
+Then, by co-expression of dCas, pathway enzymes, and
+sgRNA(aroK), three engineered strains including E. coli S5-
+LAA, E. coli S5-GSD, and E. coli S5-DAS were constructed
+(Figure 3b). Compared to the negative control strain E. coli S5
+NC that exhibited normal cell growth, strains E. coli S5-DAS,
+S5-GSD, and S5-LAA showed cell growth arrest at 24, 24, and
+18 h, respectively. Consequently, the ﬁnal cell density of E. coli
+S5-DAS, S5-GSD, and S5-LAA were reduced to 91.6, 52.4, and
+35.1% from that of E. coli S5 NC, respectively (Figure 3c). The
+highest shikimic acid titer of 2.8 g/L was achieved in strain E.
+coli S5-DAS, with a yield of 0.22 g/g glucose (Figure 3d).
+
+To clarify the relationship between cell growth and shikimic
+acid accumulation, shikimic acid kinase activities in these
+strains were measured at diﬀerent culture times. The negative
+control strain E. coli S5 NC exhibited similar enzyme activities
+at the exponential phase or later stationary phase. However,
+strains equipped with the SPP/PDT-CRISPRi system showed
+a downregulation of enzyme activities along with the culture
+time (Figure 3e). This could be further veriﬁed with RT-qPCR
+results, in which the transcript abundances of aroK at 24 and
+36 h were reduced by 63 and 89% compared to those at 12 h,
+respectively (Figure 3f).
+
+Preliminary trials of ferment optimization showed that with
+glucose as the substrate and culture at 33 °C, 2.9 g/L SA was
+achieved in E. coli S5-DAS in shake ﬂask experiments (Figures
+3g and S8). On this basis, E. coli S5-DAS was examined under
+optimal
+fermentation conditions for its scale-up in a 5 L
+bioreactor. A rapid increase of SA could be detected after 12 h
+when cells entered the stationary phase. After 48 h culture, the
+ﬁnal titer of SA reached 21 g/L with a productivity of 0.44 g/
+(L·h) (Figure 3h).
+
+E
+
+https://doi.org/10.1021/acssynbio.1c00294
+ACS Synth. Biol. XXXX, XXX, XXX−XXX
+
+ACS Synthetic Biology
+
+pubs.acs.org/synthbio
+
+Research Article
+
+Figure 4. GA production using the autonomous repression system. (a) Metabolic pathway for GA and main byproducts. (b) Schematic
+representation of autonomous regulation during GA production. (c) Eﬀect of gene deletion and gene repression on the accumulation of acetic acid,
+lactic acid, and formic acid. (d) Lactate dehydrogenase activities of diﬀerent strains at diﬀerent culture times. (e) Production of GA by strain E. coli
+G1 in a 5 L fed-batch bioreactor. (f) Production of GA by strain E. coli G6 in a 5 L fed-batch bioreactor. Abbreviation: PEP, phosphoenolpyruvate;
+OAA, oxaloacetic acid; L-asp, L-aspartic acid; ACE, acetic acid, FOR, formic acid; LAC, lactic acid; EcCA, L-lysine decarboxylase from E. coli; KpcPA
+and KpcPD, putrescine aminotransferase variant and γ-aminovaleraldehyde dehydrogenase from Klebsiella pneumoniae; PfeGT and PfeGD, 4-
+aminobutyrate transaminase and succinate semialdehyde dehydrogenase from Pseudomonas ﬂuorescens; GLC, glucose. Values are shown as mean ±
+SD (n = 3).
+
+Multigene Repression to Decrease Byproduct Accu-
+mulation in Glutaric Acid Production. Glutaric acid (GA),
+
+a C5 dicarboxylic acid, was widely used for the synthesis of
+polyamides such as nylon-4,5 and nylon-5,5.26 Recently, by
+
+F
+
+https://doi.org/10.1021/acssynbio.1c00294
+ACS Synth. Biol. XXXX, XXX, XXX−XXX
+
+ACS Synthetic Biology
+
+pubs.acs.org/synthbio
+
+Research Article
+
+eliminating rate-limiting bottlenecks and improving the
+absorption of 5AVA, an eﬃcient biocatalytic cascade for the
+transformation of lysine to GA was constructed by our group.27
+While GA titer was improved with lysine as a substrate, we
+sought to build an engineered strain that could produce GA
+directly from glucose (Figure 4a). By introducing Cad pathway
+enzymes into a lysine-overproducing strain E. coli Y1, an
+engineered strain E. coli G1 was constructed that could
+produce 3.3 g/L GA in 60 h. However, 5.3 g/L acetic acid
+(ACE), 3.8 g/L lactic acid (LAC), and 2.6 g/L formic acid
+(FOR) were accumulated as well (Figure 4c).
+
+To identify the possibility of autonomous multigene
+repression to decrease byproduct accumulation during GA
+production, the SPP/PDT-CRISPRi system was installed by
+selecting lactate dehydrogenase (encoded by ldhA), pyruvate
+formate lyase (encoded by pflB), and phosphate acetyltransfer-
+ase (encoded by pta) as target sites (Figure 4b). Compared to
+E. coli G1, 0.43-fold acetic acid, 0.24-fold lactic acid, and 0.15-
+fold formic acid could be detected in strains with a single
+targeting sgRNA. Moreover, with a multigene repression
+design by assembling three sgRNA cassettes in E. coli G6,
+the ﬁnal acetic acid, lactic acid, and formic acid were decreased
+to 26, 34, and 31%, respectively, compared to that of E. coli G1,
+indicating the versatility of the circuit (Figure 4c).
+
+To explore the dynamic repression eﬀect on the target
+lactate
+enzyme, the activities of one representative enzyme,
+dehydrogenase, at diﬀerent culture times were assayed in both
+E. coli G1 and E. coli G6. Similar enzyme activities could be
+detected in both strains within the ﬁrst 12 h culture. However,
+enzyme activities in E. coli G6 started to decrease after 24 h
+and were 58−24% lower than those of E. coli G1 from 24 to 60
+h, respectively. These results conﬁrmed that
+the targeted
+enzyme could be downregulated automatically (Figure 4d).
+
+We next tested GA production as well as the accumulation
+of the byproducts in a 5 L batch bioreactor. Compared to the
+control strain E. coli G1 (Figure 4e), the engineered strain E.
+coli G6 exhibited a similar cell growth curve,
+indicating a
+negligible cell growth burden. Moreover,
+three main by-
+products in E. coli G6 accumulated normally until the time that
+the autonomous repression system was expected to become
+active and then slowed their accumulation (Figure 4f). As a
+result, the maximal GA titer reached 26 g/L, and 40% acetic
+acid, 41% lactic acid, and 35% formic acid were accumulated at
+the end of the fermentation compared to that of E. coli G1.
+
+■ DISCUSSION
+
+In this study, an autonomous circuit that involved CRISPRi, a
+stationary phase promoter, as well as a protein degradation tag
+was successfully constructed for rewiring metabolic ﬂux. Then,
+this circuit was characterized by diﬀerent aspects, including
+tunability, stability, robustness, and portability. Further, this
+circuit exhibited good applicability both in one target
+repression for decoupling cell growth and shikimic acid
+production and three target repression for decreasing by-
+product accumulation during glutaric acid biosynthesis.
+
+The introduction of SPPs to trigger the transcription of
+sgRNA or dCas9 provided a valuable alternative in realizing
+autonomous dynamic control. With advantages including
+simple manipulation, multiplexed regulation, and high dynamic
+range,
+the CRISPRi system was widely implemented in
+building eﬃcient microbial cell factories.28,29 For example, by
+developing a tryptophan operon-assisted CRISPRi system in K.
+pneumoniae, cell growth and 3-hydroxypropionic acid synthesis
+
+were successfully decoupled.30 By integrating a blue light-
+sensitive protein to control
+the expression of dCpf1, an
+optogenetic CRISPRi platform was constructed for improving
+muconic acid production.31 If engineered strains could self-
+regulate metabolic pathway ﬂuxes according to environmental
+perturbations, microbial yields could be maximized without the
+need for manual supervision. To achieve such autonomous
+regulation, CRISPRi systems were coupled to either inter-
+mediate metabolite-responsive biosensors18,32 or quorum-
+sensing circuits.12,33 However, the developed approaches so
+far had limitations either in pathway-independent or simple
+manipulation. As the expression of phase promoters was
+strictly controlled by the transcription factor σS34 or ppGpp,35
+they could be recruited to construct autonomous biomolecular
+switches for microbial biosynthesis. In our previous study,
+diﬀerent programmable biomolecular
+switches based on
+stationary phase promoters or growth phase promoters were
+constructed to improve the eﬃciency of shikimic acid and GA
+production.15,22 Herein,
+the autonomous
+CRISPRi system showed that phase promoters were versatile
+and could be competitive genetic parts in building smart
+microorganisms.36
+
+the success of
+
+Protein level regulation was indispensable in realizing precise
+regulation of metabolic distribution. While transcriptional
+regulations are frequently used in metabolic engineering,6 their
+inherent delayed response limits their wide applications in
+precise metabolic ﬂux tuning. This could be veriﬁed in this
+study,
+in which a low level of green ﬂuorescence protein
+(GFP) existed throughout the culture time even though its
+transcription was terminated at the stationary phase, while no
+GFP was detected in less than 10 h when it was fused with a
+strong PDT. The low regulatory accuracy caused by circuit
+design could result in unwanted metabolic ﬂux distribution.
+For example, compared to SPP/PDT-CRISPRi that integrated
+both transcriptional level and protein level regulations, higher
+concentrations of byproducts could be detected when using a
+single-layered transcriptional regulation (Dual-SPP-CRISPRi
+system) (Figure S9). To achieve protein level regulation,
+numerous endogenous proteolytic machines, such as degron-
+based proteolytic machines,37 proteasome-based proteolytic
+machines,38 and AAA+ proteolytic machines,39 could be used
+for metabolic applications.40,41 These mechanisms, together
+with suitable protein circuit design,42 would provide new
+possibilities to dynamically program biological systems for
+controlling cellular behaviors as well as boosting microbial
+production.
+
+Although this CRISPRi-based circuit oﬀers many advan-
+tages, an important limitation of monofunction should also be
+considered when applying this strategy to metabolic engineer-
+ing. With a downregulation of a single target or multiple targets
+at a customized time, the circuit built here could switch the cell
+state only once without reversibility. To achieve multifunc-
+tional regulation, four main methods could be explored. First,
+with a de-repression eﬃciency of up to 95%,43 antisense RNA
+could be introduced to realize the repression or de-repression
+of multiple target genes simultaneously in a single-layer
+regulatory circuit.44 Second, by combining the CRISPRi
+system with novel biosensors that could upregulate gene
+expression, a dual-control circuit could be constructed.18
+Third, by engineering the dCas9 protein to be temperature-
+sensitive,45 light-switchable,46,47 conditionally degradable,48
+and small molecule-triggered,49 CRISPR circuits could be
+reversible. Four, by integrating orthogonal CRISPR systems to
+
+G
+
+https://doi.org/10.1021/acssynbio.1c00294
+ACS Synth. Biol. XXXX, XXX, XXX−XXX
+
+ACS Synthetic Biology
+
+pubs.acs.org/synthbio
+
+Research Article
+
+achieve both transcriptional activation50 and transcriptional
+interference in one cell, a multilayer CRISPR circuit could be
+constructed to perform sophisticated functions.51
+■ CONCLUSIONS
+
+Herein, we developed a tunable autonomous CRISPRi circuit
+that could downregulate single or multiple genes in response to
+the cell stationary phase. Application of this system with one
+target repression in shikimic acid production resulted in a
+decoupling of cell growth and biosynthesis, which led to the
+highest titer (21 g/L) ever reported by E. coli in a minimal
+medium without any aromatic amino acid or chemical inducer
+supplementation. Further, by simultaneously inhibiting the
+synthesis of three byproducts, including acetic acid, lactic acid,
+and formic acid, the engineered E. coli could produce 26 g/L
+glutaric acid using glucose as a substrate. Taken together, the
+autonomous CRISPRi system oﬀers a promising option for
+dynamic metabolic ﬂux coordination and will be beneﬁcial in a
+variety of biotechnological applications.
+
+■ METHODS
+
+Strains and Plasmids. An E. coli MG1655-derived strain
+S4 was selected as a starting strain for SA production.15 In this
+E. coli S4, shikimic acid kinase I (encoded by aroK) and
+quinate dehydrogenase (encoded by ydiB) were knocked out.
+Shikimic acid kinase II (encoded by aroL) was replaced with a
+tktA expression cassette. The PTS system (ptsH, ptsI, and crr,
+encoding HPr, EI, and EIIAGlc, respectively) was replaced in
+the genome with a glucose facilitator protein gene from Z.
+mobilis. A lysine-overproducing strain E. coli Y1 was used as a
+chassis strain for GA production.52 An engineered strain E. coli
+Y3 with genomic phosphate acetyltransferase, pyruvate formate
+lyase, and lactate dehydrogenase fused with PDT in the C-
+terminal domain was constructed as the chassis strain for
+system veriﬁcation. All of the strains used in this study are
+listed in Table S1.
+
+Plasmid pGABEK was used for SA production. The gene
+aroGfbr, a feedback-resistant mutant involving D146N, was
+obtained by rapid PCR site-directed mutagenesis. The gene
+aroBopt, a codon-optimized variant, was obtained by opti-
+mization of the ﬁrst eight codons. Plasmid pETM-Glu was
+used for GA production,
+in which ﬁve pathway enzymes,
+including EcCA (GenBank: NP_418555), KpcPAE120G/T332A
+(GenBank: AIA38738), KpcPD (GenBank: AIA37073),
+PfeGT (GenBank: AEV60208), and PfeGD (GenBank:
+AEV60207) were overexpressed in a previously constructed
+plasmid pETM6R1.53 All plasmids used in this study are listed
+in Table S2. To obtain suitable sgRNA for gene repression,
+target enzymes were fused with the green ﬂuorescence protein
+(GFP) at their C-terminal (Figure S1). A series of sgRNAs
+were designed using the CRISPRdirect web (http://crispr.
+dbcls.jp/) and are shown in the primer list (Table S3).
+Diﬀerent cells harboring a dCas9 plasmid, reporter plasmid,
+and sgRNA plasmid were induced with 1 μM anhydrotetracy-
+cline until the optical density at 600 nm (OD600) reached 0.6
+in the M9 medium. The cell ﬂuorescence was measured after
+12 h of growth.
+
+Chemicals and Mediums. All chemicals for high-perform-
+ance liquid chromatography (HPLC) standards were pur-
+chased from Sigma-Aldrich. For genetic experiments, strains
+were cultured in LB broth or on LB agar plates; 100 mg/L
+
+ampicillin, 50 mg/L streptomycin, and 30 mg/L chloramphe-
+nicol were added for plasmid maintenance when needed.
+
+For SA production at the shake ﬂask level, seed cultures
+were grown overnight in the LB medium at 37 °C and 200 rpm
+and then transferred into the NBS minimal medium (3.5 g/L
+KH2PO4, 5 g/L K2HPO4, 3.5 g/L (NH4)2HPO4, 0.25 g/L
+·2H2O, 0.5 mg/L VB1, 1 mL/L
+MgSO4
+·6H2O,
+trace element solution (1.6 g/L FeCl3, 0.2 g/L CoCl2
+·4H2O, 0.2 g/L NaMnO4, 0.05
+0.1 g/L CuCl2, 0.2 g/L ZnCl2
+g/L H3BO3, dissolve in 0.1 M HCl)) containing 40 g/L
+glucose.
+
+·7H2O, 15 mg/L CaCl2
+
+For SA production in bioreactors, the engineered strain was
+ﬁrst inoculated into the LB medium at 37 °C and 200 rpm.
+Then, overnight seed cultures were collected, washed, and
+resuspended by the NBS minimal medium. The resulting strain
+was transferred into a 5 L fermenter with the NBS minimal
+medium containing 20 g/L glucose at an initial OD600 of 0.5.
+The culture temperature was controlled at 33 °C. The system
+·
+pH was maintained at 7 by automatically feeding 30% NH3
+H2O and 2 M HCl. Airﬂow was set at 1 vvm, and the dissolved
+oxygen concentration was controlled above 30% saturation via
+cascade agitation, and 800 g/L glucose was fed at a constant
+rate of 10 mL/h when the residual glucose fell below 10 g/L.
+For GA production at the shake ﬂask level, seed cultures
+were grown overnight in the seed medium (4 g/L sucrose, 6 g/
+L yeast extract, 10 g/L tryptone, 5.5 g/L (NH4)2SO4, 6 g/L
+·7H2O, 16 mg/L FeSO4, 16 mg/L
+K2HPO4, 0.8 g/L MgSO4
+MnSO4, 8 g/L monosodium L-glutamate, 0.5 g/L L-threonine,
+0.5 g/L L-methionine, 0.85 g/L sodium pyruvate, 20 mg/L
+biotin) at 37 °C. Then, it was transferred into the fermentation
+medium (15 g/L glucose, 0.2 g/L H3PO4, 1 g/L (NH4)2SO4, 1
+g/L KCl, 20 mL beet molasses, 2 g/L betaine, 2 g/L MgSO4,
+30 mg/L FeSO4, 30 mg/L MnSO4, 100 mg/L ZnSO4, 80 mg/
+L CuSO4, 0.5 g/L L-threonine, 10 g/L corn syrup, 60 mg/L
+VB1, 10 mg/L nicotinamide, 0.6 mg/L biotin) with an initial
+OD600 of 0.35.
+For GA production in bioreactors, seed cultures were grown
+overnight at 37 °C. Then, this culture was inoculated into a
+500 mL ﬂask containing 100 mL of second-class seed medium
+(60 g/L glucose, 20 g/L (NH4)2SO4, 2 g/L K2HPO4, 2.5 g/L
+·7H2O, 10 g/L corn syrup, 5 g/L hair hydrolysate, 20
+MgSO4
+mg/L FeSO4, 20 mg/L MnSO4, 80 mg/L ZnSO4, 80 mg/L
+CuSO4, 0.8 g/L L-threonine, 0.8 g/L L-methionine, 2 g/L
+betaine hydrochloride, 2 mg/L PABA, 1 mg/L VB1, 1 mg/L
+nicotinamide, 10 mg/L biotin, 10 g/L CaCO3) with an initial
+OD600 of 0.1. After 10 h at 37 °C and 200 rpm, the culture was
+inoculated into a 5 L bioreactor containing 3 L of fermentation
+medium with an initial OD600 of 0.35. The system pH was
+·H2O and 2
+maintained at 7 by automatically feeding 30% NH3
+M HCl, and 600 g/L glucose was fed at a constant rate of 10
+mL/h when the residual glucose fell below 5 g/L.
+
+Measurement of Fluorescence Intensity. E.
+
+coli
+carrying diﬀerent plasmids were ﬁrst grown in 5 mL of LB
+plus antibiotics overnight at 37 °C and 200 rpm. Then, the
+culture was diluted by 1:100 in 200 μL of fresh LB plus
+antibiotics and grown at 30 °C, 1000 rpm in a Titramax 1000
+incubator (Heidolph Instruments, Germany). The culture was
+diluted 1:5 every 2 h to maintain cells in the exponential
+growth phase. Samples were taken as required and further
+diluted 1:10 in 200 μL of
+fresh LB for ﬂuorescence
+measurement using a SpectraMax M3 microplate reader
+(Molecular Devices). The excitation and emission wavelengths
+
+H
+
+https://doi.org/10.1021/acssynbio.1c00294
+ACS Synth. Biol. XXXX, XXX, XXX−XXX
+
+pubs.acs.org/synthbio
+
+Research Article
+
+ACS Synthetic Biology
+were set at 515 ± 10 and 544 ± 10 nm, respectively, for
+mVenus.
+
+Single-Cell Time-Lapse Fluorescence Microscopy. The
+molten LB medium was poured onto a glass slide and solidiﬁed
+at room temperature. Then, 1 μL of cultures were pipetted
+onto an agarose pad at the center of a dish and a cover slide
+was put on the top softly to prevent evaporation. The lid of the
+dish was treated with an antifogging agent, sealed, and
+transferred to a microscope stage in a temperature-controlled
+chamber at 30 °C. Microscopy images were taken every 4 h
+using a Nikon ECLIPSE 80i microscope equipped with a
+Nikon DS-Ri1 camera.
+
+RT-qPCR Analysis. Cells at diﬀerent culture periods were
+harvested and washed twice using RNA-free water. After that,
+the total RNA was extracted using the UNIQ-10 Trizol total
+RNA Extraction Kit (Sangon Biotech, Shanghai, China), and
+then 1 μg of total RNA was used to reverse transcription with
+the Primer Script II 1st Strand cDNA Synthesis Kit (Takara,
+Dalian, China). Real-time quantitative PCR (RT-qPCR) was
+performed in a 96-well plate with a total reaction volume of
+approximately 20 μL using SYBR Premix Ex Taq (Takara,
+Dalian, China) on an iQ5 continuous ﬂuorescence detector
+system (Bio-Rad, Hercules, CA). Samples were prepared with
+three parallel groups to obtain the results of ΔCt values. The
+expression levels of diﬀerent genes were calculated and
+normalized to that of rrsA.
+
+Enzyme Activity Assay. For sample pretreatment, target
+cells were centrifuged at 6000g for 10 min, washed with chilled
+0.9% NaCl, and then resuspended in 0.05 M barbital buﬀer
+(pH 7). The obtained cell suspensions were lysed by
+sonication and centrifuged at 14 000g for 10 min. The
+concentration of total cellular proteins was determined by
+the Bradford method, with bovine serum albumin as a
+standard.
+
+For shikimic acid kinase assay, it was determined in crude
+extracts according to a previously reported method.13 The
+incubation mixture (1 mL) contained 4 μM ATP, 1 μM
+shikimic acid, 10 μM NaF, 5 μM MgCl2, 25 μM barbital buﬀer
+(pH 9.0), and 50 μL cell extract. One unit of shikimic acid
+kinase was deﬁned as 1 μM shikimate consumed per minute.
+For lactate dehydrogenase assay, cell crude extract was
+assayed in a reaction mixture containing 100 mM sodium
+phosphate buﬀer (pH 6.5), 80 mM pyruvate, and 4 mM
+NADH. The reaction was started after adding the crude
+enzyme solution at 30 °C. The change in the absorbance value
+at 340 nm was measured using a UV/visible spectropho-
+tometer. One unit of activity (U/mg of protein) was deﬁned as
+1 mM NAD+ formed per minute per milligram of protein. All
+assays were performed in triplicate.
+
+Analytical Methods. The OD600 was measured using a
+spectrophotometer. Glucose was quantiﬁed by a M-100
+Biosensors Analyzer (Sieman Technology Co., Ltd). Shikimic
+acid, glutaric acid, acetic acid, lactic acid, and formic acid were
+determined by HPLC using an Aminex HPX-87 H column
+(7.8 mm × 300 mm; Bio-Rad Laboratories, CA) at 50 °C with
+5 mM sulfuric acid as the mobile phase. The injection volume
+was 10 μL with a ﬂow rate of 0.6 mL/min.
+■ ASSOCIATED CONTENT
+*sı Supporting Information
+The Supporting Information is available free of charge at
+https://pubs.acs.org/doi/10.1021/acssynbio.1c00294.
+
+Screening of sgRNAs used for gene repression (Figure
+S1), four types of working modes of the CRISPRi system
+(Figure S2), strength comparison of diﬀerent promoters
+(Figure S3), growth curve of strains with diﬀerent SPPs
+(Figure S4), strength comparison of diﬀerent PDTs
+(Figure S5), growth curve of strains with diﬀerent PDTs
+(Figure S6), histogram of the cell length from diﬀerent
+strains (Figure S7),
+temperature optimization for
+shikimic acid production with E. coli S5-DAS (Figure
+S8), comparison of byproduct accumulation between the
+Dual-SPP-CRISPRi system and the SPP/PDT-CRISPRi
+system (Figure S9), list of strains (Table S1), plasmids
+(Table S2), and primer sequences for sgRNA screening
+(Table S3) in this study (PDF)
+
+Corresponding Author
+
+■ AUTHOR INFORMATION
+Liming Liu − State Key Laboratory of Food Science and
+Technology, Jiangnan University, Wuxi 214122, China;
+International Joint Laboratory on Food Safety, Jiangnan
+University, Wuxi 214122, China; Email: mingll@
+jiangnan.edu.cn
+
+Authors
+
+orcid.org/0000-0001-
+
+Cong Gao − State Key Laboratory of Food Science and
+Technology, Jiangnan University, Wuxi 214122, China;
+International Joint Laboratory on Food Safety, Jiangnan
+University, Wuxi 214122, China;
+8505-2026
+
+Liang Guo − State Key Laboratory of Food Science and
+Technology, Jiangnan University, Wuxi 214122, China;
+International Joint Laboratory on Food Safety, Jiangnan
+University, Wuxi 214122, China
+Guipeng Hu − School of Pharmaceutical Science, Jiangnan
+Jia Liu − State Key Laboratory of Food Science and
+
+University, Wuxi 214122, China
+
+Technology, Jiangnan University, Wuxi 214122, China;
+International Joint Laboratory on Food Safety, Jiangnan
+University, Wuxi 214122, China
+Xiulai Chen − State Key Laboratory of Food Science and
+Technology, Jiangnan University, Wuxi 214122, China;
+International Joint Laboratory on Food Safety, Jiangnan
+University, Wuxi 214122, China;
+9749-4558
+
+orcid.org/0000-0002-
+Xiaoxia Xia − State Key Laboratory of Microbial Metabolism,
+
+Shanghai Jiao Tong University, Shanghai 200240, China
+
+Complete contact information is available at:
+https://pubs.acs.org/10.1021/acssynbio.1c00294
+
+Author Contributions
+C.G. and L.L. conceived this project. C.G. performed the
+experiments, analyzed the results, and drafted the manuscript.
+L.G., X.C., X.X., and L.L. analyzed the results and edited the
+manuscript. All authors reviewed and approved the ﬁnal
+version of the manuscript.
+Notes
+The authors declare no competing ﬁnancial interest.
+
+■ ACKNOWLEDGMENTS
+
+This work was supported by the National Natural Science
+Foundation of China (22008087, 22108099), the Provincial
+Jiangsu Province
+Natural Science Foundation of
+
+I
+
+https://doi.org/10.1021/acssynbio.1c00294
+ACS Synth. Biol. XXXX, XXX, XXX−XXX
+
+ACS Synthetic Biology
+
+pubs.acs.org/synthbio
+
+Research Article
+
+the Open Funding Project of State Key
+(BK20200621),
+Laboratory of Microbial Metabolism (MLKF20-01),
+the
+Tianjin Synthetic Biotechnology Innovation Capacity Im-
+provement Project (TSBICIP-KJGG-015) and the National
+First-class Discipline Program of Light Industry Technology
+and Engineering (LITE2018-08).
+
+■ REFERENCES
+
+(1) Zhao, E. M.; Zhang, Y.; Mehl, J.; Park, H.; Lalwani, M. A.;
+Toettcher, J. E.; Avalos, J. L. Optogenetic regulation of engineered
+cellular metabolism for microbial chemical production. Nature 2018,
+555, 683−687.
+(2) Ajjawi, I.; Verruto, J.; Aqui, M.; Soriaga, L. B.; Coppersmith, J.;
+Kwok, K.; Peach, L.; Orchard, E.; Kalb, R.; Xu, W.; Carlson, T. J.;
+Francis, K.; Konigsfeld, K.; Bartalis, J.; Schultz, A.; Lambert, W.;
+Schwartz, A. S.; Brown, R.; Moellering, E. R. Lipid production in
+Nannochloropsis gaditana is doubled by decreasing expression of a
+single transcriptional regulator. Nat. Biotechnol. 2017, 35, 647−652.
+(3) Wang, Y.; An, B.; Xue, B.; Pu, J.; Zhang, X.; Huang, Y.; Yu, Y.;
+Cao, Y.; Zhong, C. Living materials
+fabricated via gradient
+mineralization of light-inducible biofilms. Nat. Chem. Biol. 2021, 17,
+351−359.
+(4) Srinivasan, P.; Smolke, C. D. Biosynthesis of medicinal tropane
+alkaloids in yeast. Nature 2020, 585, 614−619.
+(5) Hartline, C. J.; Schmitz, A. C.; Han, Y.; Zhang, F. Dynamic
+control in metabolic engineering: Theories, tools, and applications.
+Metab. Eng. 2021, 63, 126−140.
+(6) Lalwani, M. A.; Zhao, E. M.; Avalos, J. L. Current and future
+modalities of dynamic control in metabolic engineering. Curr. Opin.
+Biotechnol. 2018, 52, 56−65.
+(7) Doong, S. J.; Gupta, A.; Prather, K. L. J. Layered dynamic
+regulation for
+improving metabolic pathway productivity in
+Escherichia coli. Proc. Natl. Acad. Sci. U.S.A. 2018, 115, 2964−2969.
+(8) Yang, D.; Kim, W. J.; Yoo, S. M.; Choi, J. H.; Ha, S. H.; Lee, M.
+H.; Lee, S. Y. Repurposing type III polyketide synthase as a malonyl-
+CoA biosensor for metabolic engineering in bacteria. Proc. Natl. Acad.
+Sci. U.S.A. 2018, 115, 9835−9844.
+(9) Xu, P. Production of chemicals using dynamic control of
+metabolic fluxes. Curr. Opin. Biotechnol. 2017, 53, 12−19.
+(10) Yang, Y.; Lin, Y.; Wang, J.; Wu, Y.; Zhang, R.; Cheng, M.; Shen,
+X.; Wang, J.; Chen, Z.; Li, C.; Yuan, Q.; Yan, Y. Sensor-regulator and
+RNAi based bifunctional dynamic control network for engineered
+microbial synthesis. Nat. Commun. 2018, 9, No. 3043.
+(11) Gupta, A.; Reizman, I. M.; Reisch, C. R.; Prather, K. L.
+Dynamic regulation of metabolic flux in engineered bacteria using a
+pathway-independent quorum-sensing circuit. Nat. Biotechnol. 2017,
+35, 273−279.
+(12) Dinh, C. V.; Prather, K. L. J. Development of an autonomous
+and bifunctional quorum-sensing circuit for metabolic flux control in
+engineered Escherichia coli. Proc. Natl. Acad. Sci. U.S.A. 2019, 116,
+25562−25568.
+(13) Gao, C.; Guo, L.; Ding, Q.; Hu, G.; Ye, C.; Liu, J.; Chen, X.;
+Liu, L. Dynamic consolidated bioprocessing for direct production of
+xylonate and shikimate from xylan by Escherichia coli. Metab. Eng.
+2020, 60, 128−137.
+(14) Tian, J.; Yang, G.; Gu, Y.; Sun, X.; Lu, Y.; Jiang, W. Developing
+an endogenous quorum-sensing based CRISPRi circuit for autono-
+mous and tunable dynamic regulation of multiple targets
+in
+Streptomyces. Nucleic Acids Res. 2020, 48, 8188−8202.
+(15) Gao, C.; Hou, J.; Xu, P.; Guo, L.; Chen, X.; Hu, G.; Ye, C.;
+Edwards, H.; Chen, J.; Chen, W.; Liu, L. Programmable biomolecular
+switches for rewiring flux in Escherichia coli. Nat. Commun. 2019, 10,
+No. 3751.
+(16) Gao, C.; Wang, S.; Hu, G.; Guo, L.; Chen, X.; Xu, P.; Liu, L.
+Engineering Escherichia coli
+for malate production by integrating
+modular pathway characterization with CRISPRi-guided multiplexed
+metabolic tuning. Biotechnol. Bioeng. 2018, 115, 661−672.
+
+(17) Qi, L. S.; Larson, M. H.; Gilbert, L. A.; Doudna, J. A.;
+Weissman, J. S.; Arkin, A. P.; Lim, W. A. Repurposing CRISPR as an
+RNA-guided platform for
+sequence-specific control of gene
+expression. Cell 2013, 152, 1173−1183.
+(18) Wu, Y.; Chen, T.; Liu, Y.; Tian, R.; Lv, X.; Li, J.; Du, G.; Chen,
+J.; Ledesma-Amaro, R.; Liu, L. Design of a programmable biosensor-
+CRISPRi genetic circuits for dynamic and autonomous dual-control of
+metabolic flux in Bacillus subtilis. Nucleic Acids Res. 2020, 48, 996−
+1009.
+(19) Fang, Y.; Wang, J.; Ma, W.; Yang, J.; Zhang, H.; Zhao, L.; Chen,
+S.; Zhang, S.; Hu, X.; Li, Y.; Wang, X. Rebalancing microbial carbon
+distribution for L-threonine maximization using a thermal switch
+system. Metab. Eng. 2020, 61, 33−46.
+(20) Ding, Q.; Ma, D.; Liu, G. Q.; Li, Y.; Guo, L.; Gao, C.; Hu, G.;
+Ye, C.; Liu, J.; Liu, L.; Chen, X. Light-powered Escherichia coli cell
+division for chemical production. Nat. Commun. 2020, 11, No. 2262.
+(21) Fritze, J.; Zhang, M.; Luo, Q.; Lu, X. An overview of the
+bacterial SsrA system modulating intracellular protein levels and
+activities. Appl. Microbiol. Biotechnol. 2020, 104, 5229−5241.
+(22) Hou, J.; Gao, C.; Guo, L.; Nielsen, J.; Ding, Q.; Tang, W.; Hu,
+G.; Chen, X.; Liu, L. Rewiring carbon flux in Escherichia coli using a
+bifunctional molecular switch. Metab. Eng. 2020, 61, 47−57.
+(23) Rodriguez, A.; Martinez, J. A.; Millard, P.; Gosset, G.; Portais, J.
+C.; Letisse, F.; Bolivar, F. Plasmid-encoded biosynthetic genes
+alleviate metabolic disadvantages while increasing glucose conversion
+to shikimate in an engineered Escherichia coli strain. Biotechnol. Bioeng.
+2017, 114, 1319−1330.
+(24) Ghosh, S.; Banerjee, U. C. Generation of aroE overexpression
+mutant of Bacillus megaterium for the production of shikimic acid.
+Microb. Cell Fact. 2015, 14, No. 69.
+(25) Suástegui, M.; Ng, C. Y.; Chowdhury, A.; Sun, W.; Cao, M.;
+House, E.; Maranas, C. D.; Shao, Z. Multilevel engineering of the
+upstream module of aromatic amino acid biosynthesis in Saccha-
+romyces cerevisiae for high production of polymer and drug precursors.
+Metab. Eng. 2017, 42, 134−144.
+(26) Zhao, M.; Li, G.; Deng, Y. Engineering Escherichia coli for
+glutarate production as the C5 platform backbone. Appl. Environ.
+Microbiol. 2018, 84, No. e00814-18.
+(27) Wang, J.; Gao, C.; Chen, X.; Liu, L. Engineering the Cad
+pathway in Escherichia coli to produce glutarate from L-lysine. Appl.
+Microbiol. Biotechnol. 2021, 105, 3587−3599.
+(28) Li, S.; Jendresen, C. B.; Grunberger, A.; Ronda, C.; Jensen, S. I.;
+Noack, S.; Nielsen, A. T. Enhanced protein and biochemical
+production using CRISPRi-based growth switches. Metab. Eng.
+2016, 38, 274−284.
+(29) Zhang, Q.; Hou, Z.; Ma, Q.; Mo, X.; Sun, Q.; Tan, M.; Xia, L.;
+Lin, G.; Yang, M.; Zhang, Y.; Xu, Q.; Li, Y.; Chen, N.; Xie, X.
+CRISPRi-based dynamic control of carbon flow for efficient N-Acetyl
+glucosamine production and its metabolomic effects in Escherichia
+coli. J. Agric. Food Chem. 2020, 68, 3203−3213.
+(30) Zhao, P.; Li, Q.; Tian, P.; Tan, T. Switching metabolic flux by
+engineering tryptophan operon-assisted CRISPR interference system
+in Klebsiella pneumoniae. Metab. Eng. 2021, 65, 30−41.
+(31) Wu, P.; Chen, Y.; Liu, M.; Xiao, G.; Yuan, J. Engineering an
+optogenetic CRISPRi platform for improved chemical production.
+ACS Synth. Biol. 2021, 10, 125−131.
+(32) Moser, F.; Espah Borujeni, A.; Ghodasara, A. N.; Cameron, E.;
+Park, Y.; Voigt, C. A. Dynamic control of endogenous metabolism
+with combinatorial logic circuits. Mol. Syst. Biol. 2018, 14, No. e8605.
+(33) Liu, Y.; Chen,
+J. M.;
+Mahadevan, R. Dynamic cell programming with quorum sensing-
+controlled CRISPRi circuit. ACS Synth. Biol. 2020, 9, 1284−1291.
+Ishihama, A. Coordinated
+(34) Yoshida, H.; Shimada, T.;
+hibernation of
+transcriptional and translational apparatus during
+growth transition of Escherichia coli to stationary phase. mSystems
+2018, 3, No. e00057-18.
+(35) Lemke, J. J.; Sanchez-Vazquez, P.; Burgos, H. L.; Hedberg, G.;
+Ross, W.; Gourse, R. L. Direct regulation of Escherichia coli ribosomal
+
+J.; Crisante, D.;
+
+Jaramillo Lopez,
+
+J
+
+https://doi.org/10.1021/acssynbio.1c00294
+ACS Synth. Biol. XXXX, XXX, XXX−XXX
+
+ACS Synthetic Biology
+
+pubs.acs.org/synthbio
+
+Research Article
+
+protein promoters by the transcription factors ppGpp and DksA. Proc.
+Natl. Acad. Sci. U.S.A. 2011, 108, 5712−5717.
+(36) Gao, C.; Xu, P.; Ye, C.; Chen, X.; Liu, L. Genetic circuit-
+assisted smart microbial engineering. Trends Microbiol. 2019, 27,
+1011−1024.
+(37) Chassin, H.; Muller, M.; Tigges, M.; Scheller, L.; Lang, M.;
+Fussenegger, M. A modular degron library for synthetic circuits in
+mammalian cells. Nat. Commun. 2019, 10, No. 2013.
+(38) Chen, R. P.; Gaynor, A. S.; Chen, W. Synthetic biology
+approaches for targeted protein degradation. Biotechnol. Adv. 2019,
+37, No. 107446.
+(39) Olivares, A. O.; Baker, T. A.; Sauer, R. T. Mechanical protein
+unfolding and degradation. Annu. Rev. Physiol. 2018, 80, 413−429.
+(40) Peng, B.; Nielsen, L. K.; Kampranis, S. C.; Vickers, C. E.
+Engineered protein degradation of farnesyl pyrophosphate synthase is
+an effective regulatory mechanism to increase monoterpene
+production in Saccharomyces cerevisiae. Metab. Eng. 2018, 47, 83−93.
+(41) Durante-Rodríguez, G.; de Lorenzo, V.; Nikel, P. I. A post-
+translational metabolic switch enables complete decoupling of
+bacterial growth from biopolymer production in engineered
+Escherichia coli. ACS Synth. Biol. 2018, 7, 2686−2697.
+(42) Chen, Z.; Elowitz, M. B. Programmable protein circuit design.
+Cell 2021, 184, 2284−2301.
+(43) Lee, Y. J.; Hoynes-O’Connor, A.; Leong, M. C.; Moon, T. S.
+Programmable control of bacterial gene expression with the combined
+CRISPR and antisense RNA system. Nucleic Acids Res. 2016, 44,
+2462−2473.
+(44) Mückl, A.; Schwarz-Schilling, M.; Fischer, K.; Simmel, F. C.
+Filamentation and restoration of normal growth in Escherichia coli
+using a combined CRISPRi sgRNA/antisense RNA approach. PLoS
+One 2018, 13, No. e0198058.
+(45) Richter, F.; Fonfara, I.; Bouazza, B.; Schumacher, C. H.;
+Bratovic, M.; Charpentier, E.; Moglich, A. Engineering of temper-
+ature- and light-switchable Cas9 variants. Nucleic Acids Res. 2016, 44,
+10003−10014.
+(46) Nihongaki, Y.; Kawano, F.; Nakajima, T.; Sato, M. Photo-
+activatable CRISPR-Cas9 for optogenetic genome editing. Nat.
+Biotechnol. 2015, 33, 755−760.
+(47) Polstein, L. R.; Gersbach, C. A. A light-inducible CRISPR-Cas9
+system for control of endogenous gene activation. Nat. Chem. Biol.
+2015, 11, 198−200.
+(48) Kleinjan, D. A.; Wardrope, C.; Nga Sou, S.; Rosser, S. J. Drug-
+tunable multidimensional synthetic gene control using inducible
+degron-tagged dCas9 effectors. Nat. Commun. 2017, 8, No. 1191.
+(49) Davis, K. M.; Pattanayak, V.; Thompson, D. B.; Zuris, J. A.; Liu,
+D. R. Small molecule-triggered Cas9 protein with improved genome-
+editing specificity. Nat. Chem. Biol. 2015, 11, 316−318.
+(50) Dong, C.; Fontana, J.; Patel, A.; Carothers, J. M.; Zalatan, J. G.
+Synthetic CRISPR-Cas gene activators for transcriptional reprogram-
+ming in bacteria. Nat. Commun. 2018, 9, No. 2489.
+(51) Lian, J.; HamediRad, M.; Hu, S.; Zhao, H. Combinatorial
+metabolic engineering using an orthogonal tri-functional CRISPR
+system. Nat. Commun. 2017, 8, No. 1688.
+(52) Ye, C.; Luo, Q.; Guo, L.; Gao, C.; Xu, N.; Zhang, L.; Liu, L.;
+Chen, X. Improving lysine production through construction of an
+Escherichia coli enzyme-constrained model. Biotechnol. Bioeng. 2020,
+117, 3533−3544.
+(53) Zhang, Q.; Yao, R.; Chen, X.; Liu, L.; Xu, S.; Chen, J.; Wu, J.
+Enhancing fructosylated chondroitin production in Escherichia coli K4
+by balancing the UDP-precursors. Metab. Eng. 2018, 47, 314−322.
+
+K
+
+https://doi.org/10.1021/acssynbio.1c00294
+ACS Synth. Biol. XXXX, XXX, XXX−XXX
+
+

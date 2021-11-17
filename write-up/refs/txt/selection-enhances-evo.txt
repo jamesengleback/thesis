@@ -1,0 +1,3684 @@
+RESEARCH
+
+RESEARCH ARTICLE SUMMARY ◥
+
+EVOLUTION
+
+Selection enhances protein evolvability by increasing
+mutational robustness and foldability
+Jia Zheng, Ning Guo, Andreas Wagner*
+
+INTRODUCTION: Natural selection plays a cen-
+tral role in adaptive evolution, but we still know
+little about its role in changing evolvability—
+the ability to bring forth new and adaptive
+phenotypes. Different kinds of selection may
+increase evolvability by different means. Weak
+purifying selection may enhance evolvability
+by promoting the accumulation of neutral or
+slightly deleterious mutations that can serve
+as stepping stones toward new phenotypes.
+By contrast, strong directional selection may
+enhance evolvability by favoring the accumu-
+lation of beneficial mutations that can enhance
+both fitness and evolvability, such as mutations
+that increase a protein’s thermodynamic stabil-
+ity or its robustness to mutations.
+
+RATIONALE: To find out how the strength of
+selection affects protein evolvability, we sub-
+jected populations of yellow fluorescent pro-
+teins to multiple rounds of directed evolution
+
+in Escherichia coli. To control the strength of se-
+lection with precision, we used high-throughput
+phenotypic screening via fluorescence-activated
+cell sorting. During a first phase of our experi-
+ment (phase I), we subjected our populations
+to either strong selection, weak selection, or no
+selection on the ancestral phenotype of yellow
+fluorescence. During the second phase (phase
+II), we evolved all populations under the same
+selection pressure toward the new phenotype
+of green fluorescence. We subsequently used
+high-throughput phenotypic screening to
+study how phenotypes evolved in all our
+populations. In every generation, we also
+studied genotypic evolution with single-molecule
+real-time sequencing. We then engineered key
+adaptive mutants and determined their phe-
+notype and thermodynamic stability. In addi-
+tion, we determined the robustness of their
+phenotype to DNA mutations. Furthermore,
+we quantified the foldability of these mutants
+
+Robustness 
+
+and 
+
+fitness enhancing 
+
+Strong 
+selection
+
+Weak
+selection
+
+by unfolding them and observing their refold-
+ing kinetics.
+
+RESULTS: We found that populations under
+strong selection for the ancestral yellow fluores-
+cent phenotype during phase I subsequently
+evolved the new green fluorescent phenotype
+most rapidly during phase II. Compared to
+populations under weak or no selection, they
+reached higher green fluorescence during each
+generation of phase II and evolved a green
+emission peak more rapidly. Strong selection
+promoted both the elimination of deleterious
+mutations and the accumulation of foldability-
+improving mutations. As a result, proteins under
+strong selection evolved higher efficiency of
+protein folding (foldability) and, to an even
+greater extent, higher robustness to mutations
+than proteins under weak or no selection. Their
+robustness and foldability accelerated the selec-
+tive sweeps of neofunctionalizing mutations
+that are necessary to evolve a new phenotype.
+By contrast, proteins under weak selection
+accrued more deleterious mutations that slowed
+down the fixation of neofunctionalizing muta-
+tions during the evolution of the new phenotype,
+even though neofunctionalizing mutations
+had initially risen to higher frequencies under
+weak selection.
+
+CONCLUSION: Strong directional selection en-
+hances the evolvability of a new phenotype to
+a greater extent than weak purifying selection.
+The responsible mutations enhance tolerance
+to mutations, improve protein foldability, and
+thus increase accessibility of a protein’s na-
+tive state. In doing so, they promote the for-
+mation of correctly folded states that can
+display new functions after incorporating neo-
+functionalizing mutations. Although “first
+order” selection of fitness-enhancing muta-
+tions can be in conflict with “second-order”
+selection of evolvability-enhancing mutations,
+our experiments demonstrate a class of mu-
+tations that avoid this conflict, because the
+mutations they reveal enhance both fitness
+and evolvability. In the context of an adaptive
+landscape (see figure), they do so by circum-
+navigating rather than traversing adaptive
+valleys, passing through flat regions of such
+a landscape, and thus allowing an evolving
+population to climb a new adaptive peak more
+rapidly. More generally, our experiments prove
+that natural selection itself can create the con-
+ditions under which Darwinian evolution can
+
+succeed. ▪
+
+l
+
+D
+o
+w
+n
+o
+a
+d
+e
+d
+
+ 
+f
+r
+o
+m
+h
+
+ 
+
+t
+t
+
+p
+
+i
+
+:
+/
+/
+s
+c
+e
+n
+c
+e
+
+i
+
+.
+s
+c
+e
+n
+c
+e
+m
+a
+g
+
+.
+
+o
+r
+g
+
+/
+ 
+
+ 
+
+o
+n
+D
+e
+c
+e
+m
+b
+e
+r
+ 
+
+2
+5
+
+,
+ 
+
+2
+0
+2
+0
+
+Selection can drive evolvability. Evolutionary theory holds that Darwinian evolution takes place on adaptive
+landscapes of fitness, which can be visualized as topological maps of high-fitness peaks and low-fitness valleys.
+This hypothetical landscape illustrates how mutations can increase evolvability by enhancing both fitness and
+mutational robustness. Favored by strong selection because they enhance fitness, such mutations move an
+evolving population into a region of low curvature and high robustness (red arrow), from which the population can
+bypass rather than traverse (blue arrow) an adaptive valley on its way to an adaptive peak.
+
+The list of author affiliations is available in the full article online.
+*Corresponding author. Email: andreas.wagner@ieu.uzh.ch
+Cite this article as J. Zheng et al., Science 370, eabb5962
+(2020). DOI: 10.1126/science.abb5962
+
+READ THE FULL ARTICLE AT
+https://doi.org/10.1126/science.abb5962
+
+Zheng et al., Science 370, 1183 (2020)
+
+4 December 2020
+
+1 of 1
+
+RESEARCH
+
+RESEARCH ARTICLE ◥
+
+EVOLUTION
+
+Selection enhances protein evolvability by increasing
+mutational robustness and foldability
+Jia Zheng1,2, Ning Guo3, Andreas Wagner1,2,4*
+
+Natural selection can promote or hinder a population’s evolvability—the ability to evolve new and
+adaptive phenotypes—but the underlying mechanisms are poorly understood. To examine how the
+strength of selection affects evolvability, we subjected populations of yellow fluorescent protein to
+directed evolution under different selection regimes and then evolved them toward the new phenotype of
+green fluorescence. Populations under strong selection for the yellow phenotype evolved the green
+phenotype most rapidly. They did so by accumulating mutations that increase both robustness to
+mutations and foldability. Under weak selection, neofunctionalizing mutations rose to higher frequency
+at first, but more frequent deleterious mutations undermined their eventual success. Our experiments
+show how selection can enhance evolvability by enhancing robustness and create the conditions
+necessary for evolutionary success.
+
+N atural selection drives adaptation, but we
+
+still know little about its role in chang-
+ing the evolvability of a trait or organism
+(1, 2). On the one hand, strong selection
+for an ancestral phenotype may enhance
+evolvability for derived phenotypes, because
+it may favor mutations that enhance not just
+fitness but also evolvability. The available
+evidence is limited and indirect (3–5). For
+example, a cytochrome P450 BM3 variant
+engineered for greater stability and fitness
+buffers the destabilizing effect of mutations
+that are neofunctionalizing, i.e., that convey
+new protein activities (5, 6).
+
+On the other hand, strong selection may
+impair evolvability because it purges weakly
+deleterious mutations that can convey new
+functions (7). Evolutionary theory holds that
+selection helps populations find peaks in
+adaptive landscapes of fitness, which can be
+visualized as topological maps of peaks and
+valleys. Weakly deleterious “stepping-stone”
+mutations may help a population traverse the
+valleys that separate different fitness peaks.
+Such valleys, which are caused by epistatic
+interactions between different mutations, are
+abundant in the adaptive landscapes of evolv-
+ing proteins (8–11). Weak selection that purges
+only the most detrimental mutations can aid
+such valley-crossing. Consistent with this view,
+when the enzyme b-lactamase TEM-1 is sub-
+ject to “intense neutral drift” during experi-
+mental evolution—multiple rounds of mutation
+and selection to preserve its native phenotype
+of ampicillin resistance—the evolution of re-
+
+1Department of Evolutionary Biology and Environmental
+Studies, University of Zurich, Zurich, Switzerland. 2Swiss
+Institute of Bioinformatics, Quartier Sorge-Batiment
+Genopode, Lausanne, Switzerland. 3Zwirnereistrasse 11,
+Wallisellen, Zurich, Switzerland. 4The Santa Fe Institute,
+Santa Fe, NM, USA.
+*Corresponding author. Email: andreas.wagner@ieu.uzh.ch
+
+sistance to the newly introduced antibiotic
+cefotaxime is accelerated (3, 12). More gener-
+ally, experimental evolution shows that a popu-
+lation evolves a derived phenotype faster if it
+harbors genetic variation in the loci that affect
+the ancestral phenotype (3, 13, 14). Such stand-
+ing genetic variation may even be adaptive if it
+has little effect on the ancestral phenotype
+(15). Therefore, conditionally neutral or weakly
+deleterious mutations can accelerate the adapt-
+ive evolution of a derived phenotype (15). Here
+we performed experiments aimed to find out
+whether strong or weak selection more ef-
+fectively enhances evolvability.
+
+Results
+Strong selection leads to greater evolvability
+than weak or no selection
+We evolved yellow fluorescent protein [YFP, a
+variant of a jellyfish fluorescent protein (16)]
+in Escherichia coli from an ancestral pheno-
+type (yellow fluorescence) to a derived pheno-
+type (green fluorescence) (Fig. 1A). The protein
+was engineered to be well expressed in E. coli
+(16), but it is not native to E. coli, which mini-
+mizes interference with the native E. coli pro-
+teome. Studying evolvability in a single protein
+can help us analyze the causes of evolvability
+in molecular detail. In addition, the fluores-
+cent phenotype permits us to control the
+strength of selection with precision, because
+fluorescence-activated cell sorting (FACS) can
+screen individual cells for their phenotype.
+
+We subjected each of four replicate popula-
+tions of E. coli expressing yellow fluorescent
+proteins to four rounds (“generations”) of
+directed evolution. In phase I of our experiment
+(Fig. 1A), we selected for yellow fluorescence
+through either strong selection (populations
+S, the top ~20% of fluorescing cells survive)
+or weak selection (populations W, cells that
+
+fluoresce above background survive) (17). We
+also subjected four replicate populations of
+yellow fluorescent proteins to four rounds of
+directed evolution without any selection for
+fluorescence (populations N, subject only
+to neutral drift). After phase I evolution, we
+initialized phase II evolution by subjecting the
+same populations to another four rounds of
+directed evolution under selection for green
+fluorescence (Fig. 1A) (17). We used mutagenic
+polymerase chain reaction (PCR) to generate
+0.84 amino acid–changing mutations per YFP
+molecule per generation (tables S1 to S3).
+
+During phase I evolution, yellow fluorescence
+in the unselected populations N dropped rap-
+idly and decreased to <5% of the ancestral YFP’s
+intensity, indicating an accumulation of dele-
+terious mutations (Fig. 1B). For populations
+under weak selection, W, the intensity of yellow
+fluorescence decreased after the first genera-
+tion of evolution but remained constant in the
+next three generations (Fig. 1B). This suggests a
+mutation-selection balance between the pro-
+duction of new deleterious mutations and selec-
+tion against such mutations. By contrast, yellow
+fluorescence in populations under strong selec-
+tion, S, significantly increased by 92.5% after
+four generations of evolution (one-sided t test,
+P <0.001; Fig. 1B), indicating a likely spread of
+beneficial mutations.
+
+We genotyped ~500 to 1000 protein var-
+iants per population and generation (table S4),
+which revealed that our evolving populations
+harbored different amounts of genetic varia-
+tion. Specifically, during phase I, populations
+W accumulated more amino acid–changing
+mutations and greater genetic diversity than
+populations S (figs. S1 and S2). Because greater
+genetic diversity may facilitate adaptive evo-
+lution, we hypothesized that populations W
+may have greater potential than populations
+S to evolve green fluorescence during phase
+II evolution. However, the opposite was the
+case. Populations S reached significantly higher
+green fluorescence than populations W during
+the first two generations of phase II evolution
+(one-sided Dunnett test with single-step adjust-
+ment, P < 0.05; Fig. 1C). In addition, popula-
+tions S evolved a green (512 nm) emission peak
+more rapidly than populations W (fig. S3).
+Analogous differences exist between popula-
+tions W and unselected populations N (Fig. 1C,
+and figs. S1 to S3). In sum, selection on an
+ancestral phenotype, and in particular strong
+selection, facilitates the evolution of a derived
+phenotype.
+
+Strong selection on an ancestral phenotype
+leads to the most rapid fixation of
+neofunctionalizing mutations
+To find out why strong selection causes greater
+evolvability than weak selection, we studied the
+dynamics of genetic polymorphisms in each
+replicate population during phase II (fig. S4).
+
+l
+
+D
+o
+w
+n
+o
+a
+d
+e
+d
+
+ 
+f
+r
+o
+m
+h
+
+ 
+
+t
+t
+
+p
+
+i
+
+:
+/
+/
+s
+c
+e
+n
+c
+e
+
+i
+
+.
+s
+c
+e
+n
+c
+e
+m
+a
+g
+
+.
+
+o
+r
+g
+
+/
+ 
+
+ 
+
+o
+n
+D
+e
+c
+e
+m
+b
+e
+r
+ 
+
+2
+5
+
+,
+ 
+
+2
+0
+2
+0
+
+Zheng et al., Science 370, eabb5962 (2020)
+
+4 December 2020
+
+1 of 8
+
+RESEARCH | RESEARCH ARTICLE
+
+A
+
+Phase I
+
+(Generations 1−4)
+
+y
+c
+n
+e
+u
+q
+e
+r
+F
+
+Phase II
+
+(Generations 1−4)
+
+S
+
+~20%
+
+W
+~65%
+
+N
+100%
+
+Yellow fluorescence
+
+~0.01%
+
+y
+c
+n
+e
+u
+q
+e
+r
+F
+
+ Green fluorescence
+C
+
+**
+***
+
+*
+**
+
+*
+
+**
+
+B
+
+e
+c
+n
+e
+c
+s
+e
+r
+o
+u
+
+l
+f
+ 
+
+e
+v
+i
+t
+
+l
+
+a
+e
+R
+
+3
+
+2
+
+1
+
+0
+
+**
+***
+
+***
+***
+
+***
+***
+
+***
+***
+
+***
+***
+I−1
+
+***
+***
+***
+***
+I−2
+I−3
+Generation
+
+***
+***
+I−4
+
+150
+
+120
+
+90
+
+60
+
+30
+
+0
+
+e
+c
+n
+e
+c
+s
+e
+r
+o
+u
+
+l
+f
+ 
+
+e
+v
+i
+t
+
+l
+
+a
+e
+R
+
+******
+
+II−1
+
+II−2
+II−3
+Generation
+
+II−4
+
+S
+S
+
+W
+W
+
+N  :  Green fluorescence 
+N  :  Yellow fluorescence
+
+Fig. 1. Experimental evolution of yellow fluorescent protein. (A) We subjected four replicate E. coli
+populations for each experimental treatment to directed evolution under selection for yellow fluorescence
+(phase I, lex = 488 nm and lem = 530 ± 15 nm). After four mutation-selection cycles, we continued
+directed evolution for four more cycles but under selection for green fluorescence (phase II, lex = 405 nm
+and lem = 525 ± 25 nm) by selecting the top 0.01% of cells in each generation. The areas shaded in
+yellow or green indicate the proportion of a population allowed to survive to the next generation.
+(B and C) Fold-change of yellow (dashed lines) and green (solid lines) fluorescence intensity relative to
+ancestral YFP in each generation of phase I (B) and II (C). Error bars represent 1 SEM, from four replicate
+populations (single small symbols). *P < 0.05; **P < 0.01; ***P < 0.001 [one-sided Dunnett tests with
+single-step adjustment to compare S with W (blue) or N (black)].
+
+Two mutations (G66S and Y204C) swept
+through each replicate S, W, and N popula-
+tion. Because of their ubiquity, we refer to
+these two mutations as universal mutations.
+In addition, another 20 mutations attained a
+frequency exceeding 30% in at least one re-
+plicate of populations S, W, and N. To determine
+whether all these (2 + 20) mutations are
+adaptive for green fluorescence, we engineered
+each of them into the ancestral YFP and
+measured their effects on green fluorescence.
+Only the two universal mutations G66S and
+Y204C caused green shifts of the emission
+peaks (Fig. 2A). Individually, these mutations
+caused a ~9-fold and ~2-fold increase in green
+fluorescence (fig. S5), and together they shifted
+the emission peak from yellow (530 nm) to green
+(512 nm; Fig. 2A). Thus, G66S and Y204C are
+the only neofunctionalizing mutations.
+
+To further characterize the role of the re-
+maining mutations, we engineered each of
+these mutations into the background of
+G66S+Y204C, referred to as genotype U for
+“universal,” and measured the effect of these
+20 genotypes on green fluorescence. Nine
+mutants significantly enhanced green fluores-
+cence in the background of U (two-sided Dunnett
+test with single-step adjustment, P < 0.001; fig.
+S5), but none of these changed the emission
+spectrum (Fig. 2B). These mutations might
+increase the amount of soluble and functional
+fluorescent protein, which may help explain
+why green fluorescence also increased, albeit
+very modestly, during selection for yellow
+fluorescence in phase I (Fig. 1B).
+
+Because only two mutations are responsible
+for the green shift in phase II, we suspected
+that the rapid spread of these two mutations
+
+resulted in faster adaptation of the strong
+selection (S) populations compared to the weak
+selection (W) and unselected (N) populations.
+Indeed, populations S displayed a higher fre-
+quency of the universal mutations G66S and
+Y204C, and of the universal genotype U, in at
+least last three of the four phase II generations
+(Fig. 2C).
+
+Because the S, W, and N populations were
+subject to identical selection pressures during
+phase II, these faster sweeps likely originated
+in differences between populations at the end
+of phase I. We investigated if the reason was
+that the neofunctionalizing mutations had
+already attained a higher frequency in popula-
+tions S at the end of phase I. However, this was
+not the case. Both universal mutations had
+lower frequency in populations S at the end
+of phase I evolution, and one of them (Y204C)
+had a significantly lower frequency in pop-
+ulations S than in populations W and N (one-
+sided Dunnett test with single-step adjustment,
+P < 0.001; fig. S6).
+
+Strong selection leads to greater
+mutational robustness and higher foldability
+than weak selection
+To resolve this apparent paradox—faster spread-
+ing of the neofunctionalizing mutations G66S
+and Y204C despite their lower initial frequency—
+it is relevant that our evolving sequences are
+likely to acquire one or more new mutations
+(with probability 0.53) in every generation
+(table S2). In addition, mutations that are dif-
+ferent from the two neofunctionalizing mutations
+are expected to arise by chance alone 412-fold
+more often than these two mutations (table
+S2). This means that most variants containing
+neofunctionalizing mutations will also accu-
+mulate many other mutations, most of which
+are near-neutral or deleterious (18, 19). Increased
+robustness to such slightly deleterious muta-
+tions would increase the fitness of genotypes
+carrying neofunctionalizing mutations and
+thus enable their spreading. We thus hypothe-
+sized that populations S had acquired genetic
+changes that cause greater robustness to dele-
+terious mutations.
+
+To validate this hypothesis, we mutagen-
+ized populations S, W, and N at the end of
+phase I and determined the residual fluo-
+rescence and the frequency of fluorescence-
+positive variants after mutagenesis. Populations
+S had indeed acquired greater mutational
+robustness, in both the ancestral yellow pheno-
+type and the derived green phenotype. Specif-
+ically, populations S retained significantly higher
+yellow fluorescence intensity than popula-
+tions W and N after mutagenesis (two-sided
+Dunnett test with single-step adjustment, P <
+0.05 and 0.01 for comparing S with W and
+N; Fig. 3A). In addition, the postmutagenesis
+frequency of yellow-fluorescence–positive
+variants in S populations was 1.24-fold and
+
+l
+
+D
+o
+w
+n
+o
+a
+d
+e
+d
+
+ 
+f
+r
+o
+m
+h
+
+ 
+
+t
+t
+
+p
+
+i
+
+:
+/
+/
+s
+c
+e
+n
+c
+e
+
+i
+
+.
+s
+c
+e
+n
+c
+e
+m
+a
+g
+
+.
+
+o
+r
+g
+
+/
+ 
+
+ 
+
+o
+n
+D
+e
+c
+e
+m
+b
+e
+r
+ 
+
+2
+5
+
+,
+ 
+
+2
+0
+2
+0
+
+Zheng et al., Science 370, eabb5962 (2020)
+
+4 December 2020
+
+2 of 8
+
+RESEARCH | RESEARCH ARTICLE
+
+A
+
+i
+
+i
+
+n
+o
+s
+s
+m
+e
+ 
+n
+e
+e
+r
+g
+ 
+e
+v
+i
+t
+a
+e
+R
+
+l
+
+Anc
+G66S
+Y204C
+U
+
+16
+
+14
+
+12
+
+10
+
+8
+
+6
+
+4
+
+2
+1
+
+B
+
+i
+
+i
+
+n
+o
+s
+s
+m
+e
+ 
+n
+e
+e
+r
+g
+ 
+e
+v
+i
+t
+a
+e
+R
+
+l
+
+U+L69M
+U+F72C
+U+F65L
+U+V2M
+U+V2A
+U+F47L
+U+G5S
+U+I172V
+U+E7K
+U
+
+55
+50
+
+40
+
+30
+
+20
+
+10
+
+1
+
+C
+
+)
+
+%
+
+(
+ 
+y
+c
+n
+e
+u
+q
+e
+r
+F
+
+100
+80
+60
+40
+20
+0
+
+440
+
+480
+520
+Wavelength (nm)
+
+560
+
+440
+
+480
+520
+Wavelength (nm)
+
+560
+
+Y204C
+**
+*
+*
+***
+
+**
+
+*
+
+U
+
+**
+***
+
+**
+*
+
+*
+
+G66S
+*
+**
+
+***
+
+*
+
+S
+
+W
+
+N
+
+II−1
+
+II−2
+
+II−3
+
+II−4
+
+II−1
+
+II−2
+II−3
+Generation
+
+II−4
+
+II−1
+
+II−2
+
+II−3
+
+II−4
+
+Fig. 2. Most rapid fixation of neofunctionalizing mutations after strong selection on the ancestral
+phenotype. (A and B) Emission spectra at the new excitation wavelength (405 nm) of mutants introduced into
+ancestral YFP (A) and U (B). The vertical axes indicate the fold-change of green fluorescence intensity relative to
+ancestral YFP at a given emission wavelength (horizontal axes). Each curved line represents the emission
+spectrum of 1 of the 44 mutants (n = 3). Colored lines in (A) indicate those emission-shifted mutations, and
+colored lines in (B) indicate mutations that significantly improved green fluorescence in the genetic background U
+(two-sided Dunnett test with single-step adjustment, P < 0.05; fig. S5). Yellow and green vertical dashed lines
+indicate 530 nm (lex = 485 nm) and 512 nm (lex = 405 nm). (C) Frequencies of neofunctionalizing mutations
+G66S and Y204C or the double-mutant U during evolution. Error bars represent 1 SEM from four replicate
+populations. *P < 0.05; **P < 0.01; ***P < 0.001 [one-sided Dunnett tests with single-step adjustment to
+compare S with W (blue) or N (black)]. Abbreviations for the amino acid residues are as follows: A, Ala; C, Cys;
+E, Glu; F, Phe; G, Gly; I, Ile; K, Lys; L, Leu; M, Met; S, Ser; V, Val; and Y, Tyr.
+
+13.0-fold higher than in W and N populations
+(Fig. 3B). Moreover, the postmutagenesis fre-
+quency of high-green variants, which have
+higher green fluorescence than the ances-
+tral YFP, was 3.8-fold and 326.4-fold higher
+in S populations than in W and N popula-
+tions, respectively (Fig. 3B).
+
+Because most deleterious mutations reduce
+protein solubility by causing protein misfold-
+ing and instability (20, 21), we suspected that
+populations S have evolved the ability to buffer
+such mutations by harboring protein variants
+with especially high foldability (folding effi-
+ciency) or stability (the free energy required
+to unfold a protein). Folding efficiency and
+stability can be jointly quantified by the con-
+centrations of soluble protein in vivo (22). We
+thus measured and compared the amount of
+soluble fluorescent proteins in populations
+S, W, and N at the end of phase I (17). The
+amount of soluble proteins in populations
+S relative to that of ancestral YFP is 1.9-fold
+and 3.8-fold higher than that in populations
+W and N (Fig. 3C). By contrast, the fraction of
+
+insoluble protein in populations S is 2.8-fold
+and 2.5-fold lower than that in populations W
+and N (Fig. 3D and fig. S7), respectively.
+
+We also analyzed the role of foldability more
+directly by quantifying the refolding yield of
+fluorescent proteins after unfolding (17). In-
+deed, a higher percentage of unfolded fluores-
+cent proteins in populations S refolded than in
+populations W, N, and in ancestral YFP during
+24 hours of refolding (Fig. 3E and fig. S8A).
+Also, fewer than 50% of unfolded proteins re-
+folded correctly at 25°C within 24 hours (Fig.
+3E), demonstrating that solubility is likely
+limited by correct protein folding. In addition,
+the foldability of populations S did not de-
+crease after random mutagenesis, whereas it
+decreased in populations W and N (fig. S8B).
+This observation suggests that increased fold-
+ability also increases mutational robustness.
+
+Foldability cannot be completely disentangled
+from protein stability, because many mutations
+affect both (20, 23). Stability can be estimated by
+monitoring a protein’s structural integrity over
+time, and we measured for all our populations
+
+the residual yellow fluorescence after 12 hours
+of incubation at 37°C, the temperature at which
+we had conducted our experiments. All pop-
+ulations retained more than 95% of yellow
+fluorescence (fig. S8, C and D). Populations S
+showed higher stability than populations
+W, N, and ancestral YFP only at higher,
+unphysiological temperatures above 65°C
+(fig. S8, E and F). In sum, our experiments sug-
+gest that the higher robustness of populations
+S is primarily caused by higher foldability.
+
+Foldability-improving mutations result
+in greater mutational robustness and
+higher evolvability
+We next aimed to identify the genetic changes
+that increased foldability and mutational
+robustness by examining our sequence data.
+We focused on the 2 neofunctionalizing and
+20 non-neofunctionalizing mutations that
+reached a frequency exceeding 30% at the
+end of phase II in populations S, W, and N
+(fig. S4). The best candidates among them are
+four variants known to improve foldability
+(F47L, F65L, V164A, and I172V) (23–25). All
+of these mutations and a fifth one (K102E)
+reached a higher frequency at the end of phase
+I in S populations relative to both W and N
+populations (fig. S9).
+
+When we unfolded these mutants and re-
+folded them (17), all five mutants yielded more
+correctly refolded protein than ancestral YFP
+(Fig. 4A), and three of them also refolded more
+rapidly than ancestral YFP (table S5). In ad-
+dition, the mutations cause increased protein
+solubility (figs. S10A and S11). Notably, four of
+them also increased foldability (figs. S10B and
+table S5), and two of them significantly in-
+creased solubility in the background U (one-
+sided Dunnett test with single-step adjustment,
+P < 0.05; figs. S10 C and S11), which folds with
+similarly low yield (~30%) as ancestral YFP (fig.
+S10D and table S5). The mutants also increased
+thermostability, albeit only at unphysiologically
+high temperatures (fig. S10, E to G, and table
+S6), indicating that they probably do not in-
+crease solubility by improving thermostability.
+In sum, all five key mutations improve fold-
+ability or protein solubility in the ancestral YFP
+background, and four of them do so in the
+green fluorescent protein background U.
+
+To estimate the mutational robustness of
+specific mutants, we used PCR to introduce
+random mutations into ancestral YFP and into
+each of the 22 high-frequency YFP variants. We
+then calculated the percentage of fluorescence
+retained relative to fluorescence before muta-
+genesis. After random mutagenesis, four out of
+five foldability-improving mutants retained greater
+yellow fluorescence (by 13.3 to 25.2%) than
+ancestral YFP (Fig. 4B), which indicates that
+they increased robustness. In one of the mutants
+(K102E), the increase in robustness was margin-
+ally significant (two-sided Dunnett test with
+
+l
+
+D
+o
+w
+n
+o
+a
+d
+e
+d
+
+ 
+f
+r
+o
+m
+h
+
+ 
+
+t
+t
+
+p
+
+i
+
+:
+/
+/
+s
+c
+e
+n
+c
+e
+
+i
+
+.
+s
+c
+e
+n
+c
+e
+m
+a
+g
+
+.
+
+o
+r
+g
+
+/
+ 
+
+ 
+
+o
+n
+D
+e
+c
+e
+m
+b
+e
+r
+ 
+
+2
+5
+
+,
+ 
+
+2
+0
+2
+0
+
+Zheng et al., Science 370, eabb5962 (2020)
+
+4 December 2020
+
+3 of 8
+
+RESEARCH | RESEARCH ARTICLE
+
+*
+
+**
+
+C
+
+n
+e
+
+i
+
+t
+
+l
+
+ 
+
+o
+r
+p
+e
+b
+u
+o
+s
+ 
+f
+
+l
+
+o
+
+ 
+t
+
+n
+u
+o
+m
+A
+
+2.5
+
+2.0
+
+1.5
+
+1.0
+
+0.5
+
+0.0
+
+S
+
+W
+
+N
+
+S
+
+W
+
+N
+
+Yellow fluorescence
+
+***
+
+***
+
+Green fluorescence
+
+***
+
+***
+
+***
+
+***
+
+***
+
+D
+
+20
+
+15
+
+10
+
+)
+
+%
+
+(
+ 
+
+n
+o
+
+i
+t
+c
+a
+r
+f
+ 
+
+n
+e
+
+i
+
+t
+
+o
+r
+p
+
+ 
+
+***
+
+**
+
+l
+
+e
+b
+u
+o
+s
+n
+
+l
+
+I
+
+5
+
+0
+
+E
+
+)
+
+%
+
+(
+ 
+
+e
+c
+n
+e
+c
+s
+e
+r
+o
+u
+
+l
+f
+ 
+
+w
+o
+
+l
+l
+
+e
+y
+ 
+
+e
+v
+i
+t
+
+l
+
+a
+e
+R
+
+Anc
+
+S
+
+W
+
+N
+
+Anc
+
+40
+
+30
+
+20
+
+10
+
+0
+
+S
+
+W
+
+N
+
+Anc
+
+A
+
+)
+
+%
+
+(
+ 
+
+e
+c
+n
+e
+c
+s
+e
+r
+o
+u
+
+l
+f
+ 
+
+w
+o
+
+l
+l
+
+e
+y
+ 
+l
+
+i
+
+a
+u
+d
+s
+e
+R
+
+B
+
+)
+
+%
+
+(
+ 
+y
+c
+n
+e
+u
+q
+e
+r
+F
+
+60
+
+50
+
+40
+
+30
+
+20
+
+10
+
+0
+
+80
+
+60
+
+40
+
+20
+10
+0
+
+S
+
+W
+
+N
+
+S
+
+W
+
+N
+
+0
+
+4
+
+8
+
+12
+
+Time (h)
+
+16
+
+20
+
+24
+
+Fig. 3. Strong selection leads to greater mutational robustness and higher
+foldability than weak selection. (A) Yellow fluorescence retained by each
+population at the end of phase I after mutagenesis relative to its yellow
+fluorescence without mutagenesis. (B) Frequencies of cells fluorescing above
+background in yellow (left) (17) or above ancestral YFP (Anc) in green (right) (17)
+from each population at the end of phase I after mutagenesis. (C and D) Amount
+
+of soluble protein relative to ancestral YFP (C) and insoluble protein fraction (D)
+in each population at the end of phase I. (E) Recovery of yellow fluorescence over
+time (horizontal axis) during refolding of unfolded fluorescent proteins at 25°C
+(17). Error bars represent 1 SEM based on four replicate populations. *P < 0.05;
+**P < 0.01; ***P < 0.001 (two-sided Dunnett tests with single-step adjustment to
+compare S with W, N, or ancestral YFP).
+
+single-step adjustment, P = 0.064; Fig. 4B).
+After random mutagenesis, none of the other
+17 mutations significantly retained greater yel-
+low fluorescence intensity than ancestral YFP
+(two-sided Dunnett test with single-step ad-
+justment, P > 0.05; fig. S12). In addition, ran-
+dom mutations in all foldability-improving
+mutants created significantly more variants
+that remained yellow fluorescence–positive
+than ancestral YFP (two-sided Dunnett test
+with single-step adjustment, P < 0.05; Fig. 4C).
+Thus, foldability-improving mutations enhance
+the mutational robustness of the original yellow-
+fluorescence phenotype.
+
+In addition, the five foldability-improving
+mutants also enhanced the robustness of the
+derived green fluorescence phenotype. First,
+after mutagenesis, they retained significantly
+higher green fluorescence intensity (15.2 to
+35.3% higher) than randomly mutated ances-
+tral YFP (two-sided Dunnett test with single-
+step adjustment, P < 0.05; Fig. 4B). Second,
+random mutations in the foldability-improving
+mutants created significantly more variants
+that remained green fluorescence–positive
+(14.6 to 37.5% more) than ancestral YFP (two-
+sided Dunnett test with single-step adjustment,
+P < 0.01; Fig. 4C). In addition, three foldability-
+
+improving mutations (F47L, F65L, and I172V)
+significantly improved green fluorescence (by
+more than 27.0%) when combined with the
+two neofunctionalizing mutations (two-sided
+Dunnett test with single-step adjustment, P <
+0.001; fig. S5). These results suggest that the
+foldability-enhancing mutations can accelerate
+a selective sweep of neofunctionalizing mutants
+during phase II. In support of this observation,
+the foldability-improving mutations achieved
+higher frequency in S populations than in W
+and N populations during each generation of
+evolution (fig. S13). Moreover, populations S
+retained a greater percentage of cells with
+higher green fluorescence than the ancestor
+during phase II evolution (Fig. 5A).
+
+The advantage of the foldability-enhancing
+mutations could be mainly caused by their ef-
+fect on robustness or by their effect on increas-
+ing fluorescence. We distinguished these two
+possibilities by measuring the effect of each
+mutation on fluorescence with or without muta-
+genesis. For example, the mutant F47L alone
+caused a 1.067-fold increase in green fluores-
+cence–positive cells relative to ancestral YFP.
+After random mutagenesis of the mutant F47L,
+the increase in green fluorescence–positive cells
+relative to the mutagenized ancestral YFP was
+
+1.390-fold. Thus, mutational robustness was re-
+sponsible for most [84.2% = 100 × (1.390 −
+1.067)/(1.390 −1.0)] of the mutant’s benefit for
+green fluorescence phenotype. This holds also
+for the other mutations, where we estimate that
+on average, >75% of the fluorescence benefit
+comes from increased robustness (Fig. 5B).
+Thus, foldability-improving mutations likely
+promoted the spreading of neofunctionalizing
+mutations by enhancing robustness. This is con-
+sistent with the observation that the foldability-
+improving mutations did not greatly increase
+specific green and yellow fluorescence on their
+own (table S7). In the genetic background U,
+three of these mutations (F47L, F65L, and I172V)
+also increased specific green fluorescence by
+more than 14% (table S7), and two of them
+(F47L and F65L) may have done so because of
+their spatial proximity to the chromophore (fig.
+S14). Such improvements in specific green flu-
+orescence might additionally help promote
+the fixation of U.
+
+Selection can eliminate deleterious
+mutations despite the presence of
+robustness-enhancing mutations
+Although robustness-enhancing mutations aug-
+ment the advantage of other beneficial mutations,
+
+Zheng et al., Science 370, eabb5962 (2020)
+
+4 December 2020
+
+4 of 8
+
+l
+
+D
+o
+w
+n
+o
+a
+d
+e
+d
+
+ 
+f
+r
+o
+m
+h
+
+ 
+
+t
+t
+
+p
+
+i
+
+:
+/
+/
+s
+c
+e
+n
+c
+e
+
+i
+
+.
+s
+c
+e
+n
+c
+e
+m
+a
+g
+
+.
+
+o
+r
+g
+
+/
+ 
+
+ 
+
+o
+n
+D
+e
+c
+e
+m
+b
+e
+r
+ 
+
+2
+5
+
+,
+ 
+
+2
+0
+2
+0
+
+RESEARCH | RESEARCH ARTICLE
+
+A
+
+)
+
+%
+
+(
+ 
+
+e
+c
+n
+e
+c
+s
+e
+r
+o
+u
+
+l
+f
+ 
+
+w
+o
+
+l
+l
+
+e
+y
+ 
+
+e
+v
+i
+t
+
+l
+
+a
+e
+R
+
+70
+
+60
+
+50
+
+40
+
+30
+
+20
+
+10
+
+0
+
+B
+
+e
+c
+n
+e
+c
+s
+e
+r
+o
+u
+
+l
+f
+ 
+
+e
+v
+i
+t
+
+l
+
+a
+e
+R
+
+0.8
+
+0.7
+
+0.6
+
+0.5
+
+C
+
+)
+
+%
+
+(
+ 
+y
+c
+n
+e
+u
+q
+e
+r
+F
+
+90
+
+80
+
+70
+
+60
+
+50
+
+Anc
+F47L
+F65L
+
+K102E
+V164A
+I172V
+
+Yellow fluorescence
+
+***
+
+***
+
+***
+
+***
+
+Green fluorescence
+**
+
+***
+
+*
+
+***
+
+***
+
+n c
+
+A
+
+F 4 7 L
+
+F 6 5 L
+
+E
+
+1 0 2
+
+K
+
+A
+
+1 6 4
+
+V
+
+V
+
+I1 7 2
+
+n c
+
+A
+
+F 4 7 L
+
+F 6 5 L
+
+E
+
+1 0 2
+
+K
+
+A
+
+1 6 4
+
+V
+
+V
+
+I1 7 2
+
+Yellow fluorescence
+
+Green fluorescence
+
+***
+
+***
+
+*
+
+***
+
+***
+
+***
+
+***
+
+**
+
+***
+
+***
+
+0
+
+4
+
+8
+
+12
+
+Time (h)
+
+16
+
+20
+
+24
+
+n c
+
+A
+
+F 4 7 L
+
+F 6 5 L
+
+E
+
+1 0 2
+
+K
+
+A
+
+1 6 4
+
+V
+
+V
+
+I1 7 2
+
+n c
+
+A
+
+F 4 7 L
+
+F 6 5 L
+
+E
+
+1 0 2
+
+K
+
+A
+
+1 6 4
+
+V
+
+V
+
+I1 7 2
+
+Fig. 4. Foldability-improving mutations enhance mutational robustness. (A) Recovery of yellow fluorescence during refolding of unfolded ancestral YFP and of
+the indicated variants at 25°C (17). (B) Fluorescence intensity retained relative to fluorescence without mutagenesis (17). (C) Frequencies of fluorescence-positive
+cells after random mutagenesis (17). Error bars represent 1 SD (n = 3). *P < 0.05; **P < 0.01; ***P < 0.001 [two-sided Dunnett tests with single-step adjustment to
+compare each variant with ancestral YFP in (B) and (C)].
+
+A
+
+)
+
+%
+
+ 
+f
+o
+ 
+y
+c
+n
+e
+u
+q
+e
+r
+F
+
+(
+ 
+s
+
+l
+l
+
+e
+c
+ 
+n
+e
+e
+r
+g
+−
+h
+g
+h
+ 
+
+i
+
+***
+***
+
+*
+***
+
+*
+**
+
+S
+
+W
+
+N
+
+60
+
+40
+
+20
+
+0
+
+I−4
+
+II−1
+II−2
+Generation
+
+II−3
+
+B
+
+)
+
+%
+
+(
+ 
+e
+g
+a
+t
+n
+e
+c
+r
+e
+P
+
+100
+
+75
+
+50
+
+25
+
+0
+
+Fluorescence increase
+
+Robustness
+
+C
+
+)
+
+ 
+f
+o
+ 
+y
+c
+n
+e
+u
+q
+e
+r
+F
+
+%
+
+(
+ 
+s
+n
+o
+i
+t
+a
+t
+u
+m
+ 
+e
+s
+n
+e
+s
+n
+o
+n
+ 
+
+***
+
+***
+
+***
+
+*
+
+S
+
+W
+
+N
+
+25
+
+20
+
+15
+
+10
+
+5
+
+0
+
+F 4 7 L
+
+F 6 5 L
+
+V
+
+I1 7 2
+
+E
+
+1 0 2
+
+K
+
+A
+
+1 6 4
+
+V
+
+I−1
+
+I−2
+I−3
+Generation
+
+I−4
+
+Fig. 5. Enhanced mutational robustness promotes sweeps of adaptive mutations. (A) Percentage of cells with higher green fluorescence than ancestral YFP in
+populations S, W, and N after mutagenesis during each generation of evolution (17). (B) Increased mutational robustness (purple) rather than fluorescence increase
+(orange) is the major contributor to the acceleration of green fluorescence evolution by foldability-increasing mutations. (C) Strong selection purges nonsense
+mutations most efficiently during phase I evolution. Error bars represent 1 SEM from four replicate populations [(A) and (C)] or 1 SD over three biological replicates
+(B). *P < 0.05; **P < 0.01; ***P < 0.001 [one-sided Dunnett tests with single-step adjustment to compare S with W (blue) or N (black)].
+
+their interactions with deleterious mutations
+are more complex. If they completely mask
+the effects of a deleterious mutation, this mu-
+tation may be preserved. However, if the mu-
+tation remains somewhat deleterious even
+in the presence of robustness-enhancing mu-
+tations, it may still be eliminated by selection,
+and at a rate that depends on the strength of
+selection. To test whether selection in S pop-
+ulations was sufficiently strong to eliminate
+
+deleterious mutations, we first used nonsense
+mutations, which produce truncated protein
+isoforms (26). Indeed, the frequency of non-
+sense mutations remained 2.1-fold lower in
+S than in W populations and 18.7-fold lower
+than in N populations at the end of phase I
+(Fig. 5C).
+
+To complement this analysis, we also used
+the FoldX algorithm to predict destabilizing
+mutations (17). Such destabilizing mutations
+
+too became depleted in S populations (figs. S15
+to S17). Specifically, highly destabilizing muta-
+tions had a consistently lower frequency in
+S populations than in W and N populations
+throughout phase I evolution (figs. S15A to
+S17). At the end of phase I, this frequency was
+2.4-fold and 9.7-fold lower in S populations
+than in W and N populations, respectively
+(figs. S15A). Also, the protein variants of popu-
+lations S were on average more stable than
+
+Zheng et al., Science 370, eabb5962 (2020)
+
+4 December 2020
+
+5 of 8
+
+l
+
+D
+o
+w
+n
+o
+a
+d
+e
+d
+
+ 
+f
+r
+o
+m
+h
+
+ 
+
+t
+t
+
+p
+
+i
+
+:
+/
+/
+s
+c
+e
+n
+c
+e
+
+i
+
+.
+s
+c
+e
+n
+c
+e
+m
+a
+g
+
+.
+
+o
+r
+g
+
+/
+ 
+
+ 
+
+o
+n
+D
+e
+c
+e
+m
+b
+e
+r
+ 
+
+2
+5
+
+,
+ 
+
+2
+0
+2
+0
+
+RESEARCH | RESEARCH ARTICLE
+
+A
+
+s
+n
+o
+
+i
+t
+
+a
+
+t
+
+i
+
+ 
+
+u
+m
+g
+n
+g
+n
+a
+h
+c
+ 
+
+i
+
+d
+c
+a
+−
+o
+n
+m
+A
+
+i
+
+Phase II
+
+C
+
+*
+
+robustness enhancing
+
+Phase II
+
+**
+
+***
+
+B
+
+e
+g
+n
+a
+h
+c
+ 
+y
+t
+i
+s
+r
+e
+v
+d
+
+i
+
+ 
+c
+i
+t
+
+e
+n
+e
+G
+
+0.0100
+
+0.0075
+
+0.0050
+
+0.0025
+
+0.0000
+
+5
+
+4
+
+3
+
+2
+
+1
+
+0
+
+l
+
+D
+o
+w
+n
+o
+a
+d
+e
+d
+
+ 
+f
+r
+o
+m
+h
+
+ 
+
+t
+t
+
+p
+
+i
+
+:
+/
+/
+s
+c
+e
+n
+c
+e
+
+i
+
+.
+s
+c
+e
+n
+c
+e
+m
+a
+g
+
+.
+
+o
+r
+g
+
+/
+ 
+
+ 
+
+o
+n
+D
+e
+c
+e
+m
+b
+e
+r
+ 
+
+2
+5
+
+,
+ 
+
+2
+0
+2
+0
+
+S
+
+W
+
+N
+
+S
+
+W
+
+N
+
+Fig. 6. Mutational robustness helps increase genetic diversity and evolv-
+ability. (A) Increase in the average number of amino acid–changing mutations per
+fluorescent protein molecule relative to the beginning of phase II for evolving
+populations S, W, and N. (B) Increase in genetic diversity relative to the beginning of
+phase II for evolving populations S, W, and N. The data show the increase in the
+number of amino acid–changing mutations (A) or in genetic diversity (B) in
+populations S, W, and N at the end of phase II, relative to the end of phase I. Error
+bars represent 1 SEM from four replicate populations. *P < 0.05; **P < 0.01; ***P <
+
+0.001 [one-sided Dunnett tests with single-step adjustment to compare S with W
+(blue) or N (black)]. (C) Robustness-enhancing mutations can help evolving
+populations bypass fitness valleys in an adaptive landscape. Robustness-enhancing
+mutations (short red arrow) can help move a population to a region of an
+adaptive landscape with low curvature, from where an adaptive peak can be reached
+more easily (long red arrow) than without robustness-enhancing mutations (blue
+arrow). Strong selection can help increase the frequency of robustness-enhancing
+mutations, and more so if such mutations also enhance fitness.
+
+those of populations W and N during phase I
+evolution (fig. S15B).
+
+Because computational stability predictions
+may be inaccurate when a protein harbors
+multiple amino acid changes (27), we also
+experimentally measured the stability of fluo-
+rescent proteins expressed in our populations.
+In these experiments, proteins from S pop-
+ulations showed greater stability at 65° to 80°
+C than those from W and N populations (fig.
+S8E). This prevalence of more stable proteins
+in S populations also persisted after muta-
+genesis (fig. S8F). In sum, selection can purge
+strongly deleterious mutations even in the
+presence of robustness-enhancing mutations.
+
+Robustness-enhancing mutations help
+increase genetic diversity in populations
+subject to selection
+Though not completely preventing the purging
+of deleterious mutations, robustness-enhancing
+mutations can still increase genetic diversity
+within a population by helping a population
+tolerate some deleterious mutations. Spe-
+cifically, we observed that in both S and W
+(but not N) populations, proteins that carried
+robustness-enhancing mutations also harbored
+a significantly greater number of other amino
+acid changes at the end of phase I (one-sided
+t tests, P < 0.05; fig. S18).
+
+To further examine whether robustness-
+enhancing mutations help populations S tole-
+rate deleterious mutations during phase II
+evolution, we focused on the 22 mutations
+that reached a frequency exceeding 30% at
+the evolutionary end point. Among these muta-
+
+tions, we identified four strongly deleterious
+mutations that significantly reduced the fluo-
+rescence of the universal green fluorescent
+genotype U by more than 20% (E18G, M79L,
+R110S, and N145S; two-sided Dunnett test
+with single-step adjustment, P < 0.001; fig. S5).
+Three of these deleterious mutations occurred
+in populations S, whereas only one of them oc-
+curred in any other population. Notably, more
+than 85% of the genetic variants that harbored
+one of these mutations also harbored at least
+one of the five foldability-improving mutations
+at the evolutionary end point (fig. S19). This
+suggests that robustness-enhancing mutations
+helped populations S tolerate strongly delete-
+rious mutations. It is also consistent with the
+observation that populations S experienced
+greater increases in both the number of ami-
+no acid changes and genetic diversity than
+populations W and N during phase II evolution
+(Fig. 6, A and B).
+
+Discussion
+Neutral or weakly deleterious mutations can
+play an important role in adaptive evolution
+(13, 28), because they can convey new functions.
+They also help populations respond rapidly to
+environmental changes (3, 7, 12, 13) and traverse
+fitness valleys created by epistatic (nonadditive)
+mutational interactions (29). Weak purifying
+selection facilitates the accumulation of such
+mutations (7). If they were central to the evolu-
+tion of a derived green fluorescence phenotype,
+our weak selection regime should have resulted
+in higher evolvability of this phenotype. How-
+ever, we found that strong selection led to
+
+more rapid evolution of the green fluorescence
+phenotype (Fig. 1B).
+
+To understand why, consider that many
+proteins are marginally foldable (30) and mar-
+ginally stable (31). Also, most mutations ac-
+cumulated during evolution will further reduce
+protein foldability and stability (20, 32), es-
+pecially under weak selection (12, 33, 34). To
+function well, most proteins must first fold
+correctly (high foldability) and maintain struc-
+tural integrity after folding (high stability)
+(35), resulting in selection on the evolution of
+foldability and stability. As a result, strong selec-
+tion not only can stop the erosion of foldability
+and stability by purging deleterious mutations, it
+also favors mutations that enhance both proper-
+ties. This ability is especially important during
+the evolution of new phenotypes, because neo-
+functionalizing mutations usually destabilize
+proteins and reduce folding efficiency (5, 34, 36).
+In our experiments, strong selection favored
+mutations that increase foldability and, to an
+even greater extent, mutational robustness. In
+doing so, selection enhanced the penetrance
+of beneficial mutations (Fig. 5A) and accel-
+erated selective sweeps (Fig. 2C). In addition,
+foldability-improving mutations may also pro-
+mote the fixation of neofunctionalizing muta-
+tions by improving their specific protein
+activity during adaptive evolution (table S7).
+We anticipate that our observations apply to
+the evolution of most proteins in which fold-
+ability and stability are important.
+
+Our experiments required high mutation
+rates so that we could observe adaptive evolu-
+tion on a laboratory time scale. Comparable
+
+Zheng et al., Science 370, eabb5962 (2020)
+
+4 December 2020
+
+6 of 8
+
+RESEARCH | RESEARCH ARTICLE
+
+mutation rates have been observed in viruses
+(37, 38) and microbes, especially those that are
+challenged to evolve rapidly by environmental
+stressors (39–42). Such high mutation rates
+are also required for the evolution of robust-
+ness as a direct response to mutation pressure
+(3, 4, 43). However, because our evolvability-
+enhancing mutations increase both robust-
+ness and foldability (Fig. 6C), their direct
+fitness benefit (fig. S20) would help them
+accumulate also under much lower mutation
+rates. An important question is whether the
+advantage of strong selection for evolvability
+also persists at low mutation rates.
+
+Our work highlights the important role of
+standing variation for evolvability (13, 14, 20, 44–46).
+It shows that natural selection can play a crucial
+and active role in creating standing variation
+that is both beneficial and enhances evolvability—
+for example, by increasing robustness to dele-
+terious mutations. This contrasts with some
+theoretical and experimental work, in which
+first-order selection for fitness conflicts with
+second-order selection for robustness (47, 48).
+We predict that evolution can avoid this con-
+flict when mutations with both fitness-enhancing
+and evolvability-enhancing roles exist.
+
+Our work also suggests experimental de-
+signs that select for beneficial mutations without
+depleting genetic variation before selecting for
+a new phenotype. Such experiments could be
+further enhanced by starting with protein
+variants engineered for high robustness. Fur-
+thermore, our observations extend beyond
+bioengineering. We expect that the evolution-
+ary rescue of populations after environmental
+challenges, like climate change, may be easier
+in cases when a population’s evolutionary po-
+tential has been previously enhanced by strong
+selection. Most generally, our observations sug-
+gest that natural selection can create favorable
+conditions for Darwinian evolution.
+
+Materials and methods summary
+Plasmids and strains
+We used the plasmid vector pBAD202/D-TOPO
+(K4202-01, Invitrogen) for cloning and ex-
+pressing YFP alleles. This vector contains a
+kanamycin resistance marker and an arabinose-
+inducible araBAD promoter. We used E. coli
+strain BW27783 (CGSC 12119) as a host to enable
+the homogeneous expression of the arabinose-
+inducible araBAD promoter (49).
+
+Creating mutant libraries
+We used the same mutagenesis protocol during
+phase I and phase II of our experiments (17).
+Specifically, we performed mutagenic PCR
+(using the primers MutafpF and MutafpR,
+table S8) to randomly introduce mutations
+into the coding region of YFP, inserted the re-
+sulting mutant pool into the vector backbone
+by ligation, and then electroporated the liga-
+tion product into electrocompetent cells (17).
+
+After electroporation, we immediately added
+1 ml of prewarmed SOC medium, incubated the
+recovering cell culture for 1.5 hours at 37°C with
+shaking at 220 rpm in a 50-ml tube, and used
+the recovered culture for further experiments.
+To avoid the accumulation of mutations in
+the plasmid outside the YFP coding region, we
+inserted randomly mutated YFP genes into a
+fresh plasmid backbone in each generation. In
+addition, to avoid mutations that might ac-
+cumulate in the E. coli genome, we transformed
+mutated YFP gene pools into fresh E. coli com-
+petent cells in each generation.
+
+Directed evolution
+We induced fluorescent protein expression in
+evolving populations at 37°C for 12 hours (with
+shaking at 220 rpm) by using 0.2% arabinose
+(17). We used an Aria III cell sorter (BD
+Biosciences) to sort cells at 4°C in the fluores-
+cein isothiocyanate (FITC) channel (lex =
+488 nm, lem = 530 ± 15 nm; phase I evolution)
+or in the AmCyan channel (lex = 405 nm,
+lem = 525 ± 25 nm; phase II evolution) accord-
+ing to the selection criteria described in Fig. 1.
+In phase I evolution, we collected ~106 selected
+cells in ~1 ml of cold phosphate-buffered saline
+(PBS) buffer at 4°C for each replicate popula-
+tion (17). In phase II evolution, we first selected
+~5 × 104 cells with the top 1% of green
+fluorescence intensity, regrew the sorted cells,
+and repeated the sorting process by again select-
+ing ~104 cells in the top 1% of green fluorescence
+intensity (17). In each round, we regrew sorted
+cells, and isolated plasmids from sorted cells and
+used them as templates for the next mutation-
+selection cycle and for single-molecule real-time
+(SMRT) sequencing (17). To prevent cell prolif-
+eration or death, we placed selected cells on ice
+before the subsequent steps.
+
+Engineering YFP variants
+We used whole-plasmid PCR to engineer single
+mutants and some double mutants by design-
+ing primers that carry the corresponding muta-
+tions (table S9) (17). We also used whole-plasmid
+PCR to engineer single mutations into the
+genetic backgrounds of G66S, Y204C, or U
+(G66T + Y204C) by using the mutants G66S,
+Y204C, or U as templates (17). We used Gibson
+Assembly Master Mix (E2611, NEB) to engineer
+the double-mutant U (G66T+Y204C) by using
+the primers G66Sf/Y204Cr and Y204Cr/G66Sf
+(table S9) (17).
+
+Fluorescence assay using flow cytometry
+We grew evolving populations or engineered
+variants in 200 m l or 2 ml of LB with 0.2%
+arabinose to induce the expression of YFP
+variants in evolving populations or engineered
+YFP variants (17). We added 40 m l of a culture
+to 160 ml of cold PBS buffer, transferred 20 m l of
+the resulting suspension to 180 m l of cold PBS
+buffer, and mixed the solution thoroughly. We
+
+used the resulting mixture to measure yel-
+low fluorescence (lex = 488 nm and lem =
+530 ± 15 nm) and green fluorescence (lex =
+405 nm and lem = 525 ± 25 nm) using flow
+cytometry. We performed fluorescence as-
+says at room temperature with a flow rate of
+~3000 events/s by using a Fortessa cell ana-
+lyzer (BD Biosciences). We performed at least
+three biological replicates for each replicate
+population or each variant and analyzed ~104
+events per replicate. To prevent cell prolifer-
+ation or death, we placed all samples on ice
+until we had finished all assays.
+
+Flow cytometry data analysis
+We performed flow cytometry data analysis by
+using FlowJo V10.4.2 (LLC). Briefly, we used
+forward scatter height (FSC-H) versus side
+scatter height (SSC-H) density plots to select
+a homogeneous cell population (p1 in fig. S21A),
+and used side scatter area (SSC-A) versus SSC-H
+density plots to exclude doublets (p2 in fig.
+S21B). We used the resulting filtered data p2
+for determining the fluorescence intensity of
+evolving populations and for determining mu-
+tational robustness of evolving populations
+and those single mutants (Figs. 1, 3, 4, and
+5 and fig. S12). We used FITC-height versus
+AmCyan-height density plots to select the domi-
+nant cell population (p3 in fig. S21C) and used
+the resulting filtered data p3 for determining
+the fluorescence intensity of each mutant (figs.
+S5 and S20).
+
+Protein solubility determination and refolding
+kinetics measurements
+We induced the expression of YFP variants in
+evolving populations or engineered mutants
+by growing cells in 2 ml of LB medium with
+50 mg/ml of kanamycin and 0.2% arabinose
+in a 10-ml tube at 37°C and at 220 rpm for
+12 hours (17). We used CelLytic B Cell Lysis
+Reagent (B7435-500ml, Sigma) to extract both
+soluble and insoluble proteins from the col-
+lected cells by following the manufacturer’s
+protocol (17). We quantified the amount of
+both soluble and insoluble proteins in each
+sample by SDS–polyacrylamide gel electro-
+phoresis (SDS-PAGE) (17).
+
+To unfold proteins, we diluted 5 ml of crude
+lysate with 45 ml of 9 M urea (containing
+10 mM dithiothreitol) and incubated the solu-
+tion at 95°C for 5 min. To refold unfolded pro-
+teins, we diluted 10 ml of the unfolded samples
+with 180 ml of TNG buffer in a 96-well microplate
+and used an infinite F200 Pro (lex = 485 nm,
+lem= 530 nm) or a Spark 10 M (lex = 485 nm,
+lem = 530 nm and lex = 405 nm, lem = 512 nm)
+microplate reader to measure fluorescence
+intensity at ~20-min intervals (17).
+
+SMRT sequencing and sequence data analysis
+We barcoded YFP variants of each replicate
+population by using PCR and ligation for SMRT
+
+l
+
+D
+o
+w
+n
+o
+a
+d
+e
+d
+
+ 
+f
+r
+o
+m
+h
+
+ 
+
+t
+t
+
+p
+
+i
+
+:
+/
+/
+s
+c
+e
+n
+c
+e
+
+i
+
+.
+s
+c
+e
+n
+c
+e
+m
+a
+g
+
+.
+
+o
+r
+g
+
+/
+ 
+
+ 
+
+o
+n
+D
+e
+c
+e
+m
+b
+e
+r
+ 
+
+2
+5
+
+,
+ 
+
+2
+0
+2
+0
+
+Zheng et al., Science 370, eabb5962 (2020)
+
+4 December 2020
+
+7 of 8
+
+RESEARCH | RESEARCH ARTICLE
+
+sequencing and used the Paciﬁc Biosciences
+RS2 instrument (Paciﬁc Biosciences) to per-
+form sequencing (17). We used the SMRTA-
+nalysis v2.3 package (50) to perform primary
+data analysis (17). We wrote Python scripts
+(Python 2.7.12) to identify point mutations
+and their combinations and to calculate genetic
+diversity in each replicate population from each
+generation of evolution (17).
+
+Statistical analysis
+Unless specified otherwise, we conducted pair-
+wise comparisons by using a one-tailed t test
+and conducted multiple comparisons to a con-
+trol by using a one-sided Dunnett test with
+single-step adjustment. We performed all
+statistical analysis using R version 3.4.1.
+
+REFERENCES AND NOTES
+
+1. M. Pigliucci, Is evolvability evolvable? Nat. Rev. Genet. 9, 75–82
+
+2.
+
+(2008). doi: 10.1038/nrg2278; pmid: 18059367
+J. L. Payne, A. Wagner, The causes of evolvability and their
+evolution. Nat. Rev. Genet. 20, 24–38 (2019). doi: 10.1038/
+s41576-018-0069-z; pmid: 30385867
+
+3. S. Bershtein, K. Goldin, D. S. Tawfik, Intense neutral drifts yield
+
+4.
+
+5.
+
+robust and evolvable consensus proteins. J. Mol. Biol. 379,
+1029–1044 (2008). doi: 10.1016/j.jmb.2008.04.024;
+pmid: 18495157
+J. D. Bloom et al., Evolution favors protein mutational
+robustness in sufficiently large populations. BMC Biol. 5 , 29
+(2007). doi: 10.1186/1741-7007-5-29; pmid: 17640347
+J. D. Bloom, S. T. Labthavikul, C. R. Otey, F. H. Arnold, Protein
+stability promotes evolvability. Proc. Natl. Acad. Sci. U.S.A.
+103, 5869–5874 (2006). doi: 10.1073/pnas.0510098103;
+pmid: 16581913
+
+6. M. Soskine, D. S. Tawfik, Mutational effects and the evolution
+of new protein functions. Nat. Rev. Genet. 11, 572–582 (2010).
+doi: 10.1038/nrg2808; pmid: 20634811
+
+7. M. A. Stiffler, D. R. Hekstra, R. Ranganathan, Evolvability as a
+
+function of purifying selection in TEM-1 b-lactamase. Cell
+160, 882–892 (2015). doi: 10.1016/j.cell.2015.01.035;
+pmid: 25723163
+
+8. C. Bank, S. Matuszewski, R. T. Hietpas, J. D. Jensen, On the
+
+(un)predictability of a large intragenic fitness landscape. Proc.
+Natl. Acad. Sci. U.S.A. 113, 14085–14090 (2016). doi: 10.1073/
+pnas.1612676113; pmid: 27864516
+
+9. T. N. Starr, L. K. Picton, J. W. Thornton, Alternative
+
+evolutionary histories in the sequence space of an ancient
+protein. Nature 549, 409–413 (2017). doi: 10.1038/
+nature23902; pmid: 28902834
+
+10. J. Domingo, P. Baeza-Centurion, B. Lehner, The Causes and
+Consequences of Genetic Interactions (Epistasis). Annu. Rev.
+Genomics Hum. Genet. 20, 433–460 (2019). doi: 10.1146/
+annurev-genom-083118-014857; pmid: 31082279
+
+11. D. M. Weinreich, N. F. Delaney, M. A. Depristo, D. L. Hartl,
+
+Darwinian evolution can follow only very few mutational paths
+to fitter proteins. Science 312, 111–114 (2006). doi: 10.1126/
+science.1123539; pmid: 16601193
+
+12. S. Bershtein, D. S. Tawfik, Ohno’s model revisited: Measuring
+the frequency of potentially adaptive mutations under various
+mutational drifts. Mol. Biol. Evol. 25, 2311–2318 (2008).
+doi: 10.1093/molbev/msn174; pmid: 18687656
+
+13. E. J. Hayden, E. Ferrada, A. Wagner, Cryptic genetic variation
+
+promotes rapid evolutionary adaptation in an RNA enzyme.
+Nature 474, 92–95 (2011). doi: 10.1038/nature10083;
+pmid: 21637259
+
+14. J. Zheng, J. L. Payne, A. Wagner, Cryptic genetic variation
+
+accelerates evolution by opening access to diverse adaptive
+peaks. Science 365, 347–353 (2019). doi: 10.1126/science.
+aax1837; pmid: 31346060
+
+15. A. B. Paaby, M. V. Rockman, Cryptic genetic variation:
+
+Evolution’s hidden substrate. Nat. Rev. Genet. 15, 247–258
+(2014). doi: 10.1038/nrg3688; pmid: 24614309
+
+16. B. C. Stanton et al., Genomic mining of prokaryotic repressors
+for orthogonal logic gates. Nat. Chem. Biol. 10, 99–105 (2014).
+doi: 10.1038/nchembio.1411; pmid: 24316737
+
+17. See supplemental materials.
+
+18. K. S. Sarkisyan et al., Local fitness landscape of the green
+
+40. J. A. G. M. de Visser, C. W. Zeyl, P. J. Gerrish, J. L. Blanchard,
+
+fluorescent protein. Nature 533, 397–401 (2016). doi: 10.1038/
+nature17995; pmid: 27193686
+
+19. L. Rockah-Shmuel, Á. Tóth-Petróczy, D. S. Tawfik, Systematic
+
+Mapping of Protein Mutational Space by Prolonged Drift
+Reveals the Deleterious Effects of Seemingly Neutral
+Mutations. PLOS Comput. Biol. 11, e1004421 (2015).
+doi: 10.1371/journal.pcbi.1004421; pmid: 26274323
+
+20. N. Tokuriki, D. S. Tawfik, Chaperonin overexpression promotes
+genetic variation and enzyme evolution. Nature 459, 668–673
+(2009). doi: 10.1038/nature08009; pmid: 19494908
+21. A. Bandyopadhyay et al., Chemical chaperones assist
+
+intracellular folding to buffer mutational variations. Nat. Chem.
+Biol. 8, 238–245 (2012). doi: 10.1038/nchembio.768;
+pmid: 22246401
+
+22. R. G. Smock, I. Yadid, O. Dym, J. Clarke, D. S. Tawfik, De Novo
+Evolutionary Emergence of a Symmetrical Protein Is Shaped by
+Folding Constraints. Cell 164, 476–486 (2016). doi: 10.1016/
+j.cell.2015.12.024; pmid: 26806127
+
+23. J.-D. Pédelacq, S. Cabantous, T. Tran, T. C. Terwilliger,
+
+G. S. Waldo, Engineering and characterization of a superfolder
+green fluorescent protein. Nat. Biotechnol. 24, 79–88 (2006).
+doi: 10.1038/nbt1172; pmid: 16369541
+
+24. T. H. Yoo, A. J. Link, D. A. Tirrell, Evolution of a fluorinated
+green fluorescent protein. Proc. Natl. Acad. Sci. U.S.A. 104,
+13887–13890 (2007). doi: 10.1073/pnas.0701904104;
+pmid: 17717085
+
+25. A. Miyawaki, T. Nagai, H. Mizuno, Mechanisms of protein
+
+fluorophore formation and engineering. Curr. Opin. Chem. Biol.
+7, 557–562 (2003). doi: 10.1016/S1367-5931(03)00097-8;
+pmid: 14580558
+
+26. A. A. Vakhrusheva, M. D. Kazanov, A. A. Mironov, G. A. Bazykin,
+Evolution of prokaryotic genes by shift of stop codons. J. Mol.
+Evol. 72, 138–146 (2011). doi: 10.1007/s00239-010-9408-1;
+pmid: 21082168
+
+27. J. Yang et al., Predicting the viability of beta-lactamase: How
+folding and binding free energies correlate with beta-lactamase
+fitness. PLOS ONE 15, e0233509 (2020). doi: 10.1371/journal.
+pone.0233509; pmid: 32470971
+
+R. E. Lenski, Diminishing returns from mutation supply
+rate in asexual populations. Science 283, 404–406 (1999).
+doi: 10.1126/science.283.5400.404; pmid: 9888858
+I. Bjedov et al., Stress-induced mutagenesis in bacteria.
+Science 300, 1404–1409 (2003). doi: 10.1126/
+science.1082240; pmid: 12775833
+
+41.
+
+42. R. C. MacLean, C. Torres-Barceló, R. Moxon, Evaluating
+
+evolutionary models of stress-induced mutagenesis in bacteria.
+Nat. Rev. Genet. 14, 221–227 (2013). doi: 10.1038/nrg3415;
+pmid: 23400102
+
+43. E. van Nimwegen, J. P. Crutchfield, M. Huynen, Neutral
+
+evolution of mutational robustness. Proc. Natl. Acad. Sci. U.S.A.
+96, 9716–9720 (1999). doi: 10.1073/pnas.96.17.9716;
+pmid: 10449760
+
+44. R. D. Gupta, D. S. Tawfik, Directed enzyme evolution via small
+and effective neutral drift libraries. Nat. Methods 5, 939–942
+(2008). doi: 10.1038/nmeth.1262; pmid: 18931667
+
+45. S. L. Rutherford, S. Lindquist, Hsp90 as a capacitor for
+morphological evolution. Nature 396, 336–342 (1998).
+doi: 10.1038/24550; pmid: 9845070
+
+46. N. Rohner et al., Cryptic variation in morphological evolution:
+HSP90 as a capacitor for loss of eyes in cavefish. Science 342,
+1372–1375 (2013). doi: 10.1126/science.1240276;
+pmid: 24337296
+
+47. C. O. Wilke, J. L. Wang, C. Ofria, R. E. Lenski, C. Adami,
+
+Evolution of digital organisms at high mutation rates leads to
+survival of the flattest. Nature 412, 331–333 (2001).
+doi: 10.1038/35085569; pmid: 11460163
+
+48. M. S. Johnson, A. Martsul, S. Kryazhimskiy, M. M. Desai,
+
+Higher-fitness yeast genotypes are less robust to deleterious
+mutations. Science 366, 490–493 (2019). doi: 10.1126/
+science.aay4199; pmid: 31649199
+
+49. A. Khlebnikov, K. A. Datsenko, T. Skaug, B. L. Wanner,
+J. D. Keasling, Homogeneous expression of the P(BAD)
+promoter in Escherichia coli by constitutive expression of the
+low-affinity high-capacity AraE transporter. Microbiology 147,
+3241–3247 (2001). doi: 10.1099/00221287-147-12-3241;
+pmid: 11739756
+
+28. E. Rigato, G. Fusco, Enhancing effect of phenotype mutational
+
+50. PACBIO, Analytical solutions for PACBIO sequencing data.
+
+robustness on adaptation in Escherichia coli. J. Exp. Zool. B
+Mol. Dev. Evol. 326, 31–37 (2016). doi: 10.1002/jez.b.22662;
+pmid: 26612084
+
+Pacific Biosciences DevNet; www.pacb.com/support/
+documentation//DevNet.
+
+51. N. Guo, J. Zheng, Selection_strength_evolvability, Version 1.0,
+
+29. B. Steinberg, M. Ostermeier, Environmental changes bridge
+
+Zenodo (2020); https://doi.org/10.5281/zenodo.3819561.
+
+evolutionary valleys. Sci. Adv. 2, e1500921 (2016).
+doi: 10.1126/sciadv.1500921; pmid: 26844293
+
+30. S. Govindarajan, R. A. Goldstein, The foldability landscape of
+
+model proteins. Biopolymers 42, 427–438 (1997).
+doi: 10.1002/(SICI)1097-0282(19971005)42:4<427::AID-
+BIP6>3.0.CO;2-S; pmid: 9283292
+
+31. D. M. Taverna, R. A. Goldstein, Why are proteins marginally
+
+stable? Proteins 46, 105–109 (2002). doi: 10.1002/prot.10016;
+pmid: 11746707
+
+32. R. Geller, S. Pechmann, A. Acevedo, R. Andino, J. Frydman,
+
+Hsp90 shapes protein and RNA evolution to balance trade-offs
+between protein stability and aggregation. Nat. Commun. 9,
+1781 (2018). doi: 10.1038/s41467-018-04203-x;
+pmid: 29725062
+
+33. S. Bershtein, M. Segal, R. Bekerman, N. Tokuriki, D. S. Tawfik,
+
+Robustness-epistasis link shapes the fitness landscape of a
+randomly drifting protein. Nature 444, 929–932 (2006).
+doi: 10.1038/nature05385; pmid: 17122770
+
+34. N. Tokuriki, D. S. Tawfik, Stability effects of mutations and
+
+protein evolvability. Curr. Opin. Struct. Biol. 19, 596–604
+(2009). doi: 10.1016/j.sbi.2009.08.003; pmid: 19765975
+
+35. J. M. Sanchez-Ruiz, Protein kinetic stability. Biophys. Chem.
+
+148, 1–15 (2010). doi: 10.1016/j.bpc.2010.02.004;
+pmid: 20199841
+
+36. K. L. Petrie et al., Destabilizing mutations encode nongenetic
+
+variation that drives evolutionary innovation. Science 359,
+1542–1545 (2018). doi: 10.1126/science.aar1954;
+pmid: 29599247
+
+37. A. S. Lauring, J. Frydman, R. Andino, The role of mutational
+
+robustness in RNA virus evolution. Nat. Rev. Microbiol. 11,
+327–336 (2013). doi: 10.1038/nrmicro3003; pmid: 23524517
+
+38. S. Duffy, L. A. Shackelton, E. C. Holmes, Rates of
+
+evolutionary change in viruses: Patterns and determinants.
+Nat. Rev. Genet. 9, 267–276 (2008). doi: 10.1038/nrg2323;
+pmid: 18319742
+
+39. F. Taddei et al., Role of mutator alleles in adaptive evolution.
+
+Nature 387, 700–702 (1997). doi: 10.1038/42696;
+pmid: 9192893
+
+ACKNOWLEDGMENTS
+
+We acknowledge the experimental support of the flow cytometry
+facility and the functional genomics center at the University of
+Zurich. We thank H. E. L. Lischer, C. Bello, and G. Schweizer for
+help with SMRT sequencing data analysis or protein stability
+analysis. We thank Y. Schaerli, J. Duarte, M. Olombrada Sacristan,
+B. Ravi, P. Dasmeh, and K. Ramanadane for experimental
+assistance or comments on the manuscript. We thank B. Schuler
+and J. L. Payne for helpful discussions. Funding: This project
+has received funding from the European Research Council under
+grant agreement 739874 and from Swiss National Science
+Foundation grant 31003A_172887. Author contributions: J.Z.
+and A.W. designed the experiments. J.Z. performed the
+experiments. J.Z., N.G., and A.W. contributed to data analysis.
+J.Z. and A.W. wrote the paper. All authors read and edited the
+paper. Competing interests: The authors declare no competing
+interests. Data and materials availability: All data are available in
+the manuscript or supplementary materials. SMRT sequencing
+data are available at DDBJ, EMBL, and GenBank under accession
+numbers KEEO00000000 and KCZY00000000. Custom
+code used in this study is available at Zenodo under the accession
+number 3819561 (51).
+
+SUPPLEMENTARY MATERIALS
+
+science.sciencemag.org/content/370/6521/eabb5962/suppl/DC1
+Materials and Methods
+Figs. S1 to S21
+Tables S1 to S12
+References (52–62)
+Database S1
+MDAR Reproducibility Checklist
+
+View/request a protocol for this paper from Bio-protocol.
+
+9 March 2020; accepted 25 September 2020
+10.1126/science.abb5962
+
+l
+
+D
+o
+w
+n
+o
+a
+d
+e
+d
+
+ 
+f
+r
+o
+m
+h
+
+ 
+
+t
+t
+
+p
+
+i
+
+:
+/
+/
+s
+c
+e
+n
+c
+e
+
+i
+
+.
+s
+c
+e
+n
+c
+e
+m
+a
+g
+
+.
+
+o
+r
+g
+
+/
+ 
+
+ 
+
+o
+n
+D
+e
+c
+e
+m
+b
+e
+r
+ 
+
+2
+5
+
+,
+ 
+
+2
+0
+2
+0
+
+Zheng et al., Science 370, eabb5962 (2020)
+
+4 December 2020
+
+8 of 8
+
+Selection enhances protein evolvability by increasing mutational robustness and foldability
+Jia Zheng, Ning Guo and Andreas Wagner
+
+Science 
+ (6521), eabb5962.
+DOI: 10.1126/science.abb5962
+
+370
+
+Selection enhances mutation toleration
+
+Mutations generate variability that is either neutral or subject to natural selection. Robustness is a measure of the
+ populations expressing a yellow
+ability to withstand deleterious mutational effects. Zheng 
+fluorescent protein to strong, weak, or no selection for yellow fluorescence for four generations. They then selected 
+these
+populations to a related function, green fluorescence, for four more generations. The strong selection first for yellow and 
+then green fluorescence resulted in the most green fluorescence and the accumulation of the most mutations. This
+outcome likely was due to the increased foldability of the protein. Selection thus provides a threshold for mutation 
+accumulation, but robustness maintains a buffer necessary for protein evolution.
+
+Escherichia coli
+
+ exposed 
+
+et al.
+
+Science
+
+, this issue p. eabb5962
+
+ARTICLE TOOLS
+
+http://science.sciencemag.org/content/370/6521/eabb5962
+
+SUPPLEMENTARY 
+MATERIALS
+
+http://science.sciencemag.org/content/suppl/2020/12/02/370.6521.eabb5962.DC1
+
+REFERENCES
+
+This article cites 61 articles, 13 of which you can access for free
+http://science.sciencemag.org/content/370/6521/eabb5962#BIBL
+
+PERMISSIONS
+
+http://www.sciencemag.org/help/reprints-and-permissions
+
+Use of this article is subject to the 
+
+Terms of Service
+
+Science 
+Science, 1200 New York Avenue NW, Washington, DC 20005. The title 
+
+(print ISSN 0036-8075; online ISSN 1095-9203) is published by the American Association for the Advancement of
+
+ is a registered trademark of AAAS.
+
+Science
+
+Copyright © 2020 The Authors, some rights reserved; exclusive licensee American Association for the Advancement of
+Science. No claim to original U.S. Government Works
+
+l
+
+D
+o
+w
+n
+o
+a
+d
+e
+d
+
+ 
+f
+r
+o
+m
+h
+
+ 
+
+t
+t
+
+p
+
+i
+
+:
+/
+/
+s
+c
+e
+n
+c
+e
+
+i
+
+.
+s
+c
+e
+n
+c
+e
+m
+a
+g
+
+.
+
+o
+r
+g
+
+/
+ 
+
+ 
+
+o
+n
+D
+e
+c
+e
+m
+b
+e
+r
+ 
+
+2
+5
+
+,
+ 
+
+2
+0
+2
+0
+
+
