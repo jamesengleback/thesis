@@ -1,9 +1,73 @@
 # My Thesis
 
-I'm writing a my thesis on an enzyme engineering I've been working on for the last few years. 
-I'm writing it as a static site before converting it to a `pdf` because I think it's a bit easier and a bit of fun.
+WIP
 
-It also helps facilitate efficient collabloration with multiple parties via git 
+### Recently Changed
+
+- [vde methods](methods-evo.md) - description
+
+```mermaid
+gantt
+	title Thesis Schedule
+	%dateFormat YYYY-MM-DD
+	%%axisFormat %Y/%m/%d
+	%%axisFormat  %Y-%m-%d
+
+
+	section xmas
+	xmas shutdown 				: xmas, 2021-12-20, 2022-01-04
+
+	section VDE
+	Debug ga in evo/bm3/main.py 		:  des1, after xmas 3d
+	Screen score fns            		:  des2, after des1, 3d
+	Kubernetes 		    		:  des3, after xmas, 7d 
+	Run      				:  des4, after des3, 7d
+	Analysis 				:  des5, after des4, 7d
+	mxn 					:  desx1, after des4, 3d
+	Primer Design  				:  des5, after desx1, 1d
+	Primer Order & Shipping  		:  des6, after des5, 3d
+	PCR      				:  des7, after des6, 3d
+	PCR Sequencing   			:  des8, after des7, 3d
+	Expression   				:  des9, after des8, 7d
+	Purificaiton   				:  des10, after des8, 7d
+	Titration 				:  des11, after des9, 4d
+	Kinetics 				:  des12, after des9, 4d
+
+	section Rio
+	Clean echo package 			: rio0, after des4, 4d
+	Design Echo Scripts             	: rio1, after rio0, 1d
+	Dump Screen FDA w/ WT, A82F     	: rio2, after rio1, 7d
+	Dump Screen FDA w/ 1YQO, 1YQP   	: rio3, after rio1, 7d
+	Dump screen FDA w/ A264E, 1JME(P393H)   : rio4, after rio1, 7d
+	Dump Screen FDA w/ 1YQO, 1YQP   	: rio5, after rio1, 7d
+	Screen analysis             		: rio6, after rio5, 7d
+
+	Model Assembly              		: rio7, after des5, 19d
+	Pre-training data assembly      	: rio8, after des5, 14d
+	Model Pre-training          		: rio9, after des5, 19d
+	Model Training              		: rio10, after rio6, 4d
+	Test Model Mutant Design        	: rio11, after rio10, 4d
+	Model Screen Design             	: rio12, after rio10, 4d
+
+	section Writing
+	VDE Introduction                 	: wr4, after xmas, 40d
+	VDE Methods                 		: wr1, after xmas, 40d
+	VDE Results                 		: wr2, after xmas, 40d
+	VDE Discussion                 		: wr3, after xmas, 40d
+
+	Rio Introduction                 	: wr8, after wr5, 28d
+	Rio Methods                 		: wr5, after des5, 14d
+	Rio Results                 		: wr6, after rio2, 25d
+	Rio Discussion                 		: wr7, after wr5, 28d
+
+	General Introduction 			: wr9, after wr8, 25d
+	Appendix 				: wr10, after wr11, 25d
+	Clean & Document Packages 		: wr11, after xmas, 63d
+
+	Iterate Changes 			: wr12, after wr9, 14d
+```
+
+
 
 [:fontawesome-brands-github: **Project Github Page**](https://github.com/jamesengleback/thesis)
 
