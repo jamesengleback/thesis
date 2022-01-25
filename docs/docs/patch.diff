@@ -1,0 +1,415 @@
+Only in write-up/docs/: docs
+diff write-up/docs/enzyme-engineering.md docs/docs/enzyme-engineering.md
+17c17
+< 			- **[Structure Prediction](protein-structure-pred.md)**
+---
+> 			- **[Structure Prediction](protein-structure-mred.md)**
+47c47
+< ##### [Structure Prediction](protein-structure-pred.md)
+---
+> ##### [Structure Prediction](protein-structure-mred.md)
+Common subdirectories: write-up/docs/images and docs/docs/images
+diff write-up/docs/index.md docs/docs/index.md
+3,4c3,69
+< I'm writing a my thesis on an enzyme engineering I've been working on for the last few years. 
+< I'm writing it as a static site before converting it to a `pdf` because I think it's a bit easier and a bit of fun.
+---
+> WIP
+> 
+> ### Recently Changed
+> 
+> - [vde methods](methods-evo.md) - description
+> 
+> ```mermaid
+> gantt
+> 	title Thesis Schedule
+> 	%dateFormat YYYY-MM-DD
+> 	%%axisFormat %Y/%m/%d
+> 	%%axisFormat  %Y-%m-%d
+> 
+> 
+> 	section xmas
+> 	xmas shutdown 				: xmas, 2021-12-20, 2022-01-04
+> 
+> 	section VDE
+> 	Debug ga in evo/bm3/main.py 		:  des1, after xmas 3d
+> 	Screen score fns            		:  des2, after des1, 3d
+> 	Kubernetes 		    		:  des3, after xmas, 7d 
+> 	Run      				:  des4, after des3, 7d
+> 	Analysis 				:  des5, after des4, 7d
+> 	mxn 					:  desx1, after des4, 3d
+> 	Primer Design  				:  des5, after desx1, 1d
+> 	Primer Order & Shipping  		:  des6, after des5, 3d
+> 	PCR      				:  des7, after des6, 3d
+> 	PCR Sequencing   			:  des8, after des7, 3d
+> 	Expression   				:  des9, after des8, 7d
+> 	Purificaiton   				:  des10, after des8, 7d
+> 	Titration 				:  des11, after des9, 4d
+> 	Kinetics 				:  des12, after des9, 4d
+> 
+> 	section Rio
+> 	Clean echo package 			: rio0, after des4, 4d
+> 	Design Echo Scripts             	: rio1, after rio0, 1d
+> 	Dump Screen FDA w/ WT, A82F     	: rio2, after rio1, 7d
+> 	Dump Screen FDA w/ 1YQO, 1YQP   	: rio3, after rio1, 7d
+> 	Dump screen FDA w/ A264E, 1JME(P393H)   : rio4, after rio1, 7d
+> 	Dump Screen FDA w/ 1YQO, 1YQP   	: rio5, after rio1, 7d
+> 	Screen analysis             		: rio6, after rio5, 7d
+> 
+> 	Model Assembly              		: rio7, after des5, 19d
+> 	Pre-training data assembly      	: rio8, after des5, 14d
+> 	Model Pre-training          		: rio9, after des5, 19d
+> 	Model Training              		: rio10, after rio6, 4d
+> 	Test Model Mutant Design        	: rio11, after rio10, 4d
+> 	Model Screen Design             	: rio12, after rio10, 4d
+> 
+> 	section Writing
+> 	VDE Introduction                 	: wr4, after xmas, 40d
+> 	VDE Methods                 		: wr1, after xmas, 40d
+> 	VDE Results                 		: wr2, after xmas, 40d
+> 	VDE Discussion                 		: wr3, after xmas, 40d
+> 
+> 	Rio Introduction                 	: wr8, after wr5, 28d
+> 	Rio Methods                 		: wr5, after des5, 14d
+> 	Rio Results                 		: wr6, after rio2, 25d
+> 	Rio Discussion                 		: wr7, after wr5, 28d
+> 
+> 	General Introduction 			: wr9, after wr8, 25d
+> 	Appendix 				: wr10, after wr11, 25d
+> 	Clean & Document Packages 		: wr11, after xmas, 63d
+> 
+> 	Iterate Changes 			: wr12, after wr9, 14d
+> ```
+> 
+6d70
+< It also helps facilitate efficient collabloration with multiple parties via git 
+13,15d76
+< !!! info todo
+< 	:notepad_spiral: [**To do list**](todo.md)
+< 
+25c86
+< 	- [**Enzyme Engineering**](enzyme-engineering.md) -  background on approaches to enzyme engineering, including directed evolution, *in-silico* design and machine learning-guided design.
+---
+> 	- [**Enzyme Engineering**](intro-enzyme-engineering.md) -  background on approaches to enzyme engineering, including directed evolution, *in-silico* design and machine learning-guided design.
+diff write-up/docs/intro-evo.md docs/docs/intro-evo.md
+8c8
+< 	- ***In-Silico* Protein Engineering**
+---
+> 	- **In-Silico Protein Engineering**
+15a16,23
+> 
+> ## Abstract
+> Crop resistance to herbicides is an important tool in establishing global food security.
+> Herbicide resistance can be engineered into crops by introducing an enzyme that can metaboloicly deactivate a particular herbicide.
+> In this work, a mutant variant of the bacterial P450 BM3 (CYP102A1) is engineered to hydroxylate the herbicide mesotrione at ring carbon 5 as a means of deactivation.
+> To engineer the enzyme, a virtual directed evolution program relying on protein structure prediction, docking and genetic algorithms is developed and deployed at scale to adjust the BM3 active site to accomodate mesotrione in a favourable configuration.
+> The mutants produced by the algorithm are synthesized in the lab and tested for expected activity.
+> 
+diff write-up/docs/methods-evo.md docs/docs/methods-evo.md
+3c3,14
+< ## Contents
+---
+> - [**Overview**](#overview)
+> - [**Virtual Directed Evolution **](#vde)
+> 	- [**Fitness Function **](#sfxn)
+> 	- [**Run Time **](#run)
+> - [**Scaling to Cloud Infrastructure **](#k8)
+> - [**enz **](#enz)
+> - [**ga **](#ga)
+> - [**Codon Design **](#codons)
+> 	- [**mxn **](#mxn)
+> - [**Lab Testing **](#lab)
+> 	- [**Lab Techniques**](#labtech)
+> 	- [**Data Analysis **](#analysis)
+5,8d15
+< - **`enz`**
+< - **Virtual Directed Evolution**
+< - **Codon Design**
+< - **Lab Testing**
+11,14c18,94
+< ## `enz`
+< ## Virtual Directed Evolution
+< ## Codon Design
+< ## Lab Testing
+---
+> <h2 id="overview"> Overview </h2>
+> A system for *in silico* enzyme design which simulates lab-based directed enzyme evolution was devised.
+> In the system, a genetic algorithm optimises a pool of enzyme sequences towards a pre-defined fitness score based on the outcome of a simulation that tests desired target activity.
+> The result is a large pool of enzyme mutant sequences, their predicted structure, interaction with the target ligand and assosciated fitness metrics, which can be used to inform downstream nucleotide design for construction.
+> 
+> The simulation is based on protein structure prediction of the mutant and estimation of substrate binding poses via molecular docking.
+> Simulations are scored by a pre-defined function that relates to desired target activity, which are used by the genetic algorithm to generate a new set of mutants in each iteration. Described in [Virtual Directed Evolution](#vde).
+> 
+> 
+> ``` mermaid
+> graph TD
+> 	a[Template sequence] -->|Single sequence| b[Repopulate and mutate] ; 
+> 	b -->|mutant sequences| c[Predict structure] ; 
+> 	c -->|structures| d[Dock ligand] ;
+> 	d -->|poses| e[Score fitness] ; 
+> 	e -->|sequence scores| f[Select fittest] ;
+> 	f -->|mutant sequences| b ;
+> 
+> ```
+> 
+> The system is designed to run at scale on one or many machines using a commercial cloud provider and cluster technologies such as Kubernetes `\ref`. Efforts to scale the process are documented in [Scaling to Cloud Infrastructure](#k8).
+> 
+> In this project, the system was configured to optimize the BM3 active site to accommodate a desirable binding interaction with mesotrione - `\ref figure`.
+> The desired pose places the ring carbon C<sub>5</sub> of mesotrione adjacent to the active site heme iron, which was hypothesized to displace the heme coordinated, heme distal water, and initiate the hydroxylation reaction cycle, with carbon C<sub>5</sub> as the hydroxylation target. [score fn](#sfxn)
+> 
+> !!! figure
+> 	desired binding
+> 
+> The system was run for $n$ generations with population sizes of $m$ over $o$ compute nodes, and output a set of $p$ mutants with predicted favourable binding towards mesotrione. [Codon Design](#codons) shows how the mutants generated by the algorithm were used to design codons 
+> 
+> A small subset of the predicted mutants were constructed in the lab and tested for desired activity using domain-specific analytical techniques. [Lab Testing](#lab) provides detail on the techniques used and [Data Analysis](#analysis) shows how the data was analysed.
+> 
+> Several software tools were developed for this work:
+> 
+> - [`enz`](#enz): a python package that provides a simple interface to protein structure-prediction, molecular docking and scoring protein-ligand interactions, using *pyrosetta* `\ref` and *autodock VINA* `\ref` for template-based protein structure prediction and molecular docking respectively. 
+> - [`ga`](#ga): a python package for composition of custom genetic algorithms.
+> - [`mxn`](#mxn): a python package that automates primer design for site-directed mutantgenesis.
+> 
+> 
+> <h2 id="vde"> Virtual Directed Evolution </h2>
+> [`evo`](#evo) is the main repository for this work. It contains the Scripts used to run the virtual directed evolution experiments on a *Linode* Kubernetes cluster. /* link evo repo*/
+> 
+> Data generated in the process is stored [here](link to bucket).
+> 
+> The main function, `main.sh` was used to run the experiment. 
+> The script provisions a machine from cloud provider *Linode* and configures it to run the enzyme design program.
+> The enzyme design program `bm3/main.py` executes for $n$ generations with a population size of $m$. 
+> Experimental data is compressed and pushed to a cloud bucket storage, then the machine is deleted.
+> 
+> The `bm3/main.py` program uses a genetic algorithm built using [`ga`](ga) to mutate sequences based on the promiscuous BM3 mutant A82F/F87V.
+> Structures are predicted from the crystal structure 4KEY `\ref` and docked with mesotrione using [`enz`](#enz).
+> 
+> The main loop of `bm3/main.py` uses [`ga`](ga) to initialise a mutant population of $n$ with random single mutants of the template A82F/F87V sequence. Throughout the process, mutations are constrained to hand selected active site residues.
+> 
+> !!! figure
+> 	active site residues
+> 
+> Then, in each iteration the mutant structure is predicted and mesotrione is docked to the active site using [`enz`](#enz).
+> Poses are scored based on proximity of the mesotrione C<sub>5</sub> to the heme iron and the VINA score, see [Fitness function](sfxn).
+> The top $N%$ fittest mutants repopulate the mutant pool via random crossover between random pairs of sequences and a random point mutation.
+> 
+> The free paramaters $n$ - the number of iterations  and $p$ the population size were experimented with; 
+> 
+> 
+> <h3 id="enz"> enz </h3>
+> <h3 id="ga"> ga </h3>
+> <h3 id="sfxn"> Fitness Function </h3>
+> <h3 id="k8"> Scaling to Cloud Infrastructure </h3>
+> <h3 id="run"> Run Time</h3>
+> 
+> <h2 id="codons"> Codon Design </h2>
+> <h3 id="mxn"> mxn </h3>
+> <h3 id="codons_"> codons_ </h3>
+> 
+> <h2 id="lab"> Lab Testing </h2>
+> <h3 id="labtech"> Lab Techniques </h2>
+> <h3 id="analysis"> Data Analysis </h2>
+diff write-up/docs/methods-general.md docs/docs/methods-general.md
+13,29c13
+< ## Buffers
+< |Name  			  | KPi (mM) | Imidazole (mM) | NaCl (mM) | pH | 
+< |-------------------------|----------|----------------|-----------|----|
+< |**Assay Buffer**	  |   100    |                |           | 7  |
+< |**Purification Buffer A**|   100    |    10          |    250    | 8  |
+< |**Purification Buffer B**|   100    |    100         |    250    | 8  |
+< |**Purification Buffer C**|   100    |    250         |    250    | 8  |
+< 
+< ## Transformation
+< !!! question
+< 	just reference a protocol?
+< The standard protocol for transformation of a plasmid into *E. coli* in this work is as follows:
+< #### Materials
+< - **Competent Cells**
+< - **Plasmid**
+< - **LB Agar Plates** with the appropriate concentration of antibiotic, in this case **100 mg/ml**
+< 
+---
+> ## Tranformation
+31d14
+< All DNA was purified from *E. coli* using QIAGen 
+Only in write-up/docs/: mkdocs.yml
+Only in write-up/docs/: .old
+Common subdirectories: write-up/docs/pix and docs/docs/pix
+Only in write-up/docs/: plate-assay-development.md
+Only in write-up/docs/: refs.bib
+diff write-up/docs/results-evo.md docs/docs/results-evo.md
+5,6d4
+< ## Overview
+< This section shows results and analysis of data generated by a virtual directed evolution experiment used to re-engineer the substrate specificity of the Cytochrome P450 BM3.
+9,11d6
+< !!! todo
+< 	- `enz` benchmark on BM3 structures
+< 
+13,90d7
+< !!! todo
+< 	- link repo, make open
+< 	- how many mutants?
+< 	- what hardware & how long?
+< 
+< ### Overview
+< 
+< `evo/evo/evo.py` is a python program designed to generate a selection of BM3 mutants with improved binding activity towards mesotrione.
+< `evo/evo/evo.py` uses a genetic algorithm for sequence optimization and the fitness of the generated mutants is determined by scoring docking poses of mesotrione to template-based predicted structures.
+< 
+< In each iteration, structures for each mutant were predicted using `enz` - a protein structure prediction and docking utility written for this work which uses a template-based implementation of sidechain repacking from `pyrosetta` and *Autodock VINA* to dock ligands to a user-specified site in the target structure. `enz` also provides data structures for protein and ligand structures, which allows fully autonomous virtual directed evolution.
+< 
+< The genetic algorithm created for this work (`ga`) has the following functions:
+< 
+< - Random amino acid substitution for a string from a uniform distribution 
+< - Random crossover of two strings at a randomly selected cut-point, yeilding a single string. Analagous to sex.
+< - Evaluation of a fitness function over a pool of mutants in parralel using multiprocessing.
+< 
+< Genetic algorithms were chosen because of their simplicity, ease of implementation and inherent scalability their parralel nature.
+< 
+< After evaluation the *fitness* of each mutant in a pool, a subset of the fittest are mated together randomly via crossover and an additional single point mutation to repopulate the pool.
+< 
+< Throught each virtual directed evolution experiment, the predicted mutant structures and their docked ligand poses and corresponding binding affinity data are saved to enable later analysis.
+< 
+< Additionally, if enough computational resource is available, several instances of the algorithm can be run in parralel and the results pooled for later analysis.
+< 
+< ### Pseudocode
+< ```python
+< def fitness_function(mutant):
+< 	...
+< 	# predict structure
+< 	# dock ligand & score
+< 	return fitness_score
+< 
+< template_sequence = 'AABBBAABABA'
+< 
+< POOL_SIZE = int
+< 
+< # create initial pool of mutants from template sequence
+< mutant_pool = [mutate(template_sequence) for _ in range(POOL_SIZE)]
+< 
+< for each iteration:
+< 	fitnesses = map(fitness_function, mutant_pool) # can be parallelized
+< 	best_mutants = ... # best scoring subset of mutant_pool
+< 	mutant_pool = [mutate(crossover(randomly_select_2(best_mutants))) for _ iin range(POOL_SIZE)]
+< # after some iterations, mutant_pool should yeild high scoring mutants.
+< ```
+< 
+< ### Specific To This Experiment
+< In this experiment, the mutant pool was initalized as a set of $n$ mutants with a single point mutation relative to the A82F/F87V BM3 sequence - a mutant with expanded substrate specificity relative to the wild-type. (ref)
+< 
+< Starting from the A82F/F87V BM3 sequence and the template structure `4KEY.pdb`, the structure of mutants is predicted and the ligand docked and scored via `enz` - a protein structure prediction and docking utility written for this work.
+< 
+< The "fitness" of each mutant was calculated by:
+< 
+< $$
+< 	f(mutant) = \frac{log(1 + ham)}{10} + \frac{1}{n poses} \sum distance, \frac{log(|affinity|)}{10}
+< $$
+< 
+< where :
+< 
+< - $mutant$ refers to the predicted structure of a mutant docked with mesotrione 
+< - $ham$ refers to the Hamming distance between that mutant and the template 
+< - $distance$ refers to the distance in Angstroms between the heme iron of the BM3 mutant and the target carbon of mesotrione in a given docking pose 
+< - $affinity$ is the affinity predicted by *Autodock VINA* for a given docking pose (kcal/mol)
+< - $n poses$ is the number of docked mesotrione poses  output by *Autodock VINA*
+< 
+< 
+< `evo/evo/evo.sh` manages several concurrent runs of `evo.py` using `gnu_parallel`
+< 
+< Since the predicted structure of each mutant and the corresponding docked poses of mesotrione are saved, 
+< 
+< A total of $133,944$ mutants were generated and screened for target activity on `hardware` over the course of `time`(weeks).
+< 
+< ---
+< !!! todo
+< 	-  figure labels/references
+< 
+92,146c9
+< :warning: Over several attempts, the score function was tweaked.
+< 
+< Of the $133,944$ mutants screened, $854$ had activity more favourable than the BM3 A82F/F87V template. 
+< 
+< **Figure 1 A** shows kernel density estimation (KDE) plots for scoring metrics gathered over the course of the experiment and where applicable, a vertical line represents the metric value for the template protein (A82F/F87V).
+< In all metrics, there are several mutants that exceed the performance of the template.
+< 
+< **Figure 1 B** shows pairwise KDE plots of the same metrics in order to show any potential correlations.
+< Both `dist_mean` and `aff_mean` appear to correlate with the score function, which is expected since the score is a function of both those terms.
+< `dist_mean` and `aff_mean` correlate with each other, likely because they are co-optimised via the score function.
+< `ham` - the Hamming distance between a mutant and the template does not appear to correlate with any metric.
+< 
+< **Figure 1C** shows a T-stochastic neighbor embedding (TSNE) plot of the mutants evaluated across all runs, color-mapped to each metric. 
+< TSNE projections were derived from `bio_embeddings` `Word2VecEmbedder` created from the set of amino acids subject to change over these experiments.
+< The TSNE projection does not clearly show a region of sequence space that corresponds to a favourable (low) score, likely a result of the highly non-linear relationship between sequence and function.
+< 
+< !!! warning
+< 	- update
+< 
+< <figure markdown> 
+< ![](pix/vde-kdeplots.png){ width="300" align=left}
+< ![](pix/vde-pairwise-kdeplots.png){ width="300" align=left label=a}
+< ![](pix/vde-scores-tsne.png){ width="300" align=left}
+<   <figcaption>Figure 1: Summary statistics of the virtual directed evolution experiment. 
+<   A: Kernel density estimation (KDE) plots of the metrics alone 
+<   B: A pairwise KDE plot showing possible correlations between the fitness score, the mean distance from the mesotrione target carbon and the heme iron (dist_mean) for all poses in a run, 
+<   the mean affinity for mesotrione for all poses in a run (kcl/mol)
+<   and the hamming distance from the template (A82F/F87V) and the mutant.
+<   C: a TSNE projection of the sequences tested, color-mapped to each metric.
+<   </figcaption>
+< </figure>
+< 
+< ### Hamming Distance Issues
+< The data gathered here contains several mutants predicted to have favourable binding activity towards mesotrione, however the large Hamming distances with respect to the A82F/F87V template prohibit their construction via site-directed mutagenesis.
+< Due to constraints of this work, the maximum desired Hamming distance from an existing template is 4 - the number of seperate mutations that can be acommodated by the Agilent QuickChange Multi Mutagenesis Kit. **ref**
+< 
+< Despite constraints on the Hamming distance of mutants via the fitness function in `evo.py`, the algorithm favoured mutants with a large hamming distance relative to the template sequence.
+< This may be a result of a insufficient constraints in the fitness function, or it may be that few mutants close to the template are predicted to bind mesotrione favourably.
+< 
+< ### Ok Mutants in the Set
+< !!! todo
+< 	check set for ok ones 
+< 
+< ### No Re-Runs
+< Additional time constraints prohibited re-running a tweaked version of the program. 
+< Therefore the existing virtual data was analyzed further to find mutant candidates with a lower Hamming distance to the template.
+< 
+< --- 
+< ## Analysis
+< Despite the genetic algorithm used here not yeilding "fit" mutants within 4 mutations of the template, 
+< insights extracted from the data can be used to identify contributions of particular residues to favourable scores.
+< The information can narrow the search space enough to virtually screen a small subest of mutants and progress them to production and testing *in vitro*.
+< 
+< The aim of the analysis is to identify a small subset of mutations that contribtue to improved binding towards mesotrione which can then be simulated using `enz` before production.
+< 
+---
+> - **Data Visualizations**
+148,161d10
+< <figure markdown> 
+< ![](pix/all-heatmap.png){ width="600" align=left}
+< ![](pix/all-logo.png){ width="600" align=left}
+<   <figcaption>Figure 2: 
+<   </figcaption>
+< </figure>
+< 
+< 
+< 
+< !!! warning 
+< 	sequence logo & heatmap seem wrong -- am i using the right dataset?
+< 	looks like there are only 2 mutations here, must be somewhere else
+< 	indexing issue? in dataset sequences start KEM (sequences from structures)
+< 
+163,167c12
+< ### Machine Learning
+< #### Sequence-based
+< #### Structre-based
+< #### Generators
+< ## Mutant Design
+---
+> ### Mutant Design
+173c18
+< ### Product Formation
+---
+> ### Prooduct Formation
+Only in write-up/docs/: site
+Only in docs/docs/: snippets
+Common subdirectories: write-up/docs/stylesheets and docs/docs/stylesheets
+Only in write-up/docs/: todo.md

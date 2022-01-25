@@ -4,43 +4,41 @@ WIP
 
 ### Recently Changed
 
-- [vde methods](methods-evo.md) - description
+- [this page](index.md) - updated gantt chart 2022-01-20
+- [vde methods](methods-evo.md) - vde runtime 2022-01-20
 
 ```mermaid
 gantt
 	title Thesis Schedule
-	%dateFormat YYYY-MM-DD
+	%%dateFormat YYYY-MM-DD
 	%%axisFormat %Y/%m/%d
 	%%axisFormat  %Y-%m-%d
 
-
+	Deadline 				: milestone deadline 2022-03-30, 1d
 	section xmas
 	xmas shutdown 				: xmas, 2021-12-20, 2022-01-04
 
 	section VDE
-	Debug ga in evo/bm3/main.py 		:  des1, after xmas 3d
-	Screen score fns            		:  des2, after des1, 3d
-	Kubernetes 		    		:  des3, after xmas, 7d 
-	Run      				:  des4, after des3, 7d
-	Analysis 				:  des5, after des4, 7d
-	mxn 					:  desx1, after des4, 3d
-	Primer Design  				:  des5, after desx1, 1d
-	Primer Order & Shipping  		:  des6, after des5, 3d
-	PCR      				:  des7, after des6, 3d
-	PCR Sequencing   			:  des8, after des7, 3d
-	Expression   				:  des9, after des8, 7d
+	Trial-Run      				:  crit, done, des2, after 2022-01-17, 2d
+	Run      				:  crit, active, after 2022-01-20, 4d
+	Analysis 				:  des4, after des2,4d
+	Primer Design  				:  des5, after des4, 1d
+	Primer Order & Shipping  		:  des6, after des5,  3d
+	PCR      				:  des7, after des6,  3d
+	PCR Sequencing   			:  des8, after des7,  3d
+	Expression   				:  des9, after des8,  7d
 	Purificaiton   				:  des10, after des8, 7d
 	Titration 				:  des11, after des9, 4d
 	Kinetics 				:  des12, after des9, 4d
 
 	section Rio
 	Clean echo package 			: rio0, after des4, 4d
-	Design Echo Scripts             	: rio1, after rio0, 1d
-	Dump Screen FDA w/ WT, A82F     	: rio2, after rio1, 7d
-	Dump Screen FDA w/ 1YQO, 1YQP   	: rio3, after rio1, 7d
-	Dump screen FDA w/ A264E, 1JME(P393H)   : rio4, after rio1, 7d
-	Dump Screen FDA w/ 1YQO, 1YQP   	: rio5, after rio1, 7d
-	Screen analysis             		: rio6, after rio5, 7d
+	Design Echo Scripts             	: rio1, after des4, 5d
+	Screen FDA w/ WT, A82F     	: rio2, after rio1, 7d
+	Screen FDA w/ 1YQO, 1YQP   	: rio3, after rio1, 7d
+	screen FDA w/ A264E, 1JME(P393H)   : rio4, after rio1, 7d
+	Screen FDA w/ 1YQO, 1YQP   	: rio5, after rio1, 7d
+	Screen analysis             		: rio6, after rio1, 10d
 
 	Model Assembly              		: rio7, after des5, 19d
 	Pre-training data assembly      	: rio8, after des5, 14d
@@ -50,21 +48,20 @@ gantt
 	Model Screen Design             	: rio12, after rio10, 4d
 
 	section Writing
-	VDE Introduction                 	: wr4, after xmas, 40d
-	VDE Methods                 		: wr1, after xmas, 40d
-	VDE Results                 		: wr2, after xmas, 40d
-	VDE Discussion                 		: wr3, after xmas, 40d
+	VDE Methods                 		: active, wr1, after xmas, 40d
+	VDE Results                 		: wr2, after des2, 40d
+	VDE Discussion                 		: wr3, after des4, 40d
+	VDE Introduction                 	: wr4, after des9, 40d
 
-	Rio Introduction                 	: wr8, after wr5, 28d
-	Rio Methods                 		: wr5, after des5, 14d
+	Rio Methods                 		: wr5, after rio0, 28d
 	Rio Results                 		: wr6, after rio2, 25d
-	Rio Discussion                 		: wr7, after wr5, 28d
+	Rio Discussion                 		: wr7, after wr2, 28d
+	Rio Introduction                 	: wr8, after wr5, 28d
 
-	General Introduction 			: wr9, after wr8, 25d
+	General Introduction 			: wr9, after wr5, 25d
 	Appendix 				: wr10, after wr11, 25d
 	Clean & Document Packages 		: wr11, after xmas, 63d
 
-	Iterate Changes 			: wr12, after wr9, 14d
 ```
 
 
