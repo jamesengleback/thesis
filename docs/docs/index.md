@@ -4,7 +4,9 @@ WIP
 
 ## Recently Changed
 
-- [vde analysis notebook](evo-a-b.md) 
+- [run and cleanup of vde](https://github.com/jamesengleback/vde) - 2022-01-30
+- [cleanup of thesis repo](https://github.com/jamesengleback/thesis) - 2022-01-30
+- [vde analysis notebook](evo-a-b.md) - 2022-01-25
 - [this page](index.md) - updated gantt chart 2022-01-31
 - [vde methods](methods-evo.md) - vde runtime 2022-01-20
 
@@ -34,7 +36,7 @@ gantt
 	results 				: rioreesults, after rio1, 28d
 	discussion 				: riodiscussion, after rio1, 28d
 
-        Model Assembly                          : rio7, after des5, 19d
+        Model Assembly                          : rio7, after des5, 28d
         Pre-training data assembly              : rio8, after des5, 14d
         Model Pre-training                      : rio9, after des5, 19d
         Model Training                          : rio10, after rio2, 4d
@@ -44,24 +46,27 @@ gantt
         General Introduction                    : wr9, after wr5, 25d
 ```
 
-### vde
-- [x] vde - **Exp a & b**
-- [ ] vde - **analysis** :hourglass:
-- [ ] vde - **results**
-- [ ] vde - **discussion**
+## vde
+- [x] vde - [**Exp a & b**](https://github.com/jamesengleback/vde)
+- [ ] vde - [**methods**](methods-evo.md) :hourglass:
+- [ ] vde - [**analysis**](evo-a-b.md) :hourglass:
+- [ ] vde - [**results**](results-evo.md)
+- [ ] vde - [**discussion**](discussion-evo.md)
 
-### screening-fist
+## screening-fist
 - [ ] screening-fist - `design.ipynb`  :hourglass:
 - [ ] screening-fist - dump screen
 - [ ] screening-fist - model pretraining data
 - [ ] screening-fist - model
 - [ ] screening-fist - train
-- [ ] screening-fist - **analysis**
-- [ ] screening-fist - **results**
-- [ ] screening-fist - **discussion**
+- [ ] screening-fist - [**methods**](methods-rio.md)
+- [ ] screening-fist - [**analysis**](analysis-rio.md)
+- [ ] screening-fist - [**results**](results-rio.md)
+- [ ] screening-fist - [**discussion**](discussion-rio.md)
 
 
 
+## Contributiing
 [:fontawesome-brands-github: **Project Github Page**](https://github.com/jamesengleback/thesis)
 
 !!! info "help"
