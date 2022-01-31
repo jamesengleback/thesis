@@ -26,7 +26,7 @@ The model, trained on in-house P450-ligand screening data can also plan subseque
 
 |||
 ||| 
-|![](pix/share/mesotrione.png) |Mesotrione, the detoxification target for this work, is a 4-HPPD inhibitor representative of the triketone class of HPPD inhibitor.|
+|![](img/share/mesotrione.png) |Mesotrione, the detoxification target for this work, is a 4-HPPD inhibitor representative of the triketone class of HPPD inhibitor.|
 
 
 ## Problem Context

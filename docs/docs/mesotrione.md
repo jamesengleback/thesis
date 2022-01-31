@@ -11,7 +11,7 @@
 - **Engineered HPPD-Resistance Crops**
 ---------
 
-![Placeholder](pix/share/mesotrione.png){align=center}
+![Placeholder](img/share/mesotrione.png){align=center}
 
 ## Herbicide Classes
 ## The Herbicide Discovery Problem
