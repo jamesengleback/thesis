@@ -1,43 +1,75 @@
-# thesis
-documents, data and packages related to my thesis:
+# Thesis
 
-## Engineering P450 BM3 to metabolize herbicides with virtual directed evolution and artificial intelligence
+WIP
 
-> or something like that
+## Recently Changed
 
-### Abstract
+- [update vde methods section](methods-evo.md) - 2022-02-01 - added commit hashes and some detains for experiment $A$ and $B$. Removed Lab sections.
+- [run and cleanup of vde](https://github.com/jamesengleback/vde) - 2022-01-30
+- [cleanup of thesis repo](https://github.com/jamesengleback/thesis) - 2022-01-30
+- [vde analysis notebook](evo-a-b.md) - 2022-01-25
+- [this page](index.md) - updated gantt chart 2022-01-31
+- [vde methods](methods-evo.md) - vde runtime 2022-01-20
 
-> Herbicide tolerance can be engineered into crops by inserting resistance genes either by metalic inactivation of the herbicide, or providing a metabolic bypass to the herbicide target site.
-> Here, mutant variants of the cytochrome P450 BM3 are engineered to ring-hydroxylate the 4-hydroxyphenylpyruvate (HPPD) inhibitor mesotrione using two computational methods:
-> **1)** virtual directed evolution using protein structure prediction, molecular docking and a genetic algorithm.
-> **2)** machine learning guided design using a model designed to predict ligand binding based on sequence and smiles alone.
-> This method uses a transformer and a graph neural network pretrained on enzyme substrate specificity from KEGG (n points) and re-trained on a screening set of several (n) BM3 mutants  binding and a library of FDA-approved drugs.
-> Trained model predictions of binding activity towards mesotrione are used to virtually screen BM3 mutant sequences at scale and sequence space search algorithms are compared.
-> Promising mutants are made and tested for predicted activity in the wet lab.
+!!! info
+	**vde:** no longer plan to make and test mutants in the lab - instead analyse technique
 
--------------------------
+```mermaid
+gantt
+	title Thesis Schedule
+	%dateFormat YYYY-MM-DD
+	%%axisFormat %Y/%m/%d
+	%%axisFormat  %Y-%m-%d
 
-It's a bit of lab work and a bit of computer work. 
 
--------------------------
-[`write-up/markdown/docs/docs`](write-up/markdown/docs/docs)
-## repo
+        Deadline                                : milestone deadline, 2022-03-30, 1d
 
-- [**write-up**](write-up/markdown/docs/docs): writing
-- [**evo**](evo): structure-based design for bm3
-- [**screening-fist**](https://github.com/jamesengleback/screening-fist): screening data and analysis
-- [**rio**](rio): model of sequence:activity
-- [**validation**](validation): testing mutants for predicted activity
+        section vde
+        Analysis                                : vde4, after vde2,14d
+	results 				: vdereesults, after 2022-01-24, 28d
+	discussion 				: vdediscussion, after 2022-01-24, 28d
 
-# packages 
+        section screening-fist
+        screening-design.ipynb                  : rio1, after des4, 5d
+        Clean echo package                      : rio0, after des4, 4d
+        dump screen          			: rio2, after rio1, 7d
+        analysis                        	: rio2, after rio1, 10d
+	results 				: rioreesults, after rio1, 28d
+	discussion 				: riodiscussion, after rio1, 28d
 
-> todo: link to repos
+        Model Assembly                          : rio7, after des5, 28d
+        Pre-training data assembly              : rio8, after des5, 14d
+        Model Pre-training                      : rio9, after des5, 19d
+        Model Training                          : rio10, after rio2, 4d
+        Test Model Mutant Design                : rio11, after rio10, 4d
+        Model Screen Design                     : rio12, after rio10, 4d
 
-- [**`enz`**](https://github.com/jamesengleback/enz): python module for protein structure structure and molecular docking. uses `pyrosetta` and `vina` with simple interface
-- [**`plates`**](https://github.com/jamesengleback/plates): tools for plate data analysis
-- [**`echo`**](https://github.com/jamesengleback/echo): tools for echo picklist design 
-- [**`mxn`**](https://github.com/jamesengleback/mxn): tools for site-directed mutagenesis primer design 
-- [**`cpds`**](cpds): tool for compound diversity sampling and generating quotes from molport using their api
-- [**`ga`**](https://github.com/jamesengleback/ga): simple genetic algorithms for use in protein design
-- [**`uv`**](https://github.com/jamesengleback/uv): tools for UV-Vis spectroscopy annalysis
-- [**`kx`**](https://github.com/jamesengleback/kx): KEGG scraper
+        General Introduction                    : wr9, after wr5, 25d
+```
+
+## vde
+- [x] vde - [**Exp a & b**](https://github.com/jamesengleback/vde)
+- [ ] vde - [**methods**](methods-evo.md) :hourglass:
+- [ ] vde - [**analysis**](evo-a-b.md) :hourglass:
+- [ ] vde - [**results**](results-evo.md)
+- [ ] vde - [**discussion**](discussion-evo.md)
+
+## screening-fist
+- [ ] screening-fist - `design.ipynb`  :hourglass:
+- [ ] screening-fist - dump screen
+- [ ] screening-fist - model pretraining data
+- [ ] screening-fist - model
+- [ ] screening-fist - train
+- [ ] screening-fist - [**methods**](methods-rio.md)
+- [ ] screening-fist - [**analysis**](analysis-rio.md)
+- [ ] screening-fist - [**results**](results-rio.md)
+- [ ] screening-fist - [**discussion**](discussion-rio.md)
+
+
+
+## Contributiing
+[:fontawesome-brands-github: **Project Github Page**](https://github.com/jamesengleback/thesis)
+
+!!! info "help"
+	:fontawesome-solid-edit: see [contributing](contributing.md) for info on suggesting edits etc via github
+
