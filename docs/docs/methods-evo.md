@@ -145,22 +145,16 @@ For each score function, $A$ and $B$, a linode cloud instance was provisioned (`
 - $s:$  $\frac{1}{4}$
 - $e:$  16
 
-The processes ran for 24 hours each yielding 32,786 unique mutants and a cost of 35 GBP.
-
-!!! warning
-	still running - recalculate later
+The processes ran for around 72 hours each yielding 32,786 unique mutants and a cost of 105 GBP.
+Experiment $A$ was run with commit hash `bf69d6d8cc077a6f19960845c036d0e65f00fb57` and $B$ with `c47b9ae7573cb22f41aa2deb6e65376a4e9d9833`.
 
 The output data was compressed and uploaded to a linode object storage bucket before the machine was terminated.
 
-For analysis, a seperate cloud instance was provisioned ...  `ref results section`
+For analysis, a seperate cloud instance was provisioned to remotely host a jupyter notebook.
+The notebook is [`evo-a-b.ipynb`](evo-a-b.md) and discussed in the [results](results-evo.md) section.
 
----
-
-A small subset of the predicted mutants were constructed in the lab and tested for desired activity using domain-specific analytical techniques.
-
-[Lab Testing](#lab) provides detail on the techniques used and [Data Analysis](#analysis) shows how the data was analysed.
-
----
+!!! todo
+	one more run!!
 
 # Software Development
 
@@ -171,24 +165,4 @@ Several software tools were developed for this work:
 - [`mxn`](#mxn): a python package that automates primer design for site-directed mutantgenesis.
 
 
-<h2 id="vde"> Virtual Directed Evolution </h2>
-[`evo`](#evo) is the main repository for this work. It contains the Scripts used to run the virtual directed evolution experiments on a *Linode* cloud computing instance.
-
-The main function, `evo.sh` was used to run the experiment, which calls `main.py` in a number of independent processes and specified parameters.
-`main.py` uses a genetic algorithm built using [`ga`](ga) to mutate sequences based on the promiscuous BM3 mutant A82F/F87V.
-Structures are predicted from the crystal structure 4KEY `\ref` and docked with mesotrione using [`enz`](#enz).
-
-The main loop of `bm3/main.py` uses [`ga`](ga) to initialise a mutant population of $n$ with random single mutants of the template A82F/F87V sequence. Throughout the process, mutations are constrained to hand selected active site residues.
-
-Protein structure prediction and docking are handled by `enz` - a simple python abstraction layer between the user and both PyRosetta and VINA.
-
-Then, in each iteration the mutant structure is predicted and mesotrione is docked to the active site using [`enz`](#enz).
-Poses are scored based on proximity of the mesotrione C<sub>5</sub> to the heme iron and the VINA score, see [Fitness function](sfxn).
-The top $N%$ fittest mutants repopulate the mutant pool via random crossover between random pairs of sequences and a random point mutation.
-
-The free paramaters $n$ - the number of iterations  and $p$ the population size were experimented with; 
-
 <h2 id="codons"> Codon Design </h2>
-<h2 id="lab"> Lab Testing </h2>
-<h3 id="labtech"> Lab Techniques </h2>
-<h3 id="analysis"> Data Analysis </h2>
