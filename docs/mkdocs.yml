@@ -10,8 +10,8 @@ theme:
   palette:
     primary: teal
     accent: amber
-  favicon: pix/selfprotrait.svg
-  logo : pix/selfprotrait.svg
+  favicon: img/selfprotrait.svg
+  logo : img/selfprotrait.svg
 
 nav:
   - index.md
