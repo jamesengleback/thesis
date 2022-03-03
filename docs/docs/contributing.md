@@ -1,4 +1,4 @@
-# Contributing :fontawesome-brands-github:
+# Contributing
 
 ## Contents
 
@@ -19,8 +19,8 @@ I'm using [mkdocs](https://www.mkdocs.org/).
 For most, the convenient way to suggest changes to the thesis is via the browser. Here's an example of suggesting a change to one of the markdown files from a test account.
 
 0. Sign Up at [github.com](https://github.com/)
-1. Click the :pencil: at the top of the page you want to edit
-2. Open The Editor (pencil icon) and edit :pencil:
+1. Click the at the top of the page you want to edit
+2. Open The Editor (pencil icon) and edit:
 3. Click `Propose Changes` at the foot of the Editor Page (hint: all green buttons) 
 4. Confirm with `Create Pull Request`
 5. Confirm Again with `Create Pull Request`

@@ -3,15 +3,10 @@ site_favicon: pix/selfportrait.svg
 repo_url: https://github.com/jamesengleback/thesis
 
 theme:
-  name: material
+  name: gitbook
   font: 
     text: Noto Sans
     code: Noto Sans Mono
-  palette:
-    primary: teal
-    accent: amber
-  favicon: img/selfprotrait.svg
-  logo : img/selfprotrait.svg
 
 nav:
   - index.md
@@ -27,19 +22,19 @@ nav:
     - 'aims.md'
     - 'methods-general.md'
   - Paper 1:
+    - 'evo-outline.md'
     - 'intro-evo.md'
     - 'protein-structure-pred.md'
     - 'docking.md'
     - 'molecular-dynamics.md'
-    - 'evo-outline.md'
     - 'methods-evo.md'
     - 'results-evo.md'
     - 'discussion-evo.md'
   - Paper 2:
+    - 'rio-outline.md'
     - 'intro-rio.md'
     - 'deep-learning.md'
     - 'hts.md'
-    - 'rio-outline.md'
     - 'methods-rio.md'
     - 'results-rio.md'
     - 'discussion-rio.md'

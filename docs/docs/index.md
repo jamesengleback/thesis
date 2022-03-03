@@ -49,13 +49,13 @@ gantt
 
 ## vde
 - [x] vde - [**Exp a & b**](https://github.com/jamesengleback/vde)
-- [ ] vde - [**methods**](methods-evo.md) :hourglass:
-- [ ] vde - [**analysis**](evo-a-b.md) :hourglass:
+- [ ] vde - [**methods**](methods-evo.md) 
+- [ ] vde - [**analysis**](evo-a-b.md) 
 - [ ] vde - [**results**](results-evo.md)
 - [ ] vde - [**discussion**](discussion-evo.md)
 
 ## screening-fist
-- [ ] screening-fist - `design.ipynb`  :hourglass:
+- [ ] screening-fist - `design.ipynb`  
 - [ ] screening-fist - dump screen
 - [ ] screening-fist - model pretraining data
 - [ ] screening-fist - model
@@ -68,8 +68,8 @@ gantt
 
 
 ## Contributiing
-[:fontawesome-brands-github: **Project Github Page**](https://github.com/jamesengleback/thesis)
+[**Project Github Page**](https://github.com/jamesengleback/thesis)
 
 !!! info "help"
-	:fontawesome-solid-edit: see [contributing](contributing.md) for info on suggesting edits etc via github
+	see [contributing](contributing.md) for info on suggesting edits etc via github
 
