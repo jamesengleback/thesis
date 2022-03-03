@@ -15,6 +15,7 @@ theme:
 
 nav:
   - index.md
+  - abstract.md
   - Contributing: 'contributing.md'
   - Overlap:
     - 'overview.md'
