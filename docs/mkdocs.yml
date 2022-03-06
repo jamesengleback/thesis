@@ -22,19 +22,23 @@ nav:
     - 'aims.md'
     - 'methods-general.md'
   - Paper 1:
-    - 'evo-outline.md'
-    - 'intro-evo.md'
-    - 'protein-structure-pred.md'
-    - 'docking.md'
-    - 'molecular-dynamics.md'
+    - Introduction:
+            - 'intro-evo.md'
+            - 'protein-structure-pred.md'
+            - 'docking.md'
+            - 'molecular-dynamics.md'
+            - 'evo-outline.md'
     - 'methods-evo.md'
     - 'results-evo.md'
     - 'discussion-evo.md'
+    - Jupyter Notebooks:
+            - 'nb-md/evo-a-b.md'
   - Paper 2:
-    - 'rio-outline.md'
-    - 'intro-rio.md'
-    - 'deep-learning.md'
-    - 'hts.md'
+    - Introduction:
+            - 'intro-rio.md'
+            - 'deep-learning.md'
+            - 'hts.md'
+            - 'rio-outline.md'
     - 'methods-rio.md'
     - 'results-rio.md'
     - 'discussion-rio.md'
