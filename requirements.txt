@@ -1,2 +1,5 @@
 mkdocs-material
-mkdocks-mermaid2-plugin
+mkdocs-mermaid2-plugin
+mkdocs-bibtex
+python-markdown-math
+mkdocs-gitbook
