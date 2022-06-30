@@ -1,0 +1,80 @@
+\contentsline {chapter}{\numberline {1}Introduction}{5}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Abstract}{5}{section.1.1}%
+\contentsline {section}{\numberline {1.2}Introduction}{6}{section.1.2}%
+\contentsline {chapter}{\numberline {2}Screening Fist}{7}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Abstract}{7}{section.2.1}%
+\contentsline {section}{\numberline {2.2}Introduction}{7}{section.2.2}%
+\contentsline {subsection}{\numberline {2.2.1}Engineering Problem and Context}{7}{subsection.2.2.1}%
+\contentsline {subsection}{\numberline {2.2.2}Technologies Used}{8}{subsection.2.2.2}%
+\contentsline {subsubsection}{Machine Learning}{8}{section*.5}%
+\contentsline {subsubsection}{Transfer Learning}{8}{section*.6}%
+\contentsline {subsubsection}{The TAPE Benchmark}{10}{section*.7}%
+\contentsline {subsection}{\numberline {2.2.3}Related Work}{11}{subsection.2.2.3}%
+\contentsline {subsection}{\numberline {2.2.4}Overview of This Work}{11}{subsection.2.2.4}%
+\contentsline {section}{\numberline {2.3}Methods and Development}{12}{section.2.3}%
+\contentsline {subsection}{\numberline {2.3.1}Assay Development}{12}{subsection.2.3.1}%
+\contentsline {subsubsection}{Aim}{12}{section*.10}%
+\contentsline {subsubsection}{Basis: UV-Visible Spectroscopy for Monitoring Cytochrome P450-Ligand Binding}{12}{section*.11}%
+\contentsline {subsubsection}{Development}{13}{section*.13}%
+\contentsline {subsection}{\numberline {2.3.2}Assay Protocol}{15}{subsection.2.3.2}%
+\contentsline {subsubsection}{Requirements}{15}{section*.15}%
+\contentsline {subsubsection}{Procedure}{17}{section*.16}%
+\contentsline {subsection}{\numberline {2.3.3}Enzyme Production}{21}{subsection.2.3.3}%
+\contentsline {subsubsection}{Summary}{21}{section*.17}%
+\contentsline {subsubsection}{Aims}{21}{section*.19}%
+\contentsline {subsubsection}{DNA}{21}{section*.20}%
+\contentsline {subsubsection}{Starting Material}{21}{section*.21}%
+\contentsline {subsubsection}{Primer Design and Acquisition}{22}{section*.22}%
+\contentsline {subsubsection}{PCR and Work Up}{22}{section*.23}%
+\contentsline {subsubsection}{Sequencing}{22}{section*.24}%
+\contentsline {subsection}{\numberline {2.3.4}Protein Expression}{23}{subsection.2.3.4}%
+\contentsline {subsubsection}{Materials}{23}{section*.25}%
+\contentsline {subsubsection}{Method}{23}{section*.26}%
+\contentsline {subsubsection}{Purification}{23}{section*.27}%
+\contentsline {subsection}{\numberline {2.3.5}Screening}{23}{subsection.2.3.5}%
+\contentsline {subsection}{\numberline {2.3.6}Model Design and Construction}{24}{subsection.2.3.6}%
+\contentsline {subsubsection}{Approach: Recommender Systems}{24}{section*.28}%
+\contentsline {subsubsection}{Data}{25}{section*.29}%
+\contentsline {subsubsection}{Pre-Training Data}{25}{section*.30}%
+\contentsline {subsubsection}{Training Data}{27}{section*.31}%
+\contentsline {subsubsection}{Model Architecture}{27}{section*.32}%
+\contentsline {subsubsection}{Sequence Embedding}{27}{section*.34}%
+\contentsline {subsubsection}{Chemical Embedding}{29}{section*.35}%
+\contentsline {subsubsection}{Prediction Head}{29}{section*.36}%
+\contentsline {subsubsection}{Pre-Training, Training and Evaluation}{29}{section*.37}%
+\contentsline {subsubsection}{Evaluation}{30}{section*.39}%
+\contentsline {section}{\numberline {2.4}Results}{30}{section.2.4}%
+\contentsline {subsection}{\numberline {2.4.1}Screening Data Analysis}{30}{subsection.2.4.1}%
+\contentsline {subsection}{\numberline {2.4.2}Model Training}{33}{subsection.2.4.2}%
+\contentsline {subsubsection}{Pre-training}{33}{section*.41}%
+\contentsline {subsection}{\numberline {2.4.3}Model Application}{33}{subsection.2.4.3}%
+\contentsline {section}{\numberline {2.5}Discussion and Future Work}{33}{section.2.5}%
+\contentsline {chapter}{\numberline {3}Virtual Directed Evolution}{41}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Abstract}{41}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Introduction}{41}{section.3.2}%
+\contentsline {subsection}{\numberline {3.2.1}Background}{41}{subsection.3.2.1}%
+\contentsline {subsubsection}{Herbicide Resistant Crops}{41}{section*.47}%
+\contentsline {subsubsection}{Cytochrome P450s}{42}{section*.49}%
+\contentsline {subsubsection}{Virtual Directed Evolution}{42}{section*.50}%
+\contentsline {subsection}{\numberline {3.2.2}Technologies Used}{43}{subsection.3.2.2}%
+\contentsline {subsubsection}{Directed Evolution}{43}{section*.51}%
+\contentsline {subsubsection}{Structure-Based Design}{43}{section*.52}%
+\contentsline {subsubsection}{Protein Structure Prediction}{43}{section*.53}%
+\contentsline {subsubsection}{Docking}{43}{section*.54}%
+\contentsline {subsubsection}{Sequence Optimization Algorithms}{43}{section*.55}%
+\contentsline {subsubsection}{Overview of this work}{43}{section*.56}%
+\contentsline {subsubsection}{Engineering Problem}{43}{section*.57}%
+\contentsline {subsection}{\numberline {3.2.3}Overview of this Work}{43}{subsection.3.2.3}%
+\contentsline {section}{\numberline {3.3}Methods}{43}{section.3.3}%
+\contentsline {subsection}{\numberline {3.3.1}\texttt {enz} }{44}{subsection.3.3.1}%
+\contentsline {subsection}{\numberline {3.3.2}Score function }{44}{subsection.3.3.2}%
+\contentsline {subsection}{\numberline {3.3.3}Genetic Algorithm }{45}{subsection.3.3.3}%
+\contentsline {subsection}{\numberline {3.3.4}Main Function }{47}{subsection.3.3.4}%
+\contentsline {subsection}{\numberline {3.3.5}Cloud Deployment }{48}{subsection.3.3.5}%
+\contentsline {section}{\numberline {3.4}Results}{49}{section.3.4}%
+\contentsline {section}{\numberline {3.5}Discussion and Future Work}{53}{section.3.5}%
+\contentsline {subsubsection}{Simulation Accuracy}{59}{section*.71}%
+\contentsline {subsubsection}{Score Relevance}{61}{section*.72}%
+\contentsline {subsubsection}{Sequence Optimization}{61}{section*.73}%
+\contentsline {subsubsection}{Scale}{62}{section*.74}%
+\contentsline {subsubsection}{Codon Design}{63}{section*.75}%
