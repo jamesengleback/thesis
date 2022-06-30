@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2022/dev/Debian) (preloaded format=xelatex 2022.6.27)  30 JUN 2022 16:45
+This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2022/dev/Debian) (preloaded format=xelatex 2022.6.27)  30 JUN 2022 17:20
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -934,39 +934,39 @@ File: img/alkyl-benzene.png Graphic file (type bmp)
 File: img/coumarin.png Graphic file (type bmp)
 <img/coumarin.png>
 
-Underfull \hbox (badness 10000) in paragraph at lines 226--226
+Underfull \hbox (badness 10000) in paragraph at lines 232--232
 []|\TU/NotoSans(0)/m/n/10 Indole, Lo-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 226--226
+Underfull \hbox (badness 10000) in paragraph at lines 232--232
 \TU/NotoSans(0)/m/n/10 vastatinn,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 226--226
+Underfull \hbox (badness 10000) in paragraph at lines 232--232
 \TU/NotoSans(0)/m/n/10 beta-ionine,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 226--226
+Underfull \hbox (badness 10000) in paragraph at lines 232--232
 \TU/NotoSans(0)/m/n/10 organophos-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 226--226
+Underfull \hbox (badness 10000) in paragraph at lines 232--232
 \TU/NotoSans(0)/m/n/10 phates, polyaro-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 226--226
+Underfull \hbox (badness 10000) in paragraph at lines 232--232
 \TU/NotoSans(0)/m/n/10 matic hydrocar-
  []
 
 File: img/indole.png Graphic file (type bmp)
 <img/indole.png>
 [12] [13] [14] [15]
-Overfull \hbox (4.75987pt too wide) in paragraph at lines 334--337
+Overfull \hbox (4.75987pt too wide) in paragraph at lines 340--343
 \TU/NotoSans(0)/m/n/10 detection assay was developed. The assay is based on tra
 ditional UV-Visible light spectroscopy-
  []
@@ -979,16 +979,16 @@ File: img/assay-dev-arachadionic.png Graphic file (type bmp)
 <img/assay-dev-arachadionic.png>
 
 
-LaTeX Warning: Float too large for page by 16.4263pt on input line 428.
+LaTeX Warning: Float too large for page by 16.4263pt on input line 434.
 
 [19] [20]
-Overfull \hbox (19.41876pt too wide) in paragraph at lines 481--483
+Overfull \hbox (19.41876pt too wide) in paragraph at lines 487--489
 []\TU/NotoSans(0)/b/n/10 Microplate reader plate loader: \TU/NotoSans(0)/m/n/10
  Autoloading plates into the reader increases through-
  []
 
 
-Overfull \hbox (25.45207pt too wide) in paragraph at lines 514--516
+Overfull \hbox (25.45207pt too wide) in paragraph at lines 520--522
 []\TU/NotoSans(0)/m/n/10 An \TU/NotoSans(0)/m/it/10 Echo \TU/NotoSans(0)/m/n/10
  can accept a \TU/lmtt/m/n/10 csv \TU/NotoSans(0)/m/n/10 file with column heade
 rs: \TU/lmtt/m/n/10 Transfer Volume\TU/NotoSans(0)/m/n/10 , \TU/lmtt/m/n/10 Vol
@@ -996,29 +996,29 @@ ume\TU/NotoSans(0)/m/n/10 , \TU/lmtt/m/n/10 Destination
  []
 
 
-Overfull \hbox (2.7787pt too wide) in paragraph at lines 514--516
+Overfull \hbox (2.7787pt too wide) in paragraph at lines 520--522
 \TU/lmtt/m/n/10 Well\TU/NotoSans(0)/m/n/10 , \TU/lmtt/m/n/10 Source Well \TU/No
 toSans(0)/m/n/10 and optionally: \TU/lmtt/m/n/10 Destination Plate Name \TU/Not
 oSans(0)/m/n/10 and \TU/lmtt/m/n/10 Source Plate Name\TU/NotoSans(0)/m/n/10 .
  []
 
 
-Overfull \hbox (3.49986pt too wide) in paragraph at lines 517--519
+Overfull \hbox (3.49986pt too wide) in paragraph at lines 523--525
 \TU/NotoSans(0)/m/n/10 cally. Documentation for the \TU/lmtt/m/n/10 python \TU/
 NotoSans(0)/m/n/10 tools used are [documented here.](picklists.md) 
  []
 
 [21] [22] [23]
-Overfull \hbox (60.722pt too wide) in paragraph at lines 634--636
+Overfull \hbox (60.722pt too wide) in paragraph at lines 640--642
 []\TU/NotoSans(0)/m/n/10 Curves can be smoothed with Gaussian smoothing using \
 TU/lmtt/m/n/10 scipy.ndimage.gaussian_filter1d
  []
 
 [24] [25]
 LaTeX Font Info:    Font shape `TU/lmtt/bx/n' in size <10> not available
-(Font)              Font shape `TU/lmtt/b/n' tried instead on input line 741.
+(Font)              Font shape `TU/lmtt/b/n' tried instead on input line 747.
  [26]
-Overfull \hbox (2.77129pt too wide) in paragraph at lines 760--761
+Overfull \hbox (2.77129pt too wide) in paragraph at lines 766--767
 []\TU/NotoSans(0)/m/n/10 BM3 mutants were expressed in \TU/NotoSans(0)/m/it/10 
 NEB \TU/NotoSans(0)/m/n/10 BL21 (DE3) \TU/NotoSans(0)/m/it/10 E. coli \TU/NotoS
 ans(0)/m/n/10 cells grown in \TU/NotoSans(0)/m/it/10 Formedium \TU/NotoSans(0)/
@@ -1026,20 +1026,20 @@ m/n/10 auto-induction
  []
 
 [27]
-Overfull \hbox (5.96547pt too wide) in paragraph at lines 838--841
+Overfull \hbox (5.96547pt too wide) in paragraph at lines 846--849
 []\TU/NotoSans(0)/m/n/10 In this work, a machine learning model classifies pair
 s of protein sequence and small molecules
  []
 
 [28]
-Overfull \hbox (45.07541pt too wide) in paragraph at lines 873--878
+Overfull \hbox (45.07541pt too wide) in paragraph at lines 881--886
 \TU/NotoSans(0)/m/n/10 loaded via an \TU/lmtt/m/n/10 ftp \TU/NotoSans(0)/m/n/10
  server at [][]https://ftp.uniprot.org/pub/databases/uniprot/current_release/un
 iref/[][] 
  []
 
 [29]
-Overfull \hbox (71.49542pt too wide) in paragraph at lines 898--900
+Overfull \hbox (71.49542pt too wide) in paragraph at lines 906--908
 []\TU/NotoSans(0)/m/n/10 SProt was gathered as a compressed \TU/lmtt/m/n/10 .da
 t \TU/NotoSans(0)/m/n/10 file using \TU/lmtt/m/n/10 screening-fist/data/pretrai
 ning/scripts/uniprot.sh\TU/NotoSans(0)/m/n/10 ,
@@ -1049,30 +1049,30 @@ ning/scripts/uniprot.sh\TU/NotoSans(0)/m/n/10 ,
 File: img/model.png Graphic file (type bmp)
 <img/model.png>
  [31] [32]
-Overfull \hbox (46.18796pt too wide) in paragraph at lines 962--963
+Overfull \hbox (46.18796pt too wide) in paragraph at lines 970--971
 \TU/NotoSans(0)/m/n/10 As mentioned, chemical SMILES were hashed into chemical 
 fingerprints using the \TU/lmtt/m/n/10 rdkit RDKFingerprint
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 983--983
+Underfull \hbox (badness 10000) in paragraph at lines 991--991
 []|\TU/NotoSans(0)/m/n/10 Intel(R) Xeon(R)
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 986--986
+Underfull \hbox (badness 10000) in paragraph at lines 994--994
 []|\TU/NotoSans(0)/m/n/10 NVIDIA Quadro
  []
 
 [33]
-Overfull \hbox (193.03877pt too wide) in paragraph at lines 1028--1031
+Overfull \hbox (193.03877pt too wide) in paragraph at lines 1036--1039
 \TU/NotoSans(0)/m/n/10 The data gathered for the screening experiments was save
 d in the \TU/lmtt/m/n/10 git \TU/NotoSans(0)/m/n/10 repository \TU/lmtt/m/n/10 
 https://github.com/jamesengleback/screening-fist
  []
 
 [34]
-Overfull \hbox (18.00877pt too wide) in paragraph at lines 1041--1043
+Overfull \hbox (18.00877pt too wide) in paragraph at lines 1049--1051
 []\TU/NotoSans(0)/m/n/10 The downstream analysis in question was done using the
  script \TU/lmtt/m/n/10 sxfst/scripts/data_analysis.py
  []
@@ -1080,13 +1080,13 @@ Overfull \hbox (18.00877pt too wide) in paragraph at lines 1041--1043
 File: img/BM3-Heme-A82F:S1376.png Graphic file (type bmp)
 <img/BM3-Heme-A82F:S1376.png>
 
-Overfull \hbox (52.99538pt too wide) in paragraph at lines 1079--1083
+Overfull \hbox (52.99538pt too wide) in paragraph at lines 1087--1091
 \TU/lmtt/m/n/10 data/o3f.train.csv --transformer --cuda --emb_size_head 2560 --
 n_layers_head 3 --emb_size_fp
  []
 
 
-Overfull \hbox (73.99538pt too wide) in paragraph at lines 1079--1083
+Overfull \hbox (73.99538pt too wide) in paragraph at lines 1087--1091
 \TU/lmtt/m/n/10 512 --n_layers_fp 4 --num_conv_layers_pool 3 --kernel_size_pool
  9 --stride_pool 3 --lstm_hs_pool
  []
@@ -1100,16 +1100,16 @@ File: img/frosty-breeze-83-eval.png Graphic file (type bmp)
 <img/frosty-breeze-83-eval.png>
 
 
-LaTeX Warning: Float too large for page by 29.53268pt on input line 1124.
+LaTeX Warning: Float too large for page by 29.53268pt on input line 1132.
 
 
-Underfull \hbox (badness 6380) in paragraph at lines 1127--1127
+Underfull \hbox (badness 6380) in paragraph at lines 1135--1135
 []\TU/NotoSans(0)/m/n/10 Figure 2.8: |[] Model evaluation for another instance 
 of \TU/NotoSans(0)/m/it/10 frosty-breeze-81\TU/NotoSans(0)/m/n/10 , this time
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1127--1127
+Underfull \hbox (badness 10000) in paragraph at lines 1135--1135
 \TU/NotoSans(0)/m/n/10 designated \TU/NotoSans(0)/m/it/10 devout-thunder-90\TU/
 NotoSans(0)/m/n/10 , again retrained on the lab-based screening dataset
  []
@@ -1118,32 +1118,38 @@ File: img/frosty-breeze-83-vivid-breeze-91-devout-thunder-90-eval.png Graphic f
 ile (type bmp)
 <img/frosty-breeze-83-vivid-breeze-91-devout-thunder-90-eval.png>
 
-LaTeX Warning: Float too large for page by 17.53268pt on input line 1129.
+LaTeX Warning: Float too large for page by 17.53268pt on input line 1137.
 
 File: img/frosty-breeze-83-vivid-breeze-91-eval.png Graphic file (type bmp)
 <img/frosty-breeze-83-vivid-breeze-91-eval.png>
 [37] [38] [39] [40] [41] [42
 
 ]
-Overfull \hbox (3.28062pt too wide) in paragraph at lines 1149--1149
+Overfull \hbox (3.28062pt too wide) in paragraph at lines 1157--1157
 []\TU/NotoSans(0)/m/n/10 Food and Agriculture Organization of the United Nation
 s (FAO). \TU/NotoSans(0)/m/it/10 High Level Expert Forum—
  []
 
+
+Overfull \hbox (3.09825pt too wide) in paragraph at lines 1157--1157
+\TU/NotoSans(0)/m/n/10 synthesis in spinach chloroplasts subfractions”. In: \TU
+/NotoSans(0)/m/it/10 Archives of biochemistry and biophysics
+ []
+
 [43]
-Overfull \hbox (3.44392pt too wide) in paragraph at lines 1149--1149
+Overfull \hbox (3.44392pt too wide) in paragraph at lines 1157--1157
 []\TU/NotoSans(0)/m/n/10 Hiroyuki Kawahigashi et al. “Enhanced herbicide cross-
 tolerance in transgenic rice plants
  []
 
-
-Overfull \hbox (7.17159pt too wide) in paragraph at lines 1149--1149
+[44]
+Overfull \hbox (7.17159pt too wide) in paragraph at lines 1157--1157
 \TU/NotoSans(0)/m/n/10 proteins application to side-chain prediction”. In: \TU/
 NotoSans(0)/m/it/10 Journal of molecular biology \TU/NotoSans(0)/m/n/10 230.2 (
 1993),
  []
 
-[44] [45] [46
+[45] [46
 
 ]
 Chapter 3.
@@ -1157,10 +1163,10 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [48]
 LaTeX Font Info:    Font shape `TU/lmtt/bx/n' in size <12> not available
-(Font)              Font shape `TU/lmtt/b/n' tried instead on input line 1228.
+(Font)              Font shape `TU/lmtt/b/n' tried instead on input line 1236.
 
 [49]
-Overfull \hbox (26.74538pt too wide) in paragraph at lines 1258--1258
+Overfull \hbox (26.74538pt too wide) in paragraph at lines 1266--1266
 []                         \TU/lmtt/m/n/10 target_residues=[49, 75, 87, 181, 26
 3, 330, 400]) # 4. docking[] 
  []
@@ -1170,23 +1176,23 @@ File: img/score.png Graphic file (type bmp)
 <img/score.png>
  [51] [52]
 Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on in
-put line 1318.
+put line 1326.
  [53]
-Overfull \hbox (10.6388pt too wide) in paragraph at lines 1391--1392
+Overfull \hbox (10.6388pt too wide) in paragraph at lines 1399--1400
 []\TU/NotoSans(0)/m/n/10 The \TU/NotoSans(0)/m/it/10 Mutation Sites \TU/NotoSan
 s(0)/m/n/10 were chosen manually from the crystal structure of P450 BM3 A82F/F8
 7V
  []
 
 
-Overfull \hbox (12.60213pt too wide) in paragraph at lines 1400--1401
+Overfull \hbox (12.60213pt too wide) in paragraph at lines 1408--1409
 []\TU/NotoSans(0)/m/n/10 Each was run in eight parallel instances using the scr
 ipt \TU/lmtt/m/n/10 vde/vde.sh\TU/NotoSans(0)/m/n/10 , which launched \TU/lmtt/
 m/n/10 vde/main.py
  []
 
 
-Overfull \hbox (2.33876pt too wide) in paragraph at lines 1400--1401
+Overfull \hbox (2.33876pt too wide) in paragraph at lines 1408--1409
 \TU/NotoSans(0)/m/n/10 with the command \TU/lmtt/m/n/10 python main.py -fn b -p
  128 -e 16 -n 32 -s 0.25 &\TU/NotoSans(0)/m/n/10 , which invokes the
  []
@@ -1208,7 +1214,7 @@ File: img/dimred-ds.png Graphic file (type bmp)
 File: img/dimred-plt-clusters.png Graphic file (type bmp)
 <img/dimred-plt-clusters.png>
 
-Overfull \hbox (1.74551pt too wide) in paragraph at lines 1567--1596
+Overfull \hbox (1.74551pt too wide) in paragraph at lines 1575--1604
 [][] 
  []
 
@@ -1217,7 +1223,7 @@ File: img/clus_314.png Graphic file (type bmp)
 File: img/clus_314-codon-coverage.png Graphic file (type bmp)
 <img/clus_314-codon-coverage.png>
 [59] [60] [61] [62] [63] [64] [65] [66] [67]
-Overfull \hbox (3.8366pt too wide) in paragraph at lines 1734--1737
+Overfull \hbox (3.8366pt too wide) in paragraph at lines 1742--1745
 \TU/NotoSans(0)/m/n/10 vestigated, other sequence optimization algorithms are w
 orth investigation. Namely, \TU/NotoSans(0)/m/it/10 Bayesian
  []
@@ -1225,41 +1231,53 @@ orth investigation. Namely, \TU/NotoSans(0)/m/it/10 Bayesian
 [68] [69] [70
 
 ]
-Overfull \hbox (3.28062pt too wide) in paragraph at lines 1770--1770
+Overfull \hbox (3.28062pt too wide) in paragraph at lines 1778--1778
 []\TU/NotoSans(0)/m/n/10 Food and Agriculture Organization of the United Nation
 s (FAO). \TU/NotoSans(0)/m/it/10 High Level Expert Forum—
  []
 
+
+Overfull \hbox (3.09825pt too wide) in paragraph at lines 1778--1778
+\TU/NotoSans(0)/m/n/10 synthesis in spinach chloroplasts subfractions”. In: \TU
+/NotoSans(0)/m/it/10 Archives of biochemistry and biophysics
+ []
+
 [71]
-Overfull \hbox (3.44392pt too wide) in paragraph at lines 1770--1770
+Overfull \hbox (3.44392pt too wide) in paragraph at lines 1778--1778
 []\TU/NotoSans(0)/m/n/10 Hiroyuki Kawahigashi et al. “Enhanced herbicide cross-
 tolerance in transgenic rice plants
  []
 
-
-Overfull \hbox (7.17159pt too wide) in paragraph at lines 1770--1770
+[72]
+Overfull \hbox (7.17159pt too wide) in paragraph at lines 1778--1778
 \TU/NotoSans(0)/m/n/10 proteins application to side-chain prediction”. In: \TU/
 NotoSans(0)/m/it/10 Journal of molecular biology \TU/NotoSans(0)/m/n/10 230.2 (
 1993),
  []
 
-[72] [73] (./thesis.aux)
+[73] (./thesis.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package rerunfilecheck Info: File `thesis.out' has not changed.
-(rerunfilecheck)             Checksum: C7C4D954F21453168E29669563DB8114;5169.
+
+Package rerunfilecheck Warning: File `thesis.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `thesis.out':
+(rerunfilecheck)             Before: C7C4D954F21453168E29669563DB8114;5169
+(rerunfilecheck)             After:  7624D86C4C63068C216AEFE5FF753473;5338.
 Package logreq Info: Writing requests to 'thesis.run.xml'.
 \openout1 = `thesis.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 22493 strings out of 478158
- 445633 string characters out of 5853402
- 1217698 words of memory out of 5000000
- 42797 multiletter control sequences out of 15000+600000
+ 22499 strings out of 478158
+ 445913 string characters out of 5853402
+ 1217814 words of memory out of 5000000
+ 42803 multiletter control sequences out of 15000+600000
  477796 words of font info for 97 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 73i,12n,85p,1131b,4824s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 73i,12n,85p,1131b,4818s stack positions out of 5000i,500n,10000p,200000b,80000s
 
 Output written on thesis.pdf (73 pages).

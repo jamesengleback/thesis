@@ -301,6 +301,74 @@
       \field{pages}{e0180095}
       \range{pages}{-1}
     \endentry
+    \entry{moran20054}{article}{}
+      \name{author}{1}{}{%
+        {{hash=f7a9ea8236a2711bf9fbd26bcd8319c4}{%
+           family={Moran},
+           familyi={M\bibinitperiod},
+           given={Graham\bibnamedelima R},
+           giveni={G\bibinitperiod\bibinitdelim R\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Elsevier}%
+      }
+      \strng{namehash}{f7a9ea8236a2711bf9fbd26bcd8319c4}
+      \strng{fullhash}{f7a9ea8236a2711bf9fbd26bcd8319c4}
+      \strng{bibnamehash}{f7a9ea8236a2711bf9fbd26bcd8319c4}
+      \strng{authorbibnamehash}{f7a9ea8236a2711bf9fbd26bcd8319c4}
+      \strng{authornamehash}{f7a9ea8236a2711bf9fbd26bcd8319c4}
+      \strng{authorfullhash}{f7a9ea8236a2711bf9fbd26bcd8319c4}
+      \field{sortinit}{9}
+      \field{sortinithash}{0a5ebc79d83c96b6579069544c73c7d4}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Archives of Biochemistry and Biophysics}
+      \field{number}{1}
+      \field{title}{4-Hydroxyphenylpyruvate dioxygenase}
+      \field{volume}{433}
+      \field{year}{2005}
+      \field{pages}{117\bibrangedash 128}
+      \range{pages}{12}
+    \endentry
+    \entry{soll1980tocopherol}{article}{}
+      \name{author}{3}{}{%
+        {{hash=27b75a8b0cb7488b123ce43996b854a4}{%
+           family={Soll},
+           familyi={S\bibinitperiod},
+           given={J{ø}rgen},
+           giveni={J\bibinitperiod}}}%
+        {{hash=8a2e4972df45a05764ca2a32ca6872e9}{%
+           family={Kemmerling},
+           familyi={K\bibinitperiod},
+           given={Monika},
+           giveni={M\bibinitperiod}}}%
+        {{hash=78489905ea236a705d2c12df8883c123}{%
+           family={Schultz},
+           familyi={S\bibinitperiod},
+           given={Gernot},
+           giveni={G\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Elsevier}%
+      }
+      \strng{namehash}{11e7b8d70c8933dd5da2570f34e2b316}
+      \strng{fullhash}{11e7b8d70c8933dd5da2570f34e2b316}
+      \strng{bibnamehash}{11e7b8d70c8933dd5da2570f34e2b316}
+      \strng{authorbibnamehash}{11e7b8d70c8933dd5da2570f34e2b316}
+      \strng{authornamehash}{11e7b8d70c8933dd5da2570f34e2b316}
+      \strng{authorfullhash}{11e7b8d70c8933dd5da2570f34e2b316}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Archives of biochemistry and biophysics}
+      \field{number}{2}
+      \field{title}{Tocopherol and plastoquinone synthesis in spinach chloroplasts subfractions}
+      \field{volume}{204}
+      \field{year}{1980}
+      \field{pages}{544\bibrangedash 550}
+      \range{pages}{7}
+    \endentry
     \entry{kramer2007modern}{book}{}
       \true{moreauthor}
       \true{morelabelname}
@@ -325,8 +393,8 @@
       \strng{authorbibnamehash}{0445600e234b33a9087a467d311b367d}
       \strng{authornamehash}{0445600e234b33a9087a467d311b367d}
       \strng{authorfullhash}{0445600e234b33a9087a467d311b367d}
-      \field{sortinit}{9}
-      \field{sortinithash}{0a5ebc79d83c96b6579069544c73c7d4}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{title}{Modern crop protection compounds}
@@ -601,8 +669,8 @@
       \strng{authorbibnamehash}{9208de96fbbe19f148f5e2d3beb647c4}
       \strng{authornamehash}{9208de96fbbe19f148f5e2d3beb647c4}
       \strng{authorfullhash}{9208de96fbbe19f148f5e2d3beb647c4}
-      \field{sortinit}{1}
-      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{title}{Syngenta and Bayer CropScience Submit New Herbicide-tolerant Soybean Product for Regulatory Review}
@@ -855,8 +923,8 @@
       \strng{authorbibnamehash}{003b618f3a44cb16806f22eff6d51d8e}
       \strng{authornamehash}{003b618f3a44cb16806f22eff6d51d8e}
       \strng{authorfullhash}{003b618f3a44cb16806f22eff6d51d8e}
-      \field{sortinit}{2}
-      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Trends in plant science}
@@ -905,8 +973,8 @@
       \strng{authornamehash}{333ebe3e7903393843ea5ed095cd5892}
       \strng{authorfullhash}{469856e7c9dac4042bc85117e4e3d235}
       \field{extraname}{1}
-      \field{sortinit}{2}
-      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Plant science}
@@ -1256,8 +1324,8 @@
       \strng{authorbibnamehash}{41a3d18ee1481b95a5073bf5f32626d5}
       \strng{authornamehash}{41a3d18ee1481b95a5073bf5f32626d5}
       \strng{authorfullhash}{f7f03545c8f1c7af58ca67ffc51d2059}
-      \field{sortinit}{3}
-      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Journal of Biological Chemistry}
@@ -1282,8 +1350,8 @@
       \strng{authorbibnamehash}{bdb4d740fc9548d1c32a62103c30169d}
       \strng{authornamehash}{bdb4d740fc9548d1c32a62103c30169d}
       \strng{authorfullhash}{bdb4d740fc9548d1c32a62103c30169d}
-      \field{sortinit}{3}
-      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{NIPS Keynote Talk}
@@ -1825,8 +1893,8 @@
       \strng{authorbibnamehash}{5094bb82370c54c7c7bef0d6af0372bd}
       \strng{authornamehash}{5094bb82370c54c7c7bef0d6af0372bd}
       \strng{authorfullhash}{cbac56920a5f6d0bf5a803c89491f9b6}
-      \field{sortinit}{5}
-      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
+      \field{sortinit}{6}
+      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Journal of computational chemistry}
@@ -1879,8 +1947,8 @@
       \strng{authorbibnamehash}{ef2dc91f6196d980bce8668527eefd39}
       \strng{authornamehash}{ef2dc91f6196d980bce8668527eefd39}
       \strng{authorfullhash}{d7608da08658e435689c438187a80f65}
-      \field{sortinit}{5}
-      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
+      \field{sortinit}{6}
+      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Journal of chemical theory and computation}

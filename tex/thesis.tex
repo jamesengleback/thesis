@@ -57,7 +57,7 @@ Genetic algorithms and Bayesian optimization are compared as optimization functi
 
 Once running, the process is fully automated.
 Simulations are run in parallel and at scale on cloud infrastructure.
-Here, throughput is 10\textsuperscript{4} mutants per day on a 60 CPU virtual machine.
+Here, throughput is 10\textsuperscript{4} mutants per day on a 50 CPU virtual machine.
 Several methods of generating protein libraries for lab testing are presented.
 
 \textit{Screening Fist} is an enzyme-substrate screening operation directed by an learning algorithm.
@@ -75,7 +75,7 @@ An agent containing a multi-task deep neural network is constructed and trained 
 Pre-trained from a custom database of ~ 10\textsuperscript{6} annotated protein sequences and their known ligands, the model is retrained on screening data, evaluated for accuracy and used to generate new BM3 mutants with predicted mesotrione binding capabilities.
 
 \section{Introduction}
-By 2050, global food demand will increase by a projected 70\% \cite{food2009high}. 
+By 2050, global food demand will increase by a projected 70\% compared to 2009 \cite{food2009high}. 
 12\% of the Earth’s ice-free land is already cultivated for crops and the potential for expanding this area is limited \cite{licker2010mind}\cite{food2009high}.
  
 The ‘yield gap’ is the difference between the predicted maximum yield of a given crop in a given area, and the actual yield in that area. 
@@ -99,7 +99,7 @@ HPPD inhibitors are commonly deployed in cereal crops, which tolerate HPPD inhib
 HPPD inhibitors are the last class of herbicides to have been discovered and are popular because of the broad spectrum of weeds that they are toxic to and because they can synergise with other herbicides, leading to the development of herbicide mixtures that allow greater application flexibility and minimise the chance of weeds developing herbicide resistance \cite{kaundun2017mechanism}.
 
 
-HPPD is ubiquitous to aerobic organisms and catalyses the transformation of 4-Hydroxyphenylpyruvate to homogentisate, an important step in tyrosine catabolism (Moran, 2005). In plants, homogentisate is a precursor to both plastoquinone and α tocopherol (Soll et al., 1980; figure 3a). 
+HPPD is ubiquitous to aerobic organisms and catalyses the transformation of 4-Hydroxyphenylpyruvate to homogentisate, an important step in tyrosine catabolism \cite{moran20054}. In plants, homogentisate is a precursor to both plastoquinone and α tocopherol \cite{soll1980tocopherol}. 
 
 
 Plastoquinone is an essential cofactor for the synthesis of carotenoids and in the coupling of photosystem I and II. 
@@ -162,6 +162,12 @@ Insertion of an oxygen into a herbicide can be sufficient to detoxify it in itse
 In other cases, hydroxylation of the herbicide is followed by conjugation with a bulky, hydrophilic molecule, such as glutathione and its subsequent export from the cytosol into the vacuole or periplasm via an ABC transporter \cite{yuan2007non}. 
 In addition to the aforementioned MGI soybeans, exogenous P450s have been used to confer herbicide tolerance to rice \textit{O. sativa} \cite{kawahigashi2005enhanced}\cite{kawahigashi2008transgenic}, potatoes (\textit{Solanum tuberosum})\cite{inui2005herbicide}, tobacco \textit{(N. tabacum)} and A. thaliana \cite{didierjean2002engineering}.
 
+\section{Overview of This Work}
+
+This thesis aims to engineer a cytochrome P450 capable of $C_5$ hydroxylation of the HPPD inhibiting herbicide mesotrione.
+Within that, it also aims to develop new computer-assisted protein design methods with applications beyond the previous aim.
+One method is based around a machine learning model designed to predict the likelihood of a binding interaction between an input protein sequence and chemical structure,
+The other is virtually analogous to directed evolution, evaluating the \textit{fitness} of mutants by simulation and managed by a genetic algorithm.
 
 \chapter{Screening Fist}
 \section{Abstract}
@@ -806,8 +812,10 @@ This page describes the deep learning model constructed for this project.
 The model is designed to estimate the likelihood of a binding interaction between a given Cytochrome P450 sequence and a ligand SMILES code.
 The intended end uses of the model are:
 
-1. Virtually screening sequences for potential activity with a given compound.
-2. Optimally design an enzyme-ligand screening experiment.
+\begin{enumerate}
+	\item Virtually screening sequences for potential activity with a given compound.
+	\item Optimally design an enzyme-ligand screening experiment.
+\end{enumerate}
 
 
 \subsubsection{Approach: Recommender Systems}
@@ -915,7 +923,7 @@ Unfortunately, MaxMin is $O(n^2)$ complexity, so is only feasible with relativel
 \texttt{o3.csv} was compressed with \texttt{gzip} and loaded to an area of \textit{Linode} object storage in Frankfurt, making it accessible to the \textit{Linode} instances that would be used for model training.
 
 \texttt{o3.csv} contained at least one invalid SMILES or sequences which had the costly effect of crashing the first model training run.
-A filter for troublesome inputs was built and yeilded \texttt{o3f.csv} (x xMB).
+A filter for troublesome inputs was built and yeilded \texttt{o3f.csv} (826 MB).
 and
 For the purposes of model training and evaluation, the \texttt{o3f.csv} dataset was split 3:1 into a training and test datasets  \texttt{o3f.train.csv} and \texttt{o3f.test.csv} of sizes 907214 and 226804 respectively.
 

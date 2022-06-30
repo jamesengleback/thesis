@@ -4,6 +4,7 @@
 \contentsline {subsection}{\numberline {1.2.1}HPPD Herbicides}{7}{subsection.1.2.1}%
 \contentsline {subsubsection}{HPPD Inhibitors}{7}{section*.2}%
 \contentsline {subsubsection}{HPPD-inhibitor Resistant Crops}{8}{section*.3}%
+\contentsline {section}{\numberline {1.3}Overview of This Work}{9}{section.1.3}%
 \contentsline {chapter}{\numberline {2}Screening Fist}{11}{chapter.2}%
 \contentsline {section}{\numberline {2.1}Abstract}{11}{section.2.1}%
 \contentsline {section}{\numberline {2.2}Introduction}{11}{section.2.2}%
