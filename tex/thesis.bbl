@@ -19,6 +19,601 @@
 
 \refsection{0}
   \datalist[entry]{none/global//global/global}
+    \entry{food2009high}{misc}{}
+      \name{author}{2}{}{%
+        {{hash=0a38e7286ebbb560354992b3ce62be67}{%
+           family={Food},
+           familyi={F\bibinitperiod}}}%
+        {{hash=e0aa9985b0455d2c7fe99f3ac8ac8647}{%
+           family={United\bibnamedelimb Nations\bibnamedelima (FAO)},
+           familyi={U\bibinitperiod\bibinitdelim N\bibinitperiod\bibinitdelim (\bibinitperiod},
+           given={Agriculture\bibnamedelima Organization},
+           giveni={A\bibinitperiod\bibinitdelim O\bibinitperiod},
+           prefix={of\bibnamedelima the},
+           prefixi={o\bibinitperiod\bibinitdelim t\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Office of the Director, Agricultural Development Economics Division Rome, Italy}%
+      }
+      \strng{namehash}{c40c5a41525eb4ec4465fb2142632821}
+      \strng{fullhash}{c40c5a41525eb4ec4465fb2142632821}
+      \strng{bibnamehash}{c40c5a41525eb4ec4465fb2142632821}
+      \strng{authorbibnamehash}{c40c5a41525eb4ec4465fb2142632821}
+      \strng{authornamehash}{c40c5a41525eb4ec4465fb2142632821}
+      \strng{authorfullhash}{c40c5a41525eb4ec4465fb2142632821}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{High Level Expert Forum—How to Feed the World in 2050}
+      \field{year}{2009}
+    \endentry
+    \entry{licker2010mind}{article}{}
+      \name{author}{7}{}{%
+        {{hash=e110aa4496af606d8cf8324428d6590a}{%
+           family={Licker},
+           familyi={L\bibinitperiod},
+           given={Rachel},
+           giveni={R\bibinitperiod}}}%
+        {{hash=4ea81971c0b4cbd270e7bee061da27fe}{%
+           family={Johnston},
+           familyi={J\bibinitperiod},
+           given={Matt},
+           giveni={M\bibinitperiod}}}%
+        {{hash=366d81378af029a9cfb44dbe52868c9a}{%
+           family={Foley},
+           familyi={F\bibinitperiod},
+           given={Jonathan\bibnamedelima A},
+           giveni={J\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+        {{hash=b316d8a5ced4b2438d4662e1cd5ed163}{%
+           family={Barford},
+           familyi={B\bibinitperiod},
+           given={Carol},
+           giveni={C\bibinitperiod}}}%
+        {{hash=bf880c22d671332dfeabcf3756fbfe4d}{%
+           family={Kucharik},
+           familyi={K\bibinitperiod},
+           given={Christopher\bibnamedelima J},
+           giveni={C\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+        {{hash=06a2d167cf2ba8dec0fd144c62632f93}{%
+           family={Monfreda},
+           familyi={M\bibinitperiod},
+           given={Chad},
+           giveni={C\bibinitperiod}}}%
+        {{hash=eb3c691154670cecc5aacd44d8ab0ff2}{%
+           family={Ramankutty},
+           familyi={R\bibinitperiod},
+           given={Navin},
+           giveni={N\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Wiley Online Library}%
+      }
+      \strng{namehash}{d7cc73a982741ed25f40a0aeb63bc80e}
+      \strng{fullhash}{4dd0aabde82116793e58bedd6ccc5680}
+      \strng{bibnamehash}{d7cc73a982741ed25f40a0aeb63bc80e}
+      \strng{authorbibnamehash}{d7cc73a982741ed25f40a0aeb63bc80e}
+      \strng{authornamehash}{d7cc73a982741ed25f40a0aeb63bc80e}
+      \strng{authorfullhash}{4dd0aabde82116793e58bedd6ccc5680}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Global ecology and biogeography}
+      \field{number}{6}
+      \field{title}{Mind the gap: how do climate and agricultural management explain the ‘yield gap’of croplands around the world?}
+      \field{volume}{19}
+      \field{year}{2010}
+      \field{pages}{769\bibrangedash 782}
+      \range{pages}{14}
+    \endentry
+    \entry{oerke2006crop}{article}{}
+      \name{author}{1}{}{%
+        {{hash=fb970868260e83edd7cd30b09fd218a3}{%
+           family={Oerke},
+           familyi={O\bibinitperiod},
+           given={E-C},
+           giveni={E\bibinithyphendelim C\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Cambridge University Press}%
+      }
+      \strng{namehash}{fb970868260e83edd7cd30b09fd218a3}
+      \strng{fullhash}{fb970868260e83edd7cd30b09fd218a3}
+      \strng{bibnamehash}{fb970868260e83edd7cd30b09fd218a3}
+      \strng{authorbibnamehash}{fb970868260e83edd7cd30b09fd218a3}
+      \strng{authornamehash}{fb970868260e83edd7cd30b09fd218a3}
+      \strng{authorfullhash}{fb970868260e83edd7cd30b09fd218a3}
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{The Journal of Agricultural Science}
+      \field{number}{1}
+      \field{title}{Crop losses to pests}
+      \field{volume}{144}
+      \field{year}{2006}
+      \field{pages}{31\bibrangedash 43}
+      \range{pages}{13}
+    \endentry
+    \entry{norsworthy2012reducing}{article}{}
+      \true{moreauthor}
+      \true{morelabelname}
+      \name{author}{10}{}{%
+        {{hash=1c2f06e3b2d1c6bb9f3db68994e83a94}{%
+           family={Norsworthy},
+           familyi={N\bibinitperiod},
+           given={Jason\bibnamedelima K},
+           giveni={J\bibinitperiod\bibinitdelim K\bibinitperiod}}}%
+        {{hash=b35f3ab06b80dc8deee02fac72ab24c7}{%
+           family={Ward},
+           familyi={W\bibinitperiod},
+           given={Sarah\bibnamedelima M},
+           giveni={S\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+        {{hash=18d361b0fd8fb53e6627403ec2fcc8fc}{%
+           family={Shaw},
+           familyi={S\bibinitperiod},
+           given={David\bibnamedelima R},
+           giveni={D\bibinitperiod\bibinitdelim R\bibinitperiod}}}%
+        {{hash=7ac980e07b3361646536f4e900f14980}{%
+           family={Llewellyn},
+           familyi={L\bibinitperiod},
+           given={Rick\bibnamedelima S},
+           giveni={R\bibinitperiod\bibinitdelim S\bibinitperiod}}}%
+        {{hash=077e138ee579ab003cfcd878c8123cc6}{%
+           family={Nichols},
+           familyi={N\bibinitperiod},
+           given={Robert\bibnamedelima L},
+           giveni={R\bibinitperiod\bibinitdelim L\bibinitperiod}}}%
+        {{hash=80d7fd39e36389ec061cbdff90760405}{%
+           family={Webster},
+           familyi={W\bibinitperiod},
+           given={Theodore\bibnamedelima M},
+           giveni={T\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+        {{hash=024e1eb1623595acd8e7166079758323}{%
+           family={Bradley},
+           familyi={B\bibinitperiod},
+           given={Kevin\bibnamedelima W},
+           giveni={K\bibinitperiod\bibinitdelim W\bibinitperiod}}}%
+        {{hash=f4307eb520b679ea7b4f1ef5c740eead}{%
+           family={Frisvold},
+           familyi={F\bibinitperiod},
+           given={George},
+           giveni={G\bibinitperiod}}}%
+        {{hash=92204626bd0cf9aa4f3a99277569e85c}{%
+           family={Powles},
+           familyi={P\bibinitperiod},
+           given={Stephen\bibnamedelima B},
+           giveni={S\bibinitperiod\bibinitdelim B\bibinitperiod}}}%
+        {{hash=65bd2fe2f62073a55812173906f850c6}{%
+           family={Burgos},
+           familyi={B\bibinitperiod},
+           given={Nilda\bibnamedelima R},
+           giveni={N\bibinitperiod\bibinitdelim R\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Cambridge University Press}%
+      }
+      \strng{namehash}{e577cd1235ad2b0dda0010590c92f95a}
+      \strng{fullhash}{98e95705ff5500e099b3a5f411884c55}
+      \strng{bibnamehash}{e577cd1235ad2b0dda0010590c92f95a}
+      \strng{authorbibnamehash}{e577cd1235ad2b0dda0010590c92f95a}
+      \strng{authornamehash}{e577cd1235ad2b0dda0010590c92f95a}
+      \strng{authorfullhash}{98e95705ff5500e099b3a5f411884c55}
+      \field{sortinit}{6}
+      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Weed science}
+      \field{number}{SP1}
+      \field{title}{Reducing the risks of herbicide resistance: best management practices and recommendations}
+      \field{volume}{60}
+      \field{year}{2012}
+      \field{pages}{31\bibrangessep 62}
+      \range{pages}{2}
+    \endentry
+    \entry{green2012benefits}{article}{}
+      \name{author}{1}{}{%
+        {{hash=3c8e0fadac52a5ac272d8fd02cc6c59b}{%
+           family={Green},
+           familyi={G\bibinitperiod},
+           given={J},
+           giveni={J\bibinitperiod}}}%
+      }
+      \strng{namehash}{3c8e0fadac52a5ac272d8fd02cc6c59b}
+      \strng{fullhash}{3c8e0fadac52a5ac272d8fd02cc6c59b}
+      \strng{bibnamehash}{3c8e0fadac52a5ac272d8fd02cc6c59b}
+      \strng{authorbibnamehash}{3c8e0fadac52a5ac272d8fd02cc6c59b}
+      \strng{authornamehash}{3c8e0fadac52a5ac272d8fd02cc6c59b}
+      \strng{authorfullhash}{3c8e0fadac52a5ac272d8fd02cc6c59b}
+      \field{sortinit}{7}
+      \field{sortinithash}{108d0be1b1bee9773a1173443802c0a3}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Pest Management Science}
+      \field{title}{The benefits of herbicide-resistant crops}
+      \field{volume}{68(10)}
+      \field{year}{2012}
+      \field{pages}{1323\bibrangedash 1331}
+      \range{pages}{9}
+    \endentry
+    \entry{kaundun2017mechanism}{article}{}
+      \name{author}{8}{}{%
+        {{hash=be55bb0a944a35b5cec3ef9dd07978d2}{%
+           family={Kaundun},
+           familyi={K\bibinitperiod},
+           given={Shiv\bibnamedelima S},
+           giveni={S\bibinitperiod\bibinitdelim S\bibinitperiod}}}%
+        {{hash=8db93b26cff27434b412158761e8e51b}{%
+           family={Hutchings},
+           familyi={H\bibinitperiod},
+           given={Sarah-Jane},
+           giveni={S\bibinithyphendelim J\bibinitperiod}}}%
+        {{hash=5fe258604a046bff9261aeafb57ea992}{%
+           family={Dale},
+           familyi={D\bibinitperiod},
+           given={Richard\bibnamedelima P},
+           giveni={R\bibinitperiod\bibinitdelim P\bibinitperiod}}}%
+        {{hash=5741d06a1152b97884d26a7a196f4da5}{%
+           family={Howell},
+           familyi={H\bibinitperiod},
+           given={Anushka},
+           giveni={A\bibinitperiod}}}%
+        {{hash=5a48e1affea425e24bd743ebcd581f09}{%
+           family={Morris},
+           familyi={M\bibinitperiod},
+           given={James\bibnamedelima A},
+           giveni={J\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+        {{hash=bc3c115886a57ec74d85d4dc3614a7d8}{%
+           family={Kramer},
+           familyi={K\bibinitperiod},
+           given={Vance\bibnamedelima C},
+           giveni={V\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
+        {{hash=e2fa3cc41536fbdc0782e7d2145fbbee}{%
+           family={Shivrain},
+           familyi={S\bibinitperiod},
+           given={Vinod\bibnamedelima K},
+           giveni={V\bibinitperiod\bibinitdelim K\bibinitperiod}}}%
+        {{hash=0b3a13ef2a6c1cdd9512fd3fd21e8cdc}{%
+           family={Mcindoe},
+           familyi={M\bibinitperiod},
+           given={Eddie},
+           giveni={E\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Public Library of Science San Francisco, CA USA}%
+      }
+      \strng{namehash}{62392407349731a26febda6b5d7c3b44}
+      \strng{fullhash}{d8b40882e7c2ff6d4edc1dd6ca159ff5}
+      \strng{bibnamehash}{62392407349731a26febda6b5d7c3b44}
+      \strng{authorbibnamehash}{62392407349731a26febda6b5d7c3b44}
+      \strng{authornamehash}{62392407349731a26febda6b5d7c3b44}
+      \strng{authorfullhash}{d8b40882e7c2ff6d4edc1dd6ca159ff5}
+      \field{sortinit}{8}
+      \field{sortinithash}{a231b008ebf0ecbe0b4d96dcc159445f}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{PLoS One}
+      \field{number}{6}
+      \field{title}{Mechanism of resistance to mesotrione in an Amaranthus tuberculatus population from Nebraska, USA}
+      \field{volume}{12}
+      \field{year}{2017}
+      \field{pages}{e0180095}
+      \range{pages}{-1}
+    \endentry
+    \entry{kramer2007modern}{book}{}
+      \true{moreauthor}
+      \true{morelabelname}
+      \name{author}{2}{}{%
+        {{hash=9f4def1b9dbae716c42c7e2ba9503dc2}{%
+           family={Krämer},
+           familyi={K\bibinitperiod},
+           given={Wolfgang},
+           giveni={W\bibinitperiod}}}%
+        {{hash=2cba2fa737872eb52eeb74db729ed3fe}{%
+           family={Schirmer},
+           familyi={S\bibinitperiod},
+           given={Ulrich},
+           giveni={U\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Wiley-VCH}%
+      }
+      \strng{namehash}{0445600e234b33a9087a467d311b367d}
+      \strng{fullhash}{0445600e234b33a9087a467d311b367d}
+      \strng{bibnamehash}{0445600e234b33a9087a467d311b367d}
+      \strng{authorbibnamehash}{0445600e234b33a9087a467d311b367d}
+      \strng{authornamehash}{0445600e234b33a9087a467d311b367d}
+      \strng{authorfullhash}{0445600e234b33a9087a467d311b367d}
+      \field{sortinit}{9}
+      \field{sortinithash}{0a5ebc79d83c96b6579069544c73c7d4}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Modern crop protection compounds}
+      \field{year}{2007}
+    \endentry
+    \entry{munne2005role}{article}{}
+      \name{author}{1}{}{%
+        {{hash=8f53ab3cc49714553efce9cc245a93c9}{%
+           family={Munné-Bosch},
+           familyi={M\bibinithyphendelim B\bibinitperiod},
+           given={Sergi},
+           giveni={S\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Elsevier}%
+      }
+      \strng{namehash}{8f53ab3cc49714553efce9cc245a93c9}
+      \strng{fullhash}{8f53ab3cc49714553efce9cc245a93c9}
+      \strng{bibnamehash}{8f53ab3cc49714553efce9cc245a93c9}
+      \strng{authorbibnamehash}{8f53ab3cc49714553efce9cc245a93c9}
+      \strng{authornamehash}{8f53ab3cc49714553efce9cc245a93c9}
+      \strng{authorfullhash}{8f53ab3cc49714553efce9cc245a93c9}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of plant physiology}
+      \field{number}{7}
+      \field{title}{The role of $\alpha$-tocopherol in plant stress tolerance}
+      \field{volume}{162}
+      \field{year}{2005}
+      \field{pages}{743\bibrangedash 748}
+      \range{pages}{6}
+    \endentry
+    \entry{yang2004structural}{article}{}
+      \name{author}{6}{}{%
+        {{hash=29ccf7aa9391a3e9e13ba3b57f4c48eb}{%
+           family={Yang},
+           familyi={Y\bibinitperiod},
+           given={Cheng},
+           giveni={C\bibinitperiod}}}%
+        {{hash=2b6a2a37c5f54e0f4d5e94a8088386dd}{%
+           family={Pflugrath},
+           familyi={P\bibinitperiod},
+           given={James\bibnamedelima W},
+           giveni={J\bibinitperiod\bibinitdelim W\bibinitperiod}}}%
+        {{hash=14a5486361c449fd970f0c0e8c28cafd}{%
+           family={Camper},
+           familyi={C\bibinitperiod},
+           given={Debra\bibnamedelima L},
+           giveni={D\bibinitperiod\bibinitdelim L\bibinitperiod}}}%
+        {{hash=bfdeb59ba272391c94a8cbfe35900827}{%
+           family={Foster},
+           familyi={F\bibinitperiod},
+           given={Mendy\bibnamedelima L},
+           giveni={M\bibinitperiod\bibinitdelim L\bibinitperiod}}}%
+        {{hash=cb4071cbc3cd99dc14fae8a999b323e6}{%
+           family={Pernich},
+           familyi={P\bibinitperiod},
+           given={Daniel\bibnamedelima J},
+           giveni={D\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+        {{hash=8bc5636d0a2ad3598dfe49faeae5116b}{%
+           family={Walsh},
+           familyi={W\bibinitperiod},
+           given={Terence\bibnamedelima A},
+           giveni={T\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {ACS Publications}%
+      }
+      \strng{namehash}{298930a5e4e5e87d1a5c84f03462ccaa}
+      \strng{fullhash}{fec8132041f44fe7bd15b232a8ecba85}
+      \strng{bibnamehash}{298930a5e4e5e87d1a5c84f03462ccaa}
+      \strng{authorbibnamehash}{298930a5e4e5e87d1a5c84f03462ccaa}
+      \strng{authornamehash}{298930a5e4e5e87d1a5c84f03462ccaa}
+      \strng{authorfullhash}{fec8132041f44fe7bd15b232a8ecba85}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Biochemistry}
+      \field{number}{32}
+      \field{title}{Structural basis for herbicidal inhibitor selectivity revealed by comparison of crystal structures of plant and mammalian 4-hydroxyphenylpyruvate dioxygenases}
+      \field{volume}{43}
+      \field{year}{2004}
+      \field{pages}{10414\bibrangedash 10423}
+      \range{pages}{10}
+    \endentry
+    \entry{rocaboy2014novel}{article}{}
+      \name{author}{6}{}{%
+        {{hash=936984b118c2a92f7ec45e29b3e67e17}{%
+           family={Rocaboy-Faquet},
+           familyi={R\bibinithyphendelim F\bibinitperiod},
+           given={Emilie},
+           giveni={E\bibinitperiod}}}%
+        {{hash=94a66e767d83518e9e626614d0cb981f}{%
+           family={Noguer},
+           familyi={N\bibinitperiod},
+           given={Thierry},
+           giveni={T\bibinitperiod}}}%
+        {{hash=80c2e512aafb497f89213421374837f6}{%
+           family={Romdhane},
+           familyi={R\bibinitperiod},
+           given={Sana},
+           giveni={S\bibinitperiod}}}%
+        {{hash=fe66d9a90915d3ea9fcac06e1b4e53c7}{%
+           family={Bertrand},
+           familyi={B\bibinitperiod},
+           given={Cédric},
+           giveni={C\bibinitperiod}}}%
+        {{hash=ae225743f1b99e8720b8b731fc47785a}{%
+           family={Dayan},
+           familyi={D\bibinitperiod},
+           given={Franck\bibnamedelima Emmanuel},
+           giveni={F\bibinitperiod\bibinitdelim E\bibinitperiod}}}%
+        {{hash=9e7cf1bdd7568f4e6de5e3fa9e9d96e5}{%
+           family={Barthelmebs},
+           familyi={B\bibinitperiod},
+           given={Lise},
+           giveni={L\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Springer}%
+      }
+      \strng{namehash}{23138907b96e97e308cc4fc9613d1395}
+      \strng{fullhash}{1af00a929492a531b4184c9b7c8c5477}
+      \strng{bibnamehash}{23138907b96e97e308cc4fc9613d1395}
+      \strng{authorbibnamehash}{23138907b96e97e308cc4fc9613d1395}
+      \strng{authornamehash}{23138907b96e97e308cc4fc9613d1395}
+      \strng{authorfullhash}{1af00a929492a531b4184c9b7c8c5477}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Applied microbiology and biotechnology}
+      \field{number}{16}
+      \field{title}{Novel bacterial bioassay for a high-throughput screening of 4-hydroxyphenylpyruvate dioxygenase inhibitors}
+      \field{volume}{98}
+      \field{year}{2014}
+      \field{pages}{7243\bibrangedash 7252}
+      \range{pages}{10}
+    \endentry
+    \entry{hawkes2001mesotrione}{proceedings}{}
+      \name{author}{7}{}{%
+        {{hash=f42f8d532ef4d71952ada710b39f3f0a}{%
+           family={Hawkes},
+           familyi={H\bibinitperiod},
+           given={T.},
+           giveni={T\bibinitperiod}}}%
+        {{hash=aac7a7275fa25dcc58cee9e89550031c}{%
+           family={Holt},
+           familyi={H\bibinitperiod},
+           given={D.},
+           giveni={D\bibinitperiod}}}%
+        {{hash=14098a303307db966eabba831d5d7e00}{%
+           family={Andrews},
+           familyi={A\bibinitperiod},
+           given={C.},
+           giveni={C\bibinitperiod}}}%
+        {{hash=10c459559fa4a31362600724ee443e48}{%
+           family={Thomas},
+           familyi={T\bibinitperiod},
+           given={P.},
+           giveni={P\bibinitperiod}}}%
+        {{hash=1a523a69e38153660608677212049882}{%
+           family={Langford},
+           familyi={L\bibinitperiod},
+           given={M.},
+           giveni={M\bibinitperiod}}}%
+        {{hash=7e728d650a0116137dfb18d5306f5f82}{%
+           family={Hollingworth},
+           familyi={H\bibinitperiod},
+           given={S.},
+           giveni={S\bibinitperiod}}}%
+        {{hash=f82a9e011257e21a34e1cce7ef9555b6}{%
+           family={Mitchell},
+           familyi={M\bibinitperiod},
+           given={G.},
+           giveni={G\bibinitperiod}}}%
+      }
+      \list{organization}{1}{%
+        {Proceedings of the BCPC Conference - Weeds 2001}%
+      }
+      \strng{namehash}{0148fb97dfa349c1ccfb7e1b16063cb9}
+      \strng{fullhash}{afb42969e2ad3cfc9d11701199ba8fd4}
+      \strng{bibnamehash}{0148fb97dfa349c1ccfb7e1b16063cb9}
+      \strng{authorbibnamehash}{0148fb97dfa349c1ccfb7e1b16063cb9}
+      \strng{authornamehash}{0148fb97dfa349c1ccfb7e1b16063cb9}
+      \strng{authorfullhash}{afb42969e2ad3cfc9d11701199ba8fd4}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Mesotrione: mechanism of herbicidal activity and selectivity in corn.}
+      \field{year}{2018}
+      \field{pages}{563\bibrangedash 568}
+      \range{pages}{6}
+    \endentry
+    \entry{hausman2011resistance}{article}{}
+      \name{author}{8}{}{%
+        {{hash=f220a66faf4a8c7cc439057a104a88de}{%
+           family={Hausman},
+           familyi={H\bibinitperiod},
+           given={Nicholas\bibnamedelima E},
+           giveni={N\bibinitperiod\bibinitdelim E\bibinitperiod}}}%
+        {{hash=f3b56d32789a56e308df16c0e516d69a}{%
+           family={Singh},
+           familyi={S\bibinitperiod},
+           given={Sukhvinder},
+           giveni={S\bibinitperiod}}}%
+        {{hash=b377efafe6c36756adea88ce240557a1}{%
+           family={Tranel},
+           familyi={T\bibinitperiod},
+           given={Patrick\bibnamedelima J},
+           giveni={P\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+        {{hash=628bb92ce0ef586b585071c5c0597c94}{%
+           family={Riechers},
+           familyi={R\bibinitperiod},
+           given={Dean\bibnamedelima E},
+           giveni={D\bibinitperiod\bibinitdelim E\bibinitperiod}}}%
+        {{hash=be55bb0a944a35b5cec3ef9dd07978d2}{%
+           family={Kaundun},
+           familyi={K\bibinitperiod},
+           given={Shiv\bibnamedelima S},
+           giveni={S\bibinitperiod\bibinitdelim S\bibinitperiod}}}%
+        {{hash=f75fa2647e5f8c8afc78fe6d5cd4fb99}{%
+           family={Polge},
+           familyi={P\bibinitperiod},
+           given={Nicholas\bibnamedelima D},
+           giveni={N\bibinitperiod\bibinitdelim D\bibinitperiod}}}%
+        {{hash=776556aa1e92c0583e6ca8c6e14825ab}{%
+           family={Thomas},
+           familyi={T\bibinitperiod},
+           given={David\bibnamedelima A},
+           giveni={D\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+        {{hash=1e78daf030041b0ef506b9f3ffbabea5}{%
+           family={Hager},
+           familyi={H\bibinitperiod},
+           given={Aaron\bibnamedelima G},
+           giveni={A\bibinitperiod\bibinitdelim G\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Wiley Online Library}%
+      }
+      \strng{namehash}{17ee828674ecea1c6f3f761c96160328}
+      \strng{fullhash}{8e25c89a931bfa70060252344bed9823}
+      \strng{bibnamehash}{17ee828674ecea1c6f3f761c96160328}
+      \strng{authorbibnamehash}{17ee828674ecea1c6f3f761c96160328}
+      \strng{authornamehash}{17ee828674ecea1c6f3f761c96160328}
+      \strng{authorfullhash}{8e25c89a931bfa70060252344bed9823}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Pest management science}
+      \field{number}{3}
+      \field{title}{Resistance to HPPD-inhibiting herbicides in a population of waterhemp (Amaranthus tuberculatus) from Illinois, United States}
+      \field{volume}{67}
+      \field{year}{2011}
+      \field{pages}{258\bibrangedash 261}
+      \range{pages}{4}
+    \endentry
+    \entry{syngenra2013mgi}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=9208de96fbbe19f148f5e2d3beb647c4}{%
+           family={Syngenta},
+           familyi={S\bibinitperiod}}}%
+      }
+      \strng{namehash}{9208de96fbbe19f148f5e2d3beb647c4}
+      \strng{fullhash}{9208de96fbbe19f148f5e2d3beb647c4}
+      \strng{bibnamehash}{9208de96fbbe19f148f5e2d3beb647c4}
+      \strng{authorbibnamehash}{9208de96fbbe19f148f5e2d3beb647c4}
+      \strng{authornamehash}{9208de96fbbe19f148f5e2d3beb647c4}
+      \strng{authorfullhash}{9208de96fbbe19f148f5e2d3beb647c4}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Syngenta and Bayer CropScience Submit New Herbicide-tolerant Soybean Product for Regulatory Review}
+      \field{year}{2013}
+      \verb{urlraw}
+      \verb http://www.syngentacropprotection.com/news_releases/news.aspx?id=171999
+      \endverb
+      \verb{url}
+      \verb http://www.syngentacropprotection.com/news_releases/news.aspx?id=171999
+      \endverb
+    \endentry
     \entry{hawkes2007ep}{patent}{}
       \name{author}{1}{}{%
         {{hash=39ad4b2359942814f6d040aba1a720ce}{%
@@ -33,12 +628,432 @@
       \strng{authorbibnamehash}{39ad4b2359942814f6d040aba1a720ce}
       \strng{authornamehash}{39ad4b2359942814f6d040aba1a720ce}
       \strng{authorfullhash}{39ad4b2359942814f6d040aba1a720ce}
-      \field{sortinit}{1}
-      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{title}{EP 2164320 A2: Cytochrome p450 genes conferring herbicide resistance}
       \field{year}{2007}
+    \endentry
+    \entry{prall2016utility}{article}{}
+      \name{author}{3}{}{%
+        {{hash=cff4c1057363e4be801eec40c1b347a2}{%
+           family={Prall},
+           familyi={P\bibinitperiod},
+           given={Wil},
+           giveni={W\bibinitperiod}}}%
+        {{hash=a4e88b18c2ae20f44f9727015b9e9d47}{%
+           family={Hendy},
+           familyi={H\bibinitperiod},
+           given={Oliver},
+           giveni={O\bibinitperiod}}}%
+        {{hash=96f6e67c07482d484ff4a1c57eafe50d}{%
+           family={Thornton},
+           familyi={T\bibinitperiod},
+           given={Leeann\bibnamedelima E},
+           giveni={L\bibinitperiod\bibinitdelim E\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Public Library of Science San Francisco, CA USA}%
+      }
+      \strng{namehash}{6dc72f5cc7cd51db458f177407485d0e}
+      \strng{fullhash}{6dc72f5cc7cd51db458f177407485d0e}
+      \strng{bibnamehash}{6dc72f5cc7cd51db458f177407485d0e}
+      \strng{authorbibnamehash}{6dc72f5cc7cd51db458f177407485d0e}
+      \strng{authornamehash}{6dc72f5cc7cd51db458f177407485d0e}
+      \strng{authorfullhash}{6dc72f5cc7cd51db458f177407485d0e}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{PloS one}
+      \field{number}{9}
+      \field{title}{Utility of a phylogenetic perspective in structural analysis of CYP72A enzymes from flowering plants}
+      \field{volume}{11}
+      \field{year}{2016}
+      \field{pages}{e0163024}
+      \range{pages}{-1}
+    \endentry
+    \entry{zhang2007identification}{article}{}
+      \true{moreauthor}
+      \true{morelabelname}
+      \name{author}{10}{}{%
+        {{hash=f4a4cbf770add19c206827116c68732e}{%
+           family={Zhang},
+           familyi={Z\bibinitperiod},
+           given={Lei},
+           giveni={L\bibinitperiod}}}%
+        {{hash=71ce733199af09bf6d43813f21a4a853}{%
+           family={Lu},
+           familyi={L\bibinitperiod},
+           given={Qing},
+           giveni={Q\bibinitperiod}}}%
+        {{hash=41dbb19e700b96683aecb6b199920c84}{%
+           family={Chen},
+           familyi={C\bibinitperiod},
+           given={Honggao},
+           giveni={H\bibinitperiod}}}%
+        {{hash=d06cec2df61554e3a9035bc311b868b9}{%
+           family={Pan},
+           familyi={P\bibinitperiod},
+           given={Gang},
+           giveni={G\bibinitperiod}}}%
+        {{hash=dfff5e83d84cca4a25043216e8ad9c62}{%
+           family={Xiao},
+           familyi={X\bibinitperiod},
+           given={Shushu},
+           giveni={S\bibinitperiod}}}%
+        {{hash=735d683c664c7632bc54b0d7a8849da9}{%
+           family={Dai},
+           familyi={D\bibinitperiod},
+           given={Yuntao},
+           giveni={Y\bibinitperiod}}}%
+        {{hash=f495cdda14989886bcfdb65c02b7a19d}{%
+           family={Li},
+           familyi={L\bibinitperiod},
+           given={Qiang},
+           giveni={Q\bibinitperiod}}}%
+        {{hash=0592eb8ad1497fe4afa2a908687de811}{%
+           family={Zhang},
+           familyi={Z\bibinitperiod},
+           given={Jiwen},
+           giveni={J\bibinitperiod}}}%
+        {{hash=bcff6882e95b0e3dc0a9e300877a93f3}{%
+           family={Wu},
+           familyi={W\bibinitperiod},
+           given={Xiaozhi},
+           giveni={X\bibinitperiod}}}%
+        {{hash=e274db39f642833d55f68a7b29c6132c}{%
+           family={Wu},
+           familyi={W\bibinitperiod},
+           given={Jiangsheng},
+           giveni={J\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Springer}%
+      }
+      \strng{namehash}{fafd81ef86956f253d5235fa39e56383}
+      \strng{fullhash}{ed98510f11e4636bf8ab6063925c1dfd}
+      \strng{bibnamehash}{fafd81ef86956f253d5235fa39e56383}
+      \strng{authorbibnamehash}{fafd81ef86956f253d5235fa39e56383}
+      \strng{authornamehash}{fafd81ef86956f253d5235fa39e56383}
+      \strng{authorfullhash}{ed98510f11e4636bf8ab6063925c1dfd}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Molecular breeding}
+      \field{number}{1}
+      \field{title}{Identification of a cytochrome P450 hydroxylase, CYP81A6, as the candidate for the bentazon and sulfonylurea herbicide resistance gene, Bel, in rice}
+      \field{volume}{19}
+      \field{year}{2007}
+      \field{pages}{59\bibrangedash 68}
+      \range{pages}{10}
+    \endentry
+    \entry{siminszky2006plant}{article}{}
+      \name{author}{1}{}{%
+        {{hash=40f5ca0a9b807f5f857847ba073e1abc}{%
+           family={Siminszky},
+           familyi={S\bibinitperiod},
+           given={Balazs},
+           giveni={B\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Springer}%
+      }
+      \strng{namehash}{40f5ca0a9b807f5f857847ba073e1abc}
+      \strng{fullhash}{40f5ca0a9b807f5f857847ba073e1abc}
+      \strng{bibnamehash}{40f5ca0a9b807f5f857847ba073e1abc}
+      \strng{authorbibnamehash}{40f5ca0a9b807f5f857847ba073e1abc}
+      \strng{authornamehash}{40f5ca0a9b807f5f857847ba073e1abc}
+      \strng{authorfullhash}{40f5ca0a9b807f5f857847ba073e1abc}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Phytochemistry Reviews}
+      \field{number}{2}
+      \field{title}{Plant cytochrome P450-mediated herbicide metabolism}
+      \field{volume}{5}
+      \field{year}{2006}
+      \field{pages}{445\bibrangedash 458}
+      \range{pages}{14}
+    \endentry
+    \entry{davies1998mode}{article}{}
+      \name{author}{5}{}{%
+        {{hash=944c7e06dd3944aafe3e031ac6a16a52}{%
+           family={Davies},
+           familyi={D\bibinitperiod},
+           given={Joanna},
+           giveni={J\bibinitperiod}}}%
+        {{hash=e6998adef7a3318177f82898f7c8c1bb}{%
+           family={Caseley},
+           familyi={C\bibinitperiod},
+           given={John\bibnamedelima C},
+           giveni={J\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
+        {{hash=24a114079aa33245b166946df1840f42}{%
+           family={Jones},
+           familyi={J\bibinitperiod},
+           given={Owen\bibnamedelima TG},
+           giveni={O\bibinitperiod\bibinitdelim T\bibinitperiod}}}%
+        {{hash=f57bae36489ea578694fb85710521cf1}{%
+           family={Barrett},
+           familyi={B\bibinitperiod},
+           given={Michael},
+           giveni={M\bibinitperiod}}}%
+        {{hash=f75fa2647e5f8c8afc78fe6d5cd4fb99}{%
+           family={Polge},
+           familyi={P\bibinitperiod},
+           given={Nicholas\bibnamedelima D},
+           giveni={N\bibinitperiod\bibinitdelim D\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Wiley Online Library}%
+      }
+      \strng{namehash}{984a0cd5acaaf6a98ef88906f44a1ce8}
+      \strng{fullhash}{bf485ea55903ca3fac21358f25271332}
+      \strng{bibnamehash}{984a0cd5acaaf6a98ef88906f44a1ce8}
+      \strng{authorbibnamehash}{984a0cd5acaaf6a98ef88906f44a1ce8}
+      \strng{authornamehash}{984a0cd5acaaf6a98ef88906f44a1ce8}
+      \strng{authorfullhash}{bf485ea55903ca3fac21358f25271332}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Pesticide science}
+      \field{number}{1}
+      \field{title}{Mode of action of naphthalic anhydride as a safener for the herbicide AC 263222 in maize}
+      \field{volume}{52}
+      \field{year}{1998}
+      \field{pages}{29\bibrangedash 38}
+      \range{pages}{10}
+    \endentry
+    \entry{yuan2007non}{article}{}
+      \name{author}{3}{}{%
+        {{hash=a7466ad1a50b0a78a003f6684ac87fa2}{%
+           family={Yuan},
+           familyi={Y\bibinitperiod},
+           given={Joshua\bibnamedelima S},
+           giveni={J\bibinitperiod\bibinitdelim S\bibinitperiod}}}%
+        {{hash=b377efafe6c36756adea88ce240557a1}{%
+           family={Tranel},
+           familyi={T\bibinitperiod},
+           given={Patrick\bibnamedelima J},
+           giveni={P\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+        {{hash=da2e4d4130046ee5941e8732be44583f}{%
+           family={Stewart\bibnamedelima Jr},
+           familyi={S\bibinitperiod\bibinitdelim J\bibinitperiod},
+           given={C\bibnamedelima Neal},
+           giveni={C\bibinitperiod\bibinitdelim N\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Elsevier}%
+      }
+      \strng{namehash}{003b618f3a44cb16806f22eff6d51d8e}
+      \strng{fullhash}{003b618f3a44cb16806f22eff6d51d8e}
+      \strng{bibnamehash}{003b618f3a44cb16806f22eff6d51d8e}
+      \strng{authorbibnamehash}{003b618f3a44cb16806f22eff6d51d8e}
+      \strng{authornamehash}{003b618f3a44cb16806f22eff6d51d8e}
+      \strng{authorfullhash}{003b618f3a44cb16806f22eff6d51d8e}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Trends in plant science}
+      \field{number}{1}
+      \field{title}{Non-target-site herbicide resistance: a family business}
+      \field{volume}{12}
+      \field{year}{2007}
+      \field{pages}{6\bibrangedash 13}
+      \range{pages}{8}
+    \endentry
+    \entry{kawahigashi2005enhanced}{article}{}
+      \name{author}{5}{}{%
+        {{hash=0443b0ba767e3246d074ade83fb605ea}{%
+           family={Kawahigashi},
+           familyi={K\bibinitperiod},
+           given={Hiroyuki},
+           giveni={H\bibinitperiod}}}%
+        {{hash=9fe3de951133fad2706a4103519ffa0b}{%
+           family={Hirose},
+           familyi={H\bibinitperiod},
+           given={Sakiko},
+           giveni={S\bibinitperiod}}}%
+        {{hash=9149ff6cd746143d0af1cd6bd1420c0f}{%
+           family={Inui},
+           familyi={I\bibinitperiod},
+           given={Hideyuki},
+           giveni={H\bibinitperiod}}}%
+        {{hash=899da2aa15361738567d29b2c37ecd68}{%
+           family={Ohkawa},
+           familyi={O\bibinitperiod},
+           given={Hideo},
+           giveni={H\bibinitperiod}}}%
+        {{hash=222fc6926e5a7329a42e209734ca50a1}{%
+           family={Ohkawa},
+           familyi={O\bibinitperiod},
+           given={Yasunobu},
+           giveni={Y\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Elsevier}%
+      }
+      \strng{namehash}{333ebe3e7903393843ea5ed095cd5892}
+      \strng{fullhash}{469856e7c9dac4042bc85117e4e3d235}
+      \strng{bibnamehash}{333ebe3e7903393843ea5ed095cd5892}
+      \strng{authorbibnamehash}{333ebe3e7903393843ea5ed095cd5892}
+      \strng{authornamehash}{333ebe3e7903393843ea5ed095cd5892}
+      \strng{authorfullhash}{469856e7c9dac4042bc85117e4e3d235}
+      \field{extraname}{1}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Plant science}
+      \field{number}{3}
+      \field{title}{Enhanced herbicide cross-tolerance in transgenic rice plants co-expressing human CYP1A1, CYP2B6, and CYP2C19}
+      \field{volume}{168}
+      \field{year}{2005}
+      \field{pages}{773\bibrangedash 781}
+      \range{pages}{9}
+    \endentry
+    \entry{kawahigashi2008transgenic}{article}{}
+      \name{author}{4}{}{%
+        {{hash=0443b0ba767e3246d074ade83fb605ea}{%
+           family={Kawahigashi},
+           familyi={K\bibinitperiod},
+           given={Hiroyuki},
+           giveni={H\bibinitperiod}}}%
+        {{hash=9fe3de951133fad2706a4103519ffa0b}{%
+           family={Hirose},
+           familyi={H\bibinitperiod},
+           given={Sakiko},
+           giveni={S\bibinitperiod}}}%
+        {{hash=899da2aa15361738567d29b2c37ecd68}{%
+           family={Ohkawa},
+           familyi={O\bibinitperiod},
+           given={Hideo},
+           giveni={H\bibinitperiod}}}%
+        {{hash=222fc6926e5a7329a42e209734ca50a1}{%
+           family={Ohkawa},
+           familyi={O\bibinitperiod},
+           given={Yasunobu},
+           giveni={Y\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Karger Publishers}%
+      }
+      \strng{namehash}{333ebe3e7903393843ea5ed095cd5892}
+      \strng{fullhash}{1a75dd852129fcf1459758f6bfad4f6b}
+      \strng{bibnamehash}{333ebe3e7903393843ea5ed095cd5892}
+      \strng{authorbibnamehash}{333ebe3e7903393843ea5ed095cd5892}
+      \strng{authornamehash}{333ebe3e7903393843ea5ed095cd5892}
+      \strng{authorfullhash}{1a75dd852129fcf1459758f6bfad4f6b}
+      \field{extraname}{2}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Microbial Physiology}
+      \field{number}{2-3}
+      \field{title}{Transgenic rice plants expressing human P450 genes involved in xenobiotic metabolism for phytoremediation}
+      \field{volume}{15}
+      \field{year}{2008}
+      \field{pages}{212\bibrangedash 219}
+      \range{pages}{8}
+    \endentry
+    \entry{inui2005herbicide}{article}{}
+      \name{author}{2}{}{%
+        {{hash=9149ff6cd746143d0af1cd6bd1420c0f}{%
+           family={Inui},
+           familyi={I\bibinitperiod},
+           given={Hideyuki},
+           giveni={H\bibinitperiod}}}%
+        {{hash=899da2aa15361738567d29b2c37ecd68}{%
+           family={Ohkawa},
+           familyi={O\bibinitperiod},
+           given={Hideo},
+           giveni={H\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Wiley Online Library}%
+      }
+      \strng{namehash}{e15ea4d21913786ab69d7fb756d49234}
+      \strng{fullhash}{e15ea4d21913786ab69d7fb756d49234}
+      \strng{bibnamehash}{e15ea4d21913786ab69d7fb756d49234}
+      \strng{authorbibnamehash}{e15ea4d21913786ab69d7fb756d49234}
+      \strng{authornamehash}{e15ea4d21913786ab69d7fb756d49234}
+      \strng{authorfullhash}{e15ea4d21913786ab69d7fb756d49234}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Pest Management Science: formerly Pesticide Science}
+      \field{number}{3}
+      \field{title}{Herbicide resistance in transgenic plants with mammalian P450 monooxygenase genes}
+      \field{volume}{61}
+      \field{year}{2005}
+      \field{pages}{286\bibrangedash 291}
+      \range{pages}{6}
+    \endentry
+    \entry{didierjean2002engineering}{article}{}
+      \name{author}{7}{}{%
+        {{hash=68239fa1b24b6243570bdfab2fda6859}{%
+           family={Didierjean},
+           familyi={D\bibinitperiod},
+           given={Luc},
+           giveni={L\bibinitperiod}}}%
+        {{hash=055b1cc5996d5b5b3715f1dc3127e000}{%
+           family={Gondet},
+           familyi={G\bibinitperiod},
+           given={Laurence},
+           giveni={L\bibinitperiod}}}%
+        {{hash=8b25c0be2c57f29c73d87108ef459312}{%
+           family={Perkins},
+           familyi={P\bibinitperiod},
+           given={Roberta},
+           giveni={R\bibinitperiod}}}%
+        {{hash=f9be1ae758a856aa1690380ba9a2c5f8}{%
+           family={Lau},
+           familyi={L\bibinitperiod},
+           given={Sze-Mei\bibnamedelima Cindy},
+           giveni={S\bibinithyphendelim M\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
+        {{hash=4be82b0b6f77c1c465f2504bbb4aa511}{%
+           family={Schaller},
+           familyi={S\bibinitperiod},
+           given={Hubert},
+           giveni={H\bibinitperiod}}}%
+        {{hash=6b3a75cc14f578807f9b7cbc42d26717}{%
+           family={O'Keefe},
+           familyi={O\bibinitperiod},
+           given={Daniel\bibnamedelima P},
+           giveni={D\bibinitperiod\bibinitdelim P\bibinitperiod}}}%
+        {{hash=c28002a7c3d31e17bfe778110c3f070f}{%
+           family={Werck-Reichhart},
+           familyi={W\bibinithyphendelim R\bibinitperiod},
+           given={Danièle},
+           giveni={D\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {American Society of Plant Biologists}%
+      }
+      \strng{namehash}{a1c9a2e5e3387ebc8f3c2704780f0e78}
+      \strng{fullhash}{54524d519f930b36d4318f2dcfa64e87}
+      \strng{bibnamehash}{a1c9a2e5e3387ebc8f3c2704780f0e78}
+      \strng{authorbibnamehash}{a1c9a2e5e3387ebc8f3c2704780f0e78}
+      \strng{authornamehash}{a1c9a2e5e3387ebc8f3c2704780f0e78}
+      \strng{authorfullhash}{54524d519f930b36d4318f2dcfa64e87}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Plant Physiology}
+      \field{number}{1}
+      \field{title}{Engineering herbicide metabolism in tobacco and Arabidopsis with CYP76B1, a cytochrome P450 enzyme from Jerusalem artichoke}
+      \field{volume}{130}
+      \field{year}{2002}
+      \field{pages}{179\bibrangedash 189}
+      \range{pages}{11}
     \endentry
     \entry{munro2002p450}{article}{}
       \true{moreauthor}
@@ -104,8 +1119,8 @@
       \strng{authorbibnamehash}{f6bd5e89ebda1e2d1f0abe659aead818}
       \strng{authornamehash}{f6bd5e89ebda1e2d1f0abe659aead818}
       \strng{authorfullhash}{c91c315094ceed140a7bd462d23dc3a4}
-      \field{sortinit}{2}
-      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Trends in biochemical sciences}
@@ -187,8 +1202,8 @@
       \strng{authorbibnamehash}{af4f8cb03996b730ba1435a5c6c949b1}
       \strng{authornamehash}{af4f8cb03996b730ba1435a5c6c949b1}
       \strng{authorfullhash}{af4f8cb03996b730ba1435a5c6c949b1}
-      \field{sortinit}{4}
-      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Chemical Society Reviews}
@@ -241,8 +1256,8 @@
       \strng{authorbibnamehash}{41a3d18ee1481b95a5073bf5f32626d5}
       \strng{authornamehash}{41a3d18ee1481b95a5073bf5f32626d5}
       \strng{authorfullhash}{f7f03545c8f1c7af58ca67ffc51d2059}
-      \field{sortinit}{7}
-      \field{sortinithash}{108d0be1b1bee9773a1173443802c0a3}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Journal of Biological Chemistry}
@@ -267,8 +1282,8 @@
       \strng{authorbibnamehash}{bdb4d740fc9548d1c32a62103c30169d}
       \strng{authornamehash}{bdb4d740fc9548d1c32a62103c30169d}
       \strng{authorfullhash}{bdb4d740fc9548d1c32a62103c30169d}
-      \field{sortinit}{8}
-      \field{sortinithash}{a231b008ebf0ecbe0b4d96dcc159445f}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{NIPS Keynote Talk}
@@ -324,8 +1339,8 @@
       \strng{authorbibnamehash}{b0f6e3e1c91a7f079bf3578d5277d98b}
       \strng{authornamehash}{b0f6e3e1c91a7f079bf3578d5277d98b}
       \strng{authorfullhash}{e826baaef8a7aa7aadc6f9331673d661}
-      \field{sortinit}{9}
-      \field{sortinithash}{0a5ebc79d83c96b6579069544c73c7d4}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{booktitle}{Advances in Neural Information Processing Systems}
@@ -360,8 +1375,8 @@
       \strng{authorbibnamehash}{f56362200c04d5d23489c1c250600f67}
       \strng{authornamehash}{f56362200c04d5d23489c1c250600f67}
       \strng{authorfullhash}{f56362200c04d5d23489c1c250600f67}
-      \field{sortinit}{1}
-      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Bioinformatics}
@@ -394,8 +1409,8 @@
       \strng{authorbibnamehash}{98fd8ffea028cee40ae16a311a5ba819}
       \strng{authornamehash}{98fd8ffea028cee40ae16a311a5ba819}
       \strng{authorfullhash}{98fd8ffea028cee40ae16a311a5ba819}
-      \field{sortinit}{1}
-      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Journal of computational chemistry}
@@ -448,8 +1463,8 @@
       \strng{authorbibnamehash}{4f0052e450e42c4dc73192c4f8533e26}
       \strng{authornamehash}{4f0052e450e42c4dc73192c4f8533e26}
       \strng{authorfullhash}{9fb437743bcab1ccbbeaba7580269b9e}
-      \field{sortinit}{1}
-      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Journal of cheminformatics}
@@ -482,8 +1497,8 @@
       \strng{authorbibnamehash}{beb2e24a0697cdea8f2149eaa8b608b8}
       \strng{authornamehash}{beb2e24a0697cdea8f2149eaa8b608b8}
       \strng{authorfullhash}{beb2e24a0697cdea8f2149eaa8b608b8}
-      \field{sortinit}{1}
-      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Journal of molecular biology}
@@ -526,8 +1541,8 @@
       \strng{authorbibnamehash}{ca87a75b5928051c4634b8083e0dd994}
       \strng{authornamehash}{ca87a75b5928051c4634b8083e0dd994}
       \strng{authorfullhash}{6d8f6249ededbc4747d451f32058c160}
-      \field{sortinit}{1}
-      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Biochimica et Biophysica Acta (BBA)-Bioenergetics}
@@ -557,8 +1572,8 @@
       \strng{authorbibnamehash}{2b8c1b40c9351644c561a1f23eba5e3e}
       \strng{authornamehash}{2b8c1b40c9351644c561a1f23eba5e3e}
       \strng{authorfullhash}{2b8c1b40c9351644c561a1f23eba5e3e}
-      \field{sortinit}{2}
-      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Journal of machine learning research}
@@ -591,8 +1606,8 @@
       \strng{authorbibnamehash}{9bc0813b09f8460b9f60233db84de773}
       \strng{authornamehash}{9bc0813b09f8460b9f60233db84de773}
       \strng{authorfullhash}{9bc0813b09f8460b9f60233db84de773}
-      \field{sortinit}{2}
-      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{arXiv preprint arXiv:1802.03426}
@@ -621,8 +1636,8 @@
       \strng{authorbibnamehash}{0ba2e98caee22478f6e1ca6e7bc925d4}
       \strng{authornamehash}{0ba2e98caee22478f6e1ca6e7bc925d4}
       \strng{authorfullhash}{0ba2e98caee22478f6e1ca6e7bc925d4}
-      \field{sortinit}{2}
-      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Protein science}
@@ -697,8 +1712,8 @@
       \strng{authorbibnamehash}{385b84ff9ec134408fea9aeba42f4525}
       \strng{authornamehash}{385b84ff9ec134408fea9aeba42f4525}
       \strng{authorfullhash}{1e74a31396f551b6eda81bdde67b47c7}
-      \field{sortinit}{2}
-      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Nature}
@@ -761,8 +1776,8 @@
       \strng{authorbibnamehash}{8426ec610977741323165554d6842a4e}
       \strng{authornamehash}{8426ec610977741323165554d6842a4e}
       \strng{authorfullhash}{b7dee6e487a56fecb797dd9bc692de1c}
-      \field{sortinit}{2}
-      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Journal of chemical theory and computation}
@@ -810,8 +1825,8 @@
       \strng{authorbibnamehash}{5094bb82370c54c7c7bef0d6af0372bd}
       \strng{authornamehash}{5094bb82370c54c7c7bef0d6af0372bd}
       \strng{authorfullhash}{cbac56920a5f6d0bf5a803c89491f9b6}
-      \field{sortinit}{2}
-      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Journal of computational chemistry}
@@ -864,8 +1879,8 @@
       \strng{authorbibnamehash}{ef2dc91f6196d980bce8668527eefd39}
       \strng{authornamehash}{ef2dc91f6196d980bce8668527eefd39}
       \strng{authorfullhash}{d7608da08658e435689c438187a80f65}
-      \field{sortinit}{2}
-      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Journal of chemical theory and computation}
@@ -933,8 +1948,8 @@
       \strng{authorbibnamehash}{190b0889882dead4fa29e91870de98fb}
       \strng{authornamehash}{190b0889882dead4fa29e91870de98fb}
       \strng{authorfullhash}{e190af700bc658c7be5d3e88c16cdff7}
-      \field{sortinit}{3}
-      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{sortinit}{6}
+      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Bioinformatics}
