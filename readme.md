@@ -1,16 +1,78 @@
 # Thesis
 
-WIP
+## ToDo
 
-[**hosted**](https://jamesengleback.xyz)
+### Introduction
+- [ ] Herbicides
+	- [ ] Clean up 
+	- [ ] Add new literature
+- [ ] P450s
+- [ ] BM3
+- [ ] Protein Engineering
 
-## Recently Changed
+### Screening Fist
+- [ ] Introduction
+	- [ ] Machine Learning
+		- [ ] TAPE 
+		- [ ] ESM/Transformers 
+		- [ ] TAPE 
+		- [ ] Biswas and application 
+	- [ ] P450 BM3 
+		- [ ] UV-Vis spec technique
+		- [ ] Notable mutants
+		- [ ] BM3 active site
+	- [ ] High Throughput Screening 
+		- [ ] SBS plates
+		- [ ] Automation
+- [ ] Methods
+	- [ ] Describe Library
+	- [ ] Protocol - Less formal, appendix and methods summary
+	- [ ] Data Analysis
+- [ ] Results
+	- [ ] Describe hits, false positives
+- [ ] Discussion
+	- [ ] Overview of work done
+	- [ ] Dissect Library - diversity, colored compounds and out of date compounds
+		- [ ] Future - select better set using molport api?
+	- [ ] Dissect mutant selection - expected activity
+		- [ ] Suggest better, more interesting mutants
+	- [ ] Dissect Screening Protocol
+		- [ ] Suggest improvements, dmso addition, multidrop, bsa
+	- [ ] Dissect Data Analysis
+		- [ ] Improvements: database, parralelization, error catching, different curve fit - bayes
+	- [ ] Dissect Model
+		- [ ] FPR/FNR - sampling
+		- [ ] pretraining data set size - TrEMBL
+		- [ ] pretraining set filtering - compound / sequence diversity
+		- [ ] model architecture - hyperoptimization, chemical embedding
+		- [ ] Experiment design - repeat & dropout
 
-- [update vde methods section](https://github.com/jamesengleback/thesis/tree/master/docs/docs/methods-evo.md) - 2022-02-01 - added commit hashes and some detains for experiment $A$ and $B$. Removed Lab sections.
-- [run and cleanup of vde](https://github.com/jamesengleback/vde) - 2022-01-30
-- [cleanup of thesis repo](https://github.com/jamesengleback/thesis) - 2022-01-30
-- [vde analysis notebook](https://github.com/jamesengleback/thesis/tree/master/docs/docs/evo-a-b.md) - 2022-01-25
-- [this page](https://github.com/jamesengleback/thesis/tree/master/docs/docs/index.md) - updated gantt chart 2022-01-31
-- [vde methods](https://github.com/jamesengleback/thesis/tree/master/docs/docs/methods-evo.md) - vde runtime 2022-01-20
+### VDE
+- [ ] Introduction
+	- [ ] Herbicides
+	- [ ] P450s
+	- [ ] Directed Evolution
+	- [ ] Structure-based Design
+	- [ ] Protein Structure Prediction
+	- [ ] Docking
+	- [ ] Sequence optimization
+	- [ ] Engineering Problem and Overview of work
+- [ ] Methods
+	- [ ] Repo guide
+	- [ ] `enz`
+	- [ ] Score function
+	- [ ] Genetic Algorithm
+	- [ ] Cloud Deployment
+- [ ] Results
+	- [ ] Describe data
+	- [ ] Converged sequences
+		- [ ] Fix template sequence logo
+		- [ ] Dock best, figures
+	- [ ] Codon Design
+- [ ] Discussion
+	- [ ] Simulation accuracy
+	- [ ] Score Relevance 
+	- [ ] Scale
+	- [ ] Analysis
+	- [ ] Codon Design
 
-**vde:** no longer plan to make and test mutants in the lab - instead analyse technique
