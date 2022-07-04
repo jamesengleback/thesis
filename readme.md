@@ -13,6 +13,7 @@
 ### Screening Fist
 - [ ] Introduction
 	- [ ] Machine Learning
+		- [ ] General Overview
 		- [ ] TAPE 
 		- [ ] ESM/Transformers 
 		- [ ] TAPE 
@@ -29,7 +30,9 @@
 	- [ ] Protocol - Less formal, appendix and methods summary
 	- [ ] Data Analysis
 - [ ] Results
-	- [ ] Describe hits, false positives
+	- [ ] Describe hits, false positives, explain plots 
+	- [ ] Sequence generation test
+	- [ ] Experiment design test
 - [ ] Discussion
 	- [ ] Overview of work done
 	- [ ] Dissect Library - diversity, colored compounds and out of date compounds
@@ -44,6 +47,7 @@
 		- [ ] FPR/FNR - sampling
 		- [ ] pretraining data set size - TrEMBL
 		- [ ] pretraining set filtering - compound / sequence diversity
+		- [ ] Validation set - replicas of pretraining?
 		- [ ] model architecture - hyperoptimization, chemical embedding
 		- [ ] Experiment design - repeat & dropout
 
@@ -65,8 +69,13 @@
 	- [ ] Cloud Deployment
 - [ ] Results
 	- [ ] Describe data
+		- [x] Fitness over time img
+		- [ ] Fitness over time text
 	- [ ] Converged sequences
-		- [ ] Fix template sequence logo
+		- [x] Fix template sequence logo
+		- [x] Map clusters to score img
+		- [ ] Map clusters to score text
+		- [ ] Re-do conclusions and mutation table
 		- [ ] Dock best, figures
 	- [ ] Codon Design
 - [ ] Discussion

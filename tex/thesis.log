@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2022/dev/Debian) (preloaded format=xelatex 2022.6.27)  30 JUN 2022 17:20
+This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2022/dev/Debian) (preloaded format=xelatex 2022.6.27)  4 JUL 2022 17:31
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1206,7 +1206,18 @@ File: img/exp-a-logo.png Graphic file (type bmp)
 <img/exp-a-logo.png>
 File: img/exp-b-logo.png Graphic file (type bmp)
 <img/exp-b-logo.png>
- [56] [57] [58]
+File: img/expa-logo-notemplate.png Graphic file (type bmp)
+<img/expa-logo-notemplate.png>
+File: img/expb-logo-notemplate.png Graphic file (type bmp)
+<img/expb-logo-notemplate.png>
+
+
+LaTeX Warning: Float too large for page by 114.03229pt on input line 1506.
+
+
+LaTeX Warning: Reference `dimredclusters ' on page 56 undefined on input line 1
+517.
+
 File: img/dimred-plt.png Graphic file (type bmp)
 <img/dimred-plt.png>
 File: img/dimred-ds.png Graphic file (type bmp)
@@ -1214,16 +1225,17 @@ File: img/dimred-ds.png Graphic file (type bmp)
 File: img/dimred-plt-clusters.png Graphic file (type bmp)
 <img/dimred-plt-clusters.png>
 
-Overfull \hbox (1.74551pt too wide) in paragraph at lines 1575--1604
+Overfull \hbox (1.74551pt too wide) in paragraph at lines 1549--1578
 [][] 
  []
 
+[56] [57] [58] [59] [60] [61] [62]
 File: img/clus_314.png Graphic file (type bmp)
 <img/clus_314.png>
 File: img/clus_314-codon-coverage.png Graphic file (type bmp)
 <img/clus_314-codon-coverage.png>
-[59] [60] [61] [62] [63] [64] [65] [66] [67]
-Overfull \hbox (3.8366pt too wide) in paragraph at lines 1742--1745
+ [63] [64] [65] [66] [67]
+Overfull \hbox (3.8366pt too wide) in paragraph at lines 1716--1719
 \TU/NotoSans(0)/m/n/10 vestigated, other sequence optimization algorithms are w
 orth investigation. Namely, \TU/NotoSans(0)/m/it/10 Bayesian
  []
@@ -1231,25 +1243,25 @@ orth investigation. Namely, \TU/NotoSans(0)/m/it/10 Bayesian
 [68] [69] [70
 
 ]
-Overfull \hbox (3.28062pt too wide) in paragraph at lines 1778--1778
+Overfull \hbox (3.28062pt too wide) in paragraph at lines 1752--1752
 []\TU/NotoSans(0)/m/n/10 Food and Agriculture Organization of the United Nation
 s (FAO). \TU/NotoSans(0)/m/it/10 High Level Expert Forum—
  []
 
 
-Overfull \hbox (3.09825pt too wide) in paragraph at lines 1778--1778
+Overfull \hbox (3.09825pt too wide) in paragraph at lines 1752--1752
 \TU/NotoSans(0)/m/n/10 synthesis in spinach chloroplasts subfractions”. In: \TU
 /NotoSans(0)/m/it/10 Archives of biochemistry and biophysics
  []
 
 [71]
-Overfull \hbox (3.44392pt too wide) in paragraph at lines 1778--1778
+Overfull \hbox (3.44392pt too wide) in paragraph at lines 1752--1752
 []\TU/NotoSans(0)/m/n/10 Hiroyuki Kawahigashi et al. “Enhanced herbicide cross-
 tolerance in transgenic rice plants
  []
 
 [72]
-Overfull \hbox (7.17159pt too wide) in paragraph at lines 1778--1778
+Overfull \hbox (7.17159pt too wide) in paragraph at lines 1752--1752
 \TU/NotoSans(0)/m/n/10 proteins application to side-chain prediction”. In: \TU/
 NotoSans(0)/m/it/10 Journal of molecular biology \TU/NotoSans(0)/m/n/10 230.2 (
 1993),
@@ -1257,25 +1269,22 @@ NotoSans(0)/m/it/10 Journal of molecular biology \TU/NotoSans(0)/m/n/10 230.2 (
 
 [73] (./thesis.aux)
 
+LaTeX Warning: There were undefined references.
+
+
 LaTeX Warning: There were multiply-defined labels.
 
-
-Package rerunfilecheck Warning: File `thesis.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `thesis.out':
-(rerunfilecheck)             Before: C7C4D954F21453168E29669563DB8114;5169
-(rerunfilecheck)             After:  7624D86C4C63068C216AEFE5FF753473;5338.
+Package rerunfilecheck Info: File `thesis.out' has not changed.
+(rerunfilecheck)             Checksum: 7624D86C4C63068C216AEFE5FF753473;5338.
 Package logreq Info: Writing requests to 'thesis.run.xml'.
 \openout1 = `thesis.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 22499 strings out of 478158
- 445913 string characters out of 5853402
- 1217814 words of memory out of 5000000
- 42803 multiletter control sequences out of 15000+600000
+ 22523 strings out of 478158
+ 446551 string characters out of 5853402
+ 1221663 words of memory out of 5000000
+ 42825 multiletter control sequences out of 15000+600000
  477796 words of font info for 97 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  73i,12n,85p,1131b,4818s stack positions out of 5000i,500n,10000p,200000b,80000s

@@ -1476,9 +1476,10 @@ For both, distance $d$ was a skewed distribution that leans towards lower values
 	\end{center}
 \end{figure}
 
-The repeats of each experiment converged towards a preferred mutation at each position.
 Figure \ref{logot} is a sequence logo which shows the amino acids at each mutation site for the template sequence BM3 A82F/F87V, whilst \ref{logoa} and \ref{logob} represent the overall frequencies of different amino acids across experiments $A$ and $B$ respectively.
-These mutations are shown in table \ref{mxntab}.
+They show that the repeats of each experiment tended towards the template amino acid at each position, likely because of the constraint on $h$ in both score functions, resulting in few mutants that are more than six mutations from the template.
+Ignoring the template amino acids yields the sequences logos \ref{logonotpa} and \ref{logonotpb}, neither of which show a clear preference at any particular site.
+
 
 \begin{figure}
 	\caption{\label{logos} Sequence logos.}
@@ -1494,53 +1495,26 @@ These mutations are shown in table \ref{mxntab}.
 	\includegraphics[width=\textwidth]{img/exp-b-logo.png}
 	\caption{\label{logob} Sequence logo showing the overall amino acid frequencies in mutants in $B$.}
 \end{subfigure}
+\begin{subfigure}{\textwidth}
+	\includegraphics[width=\textwidth]{img/expa-logo-notemplate.png}
+	\caption{\label{logonotpa} Sequence logo showing the bulk average mutation preference in experiment $A$, ignoring the template amino acids (\ref{logot}).}
+\end{subfigure}
+\begin{subfigure}{\textwidth}
+	\includegraphics[width=\textwidth]{img/expb-logo-notemplate.png}
+	\caption{\label{logonotpb} Sequence logo showing the bulk average mutation preference in experiment $B$, ignoring the template amino acids (\ref{logot}).}
+\end{subfigure}
 \end{figure}
 
-\begin{table}
-        \begin{center}
-		\caption{\label{mxntab} The mutations converged upon using \textit{Virtual Directed Evolution}}
-		\begin{tabular}{l}
-		\textbf{Mutation} \\
-	    \hline
-             G47R \\
-             V49T \\
-             R51Y \\
-             A75L \\
-             F78V \\
-             V88T \\
-             E94K \\
-            E138H \\
-            V142P \\
-            I175T \\
-            M178V \\
-            E184A \\
-            K188L \\
-            Q205F \\
-            A226S \\
-            D252E \\
-            I255R \\
-            I260T \\
-            L263I \\
-            K290A \\
-            A295A \\
-            T328A \\
-            P330A \\
-            K350G \\
-            E353L \\
-\end{tabular}
-        \end{center}
-\end{table}
 
-The exact set of 25 mutations in table \ref{mxntab} are never reached, since figure \ref{abdistr} shows that the \textit{Hamming Distance} $h$ never exceeded eight.
-\textbf{Mutation Correlation}
-
-Several clusters of mutants were identified using dimensionality reduction and clustering algorithms.
+Although there was no global consensus on a set of mutations that improve binding, clusters of sequences showed improved binding properties.
+Clusters of mutants were identified using dimensionality reduction and clustering algorithms.
 Mutant sequences were reduced in dimensionality using both the \textit{t-SNE} \cite{van2008visualizing} and \textit{UMAP} \cite{mcinnes2018umap} algorithms to decompose an input of the binary encoded  amino acids at each mutation position.
 The reduced sequence information was plotted in two ways:
 
 \begin{enumerate}
 	\item Colour mapping score to each point, in an attempt to identify clusters with an especially high score (figure \ref{dimredplt}).
 	\item Colour by point density (figure \ref{dimredds}).
+	\item Colour by cluster (figure \ref{dimredclusters }).
 \end{enumerate}
 
 At the center of each dimensionality reduction map are the sequences that were repeatedly converged upon, visible by an area of low score (desirable).
