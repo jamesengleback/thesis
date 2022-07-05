@@ -76,9 +76,12 @@
 \contentsline {subsection}{\numberline {3.3.4}Main Function }{53}{subsection.3.3.4}%
 \contentsline {subsection}{\numberline {3.3.5}Cloud Deployment }{54}{subsection.3.3.5}%
 \contentsline {section}{\numberline {3.4}Results}{55}{section.3.4}%
+\contentsline {subsection}{\numberline {3.4.1}Exploratory Analysis for Experiments $A$ and $B$}{55}{subsection.3.4.1}%
+\contentsline {subsection}{\numberline {3.4.2}Clustering}{56}{subsection.3.4.2}%
+\contentsline {subsection}{\numberline {3.4.3}Codon Design}{63}{subsection.3.4.3}%
 \contentsline {section}{\numberline {3.5}Discussion and Future Work}{63}{section.3.5}%
-\contentsline {subsubsection}{Simulation Accuracy}{63}{section*.72}%
-\contentsline {subsubsection}{Score Relevance}{66}{section*.73}%
-\contentsline {subsubsection}{Sequence Optimization}{67}{section*.74}%
-\contentsline {subsubsection}{Scale}{68}{section*.75}%
-\contentsline {subsubsection}{Codon Design}{68}{section*.76}%
+\contentsline {subsubsection}{Simulation Accuracy}{66}{section*.73}%
+\contentsline {subsubsection}{Score Relevance}{68}{section*.74}%
+\contentsline {subsubsection}{Sequence Optimization}{68}{section*.75}%
+\contentsline {subsubsection}{Scale}{69}{section*.76}%
+\contentsline {subsubsection}{Codon Design}{70}{section*.77}%

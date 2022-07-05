@@ -1303,6 +1303,7 @@ where $\Delta G$ is a free energy estimation of the interaction calculated by \t
 	\includegraphics[width=\textwidth]{img/score.png}
 	\caption{\label{score} - Distance $d$  between carbon $C_5$ of mesotrione and the heme iron of BM3, used in the fitness score (\AA) marked by a yellow dashed line.}
 \end{figure}
+%% to do - score functions a and b
 
 \subsection{Genetic Algorithm \label{ga}}
 
@@ -1449,21 +1450,37 @@ Data was pulled down from the bucket storage onto a separate server for analysis
 % ----------------
 \section{Results}
 
-Each experiment $A$ and $B$ yielded near to 32,000 unique mutants.
-In each run, metrics were saved to a \texttt{csv} file containing the following headers:
 
+\subsection{Exploratory Analysis for Experiments $A$ and $B$}
+Each experiment $A$ and $B$ yielded near to 32,000 unique mutants.
+The overall distributions for metrics, amino acids at each site and a set of dimensionality reduction techniques for data generated in experiments $A$ and $B$ are shown here.
+These metric distributions are compared in figure \ref{abdistr}, where the recorded metrics were:
 \begin{itemize}
-	\item \textbf{gene:} The mutant sequence represented only by the amino acids at the \textit{Mutation Sites} in table \ref{config}.
-	\item \textbf{score:} The score $A$ or $B$ depending on which experiment is in question.
-	\item \textbf{dist\_mean:} The mean distance between the $C_5$ carbon of a mesotrione pose and the heme iron, for all poses.
-	\item \textbf{aff\_mean:} The mean binding energy estimate provided by \textit{VINA} for all poses, given in \textit{kcal/mol}
-	\item \textbf{ham:} The Hamming distance, $h$ between a given mutant and the template sequence.
-	\item \textbf{uid:} A unique ID.
+	\item $\Delta G$: The mean binding energy for docked mesotrione poses as calculated by \textit{VINA} and given in kcal/mol.
+	\item $H$: The Hamming Distance, or number of mutations relative to the wild type.
+	\item $d$: The distance between mesotrione carbon $C_5$ and the heme iron, given in \AA.
+	\item $score_{\in {a, b}}$: The score function $a$ or $b$ for experiments $A$ and $B$ respectively. Score $a$ is described in \ref{scorefn} and $b$ in \ref{scorefn}.
 \end{itemize}
 
-The distributions for $A$ and $B$ are compared in figure \ref{abdistr}.
-For both, there are many mutants for whom $d < 8$ which may be suitable for the project aim.
+The progression of these metrics with generation for each experiment are shown in \ref{violin}.
+\textbf{note:} columns mislabelled in $B$, need suptitle.
+Viewing the progression of the objective score shows that for $A$ and $B$ the score distributions changed by very little, suggesting that the sequence optimization algorithm used here is a poor choice for this type of problem.
+On the other hand, $\Delta G$ did increase in both, which could mean that both score functions tended to sacrifice $\Delta G$ for $H$ or $d$, or more worryingly that $\Delta G$ is prioritized and that the optimizer was unintentionally reversed.
+Despite this, the algorithm did produce a large volume of data which can still be dissected to identify active mutants and gain insight. 
 
+\begin{figure}
+	\caption{\label{violin}}
+\begin{subfigure}{\textwidth}
+	\caption{\label{violina} Progression of $\Delta G$, $d$ and $score_a$ with generation for experiment $A$.}
+	\includegraphics[width=\textwidth]{img/generation-global-dist_mean-a.png}
+\end{subfigure}
+\begin{subfigure}{\textwidth}
+	\caption{\label{violinb} $\Delta G$, $d$ and $score_b$ with generation for experiment $B$.}
+	\includegraphics[width=\textwidth]{img/generation-global-dist_mean-b.png}
+\end{subfigure}
+\end{figure}
+
+The histograms in figure \ref{abdistr} shows that for both $A$ and $B$, there are many mutants for whom $d < 8$ which may be suitable for the project aim.
 Between the two experiments, the distance $d$ between carbon $C_5$ and the heme iron is largely similar, so too are the calculated affinities ($\Delta G$) and Hamming distance to the wild type, $h$.
 Hamming distance $h$ rarely exceeded 8, likely due to the constraint on $h$ incorporated into both score functions.
 Docking binding energy estimates $\Delta G$ cluster at a set of values for both experiments which may indicate the same number of pose clusters with similar energies. 
@@ -1472,7 +1489,7 @@ For both, distance $d$ was a skewed distribution that leans towards lower values
 \begin{figure}
 	\begin{center}
 		\includegraphics[width=0.7\textwidth]{img/exp-a-b-compr-dists.png}
-		\caption{\label{abdistr} The distributions of each recorded metric across the entire experiment for both experiments $A$ and $B$.}
+		\caption{\label{abdistr} Histograms showing the distributions of each recorded metric across the entire experiment for both experiments $A$ and $B$.}
 	\end{center}
 \end{figure}
 
@@ -1505,47 +1522,68 @@ Ignoring the template amino acids yields the sequences logos \ref{logonotpa} and
 \end{subfigure}
 \end{figure}
 
+From this we can see that the sequence optimizer has not worked, but has generated mutants predicted to have desirable mesotrione binding properties given the project aim.
+Unanswered questions that remain are:
+\begin{itemize}
+	\item Are there clusters of sequences or regions of sequence space where desirable properties are prevalent? 
+		And is there a pattern in mutation preference for these clusters?
+	\item How noisy is the evaluation function?
+\end{itemize}
+
+\subsection{Clustering}
 
 Although there was no global consensus on a set of mutations that improve binding, clusters of sequences showed improved binding properties.
 Clusters of mutants were identified using dimensionality reduction and clustering algorithms.
 Mutant sequences were reduced in dimensionality using both the \textit{t-SNE} \cite{van2008visualizing} and \textit{UMAP} \cite{mcinnes2018umap} algorithms to decompose an input of the binary encoded  amino acids at each mutation position.
-The reduced sequence information was plotted in two ways:
-
-\begin{enumerate}
-	\item Colour mapping score to each point, in an attempt to identify clusters with an especially high score (figure \ref{dimredplt}).
-	\item Colour by point density (figure \ref{dimredds}).
-	\item Colour by cluster (figure \ref{dimredclusters }).
-\end{enumerate}
-
-At the center of each dimensionality reduction map are the sequences that were repeatedly converged upon, visible by an area of low score (desirable).
-When colored by point density the same low scoring centers of the mapping are also densely populated.
-In order to confirm that the solutions in the centre were converged upon a generation number color map would be necessary, though was not possible since generation numbers were not recorded.
+The reduced sequence information is mapped to scores in figure \ref{dimredplt}.
+% plot with metrics, hamming
+%At the center of each dimensionality reduction map are the sequences that were repeatedly converged upon, visible by an area of low score (desirable).
+%When colored by point density the same low scoring centers of the mapping are also densely populated.
+%In order to confirm that the solutions in the centre were converged upon a generation number color map would be necessary, though was not possible since generation numbers were not recorded.
 
 \begin{figure}
 	\includegraphics[width=\textwidth]{img/dimred-plt.png}
-	\caption{\label{dimredplt}}
-\end{figure}
-\begin{figure}
-	\includegraphics[width=\textwidth]{img/dimred-ds.png}
-	\caption{\label{dimredds}}
+	\caption{\label{dimredplt} Two different dimensionality reduction techniques were applied to the integer encoded sequences data from $A$ and $B$.
+	The coordinates are mapped to their respective scores. \textbf{note: viridis -> inferno}}
 \end{figure}
 
-Whilst it is possible that the converged mutations are sufficient for creating a BM3 mutant with target activity, it is also possible that optimizing sequences for these scores exploited an inaccuracy in the model which would result in unintended consequences, such as large structural changes that can not be predicted by the model.
-To mitigate the risk of a failed round of lab screening, it is prudent to identify other clusters with activity in order to introduce diversity into the screening set.
-Clusters were made directly from the reduced dimensions using the \textit{DBSCAN} algorithm, exemplified in figure \ref{dimredclusters}.
-
+\begin{center}
 \begin{figure}
 	\includegraphics[width=\textwidth]{img/dimred-plt-clusters.png}
-	\caption{\label{dimredclusters} Clusters of dimensionality-reduced mutants. Color codes to clusters are not shown.}
+	\caption{\label{dimredclusters} The same dimensionality-reduction coordinates as in figure \ref{dimredplt} colored by cluster mapping generated by the \textit{DBSCAN} algorithm acting directly on the reduced coordinates. Color codes to clusters are not shown for the sake of space.}
 \end{figure}
 
-From these clusters, the best scoring eight were selected, their amino acid frequencies calculated and degenerate codons designed to reflect that frequency using the \textit{Codon Genie API}.
-Reports for each were generated and an example is shown in figure \ref{cdxreport}.
+\begin{figure}
+	\includegraphics[width=1.1\textwidth]{img/dimred-clust-meanscores.png}
+	\caption{\label{dimredclustersscores} Clusters of dimensionality-reduced mutants as in figure \ref{dimredclusters} mapped to the mean score of that cluster.
+	In the t-SNE plots, clusters with high and low scores are visible in both $A$ and $B$.}
+\end{figure}
+\end{center}
+%Whilst it is possible that the converged mutations are sufficient for creating a BM3 mutant with target activity, it is also possible that optimizing sequences for these scores exploited an inaccuracy in the model which would result in unintended consequences, such as large structural changes that can not be predicted by the model.
+%To mitigate the risk of a failed round of lab screening, it is prudent to identify other clusters with activity in order to introduce diversity into the screening set.
+Despite no global consensus, clusters of mutants were identified with the aim of identifying regions of sequence space with their overall favourable properties.
+The hypothesis here was that some regions of sequence space would largely have similar characteristics save for extreme loss of function mutants.
+Activity distributions within clusters would be different from the global distribution in this case which can be quantified using Kubrik-Leibler divergence \cite{kldiver} $D_{KL}$ in equation \ref{kldiv}.
 
+\begin{equation}\label{kldiv}
+	D_{KL}(p||q) = \sum{x \in X} p(x) \log{\frac{p(x)}{q(x)}}
+\end{equation}
+$KL$ divergence between two distributions $q$ and $p$ which are appropriated with the function $q(x)$ and $p(x)$ where $x$ an element of the set real numbers $X \in \mathbb{R}$.
+
+Rather than clustering directly from the sequences, clusters were made directly from the reduced dimensions using the \textit{DBSCAN} algorithm, exemplified in figure \ref{dimredclusters}.
+This was because the dimensionality reduction methods used here group spatially with similarity, so clustering spatially clusters sequences with some similar properties.
+The benefits of this order of operations include performance improvements for the clustering algorithm given the lower dimensionality of the data and coherence with the sequence dimensionality reduction which makes it useful as a \textit{fitness map}.
+
+For each dimensionality reduction technique, \textit{DBSCAN} was used to identify clusters from the coordinates, shown in figure \ref{dimredclusters}.
+
+
+\subsection{Codon Design}
+From these clusters, the best scoring eight were selected, their amino acid frequencies calculated and degenerate codons designed to reflect that frequency using the \textit{Codon Genie API}.
+Reports for each were generated and an example is shown in figure \ref{cdxreport} and the codons designed for exemplary cluster 314 are in table \ref{cdx314}.
 
 \begin{table}
 \caption{\label{cdx314} An example of the codons auto-generated for mutant cluster 314, which encodes few variants. 
-	A total of 1024 variants are encoded by this set of codons.}
+	A total of 1024 variants are encoded by this set of codons. }
 \begin{tabular}{lllcl} 
 	\textbf{Position} & \textbf{Codon} & \textbf{Expansion} & \textbf{Number of Encoded Variants} & \textbf{Amino Acids} \\
 	\hline
@@ -1577,8 +1615,7 @@ Reports for each were generated and an example is shown in figure \ref{cdxreport
 \end{tabular}
 \end{table}
 
-The codons designed for exemplary cluster 314 are in table \ref{cdx314}.
-In this manner codons were designed for clusters in experiments $A$ and $B$, the data and reports for which are stored in \texttt{nb/codons/} of the project \texttt{git}  repository.
+This way, codons were designed for clusters in experiments $A$ and $B$, the data and reports for which are stored in \texttt{nb/codons/} of the project \texttt{git}  repository.
 The total size of each library yielded by the codon design varies from four to several thousand, the latter of which are not suitable for use owing to the extreme numbers of potential variants.
 Some libraries also inadvertently encode a \textit{Stop} codon, which should also be avoided.
 
@@ -1588,7 +1625,7 @@ Some libraries also inadvertently encode a \textit{Stop} codon, which should als
 	\includegraphics[width=\textwidth]{img/clus_314.png}
 	\caption{\label{cdxreport} A codon report for cluster 314 derived from a \textit{UMAP} of the sequences in experiment $A$.
 		 Shown are the cluster distributions of each recorded metric relative to the global distribution.
-		 The sequence logo represents the mutation frequency at each position.}
+		 The sequence logo represents the mutation frequency at each position. \textbf{note: map back to umap}}
 \end{subfigure}
 \begin{subfigure}{\textwidth}
 	\includegraphics[width=\textwidth]{img/clus_314-codon-coverage.png}

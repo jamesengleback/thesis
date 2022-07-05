@@ -64,24 +64,29 @@
 - [ ] Methods
 	- [ ] Repo guide
 	- [ ] `enz`
-	- [ ] Score function
+	- [ ] Score function 
+		- [ ] move score fn a and b to this section
 	- [ ] Genetic Algorithm
 	- [ ] Cloud Deployment
 - [ ] Results
 	- [ ] Describe data
 		- [x] Fitness over time img
+			- [ ] fig suptitle
 		- [ ] Fitness over time text
 	- [ ] Converged sequences
 		- [x] Fix template sequence logo
 		- [x] Map clusters to score img
 		- [ ] Map clusters to score text
+		- [ ] Cluster with aa encoding
+		- [ ] KL divergence kl(global, cluster)
 		- [ ] Re-do conclusions and mutation table
 		- [ ] Dock best, figures
 	- [ ] Codon Design
+		- [ ] Replace fig - metric names are wrong
 - [ ] Discussion
 	- [ ] Simulation accuracy
 	- [ ] Score Relevance 
 	- [ ] Scale
-	- [ ] Analysis
+	- [ ] Analysis 
 	- [ ] Codon Design
 
