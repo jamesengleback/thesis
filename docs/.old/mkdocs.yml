@@ -1,32 +1,57 @@
-site_name: Thesis 
+site_name: James' Thesis
+site_favicon: pix/selfportrait.svg
 repo_url: https://github.com/jamesengleback/thesis
 
 theme:
   name: gitbook
-  font:
+  font: 
     text: Noto Sans
     code: Noto Sans Mono
 
 nav:
-  - General:
-    - index.md
-    - general-overview.md
-    - general-ai.md
-    - general-directed-evolution.md
-    - general-docking.md
-    - general-hppds.md
-    - general-p450s.md
-    - general-protein-structure-prediction.md
-  - Screening Fist:
-    - sxfst-introduction.md
-    - sxfst-methods.md
-    - sxfst-results.md
-    - sxfst-discussion.md
-  - Virtual Directed Evolution:
-    - vde-introduction.md
-    - vde-methods.md
-    - vde-results.md
-    - vde-discussion.md
+  - index.md
+  - abstract.md
+  - Contributing: 'contributing.md'
+  - Overlap:
+    - 'overview.md'
+    - 'herbicide-resistance.md'
+    - 'enzyme-engineering.md'
+    - 'mesotrione.md'
+    - 'p450s.md'
+    - 'bm3.md'
+    - 'aims.md'
+    - 'methods-general.md'
+  - Paper 1:
+    - Introduction:
+            - 'intro-evo.md'
+            - 'protein-structure-pred.md'
+            - 'docking.md'
+            - 'molecular-dynamics.md'
+            - 'evo-outline.md'
+    - 'methods-evo.md'
+    - 'results-evo.md'
+    - 'discussion-evo.md'
+    - Jupyter Notebooks:
+            - 'nb-md/evo-a-b.md'
+  - Paper 2:
+    - Introduction:
+            - 'intro-rio.md'
+            - 'deep-learning.md'
+            - 'hts.md'
+            - 'rio-outline.md'
+    - 'methods-rio.md'
+    - 'results-rio.md'
+    - 'discussion-rio.md'
+    - 'screening-fist.md'
+  - Appendix:
+    - 'enz.md'
+    - 'mxn.md'
+    - 'cpd.md'
+    - 'echo.md'
+    - 'plates.md'
+  - References:
+    - 'references.md'
+
 
 markdown_extensions:
   - mdx_math
@@ -60,6 +85,7 @@ extra_javascript:
   - https://unpkg.com/mermaid@7.1.2/dist/mermaid.min.js
   - https://polyfill.io/v3/polyfill.min.js?features=es6
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+  - extra/refresh_on_toggle_dark_light.js
 
 
 
@@ -71,4 +97,3 @@ plugins:
   - mermaid2:
       arguments:
               theme: 'neutral'
-
