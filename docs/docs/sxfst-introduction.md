@@ -41,23 +41,16 @@ metabolic enzymes from naturally resistant species like *Avena fatua*.
 **note: ref this.** CYP72A1 is a cytochrome P450 that initiates
 metabolism of HPPD herbicides by ring hydroxylation at $C_5$ and has
 been explored as a means of engineering HPPD herbicide metabolism into
-soybean. **Figure [3.1](#mesotrione){reference-type="ref"
-reference="mesotrione"}** shows the chemical structure of mesotrione and
+soybean. **Figure [3.1](#mesotrione)** shows the chemical structure of mesotrione and
 its primary metabolite 5-hydroxy mesotrione.
 
-![[\[mesotrione\]]{#mesotrione label="mesotrione"} The HPPD-inhibiting
-herbicide mesotrione and its primary metabolite 5-hydroxy mesotrione -
-hydroxylated at the $C_5$ position naturally in some plants by
-indigenous Cytochrome P450s, priming it for subsequent stages of
-detoxification.](img/mesotrione+metabolite.png){#mesotrione
-width="\\textwidth"}
-
-![[\[mesotrione\]]{#mesotrione label="mesotrione"} The HPPD-inhibiting
-herbicide mesotrione and its primary metabolite 5-hydroxy mesotrione -
-hydroxylated at the $C_5$ position naturally in some plants by
-indigenous Cytochrome P450s, priming it for subsequent stages of
-detoxification.](img/mesotrione+metabolite.png){#mesotrione
-width="\\textwidth"}
+![mesotrione](img/mesotrione+metabolite.png) <a name=mesotrione></a>
+> **Figure [3.1](#mesotrione)**
+> The HPPD-inhibiting
+> herbicide mesotrione and its primary metabolite 5-hydroxy mesotrione -
+> hydroxylated at the $C_5$ position naturally in some plants by
+> indigenous Cytochrome P450s, priming it for subsequent stages of
+> detoxification.
 
 Cytochrome P450s are a ubiquitous class of heme-dependent
 oxidoreductases that are frequently involved in xenobiotic metabolism.
@@ -70,7 +63,7 @@ Notably, BM3 is a popular target for enzyme engineering studies, owing
 in part to its extensive documentation, ease of expression and
 *evolvability* [@bloom2006protein]. Some examples of BM3 mutants with
 altered substrate scope are shown in **Table
-[2.4](#bm3_table){reference-type="ref" reference="bm3_table"}** [@wong].
+[2.4](#bm3_table)** [@wong].
 
 |**Mutant**             |**Substrate scope**                                                                                 |**Structure** 												|
 |-----------------------|----------------------------------------------------------------------------------------------------|-----------------------------------------------------------|
