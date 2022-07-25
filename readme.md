@@ -1,92 +1,46 @@
 # Thesis
 
-## ToDo
 
-### Introduction
-- [ ] Herbicides
-	- [ ] Clean up 
-	- [ ] Add new literature
-- [ ] P450s
-- [ ] BM3
-- [ ] Protein Engineering
+## Objectives
+- [ ] **General :**
+	- [ ] **HPPD Herbicides :**
+		- [ ] **Scaffold :**
+		- [ ] **Dock to ntHPPD :**
+		- [ ] **Dock to Cyp72A1 :**
+	- [ ] **P450s :**
+	- [ ] **Enzyme Engineering :**
+	- [ ] **Protein Structure Prediction :**
+	- [ ] **Docking :**
+- [ ] **Screening Fist:**
+	- [ ] **Results:**
+		- [ ] **Screening Data:**
+		- [ ] **Model Training:**
+		- [ ] **Generated Proteins:**
+	- [ ] **Discussion:**
+		- [ ] **Issues:**
+		- [ ] **Improvements:**
+- [ ] **VDE:**
+	- [ ] **Results:**
+	- [ ] **Discussion:**
+		- [ ] **Issues:**
+		- [ ] **Improvements:**
 
-### Screening Fist
-- [ ] Introduction
-	- [ ] Machine Learning
-		- [ ] General Overview
-		- [ ] TAPE 
-		- [ ] ESM/Transformers 
-		- [ ] TAPE 
-		- [ ] Biswas and application 
-	- [ ] P450 BM3 
-		- [ ] UV-Vis spec technique
-		- [ ] Notable mutants
-		- [ ] BM3 active site
-	- [ ] High Throughput Screening 
-		- [ ] SBS plates
-		- [ ] Automation
-- [ ] Methods
-	- [ ] Describe Library
-	- [ ] Protocol - Less formal, appendix and methods summary
-	- [ ] Data Analysis
-- [ ] Results
-	- [ ] Describe hits, false positives, explain plots 
-	- [ ] Sequence generation test
-	- [ ] Experiment design test
-- [ ] Discussion
-	- [ ] Overview of work done
-	- [ ] Dissect Library - diversity, colored compounds and out of date compounds
-		- [ ] Future - select better set using molport api?
-	- [ ] Dissect mutant selection - expected activity
-		- [ ] Suggest better, more interesting mutants
-	- [ ] Dissect Screening Protocol
-		- [ ] Suggest improvements, dmso addition, multidrop, bsa
-	- [ ] Dissect Data Analysis
-		- [ ] Improvements: database, parralelization, error catching, different curve fit - bayes
-	- [ ] Dissect Model
-		- [ ] FPR/FNR - sampling
-		- [ ] pretraining data set size - TrEMBL
-		- [ ] pretraining set filtering - compound / sequence diversity
-		- [ ] Validation set - replicas of pretraining?
-		- [ ] model architecture - hyperoptimization, chemical embedding
-		- [ ] Experiment design - repeat & dropout
 
-### VDE
-- [ ] Introduction
-	- [ ] Herbicides
-	- [ ] P450s
-	- [ ] Directed Evolution
-	- [ ] Structure-based Design
-	- [ ] Protein Structure Prediction
-	- [ ] Docking
-	- [ ] Sequence optimization
-	- [ ] Engineering Problem and Overview of work
-- [ ] Methods
-	- [ ] Repo guide
-	- [ ] `enz`
-	- [ ] Score function 
-		- [ ] move score fn a and b to this section
-	- [ ] Genetic Algorithm
-	- [ ] Cloud Deployment
-- [ ] Results
-	- [ ] Describe data
-		- [x] Fitness over time img
-			- [ ] fig suptitle
-		- [ ] Fitness over time text
-	- [ ] Converged sequences
-		- [x] Fix template sequence logo
-		- [x] Map clusters to score img
-		- [ ] Map clusters to score text
-		- [ ] Cluster with aa encoding
-		- [ ] KL divergence kl(global, cluster)
-		- [ ] Re-do conclusions and mutation table
-		- [ ] Dock best, figures
-	- [ ] Codon Design
-		- [ ] Replace fig - metric names are wrong
-- [ ] Discussion
-	- [ ] Simulation accuracy
-	- [ ] Score Relevance 
-	- [ ] Scale
-	- [ ] Analysis 
-	- [ ] Codon Design
-
+```mermaid
+gantt
+        title Thesis Schedule
+        %dateFormat YYYY-MM-DD
+        %%axisFormat %Y/%m/%d
+        %%axisFormat  %Y-%m-%d
+	section General
+	Herbicides 			: g1, 2022-07-25, 1d
+	P450s   			: g2, 2022-07-25, 1d
+	Enzyme Engineering 		: g3, 2022-07-25, 1d
+	Protein Structure Prediction 	: g4, 2022-07-25, 1d
+	Docking 		 	: g5, 2022-07-25, 1d
+	section Screening Fist
+	Results 			: s1, 2022-07-25, 1d
+	Discussion 			: s2, 2022-07-25, 1d
+	section VDE
+	Discussion 			: v1, 2022-07-25, 1d
+```

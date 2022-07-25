@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2022/dev/Debian) (preloaded format=xelatex 2022.6.27)  5 JUL 2022 15:57
+This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2022/dev/Debian) (preloaded format=xelatex 2022.6.27)  6 JUL 2022 20:10
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1200,19 +1200,19 @@ Overfull \hbox (2.33876pt too wide) in paragraph at lines 1409--1410
 [54]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 1454.
+(hyperref)                removing `math shift' on input line 1453.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 1454.
+(hyperref)                removing `math shift' on input line 1453.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 1454.
+(hyperref)                removing `math shift' on input line 1453.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 1454.
+(hyperref)                removing `math shift' on input line 1453.
 
 [55]
 File: img/generation-global-dist_mean-a.png Graphic file (type bmp)
@@ -1221,7 +1221,7 @@ File: img/generation-global-dist_mean-b.png Graphic file (type bmp)
 <img/generation-global-dist_mean-b.png>
 
 
-LaTeX Warning: Float too large for page by 73.8663pt on input line 1481.
+LaTeX Warning: Float too large for page by 73.8663pt on input line 1480.
 
 File: img/exp-a-b-compr-dists.png Graphic file (type bmp)
 <img/exp-a-b-compr-dists.png>
@@ -1236,7 +1236,7 @@ File: img/expa-logo-notemplate.png Graphic file (type bmp)
 File: img/expb-logo-notemplate.png Graphic file (type bmp)
 <img/expb-logo-notemplate.png>
 
-LaTeX Warning: Float too large for page by 114.03305pt on input line 1523.
+LaTeX Warning: Float too large for page by 114.03305pt on input line 1522.
 
 File: img/dimred-plt.png Graphic file (type bmp)
 <img/dimred-plt.png>
@@ -1245,15 +1245,15 @@ File: img/dimred-plt-clusters.png Graphic file (type bmp)
 File: img/dimred-clust-meanscores.png Graphic file (type bmp)
 <img/dimred-clust-meanscores.png>
 
-Overfull \hbox (43.00308pt too wide) in paragraph at lines 1557--1559
+Overfull \hbox (43.00308pt too wide) in paragraph at lines 1556--1558
 [][] 
  []
 
 
-LaTeX Warning: Citation 'kldiver' on page 56 undefined on input line 1566.
+LaTeX Warning: Citation 'kldiver' on page 56 undefined on input line 1565.
 
 [56] [57] [58] [59] [60] [61] [62]
-Overfull \hbox (1.74551pt too wide) in paragraph at lines 1587--1616
+Overfull \hbox (1.74551pt too wide) in paragraph at lines 1586--1615
 [][] 
  []
 
@@ -1262,19 +1262,19 @@ File: img/clus_314.png Graphic file (type bmp)
 File: img/clus_314-codon-coverage.png Graphic file (type bmp)
 <img/clus_314-codon-coverage.png>
 [63] [64] [65] [66] [67] [68]
-Overfull \hbox (3.8366pt too wide) in paragraph at lines 1753--1756
+Overfull \hbox (3.8366pt too wide) in paragraph at lines 1752--1755
 \TU/NotoSans(0)/m/n/10 vestigated, other sequence optimization algorithms are w
 orth investigation. Namely, \TU/NotoSans(0)/m/it/10 Bayesian
  []
 
 [69] [70]
-Overfull \hbox (3.28062pt too wide) in paragraph at lines 1789--1789
+Overfull \hbox (3.28062pt too wide) in paragraph at lines 1788--1788
 []\TU/NotoSans(0)/m/n/10 Food and Agriculture Organization of the United Nation
 s (FAO). \TU/NotoSans(0)/m/it/10 High Level Expert Forum—
  []
 
 
-Overfull \hbox (3.09825pt too wide) in paragraph at lines 1789--1789
+Overfull \hbox (3.09825pt too wide) in paragraph at lines 1788--1788
 \TU/NotoSans(0)/m/n/10 synthesis in spinach chloroplasts subfractions”. In: \TU
 /NotoSans(0)/m/it/10 Archives of biochemistry and biophysics
  []
@@ -1282,13 +1282,13 @@ Overfull \hbox (3.09825pt too wide) in paragraph at lines 1789--1789
 [71
 
 ]
-Overfull \hbox (3.44392pt too wide) in paragraph at lines 1789--1789
+Overfull \hbox (3.44392pt too wide) in paragraph at lines 1788--1788
 []\TU/NotoSans(0)/m/n/10 Hiroyuki Kawahigashi et al. “Enhanced herbicide cross-
 tolerance in transgenic rice plants
  []
 
 [72]
-Overfull \hbox (7.17159pt too wide) in paragraph at lines 1789--1789
+Overfull \hbox (7.17159pt too wide) in paragraph at lines 1788--1788
 \TU/NotoSans(0)/m/n/10 proteins application to side-chain prediction”. In: \TU/
 NotoSans(0)/m/it/10 Journal of molecular biology \TU/NotoSans(0)/m/n/10 230.2 (
 1993),
@@ -1315,7 +1315,7 @@ Package logreq Info: Writing requests to 'thesis.run.xml'.
 Here is how much of TeX's memory you used:
  22543 strings out of 478158
  447398 string characters out of 5853402
- 1218232 words of memory out of 5000000
+ 1217249 words of memory out of 5000000
  42842 multiletter control sequences out of 15000+600000
  477804 words of font info for 98 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191

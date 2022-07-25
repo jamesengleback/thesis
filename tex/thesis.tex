@@ -1428,11 +1428,10 @@ The \textit{Linode} instance had the virtual hardware specifications showing in 
 \end{table}
 
 Each experiment lasted about 3 days and cost \$103 at a rate of \$1.44 per hour. 
-Data generated was structures, docking poses and scores for each mutant - it was compressed into a \texttt{.tar.gz} archive and uploaded to a \textit{Linode} bucket and the machines were terminated.
-
+Data generated was structures, docking poses and scores for each mutant and was compressed into a \texttt{.tar.gz} archive and uploaded to a \textit{Linode} bucket, code changes were committed and pushed with \texttt{git}  and the machines were terminated.
 The eight replicates were run in parallel, generating 32,000 mutants for each experiment.
-
 Data was pulled down from the bucket storage onto a separate server for analysis with specifications listed in table \ref{analysis}.
+
 \begin{table}
         \begin{center}
 		\caption{\label{analysis} Virtual hardware specifications of the \texttt{g6-dedicated-8} server hired for analysis of experiments $A$ and $B$.}
@@ -1544,7 +1543,7 @@ The reduced sequence information is mapped to scores in figure \ref{dimredplt}.
 \begin{figure}
 	\includegraphics[width=\textwidth]{img/dimred-plt.png}
 	\caption{\label{dimredplt} Two different dimensionality reduction techniques were applied to the integer encoded sequences data from $A$ and $B$.
-	The coordinates are mapped to their respective scores. \textbf{note: viridis -> inferno}}
+	The coordinates are mapped to their respective scores. \textbf{note: viridis -> inferno, umap point size smaller}}
 \end{figure}
 
 \begin{center}
@@ -1566,9 +1565,9 @@ The hypothesis here was that some regions of sequence space would largely have s
 Activity distributions within clusters would be different from the global distribution in this case which can be quantified using Kubrik-Leibler divergence \cite{kldiver} $D_{KL}$ in equation \ref{kldiv}.
 
 \begin{equation}\label{kldiv}
-	D_{KL}(p||q) = \sum{x \in X} p(x) \log{\frac{p(x)}{q(x)}}
+	D_{KL}(p||q) = \sum_{x \in X} p(x) \log{\frac{p(x)}{q(x)}}
 \end{equation}
-$KL$ divergence between two distributions $q$ and $p$ which are appropriated with the function $q(x)$ and $p(x)$ where $x$ an element of the set real numbers $X \in \mathbb{R}$.
+$KL$ divergence between two distributions $q$ and $p$ which are approximated with the function $q(x)$ and $p(x)$ where $x \in X \in \mathbb{R}$.
 
 Rather than clustering directly from the sequences, clusters were made directly from the reduced dimensions using the \textit{DBSCAN} algorithm, exemplified in figure \ref{dimredclusters}.
 This was because the dimensionality reduction methods used here group spatially with similarity, so clustering spatially clusters sequences with some similar properties.
