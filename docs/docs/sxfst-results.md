@@ -80,12 +80,26 @@ this that should be noted:
     hits by noise in the traces due to scattering or compound absorbance
     that in some cases proved hard to correct for.
 
-![](img/BM3-Heme-A82F:S1376.png) 
-> A good example
-> of a positive result or *hit* between BM3 A82F and *Gestodene*. $K_d$
-> was calculated as 32 µM, which reflects an issue in the curve fitting
-> rather than the actual $K_d$. **note - rescale axes, move kd text,
-> legend title**
+Below are some examples of reports generated for each screening experiment, showcasing hits, misses and the undecidable.
+
+![](img/BM3-Heme-A82F:S1608.png) 
+> A positive result or *hit* between BM3 A82F and *pyridostigmine bromide (mestinon)*.
+
+![](img/BM3-Heme-A82F:S3176.png) 
+> A positive result or *hit* between BM3 A82F and *Betahistine*.
+
+![](img/BM3-Heme-1YQO:S1881.png)
+> An example of a negative result between BM3 1YQO and *Protionamide*.
+
+![](img/BM3-Heme-1YQO:S1185.png)
+> An example of an undecidable result between BM3 1YQO and *Ritonavir*.
+> Here the optical properties of the screening compound have interfered with measurement, evidenced by the similarity between the control and test traces in which the absorbance is very high.
+
+
+![](img/BM3-Heme-1YQO:S2040.png)
+> Another example of an undecidable result between 1YQO and *Nimesulide*.
+> *Nimesulide* has a large absorbance peak in to 300-500 nm range that could not be corrected for with the data.
+> Correction may have been possible if the total liquid volume in the wells was more consistent, though a multichannel pipette offers limited precision.
 
 ### Data Description
 
