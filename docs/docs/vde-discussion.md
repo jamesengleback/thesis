@@ -310,3 +310,5 @@ Although the codons themselves are designed here, no additional designs
 towards DNA assembly are made, for example primer design. Should this
 functionality be improved, it represents project creep and will best be
 compartmentalized within another project.
+
+\bib

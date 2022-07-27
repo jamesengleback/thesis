@@ -31,8 +31,7 @@ The downstream analysis in question was done using the script
 `sxfst/scripts/data_analysis.py` which normalizes the traces, subtracts
 the control traces from them and calculates the P450 response to each
 compound, creating a plot in the process. An example of one such plot is
-in **figure [2.6](#screeninghit){reference-type="ref"
-reference="screeninghit"}**.
+in **figure [2.6]**.
 
 The traditional response calculation method using
 $\Delta A_{390} - \Delta A_{420}$ proved ineffective for analysis of
@@ -81,15 +80,22 @@ this that should be noted:
     hits by noise in the traces due to scattering or compound absorbance
     that in some cases proved hard to correct for.
 
-![[\[screeninghit\]]{#screeninghit label="screeninghit"} A good example
-of a positive result or *hit* between BM3 A82F and *Gestodene*. $K_d$
-was calculated as 32 µM, which reflects an issue in the curve fitting
-rather than the actual $K_d$. **note - rescale axes, move kd text,
-legend title**](img/BM3-Heme-A82F:S1376.png)
+![](img/BM3-Heme-A82F:S1376.png) 
+> A good example
+> of a positive result or *hit* between BM3 A82F and *Gestodene*. $K_d$
+> was calculated as 32 µM, which reflects an issue in the curve fitting
+> rather than the actual $K_d$. **note - rescale axes, move kd text,
+> legend title**
 
-## Model Training
+### Data Description
 
-### Pre-training
+## Model 
+
+### Model Description
+
+### Pre-Training
+### Pre-Training Data
+#### Pre-Training
 
 Given constraints on money towards computing resources, a
 hyper-parameter sweep was not viable. Instead, a small selection of
@@ -100,8 +106,7 @@ directly configurable by supply of arguments to the training script
 using the command
 `./train.py -i data/o3f.train.csv –transformer –cuda –emb_size_head 2560 –n_layers_head 3 –emb_size_fp 512 –n_layers_fp 4 –num_conv_layers_pool 3 –kernel_size_pool 9 –stride_pool 3 –lstm_hs_pool 1024 –lr 1e-5 –batch_size 64 -e 32 `,
 which is consolidated in **table
-[2.6](#frostybreezeparams){reference-type="ref"
-reference="frostybreezeparams"}**.
+[2.6].
 
 | **Parameter**            |**Value**             |
 | -------------------------|----------------------|
@@ -124,43 +129,31 @@ reference="frostybreezeparams"}**.
 | num\_conv\_layers\_pool  |3                     |
 | num\_lstm\_layers\_pool  |2                     |
 
- Parameters for the best performing model in pre-training, designated the identifier *frosty-breeze-83* by the *Weights and Biases* API.
+> Parameters for the best performing model in pre-training, designated the identifier *frosty-breeze-83* by the *Weights and Biases* API.
 
-![[\[frostybreeze\]]{#frostybreeze label="frostybreeze"} Model
-evaluation report after pre-training for the model designated
-*frosty-breeze-83*. Evaluation was on `o3f.test.csv` - a held-back
-partition of the pre-training dataset. Depicted are: mean binary cross
-entropy loss the course of training on `o3f.train.csv`, a confusion
-matrix, a receiver operator curve (ROC), a precision recall curve, a
-detection error trade-off (DET) curve and mean precision and mean binary
-cross-entropy loss over
-evaluation.](img/frosty-breeze-83-eval.png)
+![](img/frosty-breeze-83-eval.png)
+> Model
+> evaluation report after pre-training for the model designated
+> *frosty-breeze-83*. Evaluation was on `o3f.test.csv` - a held-back
+> partition of the pre-training dataset. Depicted are: mean binary cross
+> entropy loss the course of training on `o3f.train.csv`, a confusion
+> matrix, a receiver operator curve (ROC), a precision recall curve, a
+> detection error trade-off (DET) curve and mean precision and mean binary
+> cross-entropy loss over
+> evaluation.
 
-![[\[devoutthunder\]]{#devoutthunder label="devoutthunder"} Model
-evaluation for another instance of *frosty-breeze-81*, this time
-designated *devout-thunder-90*, again retrained on the lab-based
-screening dataset `screening-data.train.csv` and evaluated on
-`screening-data.test.csv`. The report uses the same methods as in figure
-[2.7](#frostybreeze){reference-type="ref"
-reference="frostybreeze"}](img/frosty-breeze-83-vivid-breeze-91-devout-thunder-90-eval.png)
+![](img/frosty-breeze-83-vivid-breeze-91-devout-thunder-90-eval.png)
+> Model
+> evaluation for another instance of *frosty-breeze-81*, this time
+> designated *devout-thunder-90*, again retrained on the lab-based
+> screening dataset `screening-data.train.csv` and evaluated on
+> `screening-data.test.csv`. The report uses the same methods as in figure
+> [2.7].
 
-![[\[vividbreeze\]]{#vividbreeze label="vividbreeze"} Model evaluation
-report after pre-training for the model designated
-*vivid-breeze-91*.](img/frosty-breeze-83-vivid-breeze-91-eval.png)
+![](img/frosty-breeze-83-vivid-breeze-91-eval.png)
+> Model evaluation
+> report after pre-training for the model designated
+> *vivid-breeze-91*.
 
 ## Model Application
-
-## Discussion and Future Work
-
--   **Improvements (Issues):**
-
-    -   **Issues with screening library**
-
-    -   **Improvements to data processing - recover compound
-        concentrations**
-
-    -   **Improvements to screening dataset partitioning**
-
-    -   **Improvements to model application**
-
 
