@@ -108,9 +108,15 @@ On inspection of the A82F/F87V data, each experiment used protein in mixed spin 
 
 During screening, both A82F and A82F/F87V were thawed and measured to have mixed spin characteristics, which is ostensibly due to binding contaminants in the buffer.
 Although this was identified prior to screening and attempts to clear the binding site using a *Lipidex 1000* hydrophobic column, the contaminant-binding effect persisted which renders the entire A82F/F87V experiment useless.
+Figure **[a82f-f87v-post-lipidex.png]** shows the UV-Visible light absorbance trace of the BM3 A82F/F87V mutant after being treated with a *Lipidex 1000* column to clear the binding site. 
+It shows a clear absorbance peak at 420 nm which indicates successful clearance of the binding site, yet the peak is consistently diminished in the plate data - likely a result of a contaminant in the assay buffer.
+
+![](img/a82f-f87v-post-lipidex.png)
+> UV-Visible light absorbance of P450 BM3 mutant A82F/F87V after treatment with *Lipidex 1000* resin.
+> The trace chows a peak at 420 nm which indicates that the binding site was successfully cleared.
 
 ![](img/BM3-Heme-A82F_F87V:S1137.png)
-> BM3 A82F/F87V and *Malotilate*, where the mutant is already bound to a contaminant in the buffer.
+> BM3 A82F/F87V and *Malotilate*, where the mutant is already bound to a contaminant, resulting in the lack of an absorbance peak at 420 nm even in absence of compound.
 
 
 
