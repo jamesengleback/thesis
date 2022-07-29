@@ -22,7 +22,8 @@ nav:
     - sxfst-methods.md
     - sxfst-results.md
     - sxfst-discussion.md
-    - sxfst-appendix.md
+    - sxfst-appendix1.md
+    - sxfst-appendix2.md
   - Virtual Directed Evolution:
     - vde-introduction.md
     - vde-methods.md

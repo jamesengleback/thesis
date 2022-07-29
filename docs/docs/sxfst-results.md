@@ -70,11 +70,31 @@ Below are some examples of reports generated for each screening experiment, show
 > *Nimesulide* has a large absorbance peak in to 300-500 nm range that could not be corrected for with the data.
 > Correction may have been possible if the total liquid volume in the wells was more consistent, though a multichannel pipette offers limited precision.
 
+Fitting a *Michaelis-Menten* model to the screening data *en-masse* proved difficult because in many cases, the data was too noisy to produce an accurate model.
+**Table N** shows summary histograms of metrics gathered for each BM3 mutant, including many examples where curve fitting has failed catastrophically and yielded a negative $R^2$ value.
+These data where filtered on a basis of: $R^2 > 0$ and $V_{max} < 2$ and are tabulated in [appendix 1](sxfst-appendix1.md).
+$V_{max} < 2$ was chosen as a filter since the normalization scheme used shouldn't allow $V_{max} > 2$ under normal circumstances, indicating an anomalous result - likely the result of either protein precipitation, compound precipitation or a strongly absorbing compound in the measurement range of UV-Visible light.
+
+
+| BM3 Mutant        | Metric Histograms                     |  Metric Histograms Where $R^2 > 0$        |
+|-------------------|---------------------------------------|-------------------------------------------|
+|BM3-Heme-WT        |![](img/BM3-Heme-WT-mm-hist.png)       |![](img/BM3-Heme-WT-mm-hist-gt0.png)       |
+|BM3-Heme-A82F      |![](img/BM3-Heme-A82F-mm-hist.png)     |![](img/BM3-Heme-A82F-mm-hist-gt0.png)     |
+|BM3-Heme-A82F-F87V |![](img/BM3-Heme-A82F-F87V-mm-hist.png)|![](img/BM3-Heme-A82F-F87V-mm-hist-gt0.png)|
+|BM3 Heme 1YQP      |![](img/BM3-Heme-1YQP-mm-hist.png)     |![](img/BM3-Heme-1YQP-mm-hist-gt0.png)     |
+|BM3 Heme 1YQO      |![](img/BM3 Heme 1YQO-mm-hist.png)     |![](img/BM3-Heme-1YQO-mm-hist-gt0.png)     |
+
+> **Table N:** A summary for metrics gathered from each screening experiment following fit of *Michaelis-Menten* models.
+
+Introspection of the curve-fitting revealed a correlation between $V_{max}$ and $K_d$, which is shown in **Figure N**.
+The cause of this correlation is unclear, it could be an artifact of the curve-fitting process, or something inherent to the data itself.
+
+
+![](img/km-vs-vmax-corr.png)
+> **Figure N:** correlation between $V_{max}$ and $K_d$ over curve-fitting shows a linear correlation.
+> A linear regression model ($y = mx + c$) was fit to the data, yielding $m=462.41$, $c=-62.85$ with $R^2 = 0.76$.
+
 ---
-
-At the time, curve-fitting *en-masse* proved difficult and unreliable.
-**more**
-
 
 The alternative solution was manual annotation of the plots output by
 the script. Though crude, this method did yield a list of ostensible
@@ -102,7 +122,7 @@ this that should be noted:
     hits by noise in the traces due to scattering or compound absorbance
     that in some cases proved hard to correct for.
 
-A table containing the structures and Murcko scaffolds [@bemis1996properties] of the manually annotated hits is in [appendix 1](sxfst-appendix.md).
+A table containing the structures and Murcko scaffolds [@bemis1996properties] of the manually annotated hits is in [appendix 2](sxfst-appendix2.md).
 Only BM3 A82F is assosciated with hits in this data, and none for A82F/F87V which is unexpected given the previous identification of binding interactions between this mutant and a number of FDA-approved compounds[@jeffreys2019novel].
 On inspection of the A82F/F87V data, each experiment used protein in mixed spin - already bound to something, which obscures any binding interactions with the test compounds.
 
