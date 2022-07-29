@@ -88,8 +88,7 @@ formula:
 $$Response = \Delta A_{390} - \Delta A_{420} = V_{max} \frac{[S]}{[S] + K_d}$$
 
 An example of this is shown in **figure
-[2.3](#arachadionictitration){reference-type="ref"
-reference="arachadionictitration"}**, where the fatty acid arachadionic
+[2.3](#arachadionictitration)**, where the fatty acid arachadionic
 acid was titrated into a sample of P450 BM3 wild-type.
 
 Response of P450 BM3 to Arachadionic Acid
@@ -127,8 +126,7 @@ volume very quickly. Precision in the bulk fluid volume in the plate is
 helpful in downstream analysis due to the consistent path lengths and
 concentrations in each well, something that was found to be less
 consistent when using a multichannel pipette to achieve the same task.
-**Figure [2.4](#assaydevarachadionic){reference-type="ref"
-reference="assaydevarachadionic"}** shows an example of both the
+**Figure [2.4](#assaydevarachadionic)** shows an example of both the
 *ThermodropMulti* and *Echo* being used to capture $K_d$ and $V_{max}$
 for the binding interaction between P450 BM3 wild-type and arachadionic
 acid.
@@ -525,7 +523,6 @@ Two important considerations based on the template sequence are:
     sequence area is high, so too is the likelihood of a non-functional,
     self-binding primer.
 
-**note: talk about `mxn`**
 
 ### PCR and Work Up
 
@@ -584,7 +581,7 @@ buffer 1, concentration to 500-1000 µM and storage at -80 °C.
 ## Screening
 
 Throughput the screening process, the protocol described in section
-[2.3.2](#protocol){reference-type="ref" reference="protocol"} was
+[2.3.2](#protocol) was
 employed. Six concentrations of each target compound were dispensed with
 the aim of determination of the $V_{max}$ and $K_d$: 0.0, 5.26, 55.61,
 156.72, 306.74 and 500 µM. These values were generated from six linearly
@@ -784,7 +781,7 @@ subset of a compound set by maximizing the pairwise Tanimoto similarity
 of the subset compound fingerprints was employed using the MaxMin
 algorithm.
 
-Unfortunately, MaxMin is $O(n^2)$ complexity, so is only feasible with
+Unfortunately, MaxMin is $\Theta (n^2)$ complexity, so is only feasible with
 relatively small batches. 64 compounds are selected this way from each
 batch of 512 from the filtered set, yielding `o3.csv` (1359834 data
 points and 908M uncompressed size).
@@ -804,7 +801,7 @@ split 3:1 into a training and test datasets `o3f.train.csv` and
 
 ### Model Architecture
 
-Given the model aims to predict: $$P_{binding} = fn(sequence, smiles)$$
+Given the model aims to predict: $P_{binding} = fn(sequence, smiles)$
 
 A neural network was devised to generate a prediction of $P_{binding}$
 from an input of a protein sequence and a chemical SMILES code. The
@@ -820,11 +817,10 @@ network can be split into three parts:
     $z_{sequence}$, output a prediction $P_{binding}$.
 
 The architecture is illustrated in
-[2.5](#modelarch){reference-type="ref" reference="modelarch"}.
+[2.5](#modelarch).
 
 ![[\[modelarch\]]{#modelarch label="modelarch"} Architecture of the
-model constructed for this project](img/model.png){#modelarch
-height="0.8\\textheight"}
+model constructed for this project](img/model.png)
 
 ### Sequence Embedding
 
@@ -871,7 +867,7 @@ during which several models with varying architectures and
 hyper-parameters were trained and compared. All training was done on a
 *Linode* `g1-gpu-rtx6000-1` in New Jersey which cost \$1.50 per hour and
 was equipped with hardware specifications described in **table
-[2.5](#hardwaretable){reference-type="ref" reference="hardwaretable"}**.
+[2.5](#hardwaretable)**.
 
 | **Item**  |**Specifications**                        |**Number** | **Size**    |
 |-----------|------------------------------------------|-----------|-------------|

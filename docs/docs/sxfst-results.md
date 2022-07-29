@@ -18,7 +18,7 @@ the time cost of those tasks.
 The script attempted to use the *Echo* logs from each run to calculate
 the actual volume of each compound dispensed, since towards the end of
 the screening program shortages of compound made it impossible to fully
-dispense some experiments. In retrospective this function did not
+dispense some experiments. In retrospect, this function did not
 perform properly, since all experiments are later annotated as having
 the target volumes of each compound. This cannot be the case since it
 was casually observed that some compounds were completely depleted by
@@ -26,6 +26,8 @@ the end of the screening program. This issue is significant, leading to
 false negatives where a lack of response cannot be attributed to either
 a lack of compound or a true negative response. This coding issue can be
 solved, but was not due to time constraints.
+
+### Michaelis-Menten Fitting for Screening Data
 
 The downstream analysis in question was done using the script
 `sxfst/scripts/data_analysis.py` which normalizes the traces, subtracts
@@ -89,12 +91,17 @@ $V_{max} < 2$ was chosen as a filter since the normalization scheme used shouldn
 Introspection of the curve-fitting revealed a correlation between $V_{max}$ and $K_d$, which is shown in **Figure N**.
 The cause of this correlation is unclear, it could be an artifact of the curve-fitting process, or something inherent to the data itself.
 
-
 ![](img/km-vs-vmax-corr.png)
 > **Figure N:** correlation between $V_{max}$ and $K_d$ over curve-fitting shows a linear correlation.
 > A linear regression model ($y = mx + c$) was fit to the data, yielding $m=462.41$, $c=-62.85$ with $R^2 = 0.76$.
 
+No $K_d$s were calculated to be below 100 mM.
+If a $K_d < 500 mM$ is considered a hit, then there are 448 putative hits.
+See [appendix 1](sxfst-appendix1.md) for these hits.
+
 ---
+
+### Manual Annotation of Screening Data
 
 The alternative solution was manual annotation of the plots output by
 the script. Though crude, this method did yield a list of ostensible
@@ -123,6 +130,14 @@ this that should be noted:
     that in some cases proved hard to correct for.
 
 A table containing the structures and Murcko scaffolds [@bemis1996properties] of the manually annotated hits is in [appendix 2](sxfst-appendix2.md).
+In total 149 hits were identified in this manner, of which 110 also appear in the hits identified by calculation of *Michaelis-Menten* kinetics.
+
+The manually annotated set of hits was progressed to the machine learning stage.
+
+---
+
+### Issues with BM3 A82F/F87V
+
 Only BM3 A82F is assosciated with hits in this data, and none for A82F/F87V which is unexpected given the previous identification of binding interactions between this mutant and a number of FDA-approved compounds[@jeffreys2019novel].
 On inspection of the A82F/F87V data, each experiment used protein in mixed spin - already bound to something, which obscures any binding interactions with the test compounds.
 
@@ -137,11 +152,8 @@ It shows a clear absorbance peak at 420 nm which indicates successful clearance 
 > 390 and 420 nm are indicated with vertical dashed lines
 
 
-
 ![](img/BM3-Heme-A82F_F87V:S1137.png)
 > BM3 A82F/F87V and *Malotilate*, where the mutant is already bound to a contaminant, resulting in the lack of an absorbance peak at 420 nm even in absence of compound.
-
-
 
 
 ## Model 
@@ -160,17 +172,16 @@ directly configurable by supply of arguments to the training script
 `model/train.py`, from which the best performing model was obtained
 using the command
 `./train.py -i data/o3f.train.csv –transformer –cuda –emb_size_head 2560 –n_layers_head 3 –emb_size_fp 512 –n_layers_fp 4 –num_conv_layers_pool 3 –kernel_size_pool 9 –stride_pool 3 –lstm_hs_pool 1024 –lr 1e-5 –batch_size 64 -e 32 `,
-which is consolidated in **table
-[2.6].
+which is consolidated in **table [2.6]**.
 
 | **Parameter**            |**Value**             |
 | -------------------------|----------------------|
 | lr                       |$10^{-5}$             |
-| esm                      |esm1\_t6\_43M\_UR50S  |
+| esm                      |`esm1_t6_43M_UR50S `  |
 | cuda                     |True                  |
 | load                     |None                  |
 | test                     |False                 |
-| input                    |data/o3f.train.csv    |
+| input                    |`data/o3f.train.csv`  |
 | epochs                   |320                   |
 | batch\_size              |640                   |
 | emb\_size\_fp            |512                   |

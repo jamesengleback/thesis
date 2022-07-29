@@ -34,8 +34,14 @@
 	- [ ] **Protein Structure Prediction :**
 	- [ ] **Docking :**
 - [ ] **Screening Fist:**
+	- [ ] **Methods:**
+		- [ ] **`mxn`** 
+		- [ ] **PCR** 
+		- [ ] **Sequencing** 
+		- [ ] **Purification** 
+		- [ ] **Model Evaluation** 
 	- [ ] **Results:**
-		- [ ] **Screening Data:** Describe
+		- [x] **Screening Data:** Describe
 		- [ ] **Model Training:** Describe
 		- [ ] **Generated Proteins:** Do, Describe
 	- [ ] **Discussion:**
