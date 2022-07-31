@@ -52,6 +52,7 @@ $|{\frac{\delta y}{\delta x_{390}}}| + |{\frac{\delta y}{\delta x_{420}}}|$.
 
 
 Below are some examples of reports generated for each screening experiment, showcasing hits, misses and the undecidable.
+All screening reports can be found at [`https://github.com/jamesengleback/screening-fist/tree/master/data/out-img-kdmod`](https://github.com/jamesengleback/screening-fist/tree/master/data/out-img-kdmod).
 
 ![](img/BM3-Heme-A82F:S1608.png) 
 > A positive result or *hit* between BM3 A82F and *pyridostigmine bromide (mestinon)*.
@@ -99,15 +100,45 @@ No $K_d$s were calculated to be below 100 mM.
 If a $K_d < 500 mM$ is considered a hit, then there are 448 putative hits.
 See [appendix 1](sxfst-appendix1.md) for these hits.
 
+The number of hits for each mutant is summarised in table \label{sxkmhits} and in figure \label{sxkmhits}
+
+> Table \label{sxkmhits}: The number of hits for each mutant according to whether the calculated $K_d < 500$ and $V_{max}<3$ and $R^2 > 0$.
+> Plotted in figure \label{sxkmhits}.
+
+| Mutant             | Number of Hits |
+|:-------------------|---------------:|
+| BM3 Heme 1YQO      |             54 |
+| BM3 Heme 1YQP      |             61 |
+| BM3 Heme A82F      |            267 |
+| BM3 Heme A82F/F87V |             40 |
+| BM3 Heme WT        |             26 |
+
+![](img/hits-hist-km.png)
+> \label{sxhistkm} A histogram showing the number of hits for each mutant in the screening according to the criteria $K_d < 500$ and $V_{max}<3$ and $R^2 > 0$ in the processed data.
+> The summary data is also in table \label{sxkmhits}.
+
+
+To visualise the screening results, screening compounds would be mapped to two-dimensional  coordinates using a dimensionality-reduction technique: UMAP[@mcinnes2018umap].
+Compounds were encoded as fixed-size vectors by generating molecular fingerprints for each using the `rdkit` `RDKFingerprint`.
+The fingerprints were reduced on a basis of similarity to one another (Manhattan Distance), so the compounds are grouped by similarity.
+
+![](img/cpd-umap-kms.png)
+> \label{sxkmumap} A UMAP reduction of the 2048 bit `RDKFingerprint` of each compound in the screening library, colour-mapped to the calculated $K_d$, $V_{max}$ and $R^2$.
+
+If the compounds in the UMAP \label{sxumap} have successfully been grouped by similarity, then there isn't an obvious pattern in which are hits; at least not on the basis of similarity chosen by the UMAP algorithm.
+UMAP will group compounds by bulk similarity, so if the key features for binding are only encoded by a small fraction of the 2048 bits of the fingerprint hash then they would not contribute much to the overall similarity and the subsequent grouping in two dimensions.
+
+
+
 ---
 
 ### Manual Annotation of Screening Data
 
-The alternative solution was manual annotation of the plots output by
+The alternative approach was manual annotation of the plots output by
 the script. Though crude, this method did yield a list of ostensible
 *hits* as well as a list of anomalous results that were to be ignored.
 
-Using this approach, 149 hits of the total 4900 compounds were
+Using this approach, 149 hits of the total 4110 compounds were
 identified, listed in the file `lab/hits.txt` in the repository. These
 were used to create a `csv` file containing the full sequence and SMILES
 code for each enzyme compound pair and a boolean value that was true if
@@ -116,7 +147,7 @@ this that should be noted:
 
 -   **Human Error:** Although several passes over the data were done,
     the order was never randomized and there was only one annotator.
-    Since there are 4900 experiments, even if the annotator averages 1
+    Since there are 4110 experiments, even if the annotator averages 1
     second per annotation the runtime of an annotation run is 81
     minutes, which will likely cause fatigue and subsequent errors.
     Since the order was not randomized, fatigue-induced error is more
@@ -132,6 +163,22 @@ this that should be noted:
 A table containing the structures and Murcko scaffolds [@bemis1996properties] of the manually annotated hits is in [appendix 2](sxfst-appendix2.md).
 In total 149 hits were identified in this manner, of which 110 also appear in the hits identified by calculation of *Michaelis-Menten* kinetics.
 
+
+
+> Table \label{sxannothits}: The number of hits for each mutant according to manual annotation of each screening report.
+> Plotted in figure \label{sxhist}
+
+| Mutant             |   Number of Hits |
+|:-------------------|-----------------:|
+| BM3 Heme 1YQO      |                1 |
+| BM3 Heme 1YQP      |                1 |
+| BM3 Heme A82F      |              147 |
+| BM3 Heme A82F/F87V |                0 |
+| BM3 Heme WT        |                0 |
+
+![](img/hits-hist-man.png)
+> \label{sxhist} A histogram showing the number of hits for each mutant in the screening set identified via manual annotation. See table \label{sxannothits}.
+
 The manually annotated set of hits was progressed to the machine learning stage.
 
 ---
@@ -141,7 +188,7 @@ The manually annotated set of hits was progressed to the machine learning stage.
 Only BM3 A82F is assosciated with hits in this data, and none for A82F/F87V which is unexpected given the previous identification of binding interactions between this mutant and a number of FDA-approved compounds[@jeffreys2019novel].
 On inspection of the A82F/F87V data, each experiment used protein in mixed spin - already bound to something, which obscures any binding interactions with the test compounds.
 
-During screening, both A82F and A82F/F87V were thawed and measured to have mixed spin characteristics, which is ostensibly due to binding contaminants in the buffer.
+During screening, both A82F and A82F/F87V were thawed and measured to have mixed spin characteristics, thought to be the result of the P450 binding contaminants in the buffer.
 Although this was identified prior to screening and attempts to clear the binding site using a *Lipidex 1000* hydrophobic column, the contaminant-binding effect persisted which renders the entire A82F/F87V experiment useless.
 Figure **[a82f-f87v-post-lipidex.png]** shows the UV-Visible light absorbance trace of the BM3 A82F/F87V mutant after being treated with a *Lipidex 1000* column to clear the binding site. 
 It shows a clear absorbance peak at 420 nm which indicates successful clearance of the binding site, yet the peak is consistently diminished in the plate data (exemplified in **figure X**) - likely a result of a contaminant in the assay buffer.
@@ -153,7 +200,16 @@ It shows a clear absorbance peak at 420 nm which indicates successful clearance 
 
 
 ![](img/BM3-Heme-A82F_F87V:S1137.png)
-> BM3 A82F/F87V and *Malotilate*, where the mutant is already bound to a contaminant, resulting in the lack of an absorbance peak at 420 nm even in absence of compound.
+> BM3 A82F/F87V and *Malotilate*, where the mutant is ostensibly bound to a contaminant, resulting in the lack of an absorbance peak at 420 nm even in absence of compound.
+
+
+
+
+![](img/cpd-umap-hits.png)
+> \label{sxumap} A UMAP reduction of the 2048 bit `RDKFingerprint` of each compound in the screening library, coloured and sized according to whether they were associated with a hit during screening.
+
+If the compounds in the UMAP \label{sxumap} have successfully been grouped by similarity, then there isn't an obvious pattern in which are hits; at least not on the basis of similarity chosen by the UMAP algorithm.
+UMAP will group compounds by bulk similarity, so if the key features for binding are only encoded by a small fraction of the 2048 bits of the fingerprint hash then they would not contribute much to the overall similarity and the subsequent grouping in two dimensions.
 
 
 ## Model 
